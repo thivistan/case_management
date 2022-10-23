@@ -1,7 +1,7 @@
 # Please read before getting started
 
 ### Resources:
-- [Writing good commit messages]()
+- [Writing good commit messages](https://github.com/opthaddeus/case_management/blob/3663d2b9f1ee93b1be6eb0872d0f399458b20869/Resources/CommitMessages.md)
 - [Writing good branch names]()
 - [Setting up your emulator iOS/Adnroid]()
 - [Configuring your React-Native environment]()
