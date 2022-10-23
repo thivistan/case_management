@@ -3,17 +3,20 @@ import { KeyboardAvoidingView, BackHandler, Text, TouchableOpacity, View } from 
 import React, { useState } from "react";
 import { styles } from './styles';
 import { TextInput } from "react-native-gesture-handler";
+import { auth } from "../../firebase/firebase";
 
 const ForgotPasswordScreen = () => {
     const navigation = useNavigation();
     const [email, setEmail ] = useState('');
 
-    const handleSubmitButton = () => {
-        console.log("Entered email", user.email);
-    }
-
     const handleBackButton = () => {
         navigation.replace("Login");
+    }
+
+    const handleForgotPassword = () => {
+        auth.sendPasswordResetEmail(email).then(() => {
+            console.log("Reset email sent to " + email);
+        }).catch(error => alert(error.message))
     }
 
     return (
@@ -29,24 +32,27 @@ const ForgotPasswordScreen = () => {
                     receive a link to create a new password{"\n"}via email
                 </Text>
             </View>
+
             <View style = { [styles.inputContainer, styles.textInputOutline] }>
                 <TextInput
-                    color = '#00BFFF'
-                    styles = { styles.textInput }
                     placeholder = "Email"
+                    color = '#00BFFF'
                     placeholderTextColor = '#00BFFF'
                     value = { email }
                     onChangeText = { text => setEmail(text) }
+                    styles = { styles.textInput }
                 />
             </View>
+
             <View style = { styles.buttonContainer }>
                 <TouchableOpacity
-                    onPress = { handleSubmitButton }
+                    onPress = { handleForgotPassword }
                     style = { styles.button }
                     >
                     <Text style = { styles.buttonText }>Submit</Text>
                 </TouchableOpacity>
             </View>
+
         </KeyboardAvoidingView>
     )
 }

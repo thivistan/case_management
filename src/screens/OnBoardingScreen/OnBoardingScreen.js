@@ -41,6 +41,7 @@ const OnBoardingScreen = () => {
                 <View style = { styles.lineStyle }/>
                 </View>
             </View>
+
         </KeyboardAvoidingView>
     )
 }
