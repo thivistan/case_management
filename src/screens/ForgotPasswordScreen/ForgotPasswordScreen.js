@@ -1,5 +1,5 @@
 import { useNavigation } from "@react-navigation/native";
-import { KeyboardAvoidingView, BackHandler, Text, TouchableOpacity, View } from "react-native";
+import { KeyboardAvoidingView, Alert, Text, TouchableOpacity, View } from "react-native";
 import React, { useState } from "react";
 import { styles } from './styles';
 import { TextInput } from "react-native-gesture-handler";
@@ -9,13 +9,16 @@ const ForgotPasswordScreen = () => {
     const navigation = useNavigation();
     const [email, setEmail ] = useState('');
 
-    const handleBackButton = () => {
-        navigation.replace("Login");
-    }
-
     const handleForgotPassword = () => {
         auth.sendPasswordResetEmail(email).then(() => {
             console.log("Reset email sent to " + email);
+            Alert.alert("Password Reset", "Email sent to " + email,
+            [
+                {
+                    text: 'Continue',
+                    onPress: () => navigation.replace("Login")
+                }
+            ],);
         }).catch(error => alert(error.message))
     }
 
@@ -24,7 +27,6 @@ const ForgotPasswordScreen = () => {
         style = { styles.container }
         behavior = 'padding'
         >
-            <Text style = { styles.backButton } onPress = { handleBackButton }>Back</Text>
             <View style = { styles.forgotPasswordContainer }>
                 <Text style = { styles.forgotPasswordPrompt }>Forgot Password</Text>
                 <Text style = { styles.forgotPasswordInstructions }>
