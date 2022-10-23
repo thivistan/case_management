@@ -7,12 +7,6 @@ const styles = StyleSheet.create( {
         justifyContent: 'center',
         alignItems: 'center',
     },
-    backButton: {
-        color: '#00BFFF',
-        fontWeight: 'bold',
-        fontSize: 20,
-        textDecorationLine: 'underline',
-    },
     forgotPasswordContainer: {
         fontFamily: 'sans-serif',
         flexDirection: 'row',
