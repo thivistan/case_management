@@ -1,12 +1,13 @@
 import * as firebase from "firebase";
 
 const firebaseConfig = {
-  apiKey: "AIzaSyApIpNAvV-FhRbt2_6hxi00BuBKnkn9wuo",
-  authDomain: "casemanagement-app-96e1a.firebaseapp.com",
-  projectId: "casemanagement-app-96e1a",
-  storageBucket: "casemanagement-app-96e1a.appspot.com",
-  messagingSenderId: "2789516969",
-  appId: "1:2789516969:web:25e717fd3aa8fb0e552bb8"
+  apiKey: "AIzaSyAIptBaoYrW-INQ8uTBZKDlrT1r00MFN0E",
+  authDomain: "case-management-applicat-af62c.firebaseapp.com",
+  projectId: "case-management-applicat-af62c",
+  storageBucket: "case-management-applicat-af62c.appspot.com",
+  messagingSenderId: "575730168193",
+  appId: "1:575730168193:web:3765f666826b48f37ab880",
+  measurementId: "G-9W3ZJD0DVP"
 };
 
 
@@ -18,4 +19,5 @@ if (firebase.apps.length === 0) {
 }
 
 const auth = firebase.auth();
+
 export { auth };
