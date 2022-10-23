@@ -59,10 +59,12 @@ const RegistrationScreen = () => {
                     secureTextEntry
                 />
             </View>
+
             <Text style = { styles.returningUserContainer}>
                 <Text style = { styles.returningUserPrompt }>Have an account? </Text>
                 <Text style = { styles.loginTextClickable } onPress = { handleLoginScreen }>Log in</Text>
             </Text>
+
             <View style = { styles.buttonContainer }>
                 <TouchableOpacity
                     style = { styles.button }
@@ -71,6 +73,7 @@ const RegistrationScreen = () => {
                     <Text style = { styles.buttonText }>Sign up</Text>
                 </TouchableOpacity>
             </View>
+
             <View style = { styles.thaddeusTextContainer }>
                 <Text style = { styles.thaddeusText }>Thaddeus</Text>
                 <Text style = { styles.resourceCenter }>Resource Center</Text>
@@ -82,6 +85,7 @@ const RegistrationScreen = () => {
                 <View style = { styles.lineStyle }/>
                 </View>
             </View>
+
         </KeyboardAvoidingView>
     )
 }

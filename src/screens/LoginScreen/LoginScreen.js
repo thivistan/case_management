@@ -54,11 +54,13 @@ const LoginScreen = () => {
                     secureTextEntry
                 />
             </View>
+
             <Text
                 style = { styles.forgotPassword }
                 onPress = { handleForgotPasswordScreen }>
                 Forgot password?
             </Text>
+
             <View style = { styles.buttonContainer }>
                 <TouchableOpacity
                     onPress = { handleLogin }
@@ -67,21 +69,28 @@ const LoginScreen = () => {
                     <Text style = { styles.buttonText }>Login</Text>
                 </TouchableOpacity>
             </View>
+
             <Text style = { styles.newUserContainer}>
                 <Text style = { styles.signUpText }>New user? </Text>
-                <Text style = { styles.signUpTextClickable } onPress = { handleRegistrationScreen }>Sign up</Text>
+                <Text
+                    style = { styles.signUpTextClickable }
+                    onPress = { handleRegistrationScreen }>Sign up
+                </Text>
             </Text>
+
             <View style = { styles.thaddeusTextContainer }>
                 <Text style = { styles.thaddeusText }>Thaddeus</Text>
                 <Text style = { styles.resourceCenter }>Resource Center</Text>
+
                 <View style = { styles.flexBox }>
                     <View style = { styles.lineStyle }/>
                     <View>
                         <Text style = { styles.year }>est. 1975</Text>
                     </View>
-                <View style = { styles.lineStyle }/>
+                    <View style = { styles.lineStyle }/>
                 </View>
             </View>
+
         </KeyboardAvoidingView>
     )
 }
