@@ -12,17 +12,17 @@ const LoginScreen = () => {
 
     useEffect( () => {
         const unsubscribe = auth.onAuthStateChanged(user => {
-            if (user) navigation.replace("Home");
+            if (user) navigation.navigate("Home");
         })
         return unsubscribe;
     }, [])
 
     const handleForgotPasswordScreen = () => {
-        navigation.replace("ForgotPassword");
+        navigation.navigate("ForgotPassword");
     }
 
     const handleRegistrationScreen = () => {
-        navigation.replace("Registration");
+        navigation.navigate("Registration");
     }
 
     const handleLogin = () => {
