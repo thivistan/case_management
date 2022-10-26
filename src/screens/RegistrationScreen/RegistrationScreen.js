@@ -3,6 +3,7 @@ import React, { useEffect, useState } from "react";
 import { KeyboardAvoidingView, Text, TouchableOpacity, View } from "react-native";
 import { TextInput } from "react-native-gesture-handler";
 import { auth } from "../../firebase/firebase";
+import UserIcon from "../../icons/user_icon.svg";
 import { styles } from "./styles";
 
 const RegistrationScreen = () => {
