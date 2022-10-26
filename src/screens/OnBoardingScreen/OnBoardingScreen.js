@@ -7,7 +7,7 @@ const OnBoardingScreen = () => {
     const navigation = useNavigation();
 
     const handleLoginScreen = () => {
-        navigation.replace("Login");
+        navigation.navigate("Login");
     }
 
     return (
