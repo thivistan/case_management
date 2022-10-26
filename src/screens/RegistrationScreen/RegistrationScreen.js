@@ -33,8 +33,13 @@ const RegistrationScreen = () => {
     return (
         <KeyboardAvoidingView
             style = { styles.container }
-            behavior = "padding"
-            >
+            behavior = "padding">
+
+            <View style = { styles.iconContainer }>
+                <UserIcon width = { 50 } height = { 50 }>
+                </UserIcon>
+            </View>
+
             <Text style = { styles.signUpPrompt }>Sign up</Text>
             <View style = { styles.inputContainer }>
             <TextInput
