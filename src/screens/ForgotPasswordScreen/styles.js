@@ -6,6 +6,7 @@ const styles = StyleSheet.create( {
         color: 'white',
         justifyContent: 'center',
         alignItems: 'center',
+        backgroundColor: 'white',
     },
     forgotPasswordContainer: {
         fontFamily: 'sans-serif',
