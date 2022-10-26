@@ -127,7 +127,7 @@ const styles = StyleSheet.create( {
         fontFamily: 'sans-serif',
         textAlign: 'center',
         color: '#00BFFF',
-        fontSize: 8,
+        fontSize: 10,
         alignSelf: 'center',
     },
 } );
