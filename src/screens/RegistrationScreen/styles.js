@@ -12,7 +12,12 @@ const styles = StyleSheet.create( {
         textTransform: 'uppercase',
         letterSpacing: 2,
         fontSize: 20,
-        textDecorationLine: 'underline',
+        fontWeight: 'bold',
+    },
+    iconContainer: {
+        justifyContent: 'center',
+        alignItems: 'center',
+        top: 0,
     },
     inputContainer: {
         width: '90%'
