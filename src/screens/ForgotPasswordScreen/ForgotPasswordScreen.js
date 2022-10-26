@@ -29,8 +29,8 @@ const ForgotPasswordScreen = () => {
     return (
         <KeyboardAvoidingView
         style = { styles.container }
-        behavior = 'padding'
-        >
+        behavior = 'padding'>
+
             <View style = { styles.forgotPasswordContainer }>
                 <Text style = { styles.forgotPasswordPrompt }>Forgot Password</Text>
                 <Text style = { styles.forgotPasswordInstructions }>
@@ -39,7 +39,7 @@ const ForgotPasswordScreen = () => {
                 </Text>
             </View>
 
-            <View style = { [styles.inputContainer, styles.textInputOutline] }>
+            <View style = { [styles.inputContainer, styles.textInputOutline, styles.textInputShadow] }>
                 <TextInput
                     placeholder = "Email"
                     color = '#00BFFF'
