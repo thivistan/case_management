@@ -118,7 +118,7 @@ const styles = StyleSheet.create( {
     },
     lineStyle: {
         flex: 1,
-        borderWidth: 0.5,
+        borderWidth: 0.6,
         marginRight: 5,
         marginLeft: 5,
         borderColor: '#00BFFF',
