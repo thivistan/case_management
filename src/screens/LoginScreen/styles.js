@@ -22,6 +22,7 @@ const styles = StyleSheet.create( {
         borderRadius: 100,
         marginTop: 20,
         color: 'white',
+        fontWeight: 'bold',
     },
     textInput: {
         color: 'white',
