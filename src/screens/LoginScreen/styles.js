@@ -49,7 +49,8 @@ const styles = StyleSheet.create( {
         elevation: 8,
     },
     buttonContainer: {
-        width: '60%',
+        width: '100%',
+        height: '50%',
         justifyContent: 'center',
         alignItems: 'center',
         marginTop: 40,
