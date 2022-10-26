@@ -42,26 +42,27 @@ const RegistrationScreen = () => {
 
             <Text style = { styles.signUpPrompt }>Sign up</Text>
             <View style = { styles.inputContainer }>
+
             <TextInput
                     placeholder =  "Name"
                     placeholderTextColor = 'white'
                     value = { name }
                     onChangeText = { text => setName(text) }
-                    style = { styles.input }
+                    style = { [styles.input, styles.textInputShadow] }
                 />
                 <TextInput
                     placeholder = "Email"
                     placeholderTextColor = 'white'
                     value = { email }
                     onChangeText = { text => setEmail(text) }
-                    style = { styles.input }
+                    style = { [styles.input, styles.textInputShadow] }
                 />
                 <TextInput
                     placeholder =  "Password"
                     placeholderTextColor = 'white'
                     value = { password }
                     onChangeText = { text => setPassword(text) }
-                    style = { styles.input }
+                    style = { [styles.input, styles.textInputShadow] }
                     secureTextEntry
                 />
             </View>
@@ -73,9 +74,8 @@ const RegistrationScreen = () => {
 
             <View style = { styles.buttonContainer }>
                 <TouchableOpacity
-                    style = { styles.button }
-                    onPress = { handleSignUp }
-                    >
+                    style = { [styles.button, styles.buttonShadow] }
+                    onPress = { handleSignUp }>
                     <Text style = { styles.buttonText }>Sign up</Text>
                 </TouchableOpacity>
             </View>
