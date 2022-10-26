@@ -55,9 +55,6 @@ const styles = StyleSheet.create( {
         borderColor: '#00BFFF',
         borderWidth: 2,
     },
-    textInput: {
-        color: 'white',
-    },
     buttonContainer: {
         width: '60%',
         justifyContent: 'center',
