@@ -86,10 +86,8 @@ const styles = StyleSheet.create( {
         position: 'absolute',
         bottom: 25,
     },
-    thaddeusText: {        // Android font
+    thaddeusText: {
         fontFamily: 'serif',
-        // Apple font
-        // fontFamily: 'Times New Roman',
         textTransform: 'uppercase',
         color: '#00BFFF',
         fontSize: 22,
