@@ -9,6 +9,10 @@ const ForgotPasswordScreen = () => {
     const navigation = useNavigation();
     const [email, setEmail ] = useState('');
 
+    const handleBackButton = () => {
+        navigation.navigate("Login");
+    }
+
     const handleForgotPassword = () => {
         auth.sendPasswordResetEmail(email).then(() => {
             console.log("Reset email sent to " + email);
@@ -25,8 +29,8 @@ const ForgotPasswordScreen = () => {
     return (
         <KeyboardAvoidingView
         style = { styles.container }
-        behavior = 'padding'
-        >
+        behavior = 'padding'>
+
             <View style = { styles.forgotPasswordContainer }>
                 <Text style = { styles.forgotPasswordPrompt }>Forgot Password</Text>
                 <Text style = { styles.forgotPasswordInstructions }>
@@ -35,23 +39,28 @@ const ForgotPasswordScreen = () => {
                 </Text>
             </View>
 
-            <View style = { [styles.inputContainer, styles.textInputOutline] }>
+            <View style = { [styles.inputContainer, styles.textInputOutline, styles.textInputShadow] }>
                 <TextInput
                     placeholder = "Email"
                     color = '#00BFFF'
                     placeholderTextColor = '#00BFFF'
+                    fontWeight = 'bold'
                     value = { email }
                     onChangeText = { text => setEmail(text) }
-                    styles = { styles.textInput }
                 />
             </View>
 
             <View style = { styles.buttonContainer }>
                 <TouchableOpacity
                     onPress = { handleForgotPassword }
-                    style = { styles.button }
-                    >
+                    style = { [styles.button, styles.buttonShadow] }>
                     <Text style = { styles.buttonText }>Submit</Text>
+                </TouchableOpacity>
+
+                <TouchableOpacity
+                    onPress = { handleBackButton }
+                    style = { [styles.button, styles.buttonShadow] }>
+                    <Text style = { styles.buttonText }>back</Text>
                 </TouchableOpacity>
             </View>
 

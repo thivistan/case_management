@@ -5,13 +5,19 @@ const styles = StyleSheet.create( {
         flex: 1,
         justifyContent: 'center',
         alignItems: 'center',
+        backgroundColor: 'white',
     },
     signUpPrompt: {
         color: '#00BFFF',
         textTransform: 'uppercase',
         letterSpacing: 2,
         fontSize: 20,
-        textDecorationLine: 'underline',
+        fontWeight: 'bold',
+    },
+    iconContainer: {
+        justifyContent: 'center',
+        alignItems: 'center',
+        top: 0,
     },
     inputContainer: {
         width: '90%'
@@ -23,9 +29,21 @@ const styles = StyleSheet.create( {
         borderRadius: 100,
         marginTop: 20,
         color: 'white',
+        fontWeight: 'bold',
     },
-    textInput: {
-        color: 'white',
+    textInputShadow: {
+        shadowColor: 'black',
+        shadowOpacity: 0.2,
+        shadowOffset: { width: 0, height: 2 },
+        shadowRadius: 2,
+        elevation: 6,
+    },
+    buttonShadow: {
+        shadowColor: 'black',
+        shadowOpacity: 0.2,
+        shadowOffset: { width: 0, height: 2 },
+        shadowRadius: 5,
+        elevation: 6,
     },
     buttonContainer: {
         width: '60%',
@@ -68,10 +86,8 @@ const styles = StyleSheet.create( {
         position: 'absolute',
         bottom: 25,
     },
-    thaddeusText: {        // Android font
+    thaddeusText: {
         fontFamily: 'serif',
-        // Apple font
-        // fontFamily: 'Times New Roman',
         textTransform: 'uppercase',
         color: '#00BFFF',
         fontSize: 22,

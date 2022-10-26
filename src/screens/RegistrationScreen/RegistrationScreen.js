@@ -3,6 +3,7 @@ import React, { useEffect, useState } from "react";
 import { KeyboardAvoidingView, Text, TouchableOpacity, View } from "react-native";
 import { TextInput } from "react-native-gesture-handler";
 import { auth } from "../../firebase/firebase";
+import UserIcon from "../../icons/user_icon.svg";
 import { styles } from "./styles";
 
 const RegistrationScreen = () => {
@@ -13,7 +14,7 @@ const RegistrationScreen = () => {
 
     useEffect( () => {
         const unsubscribe = auth.onAuthStateChanged(user => {
-            if (user) navigation.replace("Home");
+            if (user) navigation.navigate("Home");
         })
         return unsubscribe;
     }, [])
@@ -26,36 +27,42 @@ const RegistrationScreen = () => {
     }
 
     const handleLoginScreen = () => {
-        navigation.replace("Login");
+        navigation.navigate("Login");
     }
 
     return (
         <KeyboardAvoidingView
             style = { styles.container }
-            behavior = "padding"
-            >
+            behavior = "padding">
+
+            <View style = { styles.iconContainer }>
+                <UserIcon width = { 50 } height = { 50 }>
+                </UserIcon>
+            </View>
+
             <Text style = { styles.signUpPrompt }>Sign up</Text>
             <View style = { styles.inputContainer }>
+
             <TextInput
                     placeholder =  "Name"
                     placeholderTextColor = 'white'
                     value = { name }
                     onChangeText = { text => setName(text) }
-                    style = { styles.input }
+                    style = { [styles.input, styles.textInputShadow] }
                 />
                 <TextInput
                     placeholder = "Email"
                     placeholderTextColor = 'white'
                     value = { email }
                     onChangeText = { text => setEmail(text) }
-                    style = { styles.input }
+                    style = { [styles.input, styles.textInputShadow] }
                 />
                 <TextInput
                     placeholder =  "Password"
                     placeholderTextColor = 'white'
                     value = { password }
                     onChangeText = { text => setPassword(text) }
-                    style = { styles.input }
+                    style = { [styles.input, styles.textInputShadow] }
                     secureTextEntry
                 />
             </View>
@@ -67,9 +74,8 @@ const RegistrationScreen = () => {
 
             <View style = { styles.buttonContainer }>
                 <TouchableOpacity
-                    style = { styles.button }
-                    onPress = { handleSignUp }
-                    >
+                    style = { [styles.button, styles.buttonShadow] }
+                    onPress = { handleSignUp }>
                     <Text style = { styles.buttonText }>Sign up</Text>
                 </TouchableOpacity>
             </View>

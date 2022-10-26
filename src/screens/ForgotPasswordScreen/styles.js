@@ -6,6 +6,7 @@ const styles = StyleSheet.create( {
         color: 'white',
         justifyContent: 'center',
         alignItems: 'center',
+        backgroundColor: 'white',
     },
     forgotPasswordContainer: {
         fontFamily: 'sans-serif',
@@ -19,7 +20,6 @@ const styles = StyleSheet.create( {
         color: '#00BFFF',
         fontWeight: 'bold',
         fontSize: 20,
-        textDecorationLine: 'underline',
     },
     forgotPasswordInstructions: {
         fontSize: 15,
@@ -27,21 +27,33 @@ const styles = StyleSheet.create( {
         color: '#00BFFF',
         fontWeight: 'thin',
     },
+    textInputShadow: {
+        shadowColor: 'black',
+        shadowOpacity: 0.2,
+        shadowOffset: { width: 0, height: 2 },
+        shadowRadius: 2,
+        elevation: 6,
+    },
+    buttonShadow: {
+        shadowColor: 'black',
+        shadowOpacity: 0.2,
+        shadowOffset: { width: 0, height: 2 },
+        shadowRadius: 5,
+        elevation: 8,
+    },
     inputContainer: {
         backgroundColor: 'white',
         width: '90%',
         padding: 15,
         borderRadius: 100,
         color: 'white',
+        fontWeight: 'bold',
     },
     textInputOutline: {
         backgroundColor: 'white',
         marginTop: 5,
         borderColor: '#00BFFF',
         borderWidth: 2,
-    },
-    textInput: {
-        color: 'white',
     },
     buttonContainer: {
         width: '60%',
@@ -59,6 +71,7 @@ const styles = StyleSheet.create( {
         backgroundColor: '#00BFFF',
         width: '100%',
         padding: 15,
+        marginBottom: '5%',
         borderRadius: 100,
         alignItems: 'center',
     },
