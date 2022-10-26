@@ -47,7 +47,6 @@ const ForgotPasswordScreen = () => {
                     fontWeight = 'bold'
                     value = { email }
                     onChangeText = { text => setEmail(text) }
-                    styles = { styles.textInput }
                 />
             </View>
 
