@@ -2,6 +2,7 @@ import { useNavigation } from "@react-navigation/native";
 import React, { useEffect, useState } from "react";
 import { KeyboardAvoidingView, Text, TouchableOpacity, View } from "react-native";
 import { TextInput } from "react-native-gesture-handler";
+import UserIcon from "../../icons/user_icon.svg";
 import { auth } from "../../firebase/firebase";
 import { styles } from "./styles";
 
