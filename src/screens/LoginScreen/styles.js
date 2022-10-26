@@ -33,6 +33,20 @@ const styles = StyleSheet.create( {
         paddingRight: 30,
         paddingTop: 10,
     },
+    textInputShadow: {
+        shadowColor: 'black',
+        shadowOpacity: 0.2,
+        shadowOffset: { width: 0, height: 2 },
+        shadowRadius: 2,
+        elevation: 6,
+    },
+    buttonShadow: {
+        shadowColor: 'black',
+        shadowOpacity: 0.2,
+        shadowOffset: { width: 0, height: 2 },
+        shadowRadius: 5,
+        elevation: 8,
+    },
     buttonContainer: {
         width: '60%',
         justifyContent: 'center',
