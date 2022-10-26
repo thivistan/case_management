@@ -44,6 +44,7 @@ const ForgotPasswordScreen = () => {
                     placeholder = "Email"
                     color = '#00BFFF'
                     placeholderTextColor = '#00BFFF'
+                    fontWeight = 'bold'
                     value = { email }
                     onChangeText = { text => setEmail(text) }
                     styles = { styles.textInput }
