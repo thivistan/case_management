@@ -48,14 +48,14 @@ const LoginScreen = () => {
                     placeholderTextColor = 'white'
                     value = { email }
                     onChangeText = { text => setEmail(text) }
-                    style = { styles.input }
+                    style = { [styles.input, styles.textInputShadow] }
                 />
                 <TextInput
                     placeholder =  "Password"
                     placeholderTextColor = 'white'
                     value = { password }
                     onChangeText = { text => setPassword(text) }
-                    style = { styles.input }
+                    style = { [styles.input, styles.textInputShadow] }
                     secureTextEntry
                 />
             </View>
@@ -69,7 +69,7 @@ const LoginScreen = () => {
             <View style = { styles.buttonContainer }>
                 <TouchableOpacity
                     onPress = { handleLogin }
-                    style = { styles.button }
+                    style = { [styles.button, styles.buttonShadow] }
                     >
                     <Text style = { styles.buttonText }>Login</Text>
                 </TouchableOpacity>
