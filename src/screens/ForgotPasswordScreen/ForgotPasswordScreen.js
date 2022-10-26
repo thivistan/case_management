@@ -53,8 +53,7 @@ const ForgotPasswordScreen = () => {
             <View style = { styles.buttonContainer }>
                 <TouchableOpacity
                     onPress = { handleForgotPassword }
-                    style = { styles.button }
-                    >
+                    style = { [styles.button, styles.buttonShadow] }>
                     <Text style = { styles.buttonText }>Submit</Text>
                 </TouchableOpacity>
             </View>
