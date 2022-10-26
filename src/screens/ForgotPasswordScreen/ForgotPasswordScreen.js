@@ -56,6 +56,12 @@ const ForgotPasswordScreen = () => {
                     style = { [styles.button, styles.buttonShadow] }>
                     <Text style = { styles.buttonText }>Submit</Text>
                 </TouchableOpacity>
+
+                <TouchableOpacity
+                    onPress = { handleBackButton }
+                    style = { [styles.button, styles.buttonShadow] }>
+                    <Text style = { styles.buttonText }>back</Text>
+                </TouchableOpacity>
             </View>
 
         </KeyboardAvoidingView>
