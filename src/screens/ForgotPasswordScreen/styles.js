@@ -20,7 +20,6 @@ const styles = StyleSheet.create( {
         color: '#00BFFF',
         fontWeight: 'bold',
         fontSize: 20,
-        textDecorationLine: 'underline',
     },
     forgotPasswordInstructions: {
         fontSize: 15,
