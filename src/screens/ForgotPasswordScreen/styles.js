@@ -47,6 +47,7 @@ const styles = StyleSheet.create( {
         padding: 15,
         borderRadius: 100,
         color: 'white',
+        fontWeight: 'bold',
     },
     textInputOutline: {
         backgroundColor: 'white',
