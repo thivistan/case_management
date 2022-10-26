@@ -31,8 +31,19 @@ const styles = StyleSheet.create( {
         color: 'white',
         fontWeight: 'bold',
     },
-    textInput: {
-        color: 'white',
+    textInputShadow: {
+        shadowColor: 'black',
+        shadowOpacity: 0.2,
+        shadowOffset: { width: 0, height: 2 },
+        shadowRadius: 2,
+        elevation: 6,
+    },
+    buttonShadow: {
+        shadowColor: 'black',
+        shadowOpacity: 0.2,
+        shadowOffset: { width: 0, height: 2 },
+        shadowRadius: 5,
+        elevation: 6,
     },
     buttonContainer: {
         width: '60%',
