@@ -27,7 +27,7 @@ const RegistrationScreen = () => {
     }
 
     const handleLoginScreen = () => {
-        navigation.replace("Login");
+        navigation.navigate("Login");
     }
 
     return (
