@@ -32,14 +32,14 @@ const styles = StyleSheet.create( {
         shadowOpacity: 0.2,
         shadowOffset: { width: 0, height: 2 },
         shadowRadius: 2,
-        elevation: 6,
+        elevation: 25,
     },
     buttonShadow: {
         shadowColor: 'black',
         shadowOpacity: 0.2,
         shadowOffset: { width: 0, height: 2 },
         shadowRadius: 5,
-        elevation: 8,
+        elevation: 20,
     },
     inputContainer: {
         backgroundColor: 'white',
