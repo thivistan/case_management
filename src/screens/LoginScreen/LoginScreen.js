@@ -6,7 +6,7 @@ import UserIcon from "../../icons/user_icon.svg";
 import { auth } from "../../firebase/firebase";
 import { styles } from "./styles";
 
-const LoginScreen = () => {
+const LoginScreen = ( ) => {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const navigation = useNavigation();
@@ -69,9 +69,8 @@ const LoginScreen = () => {
 
             <View style = { styles.buttonContainer }>
                 <TouchableOpacity
-                    onPress = { handleLogin }
-                    style = { [styles.button, styles.buttonShadow] }
-                    >
+                    onPress = {handleLogin}
+                    style = { [styles.button, styles.buttonShadow]}>
                     <Text style = { styles.buttonText }>Login</Text>
                 </TouchableOpacity>
             </View>
@@ -101,4 +100,4 @@ const LoginScreen = () => {
     )
 }
 
-export default LoginScreen
+export default LoginScreen ;

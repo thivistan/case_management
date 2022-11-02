@@ -2,7 +2,6 @@ import { StyleSheet } from "react-native";
 import { Dimensions } from "react-native";
 
 let deviceWidth = Dimensions.get('screen').width;
-let deviceHeight = Dimensions.get('screen').height;
 
 const styles = StyleSheet.create( {
     container: {
@@ -73,7 +72,7 @@ const styles = StyleSheet.create( {
         shadowOpacity: 0.2,
         shadowOffset: { width: 0, height: 2 },
         shadowRadius: 5,
-        elevation: 8,
+        elevation: 10,
     },
     shadow: {
         shadowOffset: {width: -2, height: 4},
