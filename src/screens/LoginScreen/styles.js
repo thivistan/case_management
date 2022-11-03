@@ -27,12 +27,18 @@ const styles = StyleSheet.create( {
     textInput: {
         color: 'white',
     },
+    forgotPasswordContainer: {
+        marginTop: 15,
+        marginRight: 25,
+        alignContent: 'center',
+        alignSelf: 'flex-end',
+        color: '#00BFFF',
+        fontWeight: 'thin',
+    },
     forgotPassword: {
         alignSelf: 'flex-end',
         color: '#00BFFF',
         fontWeight: 'thin',
-        paddingRight: 30,
-        paddingTop: 10,
     },
     textInputShadow: {
         shadowColor: 'black',

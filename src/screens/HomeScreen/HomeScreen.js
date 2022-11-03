@@ -1,25 +1,21 @@
-import { useNavigation } from "@react-navigation/native";
-import React from "react";
+import React, { useContext } from "react";
 import { Text, View } from "react-native";
 import { TouchableOpacity } from "react-native-gesture-handler";
 import { auth } from "../../firebase/firebase";
+import { AuthContext } from "../../Navigation/AuthProvider";
 import { styles } from "./styles";
 
-const HomeScreen = () => {
-    const navigation = useNavigation();
-
-    const handleSignOut = () => {
-        auth.signOut().then( () => {
-            navigation.navigate("Login")
-        }).catch(error => alert(error.message));
-    }
+export default function HomeScreen() {
+    const { logout } = useContext(AuthContext);
 
     return (
         <View style = { styles.container }>
             <Text>Email: { auth.currentUser?.email }</Text>
-            <TouchableOpacity style = { styles.button }>
+            <TouchableOpacity 
+                style = { styles.button }
+                onPress = {() => logout() }
+            >
                 <Text
-                    onPress = { handleSignOut }
                     style = { styles.buttonText }>Sign out
                 </Text>
             </TouchableOpacity>
@@ -27,5 +23,3 @@ const HomeScreen = () => {
         </View>
     )
 }
-
-export default HomeScreen;

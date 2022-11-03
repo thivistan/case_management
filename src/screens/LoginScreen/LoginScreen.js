@@ -1,22 +1,16 @@
 import { useNavigation } from "@react-navigation/native";
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useRef, useState } from "react";
 import { KeyboardAvoidingView, Text, TouchableOpacity, View } from "react-native";
 import { TextInput } from "react-native-gesture-handler";
 import UserIcon from "../../icons/user_icon.svg";
-import { auth } from "../../firebase/firebase";
 import { styles } from "./styles";
+import { AuthContext } from "../../Navigation/AuthProvider";
 
-const LoginScreen = ( ) => {
+export default function LoginScreen() {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
+    const { login } = useContext(AuthContext);
     const navigation = useNavigation();
-
-    useEffect( () => {
-        const unsubscribe = auth.onAuthStateChanged(user => {
-            if (user) navigation.navigate("Home");
-        })
-        return unsubscribe;
-    }, [])
 
     const handleForgotPasswordScreen = () => {
         navigation.navigate("ForgotPassword");
@@ -24,13 +18,6 @@ const LoginScreen = ( ) => {
 
     const handleRegistrationScreen = () => {
         navigation.navigate("Registration");
-    }
-
-    const handleLogin = () => {
-        auth.signInWithEmailAndPassword(email, password).then(userCredentials => {
-            const user = userCredentials.user;
-            console.log("Logged in with", user.email);
-        }).catch(error => alert(error.message))
     }
 
     return (
@@ -50,6 +37,9 @@ const LoginScreen = ( ) => {
                     value = { email }
                     onChangeText = { text => setEmail(text) }
                     style = { [styles.input, styles.textInputShadow] }
+                    autoCapitalize = 'none'
+                    keyboardType = 'email-address'
+                    autoCorrect = { false }
                 />
                 <TextInput
                     placeholder =  "Password"
@@ -57,19 +47,16 @@ const LoginScreen = ( ) => {
                     value = { password }
                     onChangeText = { text => setPassword(text) }
                     style = { [styles.input, styles.textInputShadow] }
-                    secureTextEntry
+                    secureTextEntry = { true }
                 />
             </View>
 
-            <Text
-                style = { styles.forgotPassword }
-                onPress = { handleForgotPasswordScreen }>
-                Forgot password?
+            <Text style = { styles.forgotPasswordContainer }>
+                <Text style = { styles.forgotPassword } onPress = { handleForgotPasswordScreen }> Forgot password?</Text>
             </Text>
-
             <View style = { styles.buttonContainer }>
                 <TouchableOpacity
-                    onPress = {handleLogin}
+                    onPress = {() => login(email, password) }
                     style = { [styles.button, styles.buttonShadow]}>
                     <Text style = { styles.buttonText }>Login</Text>
                 </TouchableOpacity>
@@ -99,5 +86,3 @@ const LoginScreen = ( ) => {
         </KeyboardAvoidingView>
     )
 }
-
-export default LoginScreen ;
