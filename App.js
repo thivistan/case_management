@@ -1,9 +1,6 @@
 import React from 'react';
-import AppNav from './src/Navigation/AppNav';
+import Providers from './src/Navigation';
 
 export default function App() {
-
-  return (
-    <AppNav />
-  );
+  return <Providers />;
 }
