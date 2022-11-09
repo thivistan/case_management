@@ -9,9 +9,17 @@ import {
 import { ScrollView, TextInput, TouchableOpacity } from "react-native-gesture-handler";
 import { FlatList, Keyboard, KeyboardAvoidingView, Text, Touchable, View } from "react-native";
 import { color } from "react-native-reanimated";
+import { useFonts } from 'expo-font';
 
 export default function ResourcesScreen() {
     const [searchQuery, setSearchQuery] = useState('');
+    const [fontsLoaded] = useFonts({
+        'Montserrat-Black': require('../../../assets/fonts/Montserrat-Black.ttf'),
+    });
+
+    if (!fontsLoaded) {
+        return null
+    };
 
     // const resourceButtonRenderItem = ({ item }) => {
     //     if (item.favorited) {
@@ -39,7 +47,9 @@ export default function ResourcesScreen() {
                 <View style={styles.searchBarContainer}>
                     <TextInput
                         style={styles.searchBar}
-                        placeholder='   Search...' >
+                        placeholder='   Search...'
+                        font
+                    >
                     </TextInput>
                 </View>
 
@@ -49,6 +59,7 @@ export default function ResourcesScreen() {
                         fontSize: 20,
                         fontWeight: 'bold',
                         paddingBottom: 10,
+                        fontFamily: 'Montserrat-Black',
                     }}>Favorites</Text>
                     <View style={styles.favoriteCategoriesContainer}>
                         <FlatList
@@ -67,6 +78,7 @@ export default function ResourcesScreen() {
                         fontSize: 20,
                         fontWeight: 'bold',
                         paddingBottom: 10,
+                        fontFamily: 'Montserrat-Black',
                     }}>All Categories</Text>
 
                     <ScrollView style={styles.categoriesScrollView}>
