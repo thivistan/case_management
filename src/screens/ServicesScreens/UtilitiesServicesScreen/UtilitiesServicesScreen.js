@@ -1,14 +1,14 @@
 import { StyleSheet, Text, View } from 'react-native'
 import React from 'react'
 
-const UtilitesServicesScreen = () => {
+const UtilitiesServicesScreen = () => {
   return (
     <View>
-      <Text>UtilitesServicesScreen</Text>
+      <Text>UtilitiesServicesScreen</Text>
     </View>
   )
 }
 
-export default UtilitesServicesScreen
+export default UtilitiesServicesScreen
 
 const styles = StyleSheet.create({})

@@ -1,9 +1,11 @@
 import React, { useState } from "react";
 import { styles } from "./styles";
-import { AppointmentsServicesButton, ChurchServicesButton, DonationCenterButton, 
+import {
+    AppointmentsServicesButton, ChurchServicesButton, DonationCenterButton,
     EducationServicesButton, EmploymentServicesButton, FoodServicesButton, FormsServicesButton,
-    GovernmentServicesButton, HealthServicesButton, HousingServicesButton, LegalServicesButton, 
-    LGBTQServicesButton, ParentingServicesButton, UtiliesServicesButton } from "../../components/ResourceButtons/ResourceButtons"; 
+    GovernmentServicesButton, HealthServicesButton, HousingServicesButton, LegalServicesButton,
+    LGBTQServicesButton, ParentingServicesButton, UtilitiesServicesButton
+} from "../../../components/ResourceButtons/ResourceButtons";
 import { ScrollView, TextInput, TouchableOpacity } from "react-native-gesture-handler";
 import { FlatList, Keyboard, KeyboardAvoidingView, Text, Touchable, View } from "react-native";
 import { color } from "react-native-reanimated";
@@ -11,28 +13,28 @@ import { color } from "react-native-reanimated";
 export default function ResourcesScreen() {
     const [searchQuery, setSearchQuery] = useState('');
 
-    const resourceButtonRenderItem = ({item}) => {
-        if (item.favorited) {
-            <TouchableOpacity style={styles.categoryBytton}>
-                <Text>{item.buttonName}</Text>
-            </TouchableOpacity>
-        }
-        else {
-            <></>
-        }
-    }
+    // const resourceButtonRenderItem = ({ item }) => {
+    //     if (item.favorited) {
+    //         <TouchableOpacity style={styles.categoryButton}>
+    //             <Text>{item.buttonName}</Text>
+    //         </TouchableOpacity>
+    //     }
+    //     else {
+    //         <></>
+    //     }
+    // }
 
     const searchForUserQuery = () => {
         /** TO-DO
          * search for pages
          * search for resources/programs
-         * search for employeers
+         * search for employers
          */
         console.log(searchQuery);
     }
 
     return (
-        <KeyboardAvoidingView style = {styles.mainContainer}>
+        <KeyboardAvoidingView style={styles.mainContainer}>
             <View style={styles.elementContainer}>
                 <View style={styles.searchBarContainer}>
                     <TextInput
@@ -47,12 +49,12 @@ export default function ResourcesScreen() {
                         fontSize: 20,
                         fontWeight: 'bold',
                         paddingBottom: 10,
-                        }}>Favorites</Text>
-                    <View style={styles.favoriteCatgoriesContainer}>
-                        <FlatList 
+                    }}>Favorites</Text>
+                    <View style={styles.favoriteCategoriesContainer}>
+                        <FlatList
                             horizontal={true}
-                            //data={ }
-                            //renderItem={( {item, index}) => {}}
+                        //data={ }
+                        //renderItem={( {item, index}) => {}}
                         >
                         </FlatList>
                     </View>
@@ -83,7 +85,7 @@ export default function ResourcesScreen() {
                                 <EmploymentServicesButton />
                                 <GovernmentServicesButton />
                                 <LegalServicesButton />
-                                <UtiliesServicesButton />
+                                <UtilitiesServicesButton />
                             </View>
                             {/* col 3 */}
                             <View style={styles.categoryButtonCol}>

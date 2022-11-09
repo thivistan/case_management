@@ -2,7 +2,7 @@ import { StyleSheet } from "react-native";
 import { ceil } from "react-native-reanimated";
 import { withSafeAreaInsets } from "react-native-safe-area-context";
 
-const styles = StyleSheet.create( {
+const styles = StyleSheet.create({
     mainContainer: {
         height: '100%',
         width: '100%',
@@ -35,7 +35,7 @@ const styles = StyleSheet.create( {
         flex: 2,
         paddingBottom: 30,
     },
-    favoriteCatgoriesContainer: {
+    favoriteCategoriesContainer: {
         borderWidth: 1.5,
         flexGrow: 1,
         borderRadius: 10,
@@ -53,7 +53,7 @@ const styles = StyleSheet.create( {
         flexDirection: 'row',
         flexWrap: 'nowrap',
         justifyContent: 'space-evenly',
-    },  
+    },
     resourceFavoriteButton: {
         flexDirection: 'row',
         justifyContent: 'flex-end',
@@ -68,6 +68,6 @@ const styles = StyleSheet.create( {
         width: 15,
         borderRadius: 7,
     }
-} );
+});
 
 export { styles };
