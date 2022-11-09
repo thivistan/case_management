@@ -13,17 +13,17 @@ const AppointmentsServicesButton = () => {
     return (
         <View>
             <TouchableOpacity
-                style={ styles.favoriteButton }
-                onPress={() => { 
+                style={styles.favoriteButton}
+                onPress={() => {
                     setIsFavorited(!isFavorited)
                     console.log(isFavorited)
                 }}
             />
 
             <TouchableOpacity
-                style={ styles.categoryButton }
-                onPress={ () => {
-                    navigation.replace("AppointmentsScreen") 
+                style={styles.categoryButton}
+                onPress={() => {
+                    navigation.replace("AppointmentsScreen")
                 }}>
                 <Text>Appointment Services</Text>
             </TouchableOpacity>
@@ -40,8 +40,8 @@ const ChurchServicesButton = () => {
         <View>
             {/* favorite button section */}
             <TouchableOpacity
-                style={ styles.favoriteButton }
-                onPress={() => { 
+                style={styles.favoriteButton}
+                onPress={() => {
                     setIsFavorited(!isFavorited)
                     console.log(isFavorited)
                 }}
@@ -49,9 +49,9 @@ const ChurchServicesButton = () => {
 
             {/* resource button section */}
             <TouchableOpacity
-                style={ styles.categoryButton }
-                onPress={ () => {
-                    navigation.replace("ChurchScreen") 
+                style={styles.categoryButton}
+                onPress={() => {
+                    navigation.replace("ChurchScreen")
                 }}
             >
                 <Text>Church Services</Text>
@@ -69,8 +69,8 @@ const DonationCenterButton = () => {
         <View>
             {/* favorite button section */}
             <TouchableOpacity
-                style={ styles.favoriteButton }
-                onPress={() => { 
+                style={styles.favoriteButton}
+                onPress={() => {
                     setIsFavorited(!isFavorited)
                     console.log(isFavorited)
                 }}
@@ -78,9 +78,9 @@ const DonationCenterButton = () => {
 
             {/* resource button section */}
             <TouchableOpacity
-                style={ styles.categoryButton }
-                onPress={ () => {
-                    navigation.replace("DonationScreen") 
+                style={styles.categoryButton}
+                onPress={() => {
+                    navigation.replace("DonationScreen")
                 }}
             >
                 <Text>Donation Center</Text>
@@ -98,8 +98,8 @@ const EducationServicesButton = () => {
         <View>
             {/* favorite button section */}
             <TouchableOpacity
-                style={ styles.favoriteButton }
-                onPress={() => { 
+                style={styles.favoriteButton}
+                onPress={() => {
                     setIsFavorited(!isFavorited)
                     console.log(isFavorited)
                 }}
@@ -107,9 +107,9 @@ const EducationServicesButton = () => {
 
             {/* resource button section */}
             <TouchableOpacity
-                style={ styles.categoryButton }
-                onPress={ () => {
-                    navigation.replace("EducationServicesScreen") 
+                style={styles.categoryButton}
+                onPress={() => {
+                    navigation.replace("EducationServicesScreen")
                 }}
             >
                 <Text>Education Services</Text>
@@ -127,8 +127,8 @@ const EmploymentServicesButton = () => {
         <View>
             {/* favorite button section */}
             <TouchableOpacity
-                style={ styles.favoriteButton }
-                onPress={() => { 
+                style={styles.favoriteButton}
+                onPress={() => {
                     setIsFavorited(!isFavorited)
                     console.log(isFavorited)
                 }}
@@ -136,9 +136,9 @@ const EmploymentServicesButton = () => {
 
             {/* resource button section */}
             <TouchableOpacity
-                style={ styles.categoryButton }
-                onPress={ () => {
-                    navigation.replace("EmploymentServicesScreen") 
+                style={styles.categoryButton}
+                onPress={() => {
+                    navigation.replace("EmploymentServicesScreen")
                 }}
             >
                 <Text>Employment Services</Text>
@@ -156,8 +156,8 @@ const FoodServicesButton = () => {
         <View>
             {/* favorite button section */}
             <TouchableOpacity
-                style={ styles.favoriteButton }
-                onPress={() => { 
+                style={styles.favoriteButton}
+                onPress={() => {
                     setIsFavorited(!isFavorited)
                     console.log(isFavorited)
                 }}
@@ -165,9 +165,9 @@ const FoodServicesButton = () => {
 
             {/* resource button section */}
             <TouchableOpacity
-                style={ styles.categoryButton }
-                onPress={ () => {
-                    navigation.replace("FoodServicesScreen") 
+                style={styles.categoryButton}
+                onPress={() => {
+                    navigation.replace("FoodServicesScreen")
                 }}
             >
                 <Text>Food Services</Text>
@@ -185,8 +185,8 @@ const FormsServicesButton = () => {
         <View>
             {/* favorite button section */}
             <TouchableOpacity
-                style={ styles.favoriteButton }
-                onPress={() => { 
+                style={styles.favoriteButton}
+                onPress={() => {
                     setIsFavorited(!isFavorited)
                     console.log(isFavorited)
                 }}
@@ -194,9 +194,9 @@ const FormsServicesButton = () => {
 
             {/* resource button section */}
             <TouchableOpacity
-                style={ styles.categoryButton }
-                onPress={ () => {
-                    navigation.replace("FormsServicesScreen") 
+                style={styles.categoryButton}
+                onPress={() => {
+                    navigation.replace("FormsServicesScreen")
                 }}
             >
                 <Text>Forms</Text>
@@ -214,8 +214,8 @@ const GovernmentServicesButton = () => {
         <View>
             {/* favorite button section */}
             <TouchableOpacity
-                style={ styles.favoriteButton }
-                onPress={() => { 
+                style={styles.favoriteButton}
+                onPress={() => {
                     setIsFavorited(!isFavorited)
                     console.log(isFavorited)
                 }}
@@ -223,9 +223,9 @@ const GovernmentServicesButton = () => {
 
             {/* resource button section */}
             <TouchableOpacity
-                style={ styles.categoryButton }
-                onPress={ () => {
-                    navigation.replace("GovernmentServicesScreen") 
+                style={styles.categoryButton}
+                onPress={() => {
+                    navigation.replace("GovernmentServicesScreen")
                 }}
             >
                 <Text>Government Services</Text>
@@ -243,8 +243,8 @@ const HealthServicesButton = () => {
         <View>
             {/* favorite button section */}
             <TouchableOpacity
-                style={ styles.favoriteButton }
-                onPress={() => { 
+                style={styles.favoriteButton}
+                onPress={() => {
                     setIsFavorited(!isFavorited)
                     console.log(isFavorited)
                 }}
@@ -252,9 +252,9 @@ const HealthServicesButton = () => {
 
             {/* resource button section */}
             <TouchableOpacity
-                style={ styles.categoryButton }
-                onPress={ () => {
-                    navigation.replace("HealthServicesScreen") 
+                style={styles.categoryButton}
+                onPress={() => {
+                    navigation.replace("HealthServicesScreen")
                 }}
             >
                 <Text>Health Services</Text>
@@ -272,8 +272,8 @@ const HousingServicesButton = () => {
         <View>
             {/* favorite button section */}
             <TouchableOpacity
-                style={ styles.favoriteButton }
-                onPress={() => { 
+                style={styles.favoriteButton}
+                onPress={() => {
                     setIsFavorited(!isFavorited)
                     console.log(isFavorited)
                 }}
@@ -281,9 +281,9 @@ const HousingServicesButton = () => {
 
             {/* resource button section */}
             <TouchableOpacity
-                style={ styles.categoryButton }
-                onPress={ () => {
-                    navigation.replace("HousingServicesScreen") 
+                style={styles.categoryButton}
+                onPress={() => {
+                    navigation.replace("HousingServicesScreen")
                 }}
             >
                 <Text>Housing Services</Text>
@@ -301,8 +301,8 @@ const LegalServicesButton = () => {
         <View>
             {/* favorite button section */}
             <TouchableOpacity
-                style={ styles.favoriteButton }
-                onPress={() => { 
+                style={styles.favoriteButton}
+                onPress={() => {
                     setIsFavorited(!isFavorited)
                     console.log(isFavorited)
                 }}
@@ -310,9 +310,9 @@ const LegalServicesButton = () => {
 
             {/* resource button section */}
             <TouchableOpacity
-                style={ styles.categoryButton }
-                onPress={ () => {
-                    navigation.replace("LegalServicesScreen") 
+                style={styles.categoryButton}
+                onPress={() => {
+                    navigation.replace("LegalServicesScreen")
                 }}
             >
                 <Text>Legal Services</Text>
@@ -330,8 +330,8 @@ const LGBTQServicesButton = () => {
         <View>
             {/* favorite button section */}
             <TouchableOpacity
-                style={ styles.favoriteButton }
-                onPress={() => { 
+                style={styles.favoriteButton}
+                onPress={() => {
                     setIsFavorited(!isFavorited)
                     console.log(isFavorited)
                 }}
@@ -340,8 +340,8 @@ const LGBTQServicesButton = () => {
             {/* resource button section */}
             <TouchableOpacity
                 style={styles.categoryButton}
-                onPress={ () => {
-                    navigation.replace("LGBTQServicesScreen") 
+                onPress={() => {
+                    navigation.replace("LGBTQServicesScreen")
                 }}
             >
                 <Text>LGBTQ+</Text>
@@ -359,8 +359,8 @@ const ParentingServicesButton = () => {
         <View>
             {/* favorite button section */}
             <TouchableOpacity
-                style={ styles.favoriteButton }
-                onPress={() => { 
+                style={styles.favoriteButton}
+                onPress={() => {
                     setIsFavorited(!isFavorited);
                     console.log(isFavorited);
                 }}
@@ -368,9 +368,9 @@ const ParentingServicesButton = () => {
 
             {/* resource button section */}
             <TouchableOpacity
-                style={ styles.categoryButton }
-                onPress={ () => {
-                    navigation.replace("ParentingServicesScreen") 
+                style={styles.categoryButton}
+                onPress={() => {
+                    navigation.replace("ParentingServicesScreen")
                 }}
             >
                 <Text>Parenting</Text>
@@ -379,7 +379,7 @@ const ParentingServicesButton = () => {
     )
 }
 
-const UtiliesServicesButton = () => {
+const UtilitiesServicesButton = () => {
     const [isFavorited, setIsFavorited] = useState(false);
 
     const navigation = useNavigation();
@@ -388,8 +388,8 @@ const UtiliesServicesButton = () => {
         <View>
             {/* favorite button section */}
             <TouchableOpacity
-                style={ styles.favoriteButton }
-                onPress={() => { 
+                style={styles.favoriteButton}
+                onPress={() => {
                     setIsFavorited(!isFavorited)
                     console.log(isFavorited)
                 }}
@@ -397,18 +397,20 @@ const UtiliesServicesButton = () => {
 
             {/* resource button section */}
             <TouchableOpacity
-                style={ styles.categoryButton }
-                onPress={ () => {
-                    navigation.replace("UtilitesServicesScreen") 
+                style={styles.categoryButton}
+                onPress={() => {
+                    navigation.replace("UtilitiesServicesScreen")
                 }}
             >
-                <Text>Utilies</Text>
+                <Text>Utilities</Text>
             </TouchableOpacity>
         </View>
     )
 }
 
-export { AppointmentsServicesButton, ChurchServicesButton, DonationCenterButton, 
-EducationServicesButton, EmploymentServicesButton, FoodServicesButton, FormsServicesButton,
-GovernmentServicesButton, HealthServicesButton, HousingServicesButton, LegalServicesButton, 
-LGBTQServicesButton, ParentingServicesButton, UtiliesServicesButton };
+export {
+    AppointmentsServicesButton, ChurchServicesButton, DonationCenterButton,
+    EducationServicesButton, EmploymentServicesButton, FoodServicesButton, FormsServicesButton,
+    GovernmentServicesButton, HealthServicesButton, HousingServicesButton, LegalServicesButton,
+    LGBTQServicesButton, ParentingServicesButton, UtilitiesServicesButton
+};

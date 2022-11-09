@@ -4,7 +4,7 @@ import { DrawerContentScrollView, DrawerItemList } from '@react-navigation/drawe
 import { Ionicons } from "@expo/vector-icons";
 import { AuthContext } from "../Navigation/AuthProvider";
 
-const image = '../icons/Images/thaddeus_logo_vertical.jpg';
+const image = '../assets/images/thaddeus_logo_vertical.jpg';
 
 export default function CustomDrawer(props) {
     const { logout } = useContext(AuthContext);
