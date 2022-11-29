@@ -29,6 +29,7 @@ export default function MainStack() {
                 },
             }}>
             <Drawer.Screen name="Home" component={HomeScreen} options={{
+                headerTitle: '',
                 drawerIcon: ({ color }) => (
                     <Ionicons name="home-outline" size={22} color={color} />
                 )
