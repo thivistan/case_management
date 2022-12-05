@@ -1,4 +1,5 @@
 import React, { useContext, useState } from "react";
+
 import { Text, TouchableOpacity, View, } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { useNavigation } from "@react-navigation/native";
@@ -34,9 +35,9 @@ export default function LoginScreen() {
     }
 
     return (
-        <SafeAreaView style={{ flex: 1, justifyContent: 'center', backgroundColor: 'white'}}>
+        <SafeAreaView style={{ flex: 1, justifyContent: 'center', backgroundColor: 'white' }}>
             <View style={{ flex: 1, flexDirection: 'row', alignItems: 'flex-start' }}>
-                <LoginPageSVG/>
+                <LoginPageSVG />
             </View>
 
             <View style={{ paddingHorizontal: 25 }}>
@@ -98,7 +99,7 @@ export default function LoginScreen() {
                     <TouchableOpacity
                         onPress={handleForgotPasswordScreen}
                     >
-                        <Text style={{ fontFamily: 'Montserrat-Black',color: '#00BFFF', fontWeight: '700' }}>Forgot?</Text>
+                        <Text style={{ fontFamily: 'Montserrat-Black', color: '#00BFFF', fontWeight: '700' }}>Forgot?</Text>
                     </TouchableOpacity>
                 </View>
 
@@ -109,6 +110,11 @@ export default function LoginScreen() {
                         padding: 20,
                         borderRadius: 10,
                         marginTop: 30,
+                        shadowColor: 'black',
+                        shadowOpacity: 1,
+                        shadowOffset: { width: 0, height: 1 },
+                        shadowRadius: 5,
+                        elevation: 10,
                     }}>
                     <Text style={{
                         textAlign: 'center',
