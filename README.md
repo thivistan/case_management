@@ -27,3 +27,15 @@ git commit -m "Commit Message"
 git push
 ```
 
+## Common issues:
+When origianlly cloning the repository on your computer, you might encounter this error below when runnning "expo start" for the first time:
+```
+Unable to find expo in this project - have you run yarn / npm install yet?
+```
+To fix this solution, run these two commands asynchronously:
+```
+npm install -g yarn
+yarn add expo
+```
+
+
