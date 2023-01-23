@@ -1,10 +1,11 @@
 # Please read before getting started
 
 ## Resources:
-- [Writing good commit messages](Resources/CommitMessages.md)
-- [Writing good branch names](Resources/BranchNames.md)
 - Setting up your [iOS](https://www.youtube.com/watch?v=wNINabDpsvQ) or [Android](https://developer.android.com/studio/run/emulator) emulator
 - [Configuring your React-Native environment](https://www.youtube.com/watch?v=ql4J6SpLXZA) this tutorial will help you get on the right track. 
+- This is a great set of real-world examples of react-native apps https://youtu.be/AkEnidfZnCU. You aren't expected to watch the whole thing, it's just great to skim through the video and see how react native code is written!
+- [Writing good commit messages](Resources/CommitMessages.md)
+- [Writing good branch names](Resources/BranchNames.md)
 
 ## Guidelines
 ### Before working on the application, please follow these steps below:
