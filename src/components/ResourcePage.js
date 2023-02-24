@@ -29,15 +29,17 @@ const resources = [
 const ResourcePage = (props) => {
   return (
       <SafeAreaView style={{ flex: 1 }}>
-        <ScrollView >
-          <View testID="header">
+        <View testID="header">
               <Text>Header</Text>
-          </View>
+        </View>
+        <ScrollView >
+          
           <View style={styles.hr}/>
         <HorizontalScoll resources={resources} header="Nearest"/>
         <View style={styles.hr}/>
         <HorizontalScoll resources={resources} header="Recommended"/>
         <View style={styles.hr}/>
+        
       </ScrollView>
       <View style={styles.logo}>
           <Image source={require('./assets/images/thaddeus_logo.jpg')} style={{ width:'100%', height:100, backgroundColor:"white"}} />
