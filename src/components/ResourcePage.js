@@ -1,6 +1,6 @@
 import { View, Text, Image, SafeAreaView, StyleSheet, ScrollView} from 'react-native'
 import React from 'react'
-import HorizontalScroll from './HorizontalScroll';
+import HorizontalScoll from './HorizontalScoll';
 import UserLocation from './UserLocation';
 //Test data, will be replaced with data from either database or csv file
 const resources = [
@@ -35,14 +35,14 @@ const ResourcePage = (props) => {
             <UserLocation></UserLocation>
           </View>
           <View style={styles.hr}/>
-        <HorizontalScroll resources={resources} header="Nearest"/>
+        <HorizontalScoll resources={resources} header="Nearest"/>
         <View style={styles.hr}/>
-        <HorizontalScroll resources={resources} header="Recommended"/>
+        <HorizontalScoll resources={resources} header="Recommended"/>
         <View style={styles.hr}/>
         
       </ScrollView>
       <View style={styles.logo}>
-          <Image source={require('./assets/images/thaddeus_logo.jpg')} style={{ width:'100%', height:100, backgroundColor:"white"}} />
+          <Image source={require('../assets/images/thaddeus_logo.jpg')} style={{ width:'100%', height:100, backgroundColor:"white"}} />
       </View>
       </SafeAreaView>
     

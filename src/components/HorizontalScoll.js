@@ -4,7 +4,7 @@ import Card from './ResourceCard'
 
 //This component will act has the horizontal scroll list and within this component we are
 //using another component "Card" to account for each of the resource links 
-const HorizontalSrcoll = (props) => {
+const HorizontalScoll = (props) => {
   return (
   <View testID="resources" style={styles.scrollContainer}>
     <Text style={styles.resourceText}>{props.header}</Text>
@@ -36,4 +36,4 @@ const styles = StyleSheet.create({
     }
   });
 
-export default HorizontalScroll
+export default HorizontalScoll
