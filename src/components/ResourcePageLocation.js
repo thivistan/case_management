@@ -1,9 +1,6 @@
 import { View, Text, Image, SafeAreaView, StyleSheet, ScrollView} from 'react-native'
 import React from 'react'
 import HorizontalScoll from './HorizontalScoll';
-import Ionicons from 'react-native-vector-icons/Ionicons';
-import Header from './Header'
-import { useNavigation } from '@react-navigation/native';
 import UserLocation from './UserLocation';
 //Test data, will be replaced with data from either database or csv file
 const resources = [
@@ -30,17 +27,13 @@ const resources = [
 ];
 
 
-const ResourcePage = (props) => {
-  const navigation = useNavigation();
+const ResourcePageLocation = (props) => {
   return (
-      <SafeAreaView style={{ flex: 1 , backgroundColor: '#fff'}}>
+      <SafeAreaView style={{ flex: 1 }}>
         <ScrollView >
-        <Header
-          navigation={navigation} 
-          resourceName='Title'
-          leftComponent={<Ionicons name="menu-outline" size={24} color="white" onPress={() => navigation.openDrawer()} />}
-          centerComponent={{ text: 'Resource Page', style: { color: '#fff' } }}
-        />
+          <View testID="header">
+            <UserLocation></UserLocation>
+          </View>
           <View style={styles.hr}/>
         <HorizontalScoll resources={resources} header="Nearest"/>
         <View style={styles.hr}/>
@@ -60,7 +53,7 @@ const styles = StyleSheet.create({
   hr: {
     borderBottomColor: 'gray',
     borderBottomWidth: 1,
-  
+    marginVertical: 10
   },
   logo : {
     flex: 1, 
@@ -68,4 +61,4 @@ const styles = StyleSheet.create({
     justifyContent: 'flex-end'
   }
 });
-export default ResourcePage
+export default ResourcePageLocation
