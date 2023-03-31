@@ -9,6 +9,7 @@ import HomeScreen from '../screens/MainScreens/HomeScreen/HomeScreen';
 import CustomDrawer from '../components/CustomDrawer';
 import ResourcesScreen from '../screens/MainScreens/ResourcesScreen/ResourcesScreen';
 import UserProfileScreen from '../screens/MainScreens/UserProfileScreen/UserProfileScreen';
+import ResourcePage from '../components/ResourcePage'
 
 const Drawer = createDrawerNavigator();
 
