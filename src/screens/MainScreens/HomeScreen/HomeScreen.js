@@ -3,6 +3,7 @@ import { Text, View } from 'react-native';
 import ResourcePage from '../../../components/ResourcePage';
 import { auth, db } from '../../../firebase/firebase.js';
 import { TouchableOpacity } from 'react-native-gesture-handler';
+import { Ionicons } from '@expo/vector-icons';
 
 export default function HomeScreen() {
   const [inspirationalQuote, setInspirationalQuote] = useState('');
@@ -53,16 +54,20 @@ export default function HomeScreen() {
 
   return (
     <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
-      <Text style={{ fontSize: 16, fontWeight: 'bold' }}>Home Screen</Text>
-      <Text>{inspirationalQuote}</Text>
-      <Text>{getUserID()}</Text>
-      <TouchableOpacity
-        onClick={() => {
-          dbPractice();
-        }}
-      >
-        <Text>{dbData}</Text>
-      </TouchableOpacity>
+      {/* news button */}
+      <View>
+        <TouchableOpacity>
+          <Ionicons name="newspaper-outline" size={22}></Ionicons>
+        </TouchableOpacity>
+      </View>
+
+      {/* inspirtaional quote section */}
+      <View>
+        <Text>{inspirationalQuote}</Text>
+      </View>
+
+      {/* upcoming appointments calendar */}
+      <View></View>
     </View>
   );
 }
