@@ -1,8 +1,12 @@
-import React from 'react';
-import { StyleSheet, Text, View, Image,TouchableOpacity } from 'react-native';
-
+import React, { useState } from 'react';
+import { StyleSheet, Text, View, Image, TouchableOpacity } from 'react-native';
+import MoodList from './MoodsList';
+import getButtonStyle from './MoodsList';
+import moods from './MoodsList';
 
 const JournalEntry = (props) => {
+  const [selectedMood, setSelectedMood] = useState('happy');
+
   const handleDelete = () => {
     props.handleDelete(props.id);
   };
@@ -19,19 +23,16 @@ const JournalEntry = (props) => {
       <Text style={styles.content}>{props.content}</Text>
     </View>
   );
-  
 };
 
-
 const styles = StyleSheet.create({
-  
   entry: {
     padding: 10,
     borderBottomWidth: 15,
     borderBottomColor: 'white',
     backgroundColor: '#62d7fe',
-    marginLeft:'3%',
-    marginRight:'3%',
+    marginLeft: '3%',
+    marginRight: '3%',
   },
   topView: {
     flexDirection: 'row',
@@ -51,7 +52,6 @@ const styles = StyleSheet.create({
     fontSize: 18,
     fontWeight: 'bold',
     marginBottom: 5,
-    
   },
   content: {
     fontSize: 16,

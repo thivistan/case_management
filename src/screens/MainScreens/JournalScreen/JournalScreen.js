@@ -1,8 +1,20 @@
-import React, {useState} from 'react';
+import React, { useState } from 'react';
 
-import { TextInput, View, SafeAreaView, StyleSheet, Text, Image, TouchableOpacity, ScrollView, FlatList, Modal} from "react-native";
-import JournalEntry from './JournalEntry'
-import JournalModal from './JournalModal'
+import {
+  TextInput,
+  View,
+  SafeAreaView,
+  StyleSheet,
+  Text,
+  Image,
+  TouchableOpacity,
+  ScrollView,
+  FlatList,
+  Modal,
+} from 'react-native';
+import JournalEntry from './JournalEntry';
+import JournalModal from './JournalModal';
+
 const data = [
   {
     id: Math.random().toString(36).substr(2, 9),
@@ -18,71 +30,68 @@ const data = [
   },
 ];
 const Journal = () => {
-  const [journalTitle, setJournalTitle] = useState("");
-  const [journalContent, setJournalContent] = useState("");
+  const [journalTitle, setJournalTitle] = useState('');
+  const [journalContent, setJournalContent] = useState('');
   const [journals, setJournals] = useState(data);
   const [modalVisible, setModalVisible] = useState(false);
   const [isModal, setModal] = useState(false);
-  
+  const [Mood, setMood] = useState('happy');
+
   const switchModal = () => {
-    setModalVisible(true)
+    setModalVisible(true);
     setModal(true);
-  }
+  };
   const onAdd = () => {
     const newJournal = {
       id: Math.random().toString(36).substr(2, 9),
       title: journalTitle,
       date: new Date().toLocaleDateString(),
       content: journalContent,
+      journalMood: Mood,
     };
     setJournals([...journals, newJournal]);
     setModalVisible(false);
-    setJournalTitle("");
-    setJournalContent("");
+    setJournalTitle('');
+    setJournalContent('');
+    setMood('happy');
   };
-  
+
   const onDelete = (id) => {
     setJournals(journals.filter((journal) => journal.id !== id));
   };
 
-    return (
-        <SafeAreaView style={{ flex: 1 }}>
-        
-
-         <View style={{ alignItems: 'center', paddingVertical:15}}>
-            <TouchableOpacity style={styles.button} onPress={switchModal}>
-              <Text style={styles.newJournal}>Add New Journal!</Text>
-            </TouchableOpacity>
-         </View>
-        <View style={styles.quoteBox}>
-          <Text style={styles.title}>Quote of the Day</Text>
-          <Text style={styles.quote}>
-            "The best way to predict your future is to create it." - Abraham
-            Lincoln
-          </Text>
-        </View>
-        <View style={{alignItems:'center',paddingVertical:'15%'}}>
-          <Text style={{fontSize: 35, fontWeight:'bold',color:'#00BFFF'}}>Your Journals</Text>
-        </View>
-        <ScrollView style={{flex:1}}>
+  return (
+    <SafeAreaView style={{ flex: 1 }}>
+      <View style={{ alignItems: 'center', paddingVertical: 15 }}>
+        <TouchableOpacity style={styles.button} onPress={switchModal}>
+          <Text style={styles.newJournal}>Add New Journal!</Text>
+        </TouchableOpacity>
+      </View>
+      <View style={styles.quoteBox}>
+        <Text style={styles.title}>Quote of the Day</Text>
+        <Text style={styles.quote}>
+          "The best way to predict your future is to create it." - Abraham Lincoln
+        </Text>
+      </View>
+      <View style={{ alignItems: 'center', paddingVertical: '15%' }}>
+        <Text style={{ fontSize: 35, fontWeight: 'bold', color: '#00BFFF' }}>Your Journals</Text>
+      </View>
+      <ScrollView style={{ flex: 1 }}>
         {journals.length > 0 ? (
           <FlatList
             data={journals}
-            keyExtractor={item => item.id}
-            renderItem={({ item }) => 
-            <JournalEntry 
-            id={item.id}
-            title={item.title}
-            data={item.date}
-            content={item.content} 
-            handleDelete={onDelete}
-            />
-            
-            }
-            
+            keyExtractor={(item) => item.id}
+            renderItem={({ item }) => (
+              <JournalEntry
+                id={item.id}
+                title={item.title}
+                data={item.date}
+                content={item.content}
+                handleDelete={onDelete}
+              />
+            )}
           />
-
-        ):(
+        ) : (
           <View style={styles.noJournalsBox}>
             <Text style={styles.noJournalsText}>You don't have any journals yet.</Text>
             <Text style={styles.noJournalsSubtext}>Start by creating a new one!</Text>
@@ -91,23 +100,23 @@ const Journal = () => {
             </TouchableOpacity>
           </View>
         )}
-        {isModal ?(
-          <JournalModal 
-          modalVisible={modalVisible}
-          journalContent={journalContent}
-          journalTitle={journalTitle}
-          setModalVisible={setModalVisible}
-          onAdd={onAdd}
-          setJournalContent={setJournalContent}
-          setJournalTitle={setJournalTitle}
+        {isModal ? (
+          <JournalModal
+            modalVisible={modalVisible}
+            journalContent={journalContent}
+            journalTitle={journalTitle}
+            setModalVisible={setModalVisible}
+            onAdd={onAdd}
+            setJournalContent={setJournalContent}
+            setJournalTitle={setJournalTitle}
           />
-
-        ):(<View></View>)}
-          
-        </ScrollView>
-        </SafeAreaView>
-    )
-}
+        ) : (
+          <View></View>
+        )}
+      </ScrollView>
+    </SafeAreaView>
+  );
+};
 const styles = StyleSheet.create({
   header: {
     flexDirection: 'row',
@@ -115,40 +124,37 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     padding: 10,
     width: '100%',
-   
   },
-  container:{
-   alignItems:'center',
+  container: {
+    alignItems: 'center',
   },
   logo: {
-    marginLeft:'auto'
+    marginLeft: 'auto',
   },
   hr: {
     borderBottomColor: 'gray',
     borderBottomWidth: 1,
     marginVertical: 10,
-    
   },
   button: {
     backgroundColor: '#00BFFF',
     borderRadius: 25, // adjust this value to change the button's roundness
     padding: 15,
-    width: "50%",
-    alignItems: 'center'
-   
+    width: '50%',
+    alignItems: 'center',
   },
   newJournal: {
-    color:'white',
-    fontSize: 20
+    color: 'white',
+    fontSize: 20,
   },
   quoteBox: {
     alignItems: 'center',
     justifyContent: 'center',
     backgroundColor: '#f5f5f5',
     marginVertical: 15,
-    marginLeft:'15%',
-    marginRight:'15%',
-    padding:10
+    marginLeft: '15%',
+    marginRight: '15%',
+    padding: 10,
   },
   title: {
     fontSize: 20,
@@ -174,14 +180,14 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
   },
- 
+
   noJournalsSubtext: {
     fontSize: 26,
     color: '#666',
     marginBottom: 20,
     textAlign: 'center',
   },
-   noJournalsButton: {
+  noJournalsButton: {
     backgroundColor: '#00BFFF',
     borderRadius: 25,
     padding: 15,
@@ -192,8 +198,6 @@ const styles = StyleSheet.create({
     fontSize: 18,
     fontWeight: 'bold',
   },
-
 });
-
 
 export default Journal;
