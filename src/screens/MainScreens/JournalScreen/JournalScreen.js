@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState} from 'react';
 
 import {
   TextInput,
@@ -15,18 +15,21 @@ import {
 import JournalEntry from './JournalEntry';
 import JournalModal from './JournalModal';
 
+
 const data = [
   {
     id: Math.random().toString(36).substr(2, 9),
     title: 'Journal Entry 1',
     date: new Date().toLocaleDateString(),
     content: 'This is the content of Journal Entry 1',
+    emoji:'happy'
   },
   {
     id: Math.random().toString(36).substr(2, 9),
     title: 'Journal Entry 2',
     date: new Date().toLocaleDateString(),
     content: 'This is the content of Journal Entry 2',
+    emoji:'sad'
   },
 ];
 const Journal = () => {
@@ -35,8 +38,7 @@ const Journal = () => {
   const [journals, setJournals] = useState(data);
   const [modalVisible, setModalVisible] = useState(false);
   const [isModal, setModal] = useState(false);
-  const [Mood, setMood] = useState('happy');
-
+  const [mood, setMood] = useState('');
   const switchModal = () => {
     setModalVisible(true);
     setModal(true);
@@ -47,18 +49,20 @@ const Journal = () => {
       title: journalTitle,
       date: new Date().toLocaleDateString(),
       content: journalContent,
-      journalMood: Mood,
+      emoji: mood,
     };
     setJournals([...journals, newJournal]);
     setModalVisible(false);
     setJournalTitle('');
     setJournalContent('');
-    setMood('happy');
+    setMood('');
   };
 
   const onDelete = (id) => {
     setJournals(journals.filter((journal) => journal.id !== id));
   };
+
+
 
   return (
     <SafeAreaView style={{ flex: 1 }}>
@@ -69,9 +73,7 @@ const Journal = () => {
       </View>
       <View style={styles.quoteBox}>
         <Text style={styles.title}>Quote of the Day</Text>
-        <Text style={styles.quote}>
-          "The best way to predict your future is to create it." - Abraham Lincoln
-        </Text>
+        <Text style={styles.quote}> "Be yourself; everyone else is already taken." - "Oscar Wilde" </Text>
       </View>
       <View style={{ alignItems: 'center', paddingVertical: '15%' }}>
         <Text style={{ fontSize: 35, fontWeight: 'bold', color: '#00BFFF' }}>Your Journals</Text>
@@ -88,6 +90,7 @@ const Journal = () => {
                 data={item.date}
                 content={item.content}
                 handleDelete={onDelete}
+                emoji={item.emoji}
               />
             )}
           />
@@ -109,6 +112,7 @@ const Journal = () => {
             onAdd={onAdd}
             setJournalContent={setJournalContent}
             setJournalTitle={setJournalTitle}
+            setMood={setMood}
           />
         ) : (
           <View></View>

@@ -9,10 +9,10 @@ import {
   FlatList,
 } from 'react-native';
 
-const MoodList = () => {
+const MoodList = (props) => {
   const [mood, setMood] = useState('happy');
   const moods = [
-    { id: 'happy', emoji: '😀' },
+    { id: 'happy', emoji: '😀'},
     { id: 'sad', emoji: '😔' },
     { id: 'angry', emoji: '😡' },
     { id: 'tired', emoji: '😴' },
@@ -20,8 +20,9 @@ const MoodList = () => {
     { id: 'neutral', emoji: '😐' },
   ];
 
-  const handleMoodSelection = (mood) => {
-    setMood(mood);
+  const handleMoodSelection = (moodId) => {
+    setMood(moodId)
+    props.setMood(moodId);
   };
 
   const getButtonStyle = (selectedMood) => {

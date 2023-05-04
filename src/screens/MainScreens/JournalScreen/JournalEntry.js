@@ -6,17 +6,27 @@ import moods from './MoodsList';
 
 const JournalEntry = (props) => {
   const [selectedMood, setSelectedMood] = useState('happy');
+  const moods = [
+      { id: 'happy', emoji: '😀' },
+      { id: 'sad', emoji: '😔' },
+      { id: 'angry', emoji: '😡' },
+      { id: 'tired', emoji: '😴' },
+      { id: 'excited', emoji: '🤩' },
+      { id: 'neutral', emoji: '😐' },
+    ];
 
+
+  const selectedEmoji = moods.find(emojis => emojis.id === props.emoji)
   const handleDelete = () => {
     props.handleDelete(props.id);
   };
   return (
     <View style={styles.entry}>
       <View style={styles.topView}>
-        <Image style={styles.icon} source={require('./icons8-happy-50.png')} />
+        <Text style={styles.emoji}>{selectedEmoji.emoji}</Text>
         <Text style={styles.title}>{props.title}</Text>
         <TouchableOpacity onPress={handleDelete}>
-          <Image style={styles.icon} source={require('./icons8-trash-50.png')} />
+          <Text style={styles.emoji}>&#x274C;</Text>
         </TouchableOpacity>
       </View>
       <Text style={styles.date}>{props.date}</Text>
@@ -41,8 +51,8 @@ const styles = StyleSheet.create({
     marginBottom: 10,
   },
   icon: {
-    width: 40,
-    height: 40,
+    width: 30,
+    height: 30,
   },
   date: {
     fontSize: 16,
@@ -56,6 +66,9 @@ const styles = StyleSheet.create({
   content: {
     fontSize: 16,
   },
+  emoji: {
+    fontSize: 30
+  }
 });
 
 export default JournalEntry;

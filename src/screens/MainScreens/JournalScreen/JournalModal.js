@@ -21,6 +21,7 @@ const JournalModal = ({
   setJournalContent,
   journalTitle,
   journalContent,
+  setMood
 }) => {
   const handleCreate = () => {
     // You can save the journal entry to a database or storage here
@@ -34,10 +35,10 @@ const JournalModal = ({
       <View style={styles.container}>
         <View style={styles.header}>
           <TouchableOpacity onPress={() => setModalVisible(false)}>
-            <Text> Back</Text>
+            <Text style={styles.emoji}>&#x1F519;</Text>
           </TouchableOpacity>
-          <Text style={styles.headerTitle}>New</Text>
-          <View />
+
+
         </View>
         <View style={{ paddingTop: 10 }}>
           <TextInput
@@ -47,7 +48,9 @@ const JournalModal = ({
             value={journalTitle}
             onChangeText={(text) => setJournalTitle(text)}
           />
-          <MoodList></MoodList>
+          <MoodList
+          setMood={setMood}
+          />
           <TextInput
             style={styles.notesBox}
             placeholder="Notes"
@@ -83,13 +86,7 @@ const styles = StyleSheet.create({
     justifyContent: 'space-between',
     paddintLeft: 30,
   },
-  headerTitle: {
-    color: '#00BFFF',
-    fontSize: 20,
-    fontWeight: 'bold',
-    marginRight: 30,
-    marginTop: 5,
-  },
+
   create: {
     color: '#00BFFF',
     fontSize: 18,
@@ -147,4 +144,23 @@ const styles = StyleSheet.create({
 
     elevation: 5,
   },
+  header: {
+    height: '10%',
+    width: '100%',
+    alignItems: 'center',
+    backgroundColor: 'white',
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    paddingLeft: 30,
+  },
+  backButton: {
+    color: '#00BFFF',
+    fontSize: 18,
+    fontWeight: 'bold',
+    flex: 1
+  },
+  emoji: {
+    fontSize: 40
+  }
+
 });
