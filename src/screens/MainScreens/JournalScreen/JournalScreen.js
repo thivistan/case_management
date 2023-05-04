@@ -14,7 +14,7 @@ import {
 } from 'react-native';
 import JournalEntry from './JournalEntry';
 import JournalModal from './JournalModal';
-
+import QuoteButtons from './QuoteButtons';
 
 const data = [
   {
@@ -66,11 +66,13 @@ const Journal = () => {
 
   return (
     <SafeAreaView style={{ flex: 1 }}>
+    <ScrollView  style={{ flex: 1 }}>
       <View style={{ alignItems: 'center', paddingVertical: 15 }}>
         <TouchableOpacity style={styles.button} onPress={switchModal}>
           <Text style={styles.newJournal}>Add New Journal!</Text>
         </TouchableOpacity>
       </View>
+      <QuoteButtons />
       <View style={styles.quoteBox}>
         <Text style={styles.title}>Quote of the Day</Text>
         <Text style={styles.quote}> "Be yourself; everyone else is already taken." - "Oscar Wilde" </Text>
@@ -117,6 +119,7 @@ const Journal = () => {
         ) : (
           <View></View>
         )}
+      </ScrollView>
       </ScrollView>
     </SafeAreaView>
   );
