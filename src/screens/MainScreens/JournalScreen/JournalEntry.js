@@ -5,7 +5,6 @@ import getButtonStyle from './MoodsList';
 import moods from './MoodsList';
 
 const JournalEntry = (props) => {
-  const [selectedMood, setSelectedMood] = useState('happy');
   const moods = [
       { id: 'happy', emoji: '😀' },
       { id: 'sad', emoji: '😔' },

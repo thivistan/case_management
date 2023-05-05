@@ -10,7 +10,7 @@ import {
 } from 'react-native';
 
 const MoodList = (props) => {
-  const [mood, setMood] = useState('happy');
+  const [selectedMood, selectMood] = useState('happy');
   const moods = [
     { id: 'happy', emoji: '😀'},
     { id: 'sad', emoji: '😔' },
@@ -21,12 +21,12 @@ const MoodList = (props) => {
   ];
 
   const handleMoodSelection = (moodId) => {
-    setMood(moodId)
+    selectMood(moodId)
     props.setMood(moodId);
   };
 
-  const getButtonStyle = (selectedMood) => {
-    if (selectedMood === mood) {
+  const getButtonStyle = (currentSelectedMood) => {
+    if (currentSelectedMood === selectedMood) {
       return {
         borderWidth: 2,
         borderColor: 'black',
