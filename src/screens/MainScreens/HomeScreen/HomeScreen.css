@@ -1,0 +1,23 @@
+.container {
+    flex: 1;
+    padding: 16px;
+  }
+  
+  .title {
+    font-size: 20px;
+    font-weight: bold;
+    margin-bottom: 16px;
+  }
+  
+  .inputField {
+    border-width: 1px;
+    border-color: #ccc;
+    padding: 8px;
+    margin-bottom: 16px;
+  }
+  
+  .displayText {
+    font-size: 16px;
+    margin-top: 16px;
+  }
+  
