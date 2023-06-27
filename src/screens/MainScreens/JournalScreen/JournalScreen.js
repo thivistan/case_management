@@ -34,12 +34,14 @@ const data = [
 ];
 const Journal = () => {
   const [journalTitle, setJournalTitle] = useState('');
-
   const [journalContent, setJournalContent] = useState('');
   const [journals, setJournals] = useState(data);
   const [modalVisible, setModalVisible] = useState(false);
   const [isModal, setModal] = useState(false);
   const [mood, setMood] = useState('happy');
+
+
+
   const switchModal = () => {
     setModalVisible(true);
     setModal(true);
