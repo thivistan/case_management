@@ -1,6 +1,11 @@
 import React from 'react';
 
-import { StylesSheet, Text, View, Image } from 'react-native';
+
+
+
+//import { IMAGENAME } from './assets/images/thaddeus_logo.jpg';
+
+import { StylesSheet, Text, View, Image, ScrollView, TouchableOpacity } from 'react-native';
 
 
 
@@ -9,114 +14,111 @@ export default function HomeScreen() {
 
   return (
 
-    <View
+    <View style={{ flex: 1, marginTop: -5, backgroundColor: 'lightblue' }}>
 
-      style={{
+      <ScrollView>
 
-        flex: 1,
+        <Image
 
-        alignItems: 'center',
+          style={{ width: 200, height: 100, resizeMode: 'contain', alignSelf: 'center' }}
 
-        //justifyContent: 'center',
+          source={require('../../../assets/images/thaddeus_logo.jpg')}
 
-        backgroundColor: 'lightblue',
-
-      }}
-
-    >
-
-      <Image
-
-        source={require('../../../assets/images/thaddeus_logo.jpg')}
-
-        style={{ width: 200, height: 100, resizeMode: 'contain' }}
-
-      />
+        />
 
 
 
 
-      <Text style={{ fontSize: 12, fontWeight: 'bold' }}>
+        <Text style={{ fontSize: 10, fontWeight: 'bold', alignSelf: 'center' }}>
 
-        RESTORE HOPE, INSPIRE GROWTH, and EMPOWER GIRLS & WOMEN
+          RESTORE HOPE, INSPIRE GROWTH, and EMPOWER GIRLS & WOMEN
 
-      </Text>
+        </Text>
+
+
+
+
+        <View></View>
+
+      </ScrollView>
+
+
+
+
+      <View
+
+        style={{
+
+          backgroundColor: 'white',
+
+          flexDirection: 'row',
+
+          justifyContent: 'space-between',
+
+          alignItems: 'flex-end',
+
+        }}
+
+      >
+
+        <View style={{ flex: 1, justifyContent: 'space-between', flexDirection: 'row' }}>
+
+          <TouchableOpacity onPress={console.log('hello')} style={{ width: 30, height: 30 }}>
+
+            <Image
+
+              source={require('../../../assets/images/facebookicon.png')}
+
+              style={{ width: 30, height: 30 }}
+
+            />
+
+          </TouchableOpacity>
+
+          <TouchableOpacity onPress={console.log('hello')} style={{ width: 30, height: 30 }}>
+
+            <Image
+
+              source={require('../../../assets/images/linkdinicon.png')}
+
+              style={{ width: 30, height: 30 }}
+
+            />
+
+          </TouchableOpacity>
+
+          <TouchableOpacity onPress={console.log('hello')} style={{ width: 30, height: 30 }}>
+
+            <Image
+
+              source={require('../../../assets/images/instagramicon.png')}
+
+              style={{ width: 30, height: 30 }}
+
+            />
+
+          </TouchableOpacity>
+
+        </View>
+
+
+
+
+        <View style={{ flex: 1,  
+        flexDirection: 'column',
+        alignitems: 'flex-end', 
+        marginLeft: 100 }}>
+
+          <Text>(909) 599-2111</Text>
+
+          <Text>Info@Thaddeus.org</Text>
+
+        </View>
+
+      </View>
 
     </View>
 
   );
 
 }
-
-//     const [appointments, setAppointments] = useState([
-//         { date: '10/06/2022', time: '10:30 AM', location: 'Thaddeus Resource Center', key: '1' },
-//         { date: '10/06/2022', time: '10:30 AM', location: 'Thaddeus Resource Center', key: '2' },
-//         { date: '10/06/2022', time: '10:30 AM', location: 'Thaddeus Resource Center', key: '3' }
-//     ]);
-//     const [fontsLoaded] = useFonts({
-//         'Montserrat-Black': require('../../../assets/fonts/Montserrat-Black.ttf'),
-//     });
-
-//     if (!fontsLoaded) {
-//         return null
-//     };
-
-//     return (
-//         <SafeAreaView style={{ flex: 1, paddingHorizontal: 25, backgroundColor: 'white', flexDirection: 'column' }}>
-//             <View style={{
-//                 flex: 1,
-//                 justifyContent: 'center',
-//                 top: 0,
-//                 position: 'absolute',
-//                 paddingHorizontal: 18
-//             }}>
-//                 <Text
-//                     style={{
-//                         fontFamily: 'Montserrat-Black',
-//                         fontSize: 16,
-//                     }}>
-//                     Upcoming Appointments...
-//                 </Text>
-
-//                 <View style={{
-//                     flex: 1,
-//                     backgroundColor: '#00BFFF',
-//                     marginTop: 20,
-//                     width: '135%',
-//                     borderRadius: 25,
-//                 }}>
-//                     <ScrollView>
-//                         {appointments.map(item => (
-//                             <View style={{ marginTop: 10, marginBottom: 10, alignItems: 'center' }} key={item.key}>
-//                                 <Text style={{
-//                                     fontSize: 10,
-//                                     fontWeight: '600',
-//                                     color: 'white',
-//                                     fontFamily: 'Montserrat-Black',
-//                                 }}>{item.date} - {item.time} - {item.location}</Text>
-//                             </View>
-//                         ))}
-//                     </ScrollView>
-//                 </View>
-//             </View>
-
-//         </SafeAreaView >
-//     )
-// }
-
-// const styles = StyleSheet.create({
-//     card: {
-//         flex: 1,
-//         backgroundColor: '#00BFFF',
-//         marginTop: 20,
-//         width: '163%',
-//         borderRadius: 35,
-//     },
-//     shadowProp: {
-//         shadowColor: 'black',
-//         shadowOpacity: 1,
-//         shadowOffset: { width: 0, height: 2 },
-//         shadowRadius: 5,
-//         elevation: 50,
-//     },
-// });
