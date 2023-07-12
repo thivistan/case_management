@@ -5,12 +5,28 @@ import React from 'react';
 
 //import { IMAGENAME } from './assets/images/thaddeus_logo.jpg';
 
-import { StylesSheet, Text, View, Image, ScrollView, TouchableOpacity } from 'react-native';
+import { StylesSheet, Text, View, Image, ScrollView, TouchableOpacity, Linking } from 'react-native';
 
 
 
 
 export default function HomeScreen() {
+
+  const handleButtonClick1 = () => {
+    // Navigate to a different link
+    Linking.openURL('https://www.linkedin.com/company/the-thaddeus-foundation/');
+  };
+
+  const handleButtonClick2 = () => {
+    // Navigate to a different link
+    Linking.openURL('https://www.facebook.com/thaddeusresoursecenter');
+  };
+
+  const handleButtonClick3 = () => {
+    // Navigate to a different link
+    Linking.openURL('https://www.instagram.com/thaddeusresourcecenter/');
+  };
+
 
   return (
 
@@ -63,7 +79,7 @@ export default function HomeScreen() {
 
         <View style={{ flex: 1, justifyContent: 'space-between', flexDirection: 'row' }}>
 
-          <TouchableOpacity onPress={console.log('hello')} style={{ width: 30, height: 30 }}>
+          <TouchableOpacity onPress={handleButtonClick2} style={{ width: 30, height: 30 }}>
 
             <Image
 
@@ -75,8 +91,8 @@ export default function HomeScreen() {
 
           </TouchableOpacity>
 
-          <TouchableOpacity onPress={console.log('hello')} style={{ width: 30, height: 30 }}>
-
+          <TouchableOpacity onPress={handleButtonClick1} style={{ width: 30, height: 30 }}>
+         
             <Image
 
               source={require('../../../assets/images/linkdinicon.png')}
@@ -84,10 +100,10 @@ export default function HomeScreen() {
               style={{ width: 30, height: 30 }}
 
             />
-
+          
           </TouchableOpacity>
 
-          <TouchableOpacity onPress={console.log('hello')} style={{ width: 30, height: 30 }}>
+          <TouchableOpacity onPress={handleButtonClick3} style={{ width: 30, height: 30 }}>
 
             <Image
 
@@ -111,7 +127,7 @@ export default function HomeScreen() {
 
           <Text>(909) 599-2111</Text>
 
-          <Text>Info@Thaddeus.org</Text>
+          <Text>info@thaddeus.org</Text>
 
         </View>
 
@@ -122,3 +138,5 @@ export default function HomeScreen() {
   );
 
 }
+
+
