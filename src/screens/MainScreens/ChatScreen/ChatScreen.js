@@ -5,8 +5,8 @@ import ContactPersonListItem from '../../../components/ContactListItem';
 
 const ChatScreen = () => {
   return (
-    <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
-      <Text style={styles.text}>Chat Screen</Text>
+    <View style={{ flex: 1, alignItems: 'center', justifyContent: "flex-start" }}>
+      <Text style={styles.text}></Text>
       <ContactPersonListItem/>
       
     </View>
