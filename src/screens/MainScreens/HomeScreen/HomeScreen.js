@@ -1,5 +1,5 @@
 import React from 'react';
-
+import ImageCarousel from './ImageCarousel';
 //import { IMAGENAME } from './assets/images/thaddeus_logo.jpg';
 
 import {
@@ -36,6 +36,33 @@ export default function HomeScreen() {
     Linking.openURL('mailto:info@thaddeus.org?subject=&body=');
   };
 
+  
+    const images = [
+    //   require('./images/image1.jpg'),
+    //   require('./images/image2.jpg'),
+    //   require('./images/image3.jpg'),
+    
+    // "https://uploads-ssl.webflow.com/61a33234ec52cc692c647c76/648be1ee8061630c1480888f_Relaxation%20Tips-p-500.jpg",
+
+    // "https://uploads-ssl.webflow.com/61a33234ec52cc692c647c76/6459303685aa7e0b8b3c6134_GetImage%20(5)-p-500.jpg",
+
+    // "https://uploads-ssl.webflow.com/61a33234ec52cc692c647c76/64594e0581f8943a366483b9_94c0803c-7754-4a3f-80a9-4c596a64b70e-p-500.jpg",
+
+    // "https://uploads-ssl.webflow.com/61a33234ec52cc692c647c76/6459206a39921d2284c4a0d3_prayer-p-500.jpg"
+
+    require('../../../assets/images/ImageSlide1.png'),
+    require('../../../assets/images/ImageSlide2.png'),
+    require('../../../assets/images/ImageSlide3.png'),
+    require('../../../assets/images/ImageSlide4.png'),
+    require('../../../assets/images/ImageSlide5.png'),
+    require('../../../assets/images/ImageSlide6.png'),
+    require('../../../assets/images/ImageSlide7.png')
+
+
+
+    ];
+  
+ 
   return (
     <View style={{ flex: 1, marginTop: -5, backgroundColor: 'lightblue' }}>
       <ScrollView>
@@ -49,17 +76,24 @@ export default function HomeScreen() {
         </Text>
 
         <View>
-          <Image
+        <ImageCarousel images={images} />
+        </View>
+
+        <View>
+          {/* <Image
             source={{
               uri: 'https://uploads-ssl.webflow.com/61a33234ec52cc692c647c76/648be1ee8061630c1480888f_Relaxation%20Tips-p-500.jpg',
             }}
             style={{ width: '100%', height: 200 }}
-          />
-          <Image
+        />*/}
+          <Image 
             style={{ width: '100%', resizeMode: 'contain', alignSelf: 'center' }}
             source={require('../../../assets/images/ThaddeusStats.png')}
           />
         </View>
+
+        
+
       </ScrollView>
 
       <View
