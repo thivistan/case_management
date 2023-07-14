@@ -1,6 +1,11 @@
-import React from 'react';
+import React, { useState } from 'react';
 import ImageCarousel from './ImageCarousel';
 //import { IMAGENAME } from './assets/images/thaddeus_logo.jpg';
+
+import { StyleSheet } from 'react-native';
+
+import { useFonts } from 'expo-font';
+import { SafeAreaView } from 'react-native-safe-area-context';
 
 import {
   StylesSheet,
@@ -36,12 +41,11 @@ export default function HomeScreen() {
     Linking.openURL('mailto:info@thaddeus.org?subject=&body=');
   };
 
-  
-    const images = [
+  const images = [
     //   require('./images/image1.jpg'),
     //   require('./images/image2.jpg'),
     //   require('./images/image3.jpg'),
-    
+
     // "https://uploads-ssl.webflow.com/61a33234ec52cc692c647c76/648be1ee8061630c1480888f_Relaxation%20Tips-p-500.jpg",
 
     // "https://uploads-ssl.webflow.com/61a33234ec52cc692c647c76/6459303685aa7e0b8b3c6134_GetImage%20(5)-p-500.jpg",
@@ -56,13 +60,22 @@ export default function HomeScreen() {
     require('../../../assets/images/ImageSlide4.png'),
     require('../../../assets/images/ImageSlide5.png'),
     require('../../../assets/images/ImageSlide6.png'),
-    require('../../../assets/images/ImageSlide7.png')
+    require('../../../assets/images/ImageSlide7.png'),
+    require('../../../assets/images/ImageSlide8.png'),
+  ];
 
+  const [appointments, setAppointments] = useState([
+    { date: '10/06/2022', time: '10:30 AM', location: 'Thaddeus Resource Center', key: '1' },
+    { date: '10/06/2022', time: '10:30 AM', location: 'Thaddeus Resource Center', key: '2' },
+    { date: '10/06/2022', time: '10:30 AM', location: 'Thaddeus Resource Center', key: '3' },
+  ]);
+  const [fontsLoaded] = useFonts({
+    'Montserrat-Black': require('../../../assets/fonts/Montserrat-Black.ttf'),
+  });
 
-
-    ];
-  
- 
+  if (!fontsLoaded) {
+    return null;
+  }
   return (
     <View style={{ flex: 1, marginTop: -5, backgroundColor: 'lightblue' }}>
       <ScrollView>
@@ -76,7 +89,64 @@ export default function HomeScreen() {
         </Text>
 
         <View>
-        <ImageCarousel images={images} />
+          <ImageCarousel images={images} />
+        </View>
+        <View
+          style={{
+            flex: 1,
+            paddingHorizontal: 25,
+            backgroundColor: 'white',
+            flexDirection: 'column',
+          }}
+        >
+          <View
+            style={{
+              flex: 1,
+              justifyContent: 'center',
+              top: 0,
+              position: 'absolute',
+              paddingHorizontal: 18,
+            }}
+          >
+            <Text
+              style={{
+                fontFamily: 'Montserrat-Black',
+                fontSize: 16,
+              }}
+            >
+              Upcoming Appointments...
+            </Text>
+
+            <View
+              style={{
+                flex: 1,
+                backgroundColor: '#00BFFF',
+                marginTop: 20,
+                width: '135%',
+                borderRadius: 25,
+              }}
+            >
+              <ScrollView>
+                {appointments.map((item) => (
+                  <View
+                    style={{ marginTop: 10, marginBottom: 10, alignItems: 'center' }}
+                    key={item.key}
+                  >
+                    <Text
+                      style={{
+                        fontSize: 10,
+                        fontWeight: '600',
+                        color: 'white',
+                        fontFamily: 'Montserrat-Black',
+                      }}
+                    >
+                      {item.date} - {item.time} - {item.location}
+                    </Text>
+                  </View>
+                ))}
+              </ScrollView>
+            </View>
+          </View>
         </View>
 
         <View>
@@ -86,14 +156,16 @@ export default function HomeScreen() {
             }}
             style={{ width: '100%', height: 200 }}
         />*/}
-          <Image 
-            style={{ width: '100%', resizeMode: 'contain', alignSelf: 'center' }}
+          <Image
+            style={{
+              width: '100%',
+              resizeMode: 'contain',
+              alignSelf: 'center',
+              top: 80,
+            }}
             source={require('../../../assets/images/ThaddeusStats.png')}
           />
         </View>
-
-        
-
       </ScrollView>
 
       <View
