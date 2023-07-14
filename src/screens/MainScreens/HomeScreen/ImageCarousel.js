@@ -92,8 +92,7 @@ const ImageCarousel = ({ images }) => {
         <TouchableOpacity onPress={InfoButton}>
           <View
             style={{
-              width: 100,
-              height: 50,
+              resizeMode: 'contain',
               backgroundColor: 'lightblue',
               borderRadius: 10,
               padding: 10,

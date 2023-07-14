@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import ImageCarousel from './ImageCarousel';
 //import { IMAGENAME } from './assets/images/thaddeus_logo.jpg';
 
-import { StyleSheet } from 'react-native';
+import { FlatListComponent, StyleSheet } from 'react-native';
 
 import { useFonts } from 'expo-font';
 import { SafeAreaView } from 'react-native-safe-area-context';
@@ -15,9 +15,13 @@ import {
   ScrollView,
   TouchableOpacity,
   Linking,
+  FlatList
 } from 'react-native';
+import { ScreenContainer } from 'react-native-screens';
 
 export default function HomeScreen() {
+
+  //Handles redirection to the links
   const handleButtonClick1 = () => {
     // Navigate to a different link
     Linking.openURL('https://www.linkedin.com/company/the-thaddeus-foundation/');
@@ -41,19 +45,9 @@ export default function HomeScreen() {
     Linking.openURL('mailto:info@thaddeus.org?subject=&body=');
   };
 
+  //images for slides
   const images = [
-    //   require('./images/image1.jpg'),
-    //   require('./images/image2.jpg'),
-    //   require('./images/image3.jpg'),
-
-    // "https://uploads-ssl.webflow.com/61a33234ec52cc692c647c76/648be1ee8061630c1480888f_Relaxation%20Tips-p-500.jpg",
-
-    // "https://uploads-ssl.webflow.com/61a33234ec52cc692c647c76/6459303685aa7e0b8b3c6134_GetImage%20(5)-p-500.jpg",
-
-    // "https://uploads-ssl.webflow.com/61a33234ec52cc692c647c76/64594e0581f8943a366483b9_94c0803c-7754-4a3f-80a9-4c596a64b70e-p-500.jpg",
-
-    // "https://uploads-ssl.webflow.com/61a33234ec52cc692c647c76/6459206a39921d2284c4a0d3_prayer-p-500.jpg"
-
+    
     require('../../../assets/images/ImageSlide1.png'),
     require('../../../assets/images/ImageSlide2.png'),
     require('../../../assets/images/ImageSlide3.png'),
@@ -64,10 +58,17 @@ export default function HomeScreen() {
     require('../../../assets/images/ImageSlide8.png'),
   ];
 
+  //Appointments
   const [appointments, setAppointments] = useState([
     { date: '10/06/2022', time: '10:30 AM', location: 'Thaddeus Resource Center', key: '1' },
     { date: '10/06/2022', time: '10:30 AM', location: 'Thaddeus Resource Center', key: '2' },
     { date: '10/06/2022', time: '10:30 AM', location: 'Thaddeus Resource Center', key: '3' },
+    { date: '10/06/2022', time: '10:30 AM', location: 'Thaddeus Resource Center', key: '4' },
+    { date: '10/06/2022', time: '10:30 AM', location: 'Thaddeus Resource Center', key: '5' },
+    { date: '10/06/2022', time: '10:30 AM', location: 'Thaddeus Resource Center', key: '6' },
+    { date: '10/06/2022', time: '10:30 AM', location: 'Thaddeus Resource Center', key: '7' },
+    { date: '10/06/2022', time: '10:30 AM', location: 'Thaddeus Resource Center', key: '8' },
+    { date: '10/06/2022', time: '10:30 AM', location: 'Thaddeus Resource Center', key: '9' },
   ]);
   const [fontsLoaded] = useFonts({
     'Montserrat-Black': require('../../../assets/fonts/Montserrat-Black.ttf'),
@@ -76,7 +77,11 @@ export default function HomeScreen() {
   if (!fontsLoaded) {
     return null;
   }
+
+  const Spacer = ({ size }) => <View style={{ width: size, height: size }} />;
+
   return (
+    /*Header*/
     <View style={{ flex: 1, marginTop: -5, backgroundColor: 'lightblue' }}>
       <ScrollView>
         <Image
@@ -87,20 +92,26 @@ export default function HomeScreen() {
         <Text style={{ fontSize: 10, fontWeight: 'bold', alignSelf: 'center' }}>
           RESTORE HOPE, INSPIRE GROWTH, and EMPOWER GIRLS & WOMEN
         </Text>
+      {/* Header */}
 
+      {/* Carousel Images*/}
         <View>
           <ImageCarousel images={images} />
         </View>
+        <Spacer size={30} />
+        {/* Carousel Images*/}
+
         <View
-          style={{
-            flex: 1,
-            paddingHorizontal: 25,
-            backgroundColor: 'white',
-            flexDirection: 'column',
-          }}
+         style={{
+          flex: 1,
+          paddingHorizontal: 25,
+          backgroundColor: 'white',
+          flexDirection: 'column',
+        }}
         >
+
           <View
-            style={{
+             style={{
               flex: 1,
               justifyContent: 'center',
               top: 0,
@@ -108,6 +119,7 @@ export default function HomeScreen() {
               paddingHorizontal: 18,
             }}
           >
+            {/* Upcoming Appointments */}
             <Text
               style={{
                 fontFamily: 'Montserrat-Black',
@@ -119,15 +131,22 @@ export default function HomeScreen() {
 
             <View
               style={{
-                flex: 1,
+                height: 150, // Set a fixed height for scrolling
                 backgroundColor: '#00BFFF',
                 marginTop: 20,
                 width: '135%',
                 borderRadius: 25,
               }}
             >
+               <Spacer size={30} />
+               
               <ScrollView>
-                {appointments.map((item) => (
+              
+                <FlatList
+                style={{height: 100}}
+                data={appointments}
+                keyExtractor={(item) => item.key}
+                renderItem={({ item }) => (
                   <View
                     style={{ marginTop: 10, marginBottom: 10, alignItems: 'center' }}
                     key={item.key}
@@ -143,19 +162,19 @@ export default function HomeScreen() {
                       {item.date} - {item.time} - {item.location}
                     </Text>
                   </View>
-                ))}
+                )}
+                />
               </ScrollView>
+              {/* End of appointment ScrollView*/}
+
+              <Spacer size={30} />
+              
             </View>
           </View>
         </View>
 
-        <View>
-          {/* <Image
-            source={{
-              uri: 'https://uploads-ssl.webflow.com/61a33234ec52cc692c647c76/648be1ee8061630c1480888f_Relaxation%20Tips-p-500.jpg',
-            }}
-            style={{ width: '100%', height: 200 }}
-        />*/}
+       {/*Image of Thaddeus states*/}
+        <Spacer size={80} />
           <Image
             style={{
               width: '100%',
@@ -165,9 +184,10 @@ export default function HomeScreen() {
             }}
             source={require('../../../assets/images/ThaddeusStats.png')}
           />
-        </View>
+        
       </ScrollView>
-
+     
+     {/*Footer with socials and contact info */}
       <View
         style={{
           backgroundColor: 'white',
@@ -209,5 +229,8 @@ export default function HomeScreen() {
         </View>
       </View>
     </View>
+    //  End of Footer 
+    
   );
+  
 }
