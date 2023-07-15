@@ -1,6 +1,7 @@
 import React from 'react';
 import { View, ScrollView, StyleSheet, Image, Text } from 'react-native';
 import ContactPersonListItem from '../../../components/ContactListItem';
+import FloatingActionAdd from '../../../components/FloatingActionAddBtn';
 
 const ChatScreen = () => {
   return (
@@ -14,6 +15,7 @@ const ChatScreen = () => {
         <Text style={styles.text}>Case Manager</Text>
       </View>
       <ContactPersonListItem />
+      <FloatingActionAdd/>
     </View>
   );
 };
