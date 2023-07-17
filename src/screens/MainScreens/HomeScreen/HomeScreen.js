@@ -15,12 +15,11 @@ import {
   ScrollView,
   TouchableOpacity,
   Linking,
-  FlatList
+  FlatList,
 } from 'react-native';
 import { ScreenContainer } from 'react-native-screens';
 
 export default function HomeScreen() {
-
   //Handles redirection to the links
   const handleButtonClick1 = () => {
     // Navigate to a different link
@@ -47,7 +46,6 @@ export default function HomeScreen() {
 
   //images for slides
   const images = [
-    
     require('../../../assets/images/ImageSlide1.png'),
     require('../../../assets/images/ImageSlide2.png'),
     require('../../../assets/images/ImageSlide3.png'),
@@ -92,9 +90,9 @@ export default function HomeScreen() {
         <Text style={{ fontSize: 10, fontWeight: 'bold', alignSelf: 'center' }}>
           RESTORE HOPE, INSPIRE GROWTH, and EMPOWER GIRLS & WOMEN
         </Text>
-      {/* Header */}
+        {/* Header */}
 
-      {/* Carousel Images*/}
+        {/* Carousel Images*/}
         <View>
           <ImageCarousel images={images} />
         </View>
@@ -102,16 +100,15 @@ export default function HomeScreen() {
         {/* Carousel Images*/}
 
         <View
-         style={{
-          flex: 1,
-          paddingHorizontal: 25,
-          backgroundColor: 'white',
-          flexDirection: 'column',
-        }}
+          style={{
+            flex: 1,
+            paddingHorizontal: 25,
+            backgroundColor: 'white',
+            flexDirection: 'column',
+          }}
         >
-
           <View
-             style={{
+            style={{
               flex: 1,
               justifyContent: 'center',
               top: 0,
@@ -138,56 +135,53 @@ export default function HomeScreen() {
                 borderRadius: 25,
               }}
             >
-               <Spacer size={30} />
-               
+              <Spacer size={30} />
+
               <ScrollView>
-              
                 <FlatList
-                style={{height: 100}}
-                data={appointments}
-                keyExtractor={(item) => item.key}
-                renderItem={({ item }) => (
-                  <View
-                    style={{ marginTop: 10, marginBottom: 10, alignItems: 'center' }}
-                    key={item.key}
-                  >
-                    <Text
-                      style={{
-                        fontSize: 10,
-                        fontWeight: '600',
-                        color: 'white',
-                        fontFamily: 'Montserrat-Black',
-                      }}
+                  style={{ height: 100 }}
+                  data={appointments}
+                  keyExtractor={(item) => item.key}
+                  renderItem={({ item }) => (
+                    <View
+                      style={{ marginTop: 10, marginBottom: 10, alignItems: 'center' }}
+                      key={item.key}
                     >
-                      {item.date} - {item.time} - {item.location}
-                    </Text>
-                  </View>
-                )}
+                      <Text
+                        style={{
+                          fontSize: 10,
+                          fontWeight: '600',
+                          color: 'white',
+                          fontFamily: 'Montserrat-Black',
+                        }}
+                      >
+                        {item.date} - {item.time} - {item.location}
+                      </Text>
+                    </View>
+                  )}
                 />
               </ScrollView>
               {/* End of appointment ScrollView*/}
 
               <Spacer size={30} />
-              
             </View>
           </View>
         </View>
 
-       {/*Image of Thaddeus states*/}
+        {/*Image of Thaddeus states*/}
         <Spacer size={80} />
-          <Image
-            style={{
-              width: '100%',
-              resizeMode: 'contain',
-              alignSelf: 'center',
-              top: 80,
-            }}
-            source={require('../../../assets/images/ThaddeusStats.png')}
-          />
-        
+        <Image
+          style={{
+            width: '100%',
+            resizeMode: 'contain',
+            alignSelf: 'center',
+            top: 80,
+          }}
+          source={require('../../../assets/images/ThaddeusStats.png')}
+        />
       </ScrollView>
-     
-     {/*Footer with socials and contact info */}
+
+      {/*Footer with socials and contact info */}
       <View
         style={{
           backgroundColor: 'white',
@@ -199,38 +193,54 @@ export default function HomeScreen() {
           alignItems: 'flex-end',
         }}
       >
-        <View style={{ flex: 1, justifyContent: 'space-between', flexDirection: 'row' }}>
-          <TouchableOpacity onPress={handleButtonClick2} style={{ width: 30, height: 30 }}>
+        <View
+          style={{ justifyContent: 'center', flexDirection: 'row', paddingLeft: 30, padding: 10 }}
+        >
+          <TouchableOpacity onPress={handleButtonClick2} style={{ width: 40, height: 40 }}>
             <Image
               source={require('../../../assets/images/facebookicon.png')}
-              style={{ width: 30, height: 30 }}
+              style={{ width: 40, height: 40 }}
             />
           </TouchableOpacity>
 
-          <TouchableOpacity onPress={handleButtonClick1} style={{ width: 30, height: 30 }}>
+          <TouchableOpacity
+            onPress={handleButtonClick1}
+            style={{ width: 40, height: 40, paddingLeft: 30 }}
+          >
             <Image
               source={require('../../../assets/images/linkdinicon.png')}
-              style={{ width: 30, height: 30 }}
+              style={{ width: 40, height: 40 }}
             />
           </TouchableOpacity>
 
-          <TouchableOpacity onPress={handleButtonClick3} style={{ width: 30, height: 30 }}>
+          <TouchableOpacity
+            onPress={handleButtonClick3}
+            style={{ width: 40, height: 40, paddingLeft: 60 }}
+          >
             <Image
               source={require('../../../assets/images/instagramicon.png')}
-              style={{ width: 30, height: 30 }}
+              style={{ width: 40, height: 40 }}
             />
           </TouchableOpacity>
         </View>
 
-        <View style={{ flex: 1, flexDirection: 'column', alignitems: 'flex-end', marginLeft: 100 }}>
-          <Text onPress={handleButtonClick4}>(909) 599-2111</Text>
-
-          <Text onPress={handleButtonClick5}>info@thaddeus.org</Text>
+        <View
+          style={{
+            flexDirection: 'column',
+            alignitems: 'flex-end',
+            paddingBottom: 10,
+          }}
+        >
+          <Text onPress={handleButtonClick4} style={{ fontSize: 14 }}>
+            (909) 599-2111
+          </Text>
+          <Text style={{ fontSize: 5 }} />
+          <Text onPress={handleButtonClick5} style={{ fontSize: 14, paddingRight: 10 }}>
+            info@thaddeus.org
+          </Text>
         </View>
       </View>
     </View>
-    //  End of Footer 
-    
+    //  End of Footer
   );
-  
 }
