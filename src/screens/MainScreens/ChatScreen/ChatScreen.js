@@ -2,6 +2,7 @@ import React from 'react';
 import { View, ScrollView, StyleSheet, Image, Text } from 'react-native';
 import ContactPersonListItem from '../../../components/ContactListItem';
 import FloatingActionAdd from '../../../components/FloatingActionAddBtn';
+import ContactSelectPopup from '../../PopupScreens/ContactSelectPopup';
 
 const ChatScreen = () => {
   return (
@@ -16,6 +17,10 @@ const ChatScreen = () => {
       </View>
       <ContactPersonListItem />
       <FloatingActionAdd/>
+
+      <View>
+        <ContactSelectPopup trigger={false}></ContactSelectPopup>
+      </View>
     </View>
   );
 };
