@@ -18,11 +18,19 @@ const ChatScreen = () => {
       <ContactPersonListItem />
       <FloatingActionAdd/>
 
-      <View>
-        <ContactSelectPopup trigger={false}></ContactSelectPopup>
-      </View>
+      
+<View>
+        <ContactSelectPopup trigger={true}></ContactSelectPopup>
     </View>
+
+    </View>
+  
+
   );
+
+    
+
+
 };
 
 const styles = StyleSheet.create({
