@@ -9,6 +9,7 @@ import HomeScreen from '../screens/MainScreens/HomeScreen/HomeScreen';
 import CustomDrawer from '../components/CustomDrawer';
 import ResourcesScreen from '../screens/MainScreens/ResourcesScreen/ResourcesScreen';
 import UserProfileScreen from '../screens/MainScreens/UserProfileScreen/UserProfileScreen';
+import EditProfileScreen from '../screens/MainScreens/EditProfileScreen/EditProfileScreen';
 
 const Drawer = createDrawerNavigator();
 
@@ -62,6 +63,11 @@ export default function MainStack() {
                 drawerIcon: ({ color }) => (
                     <Ionicons name="person-outline" size={22} color={color} />
                 )
+            }} />
+            <Drawer.Screen name='Edit Profile' component={EditProfileScreen} options={{
+                drawerItemStyle: {
+                    display: "none",
+                }
             }} />
         </Drawer.Navigator>
     );

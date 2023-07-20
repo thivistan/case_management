@@ -15,9 +15,11 @@ export default function RegistrationScreen() {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [name, setName] = useState('');
+
     const navigation = useNavigation();
     const [fontsLoaded] = useFonts({
         'Montserrat-Black': require('../../../assets/fonts/Montserrat-Black.ttf'),
+
     });
 
     useEffect(() => {

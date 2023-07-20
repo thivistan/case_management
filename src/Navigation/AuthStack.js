@@ -5,6 +5,7 @@ import OnBoardingScreen from "../screens/AuthScreens/OnBoardingScreen/OnBoarding
 import ForgotPasswordScreen from "../screens/AuthScreens/ForgotPasswordScreen/ForgotPasswordScreen";
 import RegistrationScreen from "../screens/AuthScreens/RegistrationScreen/RegistrationScreen";
 
+
 const Stack = createNativeStackNavigator();
 
 export default function AuthStack() {

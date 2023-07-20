@@ -5,6 +5,7 @@ import AuthStack from './AuthStack';
 import MainStack from './MainStack';
 import { AuthContext } from './AuthProvider';
 
+
 export default function Routes() {
     const { user, setUser } = useContext(AuthContext);
     const [loading, setLoading] = useState(true);
