@@ -5,6 +5,7 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: '#ADD8E6',
     padding: 20,
+    
   },
   headerContainer: {
     flexDirection: 'row',
@@ -23,14 +24,19 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
   },
   eventKeysContainer: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    justifyContent: 'space-around',
+    flex: 1,
+    flexDirection: 'row',  
     marginBottom: 20,
+    backgroundColor: 'white',
+    padding: '5%',
+    borderRadius: 50,
+    
   },
   eventKey: {
     alignItems: 'center',
     marginBottom: 8,
+    fontWeight: 'bold',
+    
   },
   eventKeyCircle: {
     width: 25,
@@ -38,8 +44,17 @@ const styles = StyleSheet.create({
     borderRadius: 25,
   },
   eventKeyLabel: {
-    color: 'white',
-    marginTop: 4,
+    
+    fontWeight: 'bold',
+    
+    fontSize: '10',
+    
+    padding: 5,
+    
+
+    
+    
+    
   },
   calendarContainer: {
     alignItems: 'center',
@@ -64,7 +79,7 @@ const styles = StyleSheet.create({
     width: 40,
     height: 40,
     borderRadius: 20,
-    backgroundColor: '#00BFFF',
+    backgroundColor: 'lightblue',
     alignItems: 'center',
     justifyContent: 'center',
     marginBottom: 10,
@@ -80,7 +95,10 @@ const styles = StyleSheet.create({
     fontSize: 18,
     color: 'white',
     marginBottom: 10,
+    fontWeight: 'bold',
   },
+
+ 
   eventScreen: {
     flex: 1,
     justifyContent: 'center',
@@ -88,82 +106,100 @@ const styles = StyleSheet.create({
     backgroundColor: '#ADD8E6',
     padding: 20,
   },
+
   eventScreenTitle: {
     fontSize: 24,
     color: 'white',
     marginBottom: 20,
   },
+
   eventInput: {
     width: '100%',
     marginBottom: 20,
   },
+
   boldPlaceholderText: {
     fontWeight: 'bold',
-    color: 'lightblue', 
+    color: 'lightblue',
   },
+
   titleContainer: {
     borderRadius: 10,
     backgroundColor: 'white',
     padding: 10,
   },
+
   titleRectangle: {
     borderRadius: 10,
     backgroundColor: 'white',
     padding: 10,
   },
+
   titleInput: {
     fontSize: 20,
     color: 'lightblue',
   },
+
   spacing: {
     marginBottom: 10,
   },
+
   keysSpacing: {
     marginTop: 10,
   },
+
   notesContainer: {
     borderRadius: 8,
     backgroundColor: 'white',
     padding: 8,
   },
+
   notesRectangle: {
     borderRadius: 8,
     backgroundColor: 'white',
     padding: 8,
   },
+
   notesInput: {
     fontSize: 20,
     color: 'lightblue',
   },
+
   dateContainer: {
     borderRadius: 8,
     backgroundColor: 'white',
     padding: 8,
   },
+
   dateRectangle: {
     borderRadius: 7,
     backgroundColor: 'white',
     padding: 7,
   },
+
   dateInput: {
     fontSize: 20,
     color: 'lightblue',
   },
+
   repeatContainer: {
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'space-between',
   },
+
   repeatLabel: {
     fontSize: 16,
     color: 'white',
   },
+
   saveButton: {
     backgroundColor: '#00BFFF',
     paddingVertical: 10,
     paddingHorizontal: 20,
     borderRadius: 10,
   },
+
   saveButtonText: {
     fontSize: 18,
     color: 'white',

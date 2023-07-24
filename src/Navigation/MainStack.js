@@ -9,6 +9,7 @@ import HomeScreen from '../screens/MainScreens/HomeScreen/HomeScreen';
 import CustomDrawer from '../components/CustomDrawer';
 import ResourcesScreen from '../screens/MainScreens/ResourcesScreen/ResourcesScreen';
 import UserProfileScreen from '../screens/MainScreens/UserProfileScreen/UserProfileScreen';
+import renderEventScreen from '../screens/MainScreens/CalendarScreen/CalendarRepo';
 
 const Drawer = createDrawerNavigator();
 
@@ -34,10 +35,20 @@ export default function MainStack() {
                 )
             }} />
             <Drawer.Screen name='Calendar' component={CalendarScreen} options={{
+                
                 drawerIcon: ({ color }) => (
                     <Ionicons name="calendar-outline" size={22} color={color} />
                 )
             }} />
+
+            <Drawer.Screen name='Event' component={renderEventScreen} options={{
+                 drawerItemStyle: {
+                    display: "none",
+
+                drawerIcon: ({ color }) => (
+                    <Ionicons name="event-outline" size={22} color={color} />
+                )
+            }}} />
             <Drawer.Screen name='Chat' component={ChatScreen} options={{
                 drawerIcon: ({ color }) => (
                     <Ionicons name="call-outline" size={22} color={color} />
