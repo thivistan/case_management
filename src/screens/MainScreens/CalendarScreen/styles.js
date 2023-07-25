@@ -7,6 +7,7 @@ const styles = StyleSheet.create({
     padding: 20,
     
   },
+
   headerContainer: {
     flexDirection: 'row',
     alignItems: 'center',
@@ -14,15 +15,20 @@ const styles = StyleSheet.create({
     backgroundColor: 'white',
     padding: 10,
     marginBottom: 20,
+    borderRadius: 18,
   },
+
   headerText: {
     fontSize: 18,
     color: '#00BFFF',
+    fontWeight: 'bold',
   },
+
   addButton: {
     fontSize: 24,
     fontWeight: 'bold',
   },
+
   eventKeysContainer: {
     flex: 1,
     flexDirection: 'row',  
@@ -30,51 +36,51 @@ const styles = StyleSheet.create({
     backgroundColor: 'white',
     padding: '5%',
     borderRadius: 50,
-    
   },
+
   eventKey: {
     alignItems: 'center',
     marginBottom: 8,
     fontWeight: 'bold',
     
   },
+
   eventKeyCircle: {
     width: 25,
     height: 25,
     borderRadius: 25,
   },
-  eventKeyLabel: {
-    
-    fontWeight: 'bold',
-    
-    fontSize: '10',
-    
-    padding: 5,
-    
 
-    
-    
-    
+  eventKeyLabel: {    
+    fontWeight: 'bold',   
+    fontSize: '10',   
+    padding: 5,  
   },
+
   calendarContainer: {
     alignItems: 'center',
     marginBottom: 20,
   },
+
   calendarHeader: {
     flexDirection: 'row',
     alignItems: 'center',
   },
+
   calendarArrow: {
     marginHorizontal: 10,
   },
+
   calendarMonth: {
     fontSize: 20,
     fontWeight: 'bold',
   },
+
   calendarGrid: {
     flexDirection: 'row',
     flexWrap: 'wrap',
   },
+
   calendarDate: {
     width: 40,
     height: 40,
@@ -85,12 +91,15 @@ const styles = StyleSheet.create({
     marginBottom: 10,
     marginRight: 10,
   },
+
   calendarDateText: {
     color: 'white',
   },
+
   weeklyRemindersContainer: {
     marginBottom: 10,
   },
+
   weeklyRemindersText: {
     fontSize: 18,
     color: 'white',
@@ -98,7 +107,6 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
   },
 
- 
   eventScreen: {
     flex: 1,
     justifyContent: 'center',
@@ -111,6 +119,7 @@ const styles = StyleSheet.create({
     fontSize: 24,
     color: 'white',
     marginBottom: 20,
+    fontWeight: 'bold',
   },
 
   eventInput: {
@@ -120,13 +129,13 @@ const styles = StyleSheet.create({
 
   boldPlaceholderText: {
     fontWeight: 'bold',
-    color: 'lightblue',
+    color: 'blue',
   },
 
   titleContainer: {
-    borderRadius: 10,
+    borderRadius: 20,
     backgroundColor: 'white',
-    padding: 10,
+    padding: 5,
   },
 
   titleRectangle: {
@@ -137,7 +146,7 @@ const styles = StyleSheet.create({
 
   titleInput: {
     fontSize: 20,
-    color: 'lightblue',
+    color: '#00BFFF',
   },
 
   spacing: {
@@ -149,26 +158,26 @@ const styles = StyleSheet.create({
   },
 
   notesContainer: {
-    borderRadius: 8,
+    borderRadius: 20,
     backgroundColor: 'white',
-    padding: 8,
+    padding: 5,
   },
 
   notesRectangle: {
-    borderRadius: 8,
+    borderRadius: 10,
     backgroundColor: 'white',
-    padding: 8,
+    padding: 10,
   },
 
   notesInput: {
     fontSize: 20,
-    color: 'lightblue',
+    color: '#00BFFF',
   },
 
   dateContainer: {
-    borderRadius: 8,
+    borderRadius: 20,
     backgroundColor: 'white',
-    padding: 8,
+    padding: 5,
   },
 
   dateRectangle: {
@@ -179,7 +188,7 @@ const styles = StyleSheet.create({
 
   dateInput: {
     fontSize: 20,
-    color: 'lightblue',
+    color: '#00BFFF',
   },
 
   repeatContainer: {
@@ -190,7 +199,7 @@ const styles = StyleSheet.create({
 
   repeatLabel: {
     fontSize: 16,
-    color: 'white',
+    color: '#00BFFF',
   },
 
   saveButton: {

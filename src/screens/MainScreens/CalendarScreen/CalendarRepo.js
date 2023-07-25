@@ -83,7 +83,7 @@ const renderEventScreen = () => {
 
         {/* Repeat */}
         <View style={[styles.eventInput, styles.repeatContainer]}>
-          <Text style={[styles.repeatLabel, { color: 'white', fontSize: 18 }]}>Repeat:</Text>
+          <Text style={[styles.repeatLabel, { color: '#00BFFF', fontSize: 18 }]}>Repeat:</Text>
           <Switch
             trackColor={{ false: 'gray', true: 'green' }}
             thumbColor={repeatWeekly ? 'white' : 'gray'}
