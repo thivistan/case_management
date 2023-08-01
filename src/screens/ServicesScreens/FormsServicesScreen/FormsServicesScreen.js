@@ -37,8 +37,8 @@ const styles = StyleSheet.create({
     color: '#31c5e2',
     fontWeight: 'bold',
     fontSize: '20',
-    // position: 'absolute',
-    // left: 20,
-    // top: 180,
+    position: 'absolute',
+    left: 20,
+    top: 180,
   },
 });
