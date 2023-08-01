@@ -15,6 +15,7 @@ export default function RegistrationScreen() {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [name, setName] = useState('');
+    const [username, setUsername] = useState('');
     const navigation = useNavigation();
     const [fontsLoaded] = useFonts({
         'Montserrat-Black': require('../../../assets/fonts/Montserrat-Black.ttf'),
@@ -77,6 +78,28 @@ export default function RegistrationScreen() {
                         style={{ flex: 1, paddingVertical: 0 }}
                         value={name}
                         onChangeText={text => setName(text)}
+                        autoCorrect={false}
+                    />
+                </View>
+                
+                <View style={{
+                    flexDirection: 'row',
+                    borderBottomColor: '#ccc',
+                    borderBottomWidth: 1,
+                    paddingBottom: 8,
+                    marginTop: 25                
+                }}>
+                    <Ionicons
+                        name='person-circle-outline'
+                        size={22}
+                        color='#666'
+                        style={{ marginRight: 5 }}
+                    />
+                    <TextInput
+                        placeholder="Username"
+                        style={{ flex: 1, paddingVertical: 0 }}
+                        value={username}
+                        onChangeText={text => setUsername(text)}
                         autoCorrect={false}
                     />
                 </View>

@@ -1,13 +1,15 @@
-import * as firebase from "firebase";
+import * as firebase from 'firebase';
+import 'firebase/database';
 
 const firebaseConfig = {
-  apiKey: "AIzaSyAIptBaoYrW-INQ8uTBZKDlrT1r00MFN0E",
-  authDomain: "case-management-applicat-af62c.firebaseapp.com",
-  projectId: "case-management-applicat-af62c",
-  storageBucket: "case-management-applicat-af62c.appspot.com",
-  messagingSenderId: "575730168193",
-  appId: "1:575730168193:web:3765f666826b48f37ab880",
-  measurementId: "G-9W3ZJD0DVP"
+  apiKey: "AIzaSyDxansqdZFtRCgECqFe-hnpQWI4KLyOQ8s",
+  authDomain: "casemanagementapp-e92b7.firebaseapp.com",
+  databaseURL: "https://casemanagementapp-e92b7-default-rtdb.firebaseio.com",
+  projectId: "casemanagementapp-e92b7",
+  storageBucket: "casemanagementapp-e92b7.appspot.com",
+  messagingSenderId: "722174481744",
+  appId: "1:722174481744:web:49075a599d5acbf688c855",
+  measurementId: "G-2F2N8E5776"
 };
 
 let app;
@@ -20,3 +22,4 @@ if (firebase.apps.length === 0) {
 const auth = firebase.auth();
 
 export { auth };
+export const db = firebase.database();
