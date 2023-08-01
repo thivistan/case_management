@@ -1,14 +1,14 @@
 import { StyleSheet, Text, View } from 'react-native';
 import React from 'react';
 import { ScrollView } from 'react-native-gesture-handler';
-import { BasicInfoButton } from '../../../components/ResourceButtons/FormButtons';
+import { FormButton } from '../../../components/ResourceButtons/FormButtons';
 
 const FormsServicesScreen = () => {
   return (
     <ScrollView style={styles.container}>
       <View>
         <Text style={styles.MostCommonText}>Most Common</Text>
-        <BasicInfoButton title="Basic Information" />
+        <FormButton title="Basic Information" />
       </View>
 
       <View>

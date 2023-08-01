@@ -2,7 +2,7 @@ import { StyleSheet, Text, View, Button } from 'react-native';
 import { TouchableOpacity } from 'react-native';
 import React, { useState } from 'react';
 
-export const BasicInfoButton = ({ title }) => {
+export const FormButton = ({ title }) => {
   return (
     <View>
       <TouchableOpacity style={styles.buttonContainer}>
