@@ -1,6 +1,6 @@
-import { StyleSheet, Text, View, Button } from 'react-native';
+import { StyleSheet, Text, View } from 'react-native';
 import { TouchableOpacity } from 'react-native';
-import React, { useState } from 'react';
+import React from 'react';
 
 export const FormButton = ({ title }) => {
   return (
