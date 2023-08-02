@@ -1,53 +1,77 @@
-import React from 'react';
-import { Button, View, StyleSheet } from 'react-native';
-//import './ContactSelectPopup.css';
+import React, { useState } from 'react';
+import { Alert, Modal, StyleSheet, Text, Pressable, View } from 'react-native';
 
-function ContactSelectPopup(props) {
-  return props.trigger ? (
-    <View style={styles.outerPopupView}>
-      <View style={styles.innerPopupView}>
-        <Button title="close" style={styles.closeBtn}>
-          Close
-        </Button>
-        {props.children}
-      </View>
+
+function ContactSelectPopup() {
+  const [modalVisible, setModalVisible] = useState(true);
+  return (
+    <View style={styles.centeredView}>
+      <Modal
+        animationType="slide"
+        transparent={true}
+        visible={modalVisible}
+        onRequestClose={() => {
+          Alert.alert('Modal has been closed.');
+          setModalVisible(!modalVisible);
+        }}>
+        <View style={styles.centeredView}>
+          <View style={styles.modalView}>
+            <Text style={styles.modalText}>Hello World!</Text>
+            <Pressable
+              style={[styles.button, styles.buttonClose]}
+              onPress={() => setModalVisible(!modalVisible)}>
+              <Text style={styles.textStyle}>Hide Modal</Text>
+            </Pressable>
+          </View>
+        </View>
+      </Modal>
+      
     </View>
-  ) : (
-    ''
   );
-}
+};
 
 const styles = StyleSheet.create({
-outerPopupView:{
-    position: 'absolute',
-    top: 0,
-    left: 0,
-    width: 100,
-    height: 100,
-    backgroundcolor: 'pink',
-
-    display: 'flex',
-    justifycontent: "center",
-    alignitems: "center",
-},
-
-innerPopupView:{
-    position: 'relative',
-    padding: 'auto',
-    width: 100,
-    maxwidth: 640,
-    backgroundcolor: '#fff',
-
-},
-
-closeBtn:{
-    position: 'absolute',
-    top: 16,
-}
-
+  centeredView: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+    marginTop: 22,
+  },
+  modalView: {
+    margin: 20,
+    backgroundColor: 'white',
+    borderRadius: 20,
+    padding: 35,
+    alignItems: 'center',
+    shadowColor: '#000',
+    shadowOffset: {
+      width: 0,
+      height: 2,
+    },
+    shadowOpacity: 0.25,
+    shadowRadius: 4,
+    elevation: 5,
+  },
+  button: {
+    borderRadius: 20,
+    padding: 10,
+    elevation: 2,
+  },
+  buttonOpen: {
+    backgroundColor: '#F194FF',
+  },
+  buttonClose: {
+    backgroundColor: '#2196F3',
+  },
+  textStyle: {
+    color: 'white',
+    fontWeight: 'bold',
+    textAlign: 'center',
+  },
+  modalText: {
+    marginBottom: 15,
+    textAlign: 'center',
+  },
 });
-    
 
 export default ContactSelectPopup;
-
-

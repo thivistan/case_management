@@ -1,14 +1,17 @@
 import React, { Component } from 'react';
-import { StyleSheet, TouchableOpacity } from 'react-native';
+import { Pressable, StyleSheet, TouchableOpacity } from 'react-native';
 import { Entypo } from '@expo/vector-icons';
+import ContactSelectPopup from '../screens/PopupScreens/ContactSelectPopup';
 
 //You can find the icon catalog at: https://icons.expo.fyi/
 
 function FloatingActionAdd(props) {
   return (
-    <TouchableOpacity style={styles.position}>
+    <Pressable style={styles.position}>
+    <TouchableOpacity >
       <Entypo style={styles.container} name="circle-with-plus" size={67} color="#FF1493" />
     </TouchableOpacity>
+    </Pressable>
   );
 }
 

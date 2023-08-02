@@ -11,7 +11,7 @@ import { FlatList, Keyboard, KeyboardAvoidingView, Text, Touchable, View } from 
 import { color } from "react-native-reanimated";
 import { useFonts } from 'expo-font';
 
-export default function ResourcesScreen() {
+export default function ResourcesScreen({navigation}) {
     const [searchQuery, setSearchQuery] = useState('');
     const [fontsLoaded] = useFonts({
         'Montserrat-Black': require('../../../assets/fonts/Montserrat-Black.ttf'),

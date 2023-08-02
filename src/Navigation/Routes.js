@@ -4,6 +4,7 @@ import { auth } from '../firebase/firebase';
 import AuthStack from './AuthStack';
 import MainStack from './MainStack';
 import { AuthContext } from './AuthProvider';
+import ResourcesStack from './ResourcesStack';
 
 export default function Routes() {
     const { user, setUser } = useContext(AuthContext);
@@ -24,6 +25,7 @@ export default function Routes() {
     return (
         <NavigationContainer>
             {user ? <MainStack /> : <AuthStack />}
+            
         </NavigationContainer>
     )
 }
