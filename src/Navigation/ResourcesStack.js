@@ -24,8 +24,8 @@ export default function ResourcesStack() {
   return (
     <Stack.Navigator id="ResourcesStack" initialRouteName="Resources">
       <Stack.Screen name="Resources" component={ResourcesScreen} />
-      <Stack.Screen name="Housing Services" component={AppointmentsScreen}></Stack.Screen>
-      <Stack.Screen name="Appointment Services" component={HousingServicesScreen}></Stack.Screen>
+      <Stack.Screen name="Housing Services" component={HousingServicesScreen}></Stack.Screen>
+      <Stack.Screen name="Appointment Services" component={AppointmentsScreen}></Stack.Screen>
       <Stack.Screen name="Education Services" component={EducationServicesScreen}></Stack.Screen>
       <Stack.Screen name="Forms" component={FormsServicesScreen}></Stack.Screen>
       <Stack.Screen name="Parenting Services" component={ParentingServicesScreen}></Stack.Screen>
