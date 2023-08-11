@@ -35,7 +35,7 @@ const HousingServicesScreen = () => {
           <Text style={styles.title}>Search by location</Text>
           <RoundSearchBar placeholder="Search" onChangeText={handleSearch} />
           <Text style={styles.title}>Results</Text>
-          <HousingServicesLocations address="Texas" />
+          <HousingServicesLocations address="2621 Damien Ave., La Verne, CA  91750 " />
           <HousingServicesLocations address="Los Angeles" />
           <HousingServicesLocations address="Irvine" />
         </View>
