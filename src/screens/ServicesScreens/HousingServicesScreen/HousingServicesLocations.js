@@ -1,4 +1,4 @@
-import { StyleSheet, Text, View, TextInput, TouchableOpacity, Linking,Image } from 'react-native';
+import { StyleSheet, Text, View, TextInput, TouchableOpacity, Linking, Image } from 'react-native';
 import React, { useState } from 'react';
 import Icon from 'react-native-vector-icons/FontAwesome';
 
@@ -9,7 +9,8 @@ const HousingServicesLocations = ({ address }) => {
     const url = `https://www.google.com/maps/search/?api=1&query=${encodedAddress}`;
     Linking.openURL(url).catch((err) => console.error('Error opening URL1: ', err));
   };
-  const imageUrl = 'https://streetviewpixels-pa.googleapis.com/v1/thumbnail?panoid=D42bduoS5KtOr3UeiQ5mxA&cb_client=search.gws-prod.gps&w=408&h=240&yaw=280.00818&pitch=0&thumbfov=100';
+  const imageUrl =
+    'https://streetviewpixels-pa.googleapis.com/v1/thumbnail?panoid=D42bduoS5KtOr3UeiQ5mxA&cb_client=search.gws-prod.gps&w=408&h=240&yaw=280.00818&pitch=0&thumbfov=100';
   //temp image from google maps, we need to find out how to get it directly from it
   return (
     <View style={styles.box}>
@@ -17,7 +18,7 @@ const HousingServicesLocations = ({ address }) => {
       <View
         style={{
           backgroundColor: '#47d7f2',
-          padding:0,
+          padding: 0,
           height: 150,
           margin: 10,
         }}
@@ -25,8 +26,7 @@ const HousingServicesLocations = ({ address }) => {
         {/* Google Maps component */}
         {/* Replace this with your actual Google Maps component */}
         {/* <Text>Google Maps Component</Text> */}
-        <Image source={{ uri: imageUrl }} style={{ width: "100%", height: 150 }} />
-
+        <Image source={{ uri: imageUrl }} style={{ width: '100%', height: 150 }} />
       </View>
 
       {/* Address text */}

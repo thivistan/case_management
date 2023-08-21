@@ -3,7 +3,9 @@ import React, { useState } from 'react';
 import Icon from 'react-native-vector-icons/FontAwesome'; // You can use other icons if you prefer
 import { color } from 'react-native-reanimated';
 import HousingServicesLocations from './HousingServicesLocations';
+import HousingFilters from './HousingFilters';
 // searcb bar component
+
 const RoundSearchBar = ({ placeholder, onChangeText }) => {
   return (
     <View style={styles.SearchBar}>
@@ -23,6 +25,16 @@ const FloatingButton = ({ onPress }) => {
 
 const HousingServicesScreen = () => {
   const [searchText, setSearchText] = useState('');
+  const [filtersVisible, setFiltersVisible] = useState(false);
+  const [filterPading, setFilterPading] = useState(0);
+
+  const toggleFiltersVisibility = () => {
+    setFiltersVisible(!filtersVisible); //togles true in falsse for the filters to pop
+    console.log(filtersVisible); //to test delete later
+    console.log(filterPading);
+
+    setFilterPading(filtersVisible ? 0 : 650); //changes the padding every click
+  };
 
   const handleSearch = (text) => {
     setSearchText(text);
@@ -31,7 +43,11 @@ const HousingServicesScreen = () => {
   return (
     <View>
       <ScrollView>
-        <View style={styles.container}>
+        <View>
+          <HousingFilters visible={filtersVisible}></HousingFilters>
+        </View>
+
+        <View style={[styles.container, { paddingTop: filterPading }]}>
           <Text style={styles.title}>Search by location</Text>
           <RoundSearchBar placeholder="Search" onChangeText={handleSearch} />
           <Text style={styles.title}>Results</Text>
@@ -40,7 +56,7 @@ const HousingServicesScreen = () => {
           <HousingServicesLocations address="Irvine" />
         </View>
       </ScrollView>
-      <FloatingButton onPress={() => console.log('button pressed')}></FloatingButton>
+      <FloatingButton onPress={toggleFiltersVisibility}></FloatingButton>
     </View>
   );
 };
