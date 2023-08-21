@@ -203,7 +203,7 @@ const styles = StyleSheet.create({
     textAlign: 'center',
     backgroundColor: '#00BFFF',
     padding: 15,
-    borderRadius: '50%',
+    borderRadius: 50,
   },
 
   acceptBtnText: {
@@ -220,7 +220,7 @@ const styles = StyleSheet.create({
     textAlign: 'center',
     backgroundColor: '#00BFFF',
     padding: 15,
-    borderRadius: '50%',
+    borderRadius: 50,
     opacity: 0.5,
   },
 
@@ -373,7 +373,6 @@ const facilityStyles = StyleSheet.create({
   },
 
   unselected: {
-    
     borderWidth: 2,
     borderColor: '#00BFFF',
     margin: 10,
