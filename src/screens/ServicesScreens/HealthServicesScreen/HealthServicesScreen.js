@@ -1,22 +1,30 @@
 import { StyleSheet, Text, View, TouchableOpacity } from 'react-native'
 import React from 'react'
+import { useRoute } from '@react-navigation/native';
 
 export default function HealthServicesScreen({ navigation }) {
-  
+
+  const route = useRoute();
+  const filter = route.params?.filter || '';
+
   function navToFilter() {
-    navigation.navigate('Filter');
+    navigation.navigate('Filter', {filter: filter});
   };
-  
+
   return (
     <View>
-      <Text>HealthServicesScreen</Text>
-
       <TouchableOpacity 
         style={styles.filterBtn} 
         onPress={navToFilter}
-      >
+        >
         <Text style={styles.filterBtnText}>FILTER</Text>
       </TouchableOpacity>
+
+      {Object.keys(filter).map((property, index) => (
+        <Text key={index}>
+          {property}: {filter[property]}
+        </Text>
+      ))}
     </View>
   )
 }
@@ -28,7 +36,7 @@ const styles = StyleSheet.create({
     zIndex: 1,
     elevation: 1,
     right: -330,
-    top: 0,
+    top: 20,
   },
 
   filterBtnText: {

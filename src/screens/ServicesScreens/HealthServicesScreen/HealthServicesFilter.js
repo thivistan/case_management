@@ -4,16 +4,19 @@ import ButtonField from '../../../components/ButtonField'
 import RadioButtonField from '../../../components/RadioButtonField'
 import { v4 as uuidv4 } from 'uuid';
 import { TextInput } from 'react-native-gesture-handler';
+import { useRoute } from '@react-navigation/native';
 
-const HealthServicesFilter = () => {
+export default function HealthServicesFilter({ navigation }) {
 
-  const [sortType, setSortType] = useState(null);
-  const [distance, setDistance] = useState(null);
-  const [facility, setFacility] = useState(null);
-  const [insurance, setInsurance] = useState(null);
+  const route = useRoute();
+  const filter = route.params?.filter || '';
 
-  const [address, setAddress] = useState(null);
-  const [region, setRegion] = useState(null);
+  const [sortType, setSortType] = useState(filter?.sortType);
+  const [distance, setDistance] = useState(filter?.distance);
+  const [facility, setFacility] = useState(filter?.facility);
+  const [insurance, setInsurance] = useState(filter?.insurance);
+  const [address, setAddress] = useState(filter?.address);
+  const [region, setRegion] = useState(filter?.region);
 
   const sortData = [
     { id: uuidv4(), value: 'RECOMMEND' },
@@ -51,7 +54,19 @@ const HealthServicesFilter = () => {
   }
 
   function fieldsFilled() {
-    return (sortType && distance && facility && insurance && address && region);
+    return (sortType && distance && facility && insurance && (address || region));
+  }
+
+  function applyFilter() {
+    navigation.navigate('Health Services', {filter: 
+      {sortType: sortType, 
+        distance: distance, 
+        facility: facility,
+        insurance: insurance, 
+        address: address, 
+        region: region
+      }
+    });
   }
 
   return (
@@ -129,7 +144,11 @@ const HealthServicesFilter = () => {
       </ScrollView>
 
       <View style={styles.acceptBtnContainer}>
-        <TouchableOpacity disabled={!fieldsFilled()} style={fieldsFilled() ? styles.acceptBtn : styles.unselectedAcceptBtn}>
+        <TouchableOpacity 
+          disabled={!fieldsFilled()} 
+          style={fieldsFilled() ? styles.acceptBtn : styles.unselectedAcceptBtn}
+          onPress={applyFilter}
+        >
           <Text style={fieldsFilled() ? styles.acceptBtnText : styles.unselectedAcceptBtnText}>ACCEPT SELECTED</Text>
         </TouchableOpacity>
       </View>
@@ -137,8 +156,6 @@ const HealthServicesFilter = () => {
     </View>
   )
 }
-
-export default HealthServicesFilter
 
 const styles = StyleSheet.create({
   label: {
