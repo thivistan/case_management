@@ -238,7 +238,7 @@ const styles = StyleSheet.create({
   },
 
   textInput: {
-    borderWidth: '2px',
+    borderWidth: 2,
     borderColor: '#00BFFF',
     marginVertical: 0,
     marginHorizontal: 20,
@@ -257,7 +257,7 @@ const sortStyles = StyleSheet.create({
   },
 
   unselected: {
-    borderWidth: '2px',
+    borderWidth: 2,
     borderColor: '#00BFFF',
     marginVertical: 10,
     marginHorizontal: 5,
@@ -266,7 +266,7 @@ const sortStyles = StyleSheet.create({
   },
 
   selected: {
-    borderWidth: '2px',
+    borderWidth: 2,
     borderColor: '#00BFFF',
     backgroundColor: '#00BFFF',
     marginVertical: 10,
@@ -302,7 +302,7 @@ const oldDistanceStyles = StyleSheet.create({
   },
 
   unselected: {
-    borderWidth: '2px',
+    borderWidth: 2,
     borderColor: '#00BFFF',
     margin: 10,
     padding: 10,
@@ -310,7 +310,7 @@ const oldDistanceStyles = StyleSheet.create({
   },
 
   selected: {
-    borderWidth: '2px',
+    borderWidth: 2,
     borderColor: '#00BFFF',
     backgroundColor: '#00BFFF',
     margin: 10,
@@ -374,7 +374,7 @@ const facilityStyles = StyleSheet.create({
 
   unselected: {
     
-    borderWidth: '2px',
+    borderWidth: 2,
     borderColor: '#00BFFF',
     margin: 10,
     padding: 10,
@@ -382,7 +382,7 @@ const facilityStyles = StyleSheet.create({
   },
 
   selected: {
-    borderWidth: '2px',
+    borderWidth: 2,
     borderColor: '#00BFFF',
     backgroundColor: '#00BFFF',
     margin: 10,
@@ -413,7 +413,7 @@ const insuranceStyles = StyleSheet.create({
   },
 
   unselected: {
-    borderWidth: '2px',
+    borderWidth: 2,
     borderColor: '#00BFFF',
     marginVertical: 10,
     marginHorizontal: 5,
@@ -422,7 +422,7 @@ const insuranceStyles = StyleSheet.create({
   },
 
   selected: {
-    borderWidth: '2px',
+    borderWidth: 2,
     borderColor: '#00BFFF',
     backgroundColor: '#00BFFF',
     marginVertical: 10,
