@@ -9,6 +9,9 @@ import HomeScreen from '../screens/MainScreens/HomeScreen/HomeScreen';
 import CustomDrawer from '../components/CustomDrawer';
 import ResourcesScreen from '../screens/MainScreens/ResourcesScreen/ResourcesScreen';
 import UserProfileScreen from '../screens/MainScreens/UserProfileScreen/UserProfileScreen';
+import ResourcesStack from './ResourcesStack';
+
+
 
 const Drawer = createDrawerNavigator();
 
@@ -53,7 +56,7 @@ export default function MainStack() {
                     <Ionicons name="journal-outline" size={22} color={color} />
                 )
             }} />
-            <Drawer.Screen name='Resources' component={ResourcesScreen} options={{
+            <Drawer.Screen name='Resources' component={ResourcesStack} options={{
                 drawerIcon: ({ color }) => (
                     <Ionicons name="search-outline" size={22} color={color} />
                 )
@@ -66,3 +69,4 @@ export default function MainStack() {
         </Drawer.Navigator>
     );
 }
+
