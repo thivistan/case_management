@@ -23,7 +23,7 @@ const AppointmentsServicesButton = () => {
             <TouchableOpacity
                 style={styles.categoryButton}
                 onPress={() => {
-                    navigation.replace("AppointmentsScreen")
+                    navigation.navigate("AppointmentsScreen")
                 }}>
                 <Text>Appointment Services</Text>
             </TouchableOpacity>
@@ -51,7 +51,7 @@ const ChurchServicesButton = () => {
             <TouchableOpacity
                 style={styles.categoryButton}
                 onPress={() => {
-                    navigation.replace("ChurchScreen")
+                    navigation.navigate("ChurchScreen")
                 }}
             >
                 <Text>Church Services</Text>
@@ -80,7 +80,7 @@ const DonationCenterButton = () => {
             <TouchableOpacity
                 style={styles.categoryButton}
                 onPress={() => {
-                    navigation.replace("DonationScreen")
+                    navigation.navigate("DonationScreen")
                 }}
             >
                 <Text>Donation Center</Text>
@@ -109,7 +109,7 @@ const EducationServicesButton = () => {
             <TouchableOpacity
                 style={styles.categoryButton}
                 onPress={() => {
-                    navigation.replace("EducationServicesScreen")
+                    navigation.navigate("EducationServicesScreen")
                 }}
             >
                 <Text>Education Services</Text>
@@ -138,7 +138,7 @@ const EmploymentServicesButton = () => {
             <TouchableOpacity
                 style={styles.categoryButton}
                 onPress={() => {
-                    navigation.replace("EmploymentServicesScreen")
+                    navigation.navigate("EmploymentServicesScreen")
                 }}
             >
                 <Text>Employment Services</Text>
@@ -167,7 +167,7 @@ const FoodServicesButton = () => {
             <TouchableOpacity
                 style={styles.categoryButton}
                 onPress={() => {
-                    navigation.replace("FoodServicesScreen")
+                    navigation.navigate("FoodServicesScreen")
                 }}
             >
                 <Text>Food Services</Text>
@@ -196,7 +196,7 @@ const FormsServicesButton = () => {
             <TouchableOpacity
                 style={styles.categoryButton}
                 onPress={() => {
-                    navigation.replace("FormsServicesScreen")
+                    navigation.navigate("FormsServicesScreen")
                 }}
             >
                 <Text>Forms</Text>
@@ -225,7 +225,7 @@ const GovernmentServicesButton = () => {
             <TouchableOpacity
                 style={styles.categoryButton}
                 onPress={() => {
-                    navigation.replace("GovernmentServicesScreen")
+                    navigation.navigate("GovernmentServicesScreen")
                 }}
             >
                 <Text>Government Services</Text>
@@ -254,7 +254,7 @@ const HealthServicesButton = () => {
             <TouchableOpacity
                 style={styles.categoryButton}
                 onPress={() => {
-                    navigation.replace("HealthServicesScreen")
+                    navigation.navigate("Health Services")
                 }}
             >
                 <Text>Health Services</Text>
@@ -283,7 +283,7 @@ const HousingServicesButton = () => {
             <TouchableOpacity
                 style={styles.categoryButton}
                 onPress={() => {
-                    navigation.replace("HousingServicesScreen")
+                    navigation.navigate("HousingServicesScreen")
                 }}
             >
                 <Text>Housing Services</Text>
@@ -312,7 +312,7 @@ const LegalServicesButton = () => {
             <TouchableOpacity
                 style={styles.categoryButton}
                 onPress={() => {
-                    navigation.replace("LegalServicesScreen")
+                    navigation.navigate("LegalServicesScreen")
                 }}
             >
                 <Text>Legal Services</Text>
@@ -341,7 +341,7 @@ const LGBTQServicesButton = () => {
             <TouchableOpacity
                 style={styles.categoryButton}
                 onPress={() => {
-                    navigation.replace("LGBTQServicesScreen")
+                    navigation.navigate("LGBTQServicesScreen")
                 }}
             >
                 <Text>LGBTQ+</Text>
@@ -370,7 +370,7 @@ const ParentingServicesButton = () => {
             <TouchableOpacity
                 style={styles.categoryButton}
                 onPress={() => {
-                    navigation.replace("ParentingServicesScreen")
+                    navigation.navigate("ParentingServicesScreen")
                 }}
             >
                 <Text>Parenting</Text>
@@ -399,7 +399,7 @@ const UtilitiesServicesButton = () => {
             <TouchableOpacity
                 style={styles.categoryButton}
                 onPress={() => {
-                    navigation.replace("UtilitiesServicesScreen")
+                    navigation.navigate("UtilitiesServicesScreen")
                 }}
             >
                 <Text>Utilities</Text>
