@@ -8,15 +8,15 @@ export default function HealthServicesScreen({ navigation }) {
   const filter = route.params?.filter || '';
 
   function navToFilter() {
-    navigation.navigate('Filter', {filter: filter});
+    navigation.navigate('Filter', { filter: filter });
   };
 
   return (
     <View>
-      <TouchableOpacity 
-        style={styles.filterBtn} 
+      <TouchableOpacity
+        style={styles.filterBtn}
         onPress={navToFilter}
-        >
+      >
         <Text style={styles.filterBtnText}>FILTER</Text>
       </TouchableOpacity>
 
