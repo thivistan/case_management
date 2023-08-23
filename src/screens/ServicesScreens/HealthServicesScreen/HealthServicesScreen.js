@@ -1,4 +1,4 @@
-import { StyleSheet, Text, View, TouchableOpacity } from 'react-native'
+import { StyleSheet, Text, View, TouchableOpacity, Platform } from 'react-native'
 import React from 'react'
 import { useRoute } from '@react-navigation/native';
 
@@ -35,7 +35,7 @@ const styles = StyleSheet.create({
   filterBtn: {
     zIndex: 1,
     elevation: 1,
-    right: -330,
+    right: '-80%',
     top: 20,
   },
 
