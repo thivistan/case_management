@@ -1,7 +1,24 @@
-import { StyleSheet, Text, View, TouchableOpacity } from 'react-native';
-import React from 'react';
+import { StyleSheet, Text, View, TextInput, Modal, TouchableOpacity } from 'react-native';
+// import CheckBox from '@react-native-community/checkbox';
+import React, { useState } from 'react';
 
 const HousingFilters = ({ visible }) => {
+  const [selectedOption, setSelectedOption] = useState(null);
+  const [dropdownVisible, setDropdownVisible] = useState(false);
+  // const [homelessChecked, setHomelessChecked] = useState(false);
+  // const [seniorsChecked, setSeniorsChecked] = useState(false);
+  // const [familyChildrenChecked, setFamilyChildrenChecked] = useState(false);
+  const options = ['Option 1', 'Option 2', 'Option 3'];
+
+  const toggleDropdown = () => {
+    setDropdownVisible(!dropdownVisible);
+  };
+
+  const selectOption = (option) => {
+    setSelectedOption(option);
+    toggleDropdown();
+  };
+
   if (!visible) {
     return null;
   }
@@ -35,6 +52,54 @@ const HousingFilters = ({ visible }) => {
         <Text style={styles.buttonText}>20</Text>
         <Text style={styles.buttonText}>25</Text>
       </View>
+      <View style={styles.textInputContainer}>
+        <TextInput
+          style={styles.textInput}
+          placeholder="zip, address"
+          placeholderTextColor="#47d7f2"
+        />
+      </View>
+      <Text style={styles.buttonText}>OR</Text>
+      <TouchableOpacity onPress={toggleDropdown} style={styles.dropdownContainer}>
+        <Text style={styles.dropdownText}>{selectedOption || 'Choose Option'}</Text>
+      </TouchableOpacity>
+      <Modal visible={dropdownVisible} animationType="slide" transparent={true}>
+        <View style={styles.modalContainer}>
+          {options.map((option, index) => (
+            <TouchableOpacity
+              key={index}
+              onPress={() => selectOption(option)}
+              style={styles.optionContainer}
+            >
+              <Text style={styles.optionText}>{option}</Text>
+            </TouchableOpacity>
+          ))}
+        </View>
+      </Modal>
+      <Text style={styles.textStyle}>WHO</Text>
+      {/* <View style={{ flexDirection: 'row', justifyContent: 'space-between' }}>
+        <View style={styles.checkboxContainer}>
+          <CheckBox
+            value={homelessChecked}
+            onValueChange={() => setHomelessChecked(!homelessChecked)}
+          />
+          <Text style={styles.checkboxLabel}>Homeless</Text>
+        </View>
+        <View style={styles.checkboxContainer}>
+          <CheckBox
+            value={seniorsChecked}
+            onValueChange={() => setSeniorsChecked(!seniorsChecked)}
+          />
+          <Text style={styles.checkboxLabel}>Seniors</Text>
+        </View>
+        <View style={styles.checkboxContainer}>
+          <CheckBox
+            value={familyChildrenChecked}
+            onValueChange={() => setFamilyChildrenChecked(!familyChildrenChecked)}
+          />
+          <Text style={styles.checkboxLabel}>Family and Children</Text>
+        </View>
+      </View> */}
     </View>
   );
 };
@@ -74,5 +139,50 @@ const styles = StyleSheet.create({
     borderWidth: 2,
     borderRadius: 90,
   },
-  boxCheckStyle: {},
+  checkboxContainer: {
+    flexDirection: 'row',
+    alignItems: 'center',
+  },
+  checkboxLabel: {
+    fontSize: 16,
+    marginLeft: 10,
+  },
+  textInputContainer: {
+    borderWidth: 2,
+    borderColor: '#47d7f2',
+    marginTop: 20,
+    padding: 10,
+    backgroundColor: 'white',
+  },
+  textInput: {
+    borderWidth: 0,
+    width: 200,
+    fontSize: 16,
+  },
+  dropdownContainer: {
+    borderWidth: 2,
+    borderColor: '#47d7f2',
+    borderRadius: 5,
+    paddingVertical: 10,
+    paddingHorizontal: 15,
+    backgroundColor: 'white',
+  },
+  dropdownText: {
+    color: '#47d7f2',
+    fontSize: 16,
+  },
+  modalContainer: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+    backgroundColor: 'rgba(0, 0, 0, 0.5)',
+  },
+  optionContainer: {
+    paddingVertical: 10,
+    paddingHorizontal: 20,
+  },
+  optionText: {
+    color: '#47d7f2',
+    fontSize: 16,
+  },
 });
