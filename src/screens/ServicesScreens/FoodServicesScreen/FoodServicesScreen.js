@@ -64,7 +64,7 @@ export default function FoodServicesScreen({ navigation }) {
 
 
         {/* map section */}
-        <View style={{ padding: 15, paddingTop: 0, overflow: 'hidden' }}>
+        <View style={{ padding: 15, paddingTop: 0, paddingBottom: 120, overflow: 'hidden' }}>
           {/* placeholder, but iterate through data */}
           {[1, 2, 3, 4].map(() => (
             // individual location result
