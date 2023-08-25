@@ -167,7 +167,7 @@ const FoodServicesButton = () => {
             <TouchableOpacity
                 style={styles.categoryButton}
                 onPress={() => {
-                    navigation.navigate("FoodServicesScreen")
+                    navigation.navigate("Food Services")
                 }}
             >
                 <Text>Food Services</Text>
