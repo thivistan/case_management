@@ -35,82 +35,99 @@ export default function FoodServicesScreen({ navigation }) {
   }, [])
 
   return (
-    <ScrollView>
+    <View>
 
-      {/* search section */}
-      <Text style={styles.headText}>Search by location</Text>
-      <TouchableOpacity
-        style={styles.filterBtn}
-        onPress={() => navigation.navigate('Filter', { filter: filter })}
-      >
-        <Text style={{ color: 'white' }}>2825 W Thad</Text>
-        <Image
-          onPress={() => console.log("maybe")}
-          style={{
-            width: searchImageDimensions,
-            height: searchImageDimensions,
-          }}
-          source={{ uri }}
-        />
-      </TouchableOpacity>
+      <ScrollView>
 
-
-
-      {/* results section */}
-      <Text style={styles.headText}>Results</Text>
+        {/* search section */}
+        <Text style={styles.headText}>Search by location</Text>
+        <TouchableOpacity
+          style={styles.filterBtn}
+          onPress={() => navigation.navigate('Filter', { filter: filter })}
+        >
+          <Text style={{ color: 'white' }}>2825 W Thad</Text>
+          <Image
+            onPress={() => console.log("maybe")}
+            style={{
+              width: searchImageDimensions,
+              height: searchImageDimensions,
+            }}
+            source={{ uri }}
+          />
+        </TouchableOpacity>
 
 
 
-      {/* map section */}
-      <View style={{ padding: 15, paddingTop: 0, overflow: 'hidden' }}>
-        {/* placeholder, but iterate through data */}
-        {[1, 2, 3, 4].map(() => (
-          // individual location result
-          <View style={{ marginTop: 10, marginRight: 30 }}>
-            {/* actual map */}
-            <View style={{ overflow: 'hidden', borderRadius: 25 }}>
-              <MapView style={styles.map}
-                region={{
-                  // insert location data from iteration here
-                  latitude: 34.108220,
-                  longitude: -117.787980,
-                  latitudeDelta: 0.0922,
-                  longitudeDelta: 0.0421,
-                }}
-              >
-                {/* marker on map */}
-                <Marker coordinate={{
-                  // insert location data from iteration here
-                  latitude: 34.108220,
-                  longitude: -117.787980,
-                  latitudeDelta: 0.0922,
-                  longitudeDelta: 0.0421,
-                }} title="Marker" />
-              </MapView>
-            </View>
+        {/* results section */}
+        <Text style={styles.headText}>Results</Text>
 
-            {/* map text container */}
-            <View style={{ display: 'flex', flexDirection: 'row', justifyContent: 'space-between', padding: 10 }}>
-              <View>
-                <Text style={{ fontWeight: '700', fontSize: 20 }}>Big Location</Text>
-                <Text>Small Location</Text>
-              </View>
-              <TouchableOpacity style={{ display: 'flex', justifyContent: 'center', backgroundColor: colorPrimary, padding: 10, borderRadius: 15 }}>
-                <Image
-                  onPress={() => console.log("maybe")}
-                  style={{
-                    width: navigateButtonDimensions,
-                    height: navigateButtonDimensions,
+
+
+        {/* map section */}
+        <View style={{ padding: 15, paddingTop: 0, overflow: 'hidden' }}>
+          {/* placeholder, but iterate through data */}
+          {[1, 2, 3, 4].map(() => (
+            // individual location result
+            <View style={{ marginTop: 10, marginHorizontal: 30 }}>
+              {/* actual map */}
+              <View style={{ overflow: 'hidden', borderRadius: 25 }}>
+                <MapView style={styles.map}
+                  region={{
+                    // insert location data from iteration here
+                    latitude: 34.108220,
+                    longitude: -117.787980,
+                    latitudeDelta: 0.0922,
+                    longitudeDelta: 0.0421,
                   }}
-                  source={{ uri: "https://cdn-icons-png.flaticon.com/512/149/149973.png" }}
-                />
-              </TouchableOpacity>
+                >
+                  {/* marker on map */}
+                  <Marker coordinate={{
+                    // insert location data from iteration here
+                    latitude: 34.108220,
+                    longitude: -117.787980,
+                    latitudeDelta: 0.0922,
+                    longitudeDelta: 0.0421,
+                  }} title="Marker" />
+                </MapView>
+              </View>
+
+              {/* map text container */}
+              <View style={{ display: 'flex', flexDirection: 'row', justifyContent: 'space-between', padding: 10 }}>
+                <View>
+                  <Text style={{ fontWeight: '700', fontSize: 20 }}>Big Location</Text>
+                  <Text>Small Location</Text>
+                </View>
+                <TouchableOpacity style={{ display: 'flex', justifyContent: 'center', backgroundColor: colorPrimary, padding: 10, borderRadius: 15 }}>
+                  <Image
+                    onPress={() => console.log("maybe")}
+                    style={{
+                      width: navigateButtonDimensions,
+                      height: navigateButtonDimensions,
+                    }}
+                    source={{ uri: "https://cdn-icons-png.flaticon.com/512/149/149973.png" }}
+                  />
+                </TouchableOpacity>
+              </View>
             </View>
-          </View>
-        ))}
+          ))}
+        </View>
+
+
+      </ScrollView>
+
+
+      {/* fixed filter button */}
+      <View style={{ flex: 1 }}>
+        <View style={{ position: 'absolute', bottom: 50, alignSelf: 'center', }}>
+          <TouchableOpacity disabled style={{ display: 'flex', justifyContent: 'center', backgroundColor: "#9ee7ff", padding: 10, paddingHorizontal: 100, borderRadius: 25 }}>
+            <Text style={{ color: 'white', fontWeight: '700', fontSize: 20 }}>Filter</Text>
+          </TouchableOpacity>
+        </View>
       </View>
 
-    </ScrollView>
+
+    </View>
+
   )
 }
 
