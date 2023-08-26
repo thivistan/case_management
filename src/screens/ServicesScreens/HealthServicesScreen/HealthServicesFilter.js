@@ -1,4 +1,4 @@
-import { StyleSheet, Text, TouchableOpacity, View, ScrollView, Alert } from 'react-native'
+import { StyleSheet, Text, TouchableOpacity, View, ScrollView, Alert, Platform } from 'react-native'
 import React, { useState } from 'react'
 import ButtonField from '../../../components/ButtonField'
 import RadioButtonField from '../../../components/RadioButtonField'
@@ -157,14 +157,16 @@ export default function HealthServicesFilter({ navigation }) {
   )
 }
 
+const baseSize = Platform.OS === 'android' ? 12 : 14;
+
 const styles = StyleSheet.create({
   label: {
     color: '#00BFFF',
     fontWeight: 'bold',
-    fontSize: 14,
+    fontSize: baseSize,
     marginLeft: 20,
-    marginTop: 10,
-    marginBottom: 5,
+    marginTop: baseSize * 0.714,
+    marginBottom: baseSize * 0.357,
   },
 
   centeredLabel: {
@@ -172,8 +174,8 @@ const styles = StyleSheet.create({
     textAlign: 'center',
     color: '#00BFFF',
     fontWeight: 'bold',
-    fontSize: 14,
-    marginVertical: 10,
+    fontSize: baseSize,
+    marginVertical: baseSize * 0.714,
   },
 
   centeredLabelContainer: {
@@ -185,41 +187,41 @@ const styles = StyleSheet.create({
   resetBtn: {
     zIndex: 1,
     elevation: 1,
-    right: -330,
+    right: '-80%',
     top: 20,
   },
 
   resetBtnText: {
     color: '#00BFFF',
     fontWeight: 'bold',
-    fontSize: 16,
+    fontSize: baseSize * 1.14,
   },
 
   acceptBtn: {
     zIndex: 1,
     elevation: 1,
     position: 'absolute',
-    bottom: -60,
+    bottom: baseSize * -3.57,
     textAlign: 'center',
     backgroundColor: '#00BFFF',
-    padding: 15,
+    padding: baseSize * 1.07,
     borderRadius: 50,
   },
 
   acceptBtnText: {
     color: 'white',
     fontWeight: 'bold',
-    fontSize: 16,
+    fontSize: baseSize * 1.14,
   },
 
   unselectedAcceptBtn: {
     zIndex: 1,
     elevation: 1,
     position: 'absolute',
-    bottom: -60,
+    bottom: baseSize * -3.57,
     textAlign: 'center',
     backgroundColor: '#00BFFF',
-    padding: 15,
+    padding: baseSize * 1.07,
     borderRadius: 50,
     opacity: 0.5,
   },
@@ -227,7 +229,7 @@ const styles = StyleSheet.create({
   unselectedAcceptBtnText: {
     color: 'white',
     fontWeight: 'bold',
-    fontSize: 16,
+    fontSize: baseSize * 1.14,
     opacity: 0.5,
   },
 
@@ -241,10 +243,13 @@ const styles = StyleSheet.create({
     borderWidth: 2,
     borderColor: '#00BFFF',
     marginVertical: 0,
-    marginHorizontal: 20,
-    padding: 10,
+    marginHorizontal: baseSize * 1.4,
+    paddingHorizontal: baseSize * 0.7,
+    paddingVertical: baseSize * 0.65,
     fontWeight: 'bold',
     color: '#00BFFF',
+    fontSize: baseSize,
+    height: baseSize * 3,
   },
 
 })
@@ -259,77 +264,38 @@ const sortStyles = StyleSheet.create({
   unselected: {
     borderWidth: 2,
     borderColor: '#00BFFF',
-    marginVertical: 10,
+    marginVertical: baseSize * 0.714,
     marginHorizontal: 5,
-    padding: 10,
-    width: 118,
+    padding: baseSize * 0.714,
+    width: baseSize * 8.5,
   },
 
   selected: {
     borderWidth: 2,
     borderColor: '#00BFFF',
     backgroundColor: '#00BFFF',
-    marginVertical: 10,
+    marginVertical: baseSize * 0.714,
     marginHorizontal: 5,
-    padding: 10,
-    width: 120,
+    padding: baseSize * 0.714,
+    width: baseSize * 8.5,
   },
 
   textSelected: {
     color: 'white',
     fontWeight: 'bold',
-    fontSize: 14,
+    fontSize: baseSize,
     textAlign: 'center',
   },
 
   textUnselected: {
     color: '#00BFFF',
     fontWeight: 'bold',
-    fontSize: 14,
+    fontSize: baseSize,
     textAlign: 'center',
   },
 
   options: {
     paddingBottom: 50,
-  },
-})
-
-const oldDistanceStyles = StyleSheet.create({
-  container: {
-    flexDirection: 'row',
-    flexWrap: 'wrap',
-    marginLeft: 10,
-  },
-
-  unselected: {
-    borderWidth: 2,
-    borderColor: '#00BFFF',
-    margin: 10,
-    padding: 10,
-    width: 50,
-  },
-
-  selected: {
-    borderWidth: 2,
-    borderColor: '#00BFFF',
-    backgroundColor: '#00BFFF',
-    margin: 10,
-    padding: 10,
-    width: 50,
-  },
-
-  textSelected: {
-    color: 'white',
-    fontWeight: 'bold',
-    fontSize: 14,
-    textAlign: 'center',
-  },
-
-  textUnselected: {
-    color: '#00BFFF',
-    fontWeight: 'bold',
-    fontSize: 14,
-    textAlign: 'center',
   },
 })
 
@@ -356,7 +322,7 @@ const distanceStyles = StyleSheet.create({
   radioBtnText: {
     color: '#00BFFF', 
     fontWeight: 'bold', 
-    fontSize: 14,
+    fontSize: baseSize,
   },
 
   radioBtnContainer: {
@@ -376,8 +342,8 @@ const facilityStyles = StyleSheet.create({
     borderWidth: 2,
     borderColor: '#00BFFF',
     margin: 10,
-    padding: 10,
-    width: 110,
+    padding: baseSize * 0.714,
+    width: baseSize * 8,
   },
 
   selected: {
@@ -385,21 +351,21 @@ const facilityStyles = StyleSheet.create({
     borderColor: '#00BFFF',
     backgroundColor: '#00BFFF',
     margin: 10,
-    padding: 10,
-    width: 110,
+    padding: baseSize * 0.714,
+    width: baseSize * 8,
   },
 
   textSelected: {
     color: 'white',
     fontWeight: 'bold',
-    fontSize: 14,
+    fontSize: baseSize,
     textAlign: 'center',
   },
 
   textUnselected: {
     color: '#00BFFF',
     fontWeight: 'bold',
-    fontSize: 14,
+    fontSize: baseSize,
     textAlign: 'center',
   },
 })
@@ -414,33 +380,33 @@ const insuranceStyles = StyleSheet.create({
   unselected: {
     borderWidth: 2,
     borderColor: '#00BFFF',
-    marginVertical: 10,
+    marginVertical: baseSize * 0.714,
     marginHorizontal: 5,
-    padding: 10,
-    width: 115,
+    padding: baseSize * 0.714,
+    width: baseSize * 8.25,
   },
 
   selected: {
     borderWidth: 2,
     borderColor: '#00BFFF',
     backgroundColor: '#00BFFF',
-    marginVertical: 10,
+    marginVertical: baseSize * 0.714,
     marginHorizontal: 5,
-    padding: 10,
-    width: 115,
+    padding: baseSize * 0.714,
+    width: baseSize * 8.25,
   },
 
   textSelected: {
     color: 'white',
     fontWeight: 'bold',
-    fontSize: 14,
+    fontSize: baseSize,
     textAlign: 'center',
   },
 
   textUnselected: {
     color: '#00BFFF',
     fontWeight: 'bold',
-    fontSize: 14,
+    fontSize: baseSize,
     textAlign: 'center',
   },
 })

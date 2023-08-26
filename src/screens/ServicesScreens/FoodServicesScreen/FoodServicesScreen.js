@@ -29,11 +29,16 @@ export default function FoodServicesScreen({ navigation }) {
     <View>
 
       <ScrollView>
-
         {/* search section */}
-        <Text style={styles.headText}>Search by location</Text>
+        <View style={styles.searchHeaderContainer}>
+          <Text style={styles.headText}>Search by location</Text>
+          <TouchableOpacity style={styles.filterBtn} onPress={() => navigation.navigate('Filter', { filter: filter })}>
+            <Text style={{ color: colorPrimary, fontWeight: '700' }}>FILTER</Text>
+          </TouchableOpacity>
+        </View>
+
         <TouchableOpacity
-          style={styles.filterBtn}
+          style={styles.searchBtn}
           onPress={() => navigation.navigate('Filter', { filter: filter })}
         >
           <Text style={{ color: 'white' }}>2825 W Thad</Text>
@@ -124,12 +129,17 @@ export default function FoodServicesScreen({ navigation }) {
 
 
 const styles = StyleSheet.create({
+  searchHeaderContainer: {
+    padding: 10,
+    display: "flex",
+    flexDirection: "row",
+    justifyContent: "space-between"
+  },
   headText: {
     color: colorPrimary,
     fontWeight: '700',
-    padding: 10
   },
-  filterBtn: {
+  searchBtn: {
     backgroundColor: colorPrimary,
     margin: 12,
     padding: 15,
