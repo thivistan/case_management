@@ -2,7 +2,9 @@ import { StyleSheet, Text, View, TouchableOpacity, Image, Dimensions, ScrollView
 import React, { useEffect, useState } from 'react'
 import { useRoute } from '@react-navigation/native';
 import MapView, { Marker } from 'react-native-maps';
-import * as Location from 'expo-location';
+
+// utils
+import { userLocation } from "./utils"
 
 // assets & constants
 const searchImageDimensions = 25
@@ -13,24 +15,13 @@ const colorPrimary = "#00BFFF"
 export default function FoodServicesScreen({ navigation }) {
   const [permissionError, setPermissionError] = useState('')
 
-  // route to route to other page
-  const route = useRoute();
+  // useRoute() == route to route to other page
   // filter data to pass through filter page
-  const filter = route.params?.filter || '';
+  const filter = useRoute().params?.filter || '';
 
-  // function to get current user's location
-  const userLocation = async () => {
-    // handle ASKING for user's location
-    let { status } = await Location.requestForegroundPermissionsAsync();
-    status !== 'granted' && setPermissionError('Permission to access location was denied')
 
-    // get the location after permission granted, then log
-    let location = await Location.getCurrentPositionAsync({ enableHighAccuracy: true })
-    console.log("This is the user's current location: ")
-    console.log(location)
-  }
   useEffect(() => {
-    // call the function to get user location
+    // call the function to get/log user location
     userLocation()
   }, [])
 
