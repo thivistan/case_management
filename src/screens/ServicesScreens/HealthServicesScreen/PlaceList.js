@@ -1,6 +1,6 @@
 import { StyleSheet, Text, View, Image, ScrollView, TouchableHighlight } from "react-native";
 import { getStaticImage } from "./url"
-
+import React from 'react'
 import Icon from "react-native-vector-icons/Ionicons";
 
 const Place = ({place}) => {
