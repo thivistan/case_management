@@ -1,10 +1,10 @@
-import { StyleSheet, Text, View, TouchableOpacity, Image, Dimensions, ScrollView } from 'react-native'
+import { StyleSheet, Text, View, TouchableOpacity, Image, Dimensions, ScrollView, TextInput, Pressable } from 'react-native'
 import React, { useEffect, useState } from 'react'
 import { useRoute } from '@react-navigation/native';
 import MapView, { Marker } from 'react-native-maps';
 
 // utils
-import { userLocation } from "./utils"
+import { searchFoodServicesByLocation, userLocation } from "./utils"
 
 // assets & constants
 const searchImageDimensions = 25
@@ -13,7 +13,10 @@ const uri = "https://www.transparentpng.com/download/search-button/RwuGa6-button
 const colorPrimary = "#00BFFF"
 
 export default function FoodServicesScreen({ navigation }) {
+  const [searchStr, setSearchStr] = useState('')
+  const [results, setResults] = useState([])
   const [permissionError, setPermissionError] = useState('')
+  const [inputError, setInputError] = useState('')
 
   // useRoute() == route to route to other page
   // filter data to pass through filter page
@@ -22,8 +25,26 @@ export default function FoodServicesScreen({ navigation }) {
 
   useEffect(() => {
     // call the function to get/log user location
-    userLocation()
+    userLocation(setPermissionError)
   }, [])
+
+  const handleSearch = async () => {
+    if (!searchStr) {
+      setInputError("Please Enter Valid Input")
+      return;
+    }
+    setInputError("")
+    const results = await searchFoodServicesByLocation(searchStr)
+    const filteredResults = results.results.map((result) => ({
+      id: result.id,
+      // name, address, lat, lon
+      name: result.poi.name,
+      address: result.address.freeformAddress,
+      lat: result.position.lat,
+      lon: result.position.lon,
+    }))
+    setResults(filteredResults)
+  }
 
   return (
     <View>
@@ -37,21 +58,33 @@ export default function FoodServicesScreen({ navigation }) {
           </TouchableOpacity>
         </View>
 
-        <TouchableOpacity
-          style={styles.searchBtn}
-          onPress={() => navigation.navigate('Filter', { filter: filter })}
-        >
-          <Text style={{ color: 'white' }}>2825 W Thad</Text>
-          <Image
-            onPress={() => console.log("maybe")}
-            style={{
-              width: searchImageDimensions,
-              height: searchImageDimensions,
-            }}
-            source={{ uri }}
+        <View style={styles.searchBtn}>
+          <TextInput style={{ color: 'white' }}
+            onChangeText={(text) => setSearchStr(text)}
+            defaultValue={searchStr}
+            placeholder='2621 Damien Ave, La Verne, CA, 91750 US'
+            placeholderTextColor='#e8e8e8'
           />
-        </TouchableOpacity>
+          <Pressable
+            onPress={handleSearch}
+            style={({ pressed }) => {
+              return { opacity: pressed ? 0 : 1, }
+            }}
+          >
+            <Image
+              style={{
+                width: searchImageDimensions,
+                height: searchImageDimensions,
+              }}
+              source={{ uri }}
+            />
+          </Pressable>
 
+        </View>
+
+        <Text style={{ textAlign: 'center', color: 'red' }}>
+          {inputError}
+        </Text>
 
 
         {/* results section */}
@@ -62,7 +95,7 @@ export default function FoodServicesScreen({ navigation }) {
         {/* map section */}
         <View style={{ padding: 15, paddingTop: 0, paddingBottom: 120, overflow: 'hidden' }}>
           {/* placeholder, but iterate through data */}
-          {[1, 2, 3, 4].map(() => (
+          {results.length !== 0 && results.map((location) => (
             // individual location result
             <View style={{ marginTop: 10, marginHorizontal: 30 }}>
               {/* actual map */}
@@ -70,8 +103,8 @@ export default function FoodServicesScreen({ navigation }) {
                 <MapView style={styles.map}
                   region={{
                     // insert location data from iteration here
-                    latitude: 34.108220,
-                    longitude: -117.787980,
+                    latitude: location.lat,
+                    longitude: location.lon,
                     latitudeDelta: 0.0922,
                     longitudeDelta: 0.0421,
                   }}
@@ -79,8 +112,8 @@ export default function FoodServicesScreen({ navigation }) {
                   {/* marker on map */}
                   <Marker coordinate={{
                     // insert location data from iteration here
-                    latitude: 34.108220,
-                    longitude: -117.787980,
+                    latitude: location.lat,
+                    longitude: location.lon,
                     latitudeDelta: 0.0922,
                     longitudeDelta: 0.0421,
                   }} title="Marker" />
@@ -90,8 +123,8 @@ export default function FoodServicesScreen({ navigation }) {
               {/* map text container */}
               <View style={{ display: 'flex', flexDirection: 'row', justifyContent: 'space-between', padding: 10 }}>
                 <View>
-                  <Text style={{ fontWeight: '700', fontSize: 20 }}>Big Location</Text>
-                  <Text>Small Location</Text>
+                  <Text style={{ fontWeight: '700', fontSize: 20 }}>{location.name}</Text>
+                  <Text>{location.address}</Text>
                 </View>
                 <TouchableOpacity style={{ display: 'flex', justifyContent: 'center', backgroundColor: colorPrimary, padding: 10, borderRadius: 15 }}>
                   <Image
