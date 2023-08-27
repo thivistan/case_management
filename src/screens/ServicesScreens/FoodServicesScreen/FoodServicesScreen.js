@@ -88,16 +88,17 @@ export default function FoodServicesScreen({ navigation }) {
 
 
         {/* results section */}
-        <Text style={styles.headText}>Results</Text>
-
+        <View style={styles.searchHeaderContainer}>
+          <Text style={styles.headText}>Results</Text>
+        </View>
 
 
         {/* map section */}
-        <View style={{ padding: 15, paddingTop: 0, paddingBottom: 120, overflow: 'hidden' }}>
+        <View style={styles.resultsContainer}>
           {/* placeholder, but iterate through data */}
           {results.length !== 0 && results.map((location) => (
             // individual location result
-            <View style={{ marginTop: 10, marginHorizontal: 30 }}>
+            <View style={{ marginTop: 10, marginHorizontal: 30 }} key={location.id}>
               {/* actual map */}
               <View style={{ overflow: 'hidden', borderRadius: 25 }}>
                 <MapView style={styles.map}
@@ -121,21 +122,24 @@ export default function FoodServicesScreen({ navigation }) {
               </View>
 
               {/* map text container */}
-              <View style={{ display: 'flex', flexDirection: 'row', justifyContent: 'space-between', padding: 10 }}>
-                <View>
+              <View style={styles.mapTextContainer}>
+                <View style={{ width: '80%' }}>
                   <Text style={{ fontWeight: '700', fontSize: 20 }}>{location.name}</Text>
                   <Text>{location.address}</Text>
                 </View>
-                <TouchableOpacity style={{ display: 'flex', justifyContent: 'center', backgroundColor: colorPrimary, padding: 10, borderRadius: 15 }}>
-                  <Image
-                    onPress={() => console.log("maybe")}
-                    style={{
-                      width: navigateButtonDimensions,
-                      height: navigateButtonDimensions,
-                    }}
-                    source={{ uri: "https://cdn-icons-png.flaticon.com/512/149/149973.png" }}
-                  />
-                </TouchableOpacity>
+                <View style={{ display: 'flex', justifyContent: 'center' }}>
+                  <TouchableOpacity style={styles.resultButton}
+                    onPress={() => console.log(location.id)}
+                  >
+                    <Image
+                      style={{
+                        width: navigateButtonDimensions,
+                        height: navigateButtonDimensions,
+                      }}
+                      source={{ uri: "https://cdn-icons-png.flaticon.com/512/149/149973.png" }}
+                    />
+                  </TouchableOpacity>
+                </View>
               </View>
             </View>
           ))}
@@ -183,7 +187,10 @@ const styles = StyleSheet.create({
     justifyContent: 'space-between'
   },
   resultsContainer: {
-
+    padding: 15,
+    paddingTop: 0,
+    paddingBottom: 120,
+    overflow: 'hidden'
   },
   map: {
     height: 155.6666666666666,
@@ -191,5 +198,18 @@ const styles = StyleSheet.create({
     // SET HEIGHT AND WIDTH OF MAP TO FILL UP REST OF SCREEN
     // width: Dimensions.get('window').width,
     // height: Dimensions.get('window').height
+  },
+  mapTextContainer: {
+    display: 'flex',
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    padding: 10
+  },
+  resultButton: {
+    display: 'flex',
+    justifyContent: 'center',
+    backgroundColor: colorPrimary,
+    padding: 10,
+    borderRadius: 15
   }
 })
