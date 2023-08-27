@@ -57,7 +57,9 @@ export default function HealthServicesFilter({ navigation }) {
     return (sortType && distance && facility && insurance && (address || region));
   }
 
+  // Navigate back to main screen w/ the data
   function applyFilter() {
+
     navigation.navigate('Health Services', {filter: 
       {sortType: sortType, 
         distance: distance, 
@@ -72,6 +74,7 @@ export default function HealthServicesFilter({ navigation }) {
   return (
     <View style={styles.container}>
 
+      {/* Reset Button */}
       <TouchableOpacity onPress={() => handleReset()} style={styles.resetBtn}>
         <Text style={styles.resetBtnText}>RESET</Text>   
       </TouchableOpacity>
@@ -79,6 +82,7 @@ export default function HealthServicesFilter({ navigation }) {
       <ScrollView style={styles.options}>
         <Text style={styles.label}>SORT BY</Text>
 
+        {/* Sort Type Field */}
         <ButtonField 
           data={sortData} 
           onSelect={(value) => setSortType(value)} 
@@ -90,6 +94,7 @@ export default function HealthServicesFilter({ navigation }) {
 
         <Text style={styles.label}>DISTANCE (MILES)</Text>
 
+        {/* Distance Field */}
         <RadioButtonField
           onSelect={(value) => setDistance(value)} 
           data={distanceData}
@@ -99,6 +104,7 @@ export default function HealthServicesFilter({ navigation }) {
 
         <Text>{distance}</Text>
 
+        {/* Address Input Box */}
         <TextInput 
           value={address}
           onChangeText={setAddress}        
@@ -111,6 +117,7 @@ export default function HealthServicesFilter({ navigation }) {
           <Text style={styles.centeredLabel}>OR</Text>
         </View>
 
+        {/* Region Input Box */}
         <TextInput 
           value={region}
           onChangeText={setRegion}
@@ -122,6 +129,7 @@ export default function HealthServicesFilter({ navigation }) {
 
         <Text style={styles.label}>WHAT</Text>
 
+        {/* Facility Field */}
         <ButtonField 
           data={facilityData} 
           onSelect={(value) => setFacility(value)} 
@@ -133,6 +141,7 @@ export default function HealthServicesFilter({ navigation }) {
 
         <Text style={styles.label}>INSURANCE</Text>
 
+        {/* Insurance Field */}
         <ButtonField 
           data={insuranceData} 
           onSelect={(value) => setInsurance(value)} 
@@ -143,6 +152,7 @@ export default function HealthServicesFilter({ navigation }) {
         <Text>{insurance}</Text>
       </ScrollView>
 
+      {/* Accept Button */}
       <View style={styles.acceptBtnContainer}>
         <TouchableOpacity 
           disabled={!fieldsFilled()} 
