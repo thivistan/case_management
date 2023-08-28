@@ -27,7 +27,7 @@ export default function App() {
         }}
       />
 
-      <Text style={styles.text}>Search by locatiosn</Text>
+      <Text style={styles.text}>Search by location</Text>
 
       <View style={styles.search}>
         <TextInput
@@ -38,12 +38,12 @@ export default function App() {
         <TouchableHighlight style={styles.searchPic}
           onPress={() => addSearchResult(searchStr)}
         >
-          <Icon name="ios-search" size={14} />
+          <Icon  name="ios-search" size={14} />
         </TouchableHighlight >
       </View>
 
-      <PlaceList places={places} />
-
+      <PlaceList places={ places } />
+      
       <StatusBar style="auto" />
     </View>
   );
