@@ -4,7 +4,7 @@ import { useRoute } from '@react-navigation/native';
 import MapView, { Marker } from 'react-native-maps';
 
 // utils
-import { searchFoodServicesByLocation, userLocation } from "./utils"
+import { searchFoodServicesByLocation, userLocation, openMap } from "./utils"
 
 // assets & constants
 const searchImageDimensions = 25
@@ -100,7 +100,7 @@ export default function FoodServicesScreen({ navigation }) {
             // individual location result
             <View style={{ marginTop: 10, marginHorizontal: 30 }} key={location.id}>
               {/* actual map */}
-              <View style={{ overflow: 'hidden', borderRadius: 25 }}>
+              <View style={styles.mapContainer}>
                 <MapView style={styles.map}
                   region={{
                     // insert location data from iteration here
@@ -130,6 +130,7 @@ export default function FoodServicesScreen({ navigation }) {
                 <View style={{ display: 'flex', justifyContent: 'center' }}>
                   <TouchableOpacity style={styles.resultButton}
                     onPress={() => console.log(location.id)}
+                    onPress={() => openMap(location.lat, location.lon, location.name)}
                   >
                     <Image
                       style={{
@@ -211,5 +212,15 @@ const styles = StyleSheet.create({
     backgroundColor: colorPrimary,
     padding: 10,
     borderRadius: 15
-  }
+  },
+  mapContainer: {
+    overflow: 'hidden',
+    borderRadius: 25,
+    borderWidth: 2,
+    borderColor: colorPrimary,
+    shadowColor: '#171717',
+    shadowOffset: { width: 5, height: 4 },
+    shadowOpacity: 0.2,
+    shadowRadius: 3,
+  },
 })
