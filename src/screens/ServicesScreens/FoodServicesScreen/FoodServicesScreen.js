@@ -36,12 +36,12 @@ export default function FoodServicesScreen({ navigation }) {
     setInputError("")
     const results = await searchFoodServicesByLocation(searchStr)
     const filteredResults = results.results.map((result) => ({
-      id: result.id,
+      id: result?.id,
       // name, address, lat, lon
-      name: result.poi.name,
-      address: result.address.freeformAddress,
-      lat: result.position.lat,
-      lon: result.position.lon,
+      name: result?.poi.name,
+      address: result?.address.freeformAddress,
+      lat: result?.position.lat,
+      lon: result?.position.lon,
     }))
     setResults(filteredResults)
   }
@@ -68,7 +68,7 @@ export default function FoodServicesScreen({ navigation }) {
           <Pressable
             onPress={handleSearch}
             style={({ pressed }) => {
-              return { opacity: pressed ? 0 : 1, }
+              return { opacity: pressed ? 0 : 1 }
             }}
           >
             <Image
