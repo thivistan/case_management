@@ -1,4 +1,4 @@
-import { StyleSheet, Text, View, TouchableOpacity, Image, Dimensions, ScrollView, TextInput, Pressable } from 'react-native'
+import { StyleSheet, Text, View, TouchableOpacity, Image, Dimensions, ScrollView, TextInput, Pressable, ActivityIndicator } from 'react-native'
 import React, { useEffect, useState } from 'react'
 import { useRoute } from '@react-navigation/native';
 import MapView, { Marker } from 'react-native-maps';
@@ -17,6 +17,7 @@ export default function FoodServicesScreen({ navigation }) {
   const [results, setResults] = useState([])
   const [permissionError, setPermissionError] = useState('')
   const [inputError, setInputError] = useState('')
+  const [loading, setLoading] = useState(false)
 
   // useRoute() == route to route to other page
   // filter data to pass through filter page
@@ -29,8 +30,10 @@ export default function FoodServicesScreen({ navigation }) {
   }, [])
 
   const handleSearch = async () => {
+    setLoading(true)
     if (!searchStr) {
       setInputError("Please Enter Valid Input")
+      setLoading(false)
       return;
     }
     setInputError("")
@@ -44,6 +47,7 @@ export default function FoodServicesScreen({ navigation }) {
       lon: result?.position.lon,
     }))
     setResults(filteredResults)
+    setLoading(false)
   }
 
   return (
@@ -85,12 +89,15 @@ export default function FoodServicesScreen({ navigation }) {
         <Text style={{ textAlign: 'center', color: 'red' }}>
           {inputError}
         </Text>
-
+        {/* loading */}
+        {loading && <ActivityIndicator />}
 
         {/* results section */}
-        <View style={styles.searchHeaderContainer}>
-          <Text style={styles.headText}>Results</Text>
-        </View>
+        {results.length !== 0 && (
+          <View style={styles.searchHeaderContainer}>
+            <Text style={styles.headText}>Results</Text>
+          </View>
+        )}
 
 
         {/* map section */}
@@ -129,7 +136,6 @@ export default function FoodServicesScreen({ navigation }) {
                 </View>
                 <View style={{ display: 'flex', justifyContent: 'center' }}>
                   <TouchableOpacity style={styles.resultButton}
-                    onPress={() => console.log(location.id)}
                     onPress={() => openMap(location.lat, location.lon, location.name)}
                   >
                     <Image
