@@ -22,25 +22,55 @@ import { useRoute } from '@react-navigation/native';
 import { useState, useEffect } from 'react';
 import MapView, { Marker } from 'react-native-maps';
 
-
 import Icon from 'react-native-vector-icons/Ionicons';
 
 import PlaceList from './PlaceList';
 
 import { getPlaces } from './url';
 
-const searchImageDimensions = 25
-const navigateButtonDimensions = 20
-const uri = "https://www.transparentpng.com/download/search-button/RwuGa6-button-search-png.png"
-const colorPrimary = "#00BFFF"
+import * as Location from 'expo-location';
+
+const searchImageDimensions = 25;
+const navigateButtonDimensions = 20;
+const uri = 'https://www.transparentpng.com/download/search-button/RwuGa6-button-search-png.png';
+const colorPrimary = '#00BFFF';
 
 export default function HealthServicesScreen({ navigation }) {
   const [searchStr, setSearchStr] = useState('');
-  const [searchResults, setSearchResults] = useState([])
+  const [searchResults, setSearchResults] = useState([]);
 
+  const [location, setLocation] = useState(null);
+
+  useEffect(() => {
+    (async () => {
+      let { status } = await Location.requestForegroundPermissionsAsync();
+      if (status !== 'granted') {
+        setErrorMsg('Permission to access location was denied');
+        return;
+      }
+
+      let location = await Location.getCurrentPositionAsync({});
+      setLocation(location);
+    })();
+  }, []);
+
+  // Use API to get search results and set the result state to all results found
   const addSearchResult = async (phrase) => {
-    console.log('PHRASE: ', phrase);
-    const results = await getPlaces(phrase);
+    let results = null;
+
+    if (location) {
+      results = await getPlaces(
+        phrase,
+        location.coords.longitude,
+        location.coords.latitude,
+        filter.distance,
+        filter.facility,
+        filter.address,
+        filter.region,
+        filter.sortType
+      );
+    } else results = await getPlaces(phrase);
+
     setSearchResults(results);
   };
 
@@ -58,22 +88,21 @@ export default function HealthServicesScreen({ navigation }) {
     const label = name;
     const url = Platform.select({
       ios: `${scheme}${label}@${latLng}`,
-      android: `${scheme}${latLng}(${label})`
+      android: `${scheme}${latLng}(${label})`,
     });
-    
+
     try {
       const supported = await Linking.canOpenURL(url);
-      
+
       if (supported) {
         await Linking.openURL(url);
       } else {
-        console.log("Opening the map app is not supported on this device.");
+        console.log('Opening the map app is not supported on this device.');
       }
     } catch (error) {
-      console.error("An error occurred while opening the map app:", error);
+      console.error('An error occurred while opening the map app:', error);
     }
-  }
-
+  };
 
   return (
     <View>
@@ -105,7 +134,7 @@ export default function HealthServicesScreen({ navigation }) {
         {/* <PlaceList places={places} /> */}
 
         <ScrollView>
-        {/* search section */}
+          {/* search section */}
           {/* <View style={styles.searchHeaderContainer}>
 
           </View>
@@ -139,59 +168,64 @@ export default function HealthServicesScreen({ navigation }) {
             <Text style={styles.headText}>Results</Text>
           </View>
 
-
           {/* map section */}
           <View style={styles.resultsContainer}>
             {/* placeholder, but iterate through data */}
-            {searchResults.length !== 0 && searchResults.map((location) => (
-              // individual location result
-              <View style={{ marginTop: 10, marginHorizontal: 30 }} key={location.id}>
-                {/* actual map */}
-                <View style={styles.mapContainer}>
-                  <MapView style={styles.map}
-                    region={{
-                      // insert location data from iteration here
-                      latitude: location.position.lat,
-                      longitude: location.position.lon,
-                      latitudeDelta: 0.0092,
-                      longitudeDelta: 0.00921,
-                    }}
-                  >
-                    {/* marker on map */}
-                    <Marker coordinate={{
-                      // insert location data from iteration here
-                      latitude: location.position.lat,
-                      longitude: location.position.lon,
-                    }} title={location.poi.name} />
-                  </MapView>
-                </View>
-
-                {/* map text container */}
-                <View style={styles.mapTextContainer}>
-                  <View style={{ width: '80%' }}>
-                    <Text style={{ fontWeight: '700', fontSize: 20 }}>{location.poi.name}</Text>
-                    <Text>{location.address.freeformAddress}</Text>
-                  </View>
-                  <View style={{ display: 'flex', justifyContent: 'center' }}>
-                    <TouchableOpacity style={styles.resultButton}
-                      onPress={() => openMap(location.position.lat, location.position.lon, location.poi.name)}
+            {searchResults.length !== 0 &&
+              searchResults.map((location) => (
+                // individual location result
+                <View style={{ marginTop: 10, marginHorizontal: 30 }} key={location.id}>
+                  {/* actual map */}
+                  <View style={styles.mapContainer}>
+                    <MapView
+                      style={styles.map}
+                      region={{
+                        // insert location data from iteration here
+                        latitude: location.position.lat,
+                        longitude: location.position.lon,
+                        latitudeDelta: 0.0092,
+                        longitudeDelta: 0.00921,
+                      }}
                     >
-                      <Image
-                        style={{
-                          width: navigateButtonDimensions,
-                          height: navigateButtonDimensions,
+                      {/* marker on map */}
+                      <Marker
+                        coordinate={{
+                          // insert location data from iteration here
+                          latitude: location.position.lat,
+                          longitude: location.position.lon,
                         }}
-                        source={{ uri: "https://cdn-icons-png.flaticon.com/512/149/149973.png" }}
+                        title={location.poi.name}
                       />
-                    </TouchableOpacity>
+                    </MapView>
+                  </View>
+
+                  {/* map text container */}
+                  <View style={styles.mapTextContainer}>
+                    <View style={{ width: '80%' }}>
+                      <Text style={{ fontWeight: '700', fontSize: 20 }}>{location.poi.name}</Text>
+                      <Text>{location.address.freeformAddress}</Text>
+                    </View>
+                    <View style={{ display: 'flex', justifyContent: 'center' }}>
+                      <TouchableOpacity
+                        style={styles.resultButton}
+                        onPress={() =>
+                          openMap(location.position.lat, location.position.lon, location.poi.name)
+                        }
+                      >
+                        <Image
+                          style={{
+                            width: navigateButtonDimensions,
+                            height: navigateButtonDimensions,
+                          }}
+                          source={{ uri: 'https://cdn-icons-png.flaticon.com/512/149/149973.png' }}
+                        />
+                      </TouchableOpacity>
+                    </View>
                   </View>
                 </View>
-              </View>
-            ))}
+              ))}
           </View>
         </ScrollView>
-
-
       </View>
     </View>
   );
@@ -243,18 +277,17 @@ const styles = StyleSheet.create({
 
   map: {
     height: 155.6666666666666,
-    width: "100%",
+    width: '100%',
     // SET HEIGHT AND WIDTH OF MAP TO FILL UP REST OF SCREEN
     // width: Dimensions.get('window').width,
     // height: Dimensions.get('window').height
-    
   },
 
   mapTextContainer: {
     display: 'flex',
     flexDirection: 'row',
     justifyContent: 'space-between',
-    padding: 10
+    padding: 10,
   },
 
   resultButton: {
@@ -264,7 +297,7 @@ const styles = StyleSheet.create({
     padding: 10,
     borderRadius: 15,
     shadowColor: '#171717',
-    shadowOffset: {width: 0, height: 2},
+    shadowOffset: { width: 0, height: 2 },
     shadowOpacity: 0.25,
     shadowRadius: 2.5,
   },
@@ -275,14 +308,13 @@ const styles = StyleSheet.create({
   },
 
   mapContainer: {
-    overflow: 'hidden', 
-    borderRadius: 25, 
-    borderWidth: 2, 
+    overflow: 'hidden',
+    borderRadius: 25,
+    borderWidth: 2,
     borderColor: colorPrimary,
     shadowColor: '#171717',
-    shadowOffset: {width: 5, height: 4},
+    shadowOffset: { width: 5, height: 4 },
     shadowOpacity: 0.2,
     shadowRadius: 3,
   },
-
 });
