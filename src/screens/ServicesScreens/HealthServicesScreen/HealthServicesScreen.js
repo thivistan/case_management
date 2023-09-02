@@ -18,7 +18,6 @@ import { useState, useEffect } from 'react';
 
 import Icon from 'react-native-vector-icons/Ionicons';
 
-import PlaceList from './PlaceList';
 import MapList from './MapList';
 
 import { getPlaces } from './url';
@@ -114,7 +113,7 @@ const HealthServicesScreen = ({ navigation }) => {
           </TouchableHighlight>
         </View>
 
-        <MapList searchResults={searchResults} styles={styles} />
+        <MapList searchResults={searchResults} />
       </View>
     </View>
   );
