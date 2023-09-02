@@ -1,3 +1,7 @@
+/**
+ * File with various functionalities to interact with the Map API.
+ */
+
 const key = '59pe61cOEUP3lEeNtRozneKwruo20IkW';
 
 const baseURL = 'api.tomtom.com';
@@ -11,6 +15,17 @@ const codes = {
   pharmacy: '7326',
 };
 
+/**
+ * Function to build the fuzzy/basic search URL.
+ * @param {String} phrase the phrase/query to search for
+ * @param {Number} userLon the user's longtitude
+ * @param {Number} userLat the user's latitude
+ * @param {Number} distanceMiles the user's preference for the places' distance
+ * @param {String} code the specific type of establishment to search for
+ * @param {String} address the address to search for
+ * @param {String} region the region to search for
+ * @returns a string URL that will make a GET request to the API.
+ */
 const buildPlaceURL = (
   phrase,
   userLon = null,
@@ -53,15 +68,21 @@ const buildPlaceURL = (
     finalUrl += `&categorySet=${encodeCode}`;
   } else finalUrl += `&categorySet=${code}`;
 
-  console.log('--- URL: ', finalUrl);
   return finalUrl;
 };
 
-const buildStaticMapURL = (lon, lat) => {
-  const coordinate = encodeURI(String(lon) + ',' + String(lat));
-  return `https://${baseURL}/map/1/staticimage?key=${key}&zoom=15&center=${coordinate}&format=png&layer=basic&style=night&view=IN&language=en-GB`;
-};
-
+/**
+ * Function to make a GET request/fetch the search results from the API.
+ * @param {String} phrase the phrase/query to search for
+ * @param {Number} userLon the user's longtitude
+ * @param {Number} userLat the user's latitude
+ * @param {Number} distanceMiles the user's preference for the places' distance
+ * @param {String} code the specific type of establishment to search for
+ * @param {String} address the address to search for
+ * @param {String} region the region to search for
+ * @param {String} sortBy the type of sorting done to the result
+ * @returns a JSON object that contains the search results.
+ */
 const getPlaces = async (
   phrase,
   userLon = null,
@@ -100,9 +121,4 @@ const getPlaces = async (
   return allPlaces;
 };
 
-const getStaticImage = (lon, lat) => {
-  const url = buildStaticMapURL(lon, lat);
-  return url;
-};
-
-export { getPlaces, getStaticImage };
+export { getPlaces };

@@ -1,13 +1,25 @@
-import { StyleSheet, Text, TouchableOpacity, View, ScrollView, Alert, Platform } from 'react-native'
-import React, { useState } from 'react'
-import ButtonField from '../../../components/ButtonField'
-import RadioButtonField from '../../../components/RadioButtonField'
+import {
+  StyleSheet,
+  Text,
+  TouchableOpacity,
+  View,
+  ScrollView,
+  Alert,
+  Platform,
+} from 'react-native';
+import React, { useState } from 'react';
+import ButtonField from '../../../components/ButtonField';
+import RadioButtonField from '../../../components/RadioButtonField';
 import { v4 as uuidv4 } from 'uuid';
 import { TextInput } from 'react-native-gesture-handler';
 import { useRoute } from '@react-navigation/native';
 
-export default function HealthServicesFilter({ navigation }) {
-
+/**
+ * Component to display the health service filter screen.
+ * @param {Object} props Component props
+ * @param {Object} props.navigation Helps navigating back to the main screen
+ */
+const HealthServicesFilter = ({ navigation }) => {
   const route = useRoute();
   const filter = route.params?.filter || '';
 
@@ -22,94 +34,98 @@ export default function HealthServicesFilter({ navigation }) {
     { id: uuidv4(), value: 'RECOMMEND' },
     { id: uuidv4(), value: 'WHAT' },
     { id: uuidv4(), value: 'DISTANCE' },
-  ]
+  ];
 
   const distanceData = [
     { id: uuidv4(), label: '5', value: '5' },
     { id: uuidv4(), label: '10', value: '10' },
     { id: uuidv4(), label: '15', value: '15' },
     { id: uuidv4(), label: '20', value: '20' },
-  ]
+  ];
 
   const facilityData = [
     { id: uuidv4(), value: 'Pharmacy' },
     { id: uuidv4(), value: 'Hospital' },
     { id: uuidv4(), value: 'Clinic' },
-  ]
+  ];
 
   const insuranceData = [
     { id: uuidv4(), value: 'No Insurance' },
     { id: uuidv4(), value: 'Blue Cross' },
     { id: uuidv4(), value: 'Humana' },
-  ]
+  ];
 
-  function handleReset() {
+  /**
+   * Function to reset the selected options of the filter.
+   */
+  const handleReset = () => {
     setSortType(null);
     setDistance(null);
     setFacility(null);
     setInsurance(null);
     setAddress(null);
     setRegion(null);
-    Alert.alert('Options Reset');
-  }
+    Alert.alert('All your selection have been removed.');
+  };
 
-  function fieldsFilled() {
-    return (sortType && distance && facility && insurance && (address || region));
-  }
+  /**
+   * Function to check if all fields of the filter have been filled.
+   * @returns a boolean. True if all fields are filled. False otherwise.
+   */
+  const fieldsFilled = () => {
+    return sortType && distance && facility && insurance && (address || region);
+  };
 
-  // Navigate back to main screen w/ the data
-  function applyFilter() {
-
-    navigation.navigate('Health Services', {filter: 
-      {sortType: sortType, 
-        distance: distance, 
+  /**
+   * Navigate back to main screen with the data.
+   */
+  const applyFilter = () => {
+    navigation.navigate('Health Services', {
+      filter: {
+        sortType: sortType,
+        distance: distance,
         facility: facility,
-        insurance: insurance, 
-        address: address, 
-        region: region
-      }
+        insurance: insurance,
+        address: address,
+        region: region,
+      },
     });
-  }
+  };
 
   return (
     <View style={styles.container}>
-
       {/* Reset Button */}
       <TouchableOpacity onPress={() => handleReset()} style={styles.resetBtn}>
-        <Text style={styles.resetBtnText}>RESET</Text>   
+        <Text style={styles.resetBtnText}>RESET</Text>
       </TouchableOpacity>
 
       <ScrollView style={styles.options}>
         <Text style={styles.label}>SORT BY</Text>
 
         {/* Sort Type Field */}
-        <ButtonField 
-          data={sortData} 
-          onSelect={(value) => setSortType(value)} 
-          selectedValue={sortType} 
+        <ButtonField
+          data={sortData}
+          onSelect={(value) => setSortType(value)}
+          selectedValue={sortType}
           styles={sortStyles}
         />
-
-        <Text>{sortType}</Text>
 
         <Text style={styles.label}>DISTANCE (MILES)</Text>
 
         {/* Distance Field */}
         <RadioButtonField
-          onSelect={(value) => setDistance(value)} 
+          onSelect={(value) => setDistance(value)}
           data={distanceData}
           selectedValue={distance}
           styles={distanceStyles}
         />
 
-        <Text>{distance}</Text>
-
         {/* Address Input Box */}
-        <TextInput 
+        <TextInput
           value={address}
-          onChangeText={setAddress}        
-          placeholder='ADDRESS' 
-          placeholderTextColor={'rgba(0, 191, 255, 0.5)'} 
+          onChangeText={setAddress}
+          placeholder="ADDRESS"
+          placeholderTextColor={'rgba(0, 191, 255, 0.5)'}
           style={styles.textInput}
         />
 
@@ -118,54 +134,57 @@ export default function HealthServicesFilter({ navigation }) {
         </View>
 
         {/* Region Input Box */}
-        <TextInput 
+        <TextInput
           value={region}
           onChangeText={setRegion}
-
-          placeholder='REGION' 
-          placeholderTextColor={'rgba(0, 191, 255, 0.5)'} 
+          placeholder="REGION"
+          placeholderTextColor={'rgba(0, 191, 255, 0.5)'}
           style={styles.textInput}
         />
 
         <Text style={styles.label}>WHAT</Text>
 
         {/* Facility Field */}
-        <ButtonField 
-          data={facilityData} 
-          onSelect={(value) => setFacility(value)} 
-          selectedValue={facility} 
+        <ButtonField
+          data={facilityData}
+          onSelect={(value) => setFacility(value)}
+          selectedValue={facility}
           styles={facilityStyles}
         />
-
-        <Text>{facility}</Text>
 
         <Text style={styles.label}>INSURANCE</Text>
 
         {/* Insurance Field */}
-        <ButtonField 
-          data={insuranceData} 
-          onSelect={(value) => setInsurance(value)} 
-          selectedValue={insurance} 
+        <ButtonField
+          data={insuranceData}
+          onSelect={(value) => setInsurance(value)}
+          selectedValue={insurance}
           styles={insuranceStyles}
         />
-
-        <Text>{insurance}</Text>
       </ScrollView>
+
+      {/*
+      <Text>sort: {sortType}</Text>
+      <Text>distance: {distance}</Text>
+      <Text>facility: {facility}</Text>
+      <Text>insurance: {insurance}</Text>
+      */}
 
       {/* Accept Button */}
       <View style={styles.acceptBtnContainer}>
-        <TouchableOpacity 
-          disabled={!fieldsFilled()} 
+        <TouchableOpacity
+          disabled={!fieldsFilled()}
           style={fieldsFilled() ? styles.acceptBtn : styles.unselectedAcceptBtn}
           onPress={applyFilter}
         >
-          <Text style={fieldsFilled() ? styles.acceptBtnText : styles.unselectedAcceptBtnText}>ACCEPT SELECTED</Text>
+          <Text style={fieldsFilled() ? styles.acceptBtnText : styles.unselectedAcceptBtnText}>
+            ACCEPT SELECTED
+          </Text>
         </TouchableOpacity>
       </View>
-
     </View>
-  )
-}
+  );
+};
 
 const baseSize = Platform.OS === 'android' ? 12 : 14;
 
@@ -261,8 +280,7 @@ const styles = StyleSheet.create({
     fontSize: baseSize,
     height: baseSize * 3,
   },
-
-})
+});
 
 const sortStyles = StyleSheet.create({
   container: {
@@ -307,7 +325,7 @@ const sortStyles = StyleSheet.create({
   options: {
     paddingBottom: 50,
   },
-})
+});
 
 const distanceStyles = StyleSheet.create({
   radioBtnBorder: {
@@ -323,23 +341,24 @@ const distanceStyles = StyleSheet.create({
   },
 
   radioBtnSelected: {
-    width: 10, 
-    height: 10, 
-    borderRadius: 5, 
-    backgroundColor: '#00BFFF'
+    width: 10,
+    height: 10,
+    borderRadius: 5,
+    backgroundColor: '#00BFFF',
   },
 
   radioBtnText: {
-    color: '#00BFFF', 
-    fontWeight: 'bold', 
+    color: '#00BFFF',
+    fontWeight: 'bold',
     fontSize: baseSize,
   },
 
   radioBtnContainer: {
-    alignItems: 'center', 
+    alignItems: 'center',
     justifyContent: 'center',
-  }
-})
+    marginBottom: 10,
+  },
+});
 
 const facilityStyles = StyleSheet.create({
   container: {
@@ -378,13 +397,14 @@ const facilityStyles = StyleSheet.create({
     fontSize: baseSize,
     textAlign: 'center',
   },
-})
+});
 
 const insuranceStyles = StyleSheet.create({
   container: {
     flexDirection: 'row',
     flexWrap: 'wrap',
     marginLeft: 15,
+    marginBottom: 30,
   },
 
   unselected: {
@@ -419,4 +439,6 @@ const insuranceStyles = StyleSheet.create({
     fontSize: baseSize,
     textAlign: 'center',
   },
-})
+});
+
+export default HealthServicesFilter;
