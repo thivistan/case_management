@@ -40,7 +40,7 @@ const openMap = async (lat, lon, name) => {
  * @param {Object} props Component props
  * @param {Object} props.location Contains the place's data in JSON
  */
-const Place = ({ location }) => {
+const Map = ({ location }) => {
   return (
     // individual location result
     <View style={styles.placeContainer}>
@@ -88,11 +88,11 @@ const Place = ({ location }) => {
 /**
  * Component to display a scrollable list of all places found in the search.
  * @param {Object} props Component props
- * @param {Object} props.location Contains the places' data in JSON
+ * @param {Object} props.searchResults Contains the places' data in JSON
  */
-const PlaceList = ({ places }) => {
+const MapList = ({ searchResults }) => {
   // If there are no places to load, return generic error text.
-  if (places.length == 0) {
+  if (searchResults.length == 0) {
     return <Text>No results found. Please try another search.</Text>;
   }
 
@@ -105,8 +105,8 @@ const PlaceList = ({ places }) => {
         <ScrollView style={styles.scrollViewContainer}>
           {/* scrollable list section */}
           <View style={styles.resultsContainer}>
-            {places.length !== 0 &&
-              places.map((location) => <Place key={location.id} location={location} />)}
+            {searchResults.length !== 0 &&
+              searchResults.map((location) => <Map key={location.id} location={location} />)}
           </View>
         </ScrollView>
       </View>
@@ -179,4 +179,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default PlaceList;
+export default MapList;
