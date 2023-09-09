@@ -29,11 +29,11 @@ const colorPrimary = '#00BFFF';
 /**
  * Component to display the health service screen, including the search bar and map.
  * @param {Object} props Component props
- * @param {Object} props.navigate Helps with navigating to the filter screen.
+ * @param {Object} props.navigation Helps with navigating to the filter screen.
  */
 const HealthServicesScreen = ({ navigation }) => {
   const [searchStr, setSearchStr] = useState('');
-  const [searchResults, setSearchResults] = useState([]);
+  const [searchResults, setSearchResults] = useState(null);
   const [location, setLocation] = useState(null);
 
   const route = useRoute();
@@ -60,20 +60,25 @@ const HealthServicesScreen = ({ navigation }) => {
    * @param {String} phrase A phrase to search for.
    */
   const addSearchResult = async (phrase) => {
-    let results = null;
+    let results = [];
 
-    if (location) {
-      results = await getPlaces(
-        phrase,
-        location.coords.longitude,
-        location.coords.latitude,
-        filter.distance,
-        filter.facility,
-        filter.address,
-        filter.region,
-        filter.sortType
-      );
-    } else results = await getPlaces(phrase);
+    try {
+      if (!phrase) results = 'empty';
+      else if (location) {
+        results = await getPlaces(
+          phrase,
+          location.coords.longitude,
+          location.coords.latitude,
+          filter.distance,
+          filter.finalFacility,
+          filter.address,
+          filter.region,
+          filter.sortType
+        );
+      } else results = await getPlaces(phrase);
+    } catch {
+      results = 'error';
+    }
 
     setSearchResults(results);
   };
@@ -91,13 +96,14 @@ const HealthServicesScreen = ({ navigation }) => {
         <TouchableOpacity style={styles.filterBtn} onPress={navToFilter}>
           <Text style={styles.filterBtnText}>FILTER</Text>
         </TouchableOpacity>
-        {/*
-        {Object.keys(filter).map((property, index) => (
+        {/*Object.keys(filter).map((property, index) => (
           <Text key={index}>
-            {property}: {filter[property]}
+            {property}:{' '}
+            {typeof filter[property] === 'object'
+              ? JSON.stringify(filter[property])
+              : filter[property]}
           </Text>
-        ))}
-        */}
+        ))*/}
       </View>
       <View style={styles.container}>
         <Text style={styles.text}>Search by location</Text>

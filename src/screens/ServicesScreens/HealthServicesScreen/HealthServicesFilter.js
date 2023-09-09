@@ -7,12 +7,59 @@ import {
   Alert,
   Platform,
 } from 'react-native';
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import ButtonField from '../../../components/ButtonField';
+import MultiSelectionField from '../../../components/MultiSelectionField';
 import RadioButtonField from '../../../components/RadioButtonField';
 import { v4 as uuidv4 } from 'uuid';
 import { TextInput } from 'react-native-gesture-handler';
 import { useRoute } from '@react-navigation/native';
+
+const defaultInsurance = [
+  {
+    insurance: 'No Insurance',
+    id: 'No Insurance',
+    selected: false,
+  },
+  {
+    insurance: 'Blue Cross',
+    id: 'Blue Cross',
+    selected: false,
+  },
+  {
+    insurance: 'Kaiser',
+    id: 'Kaiser',
+    selected: false,
+  },
+  {
+    insurance: 'Cigna',
+    id: 'Cigna',
+    selected: false,
+  },
+  {
+    insurance: 'Humana',
+    id: 'Humana',
+    selected: false,
+  },
+];
+
+const defaultFacility = [
+  {
+    facility: 'Pharmacy',
+    id: 'Pharmacy',
+    selected: false,
+  },
+  {
+    facility: 'Hospital',
+    id: 'Hospital',
+    selected: false,
+  },
+  {
+    facility: 'Clinic',
+    id: 'Clinic',
+    selected: false,
+  },
+];
 
 /**
  * Component to display the health service filter screen.
@@ -22,13 +69,6 @@ import { useRoute } from '@react-navigation/native';
 const HealthServicesFilter = ({ navigation }) => {
   const route = useRoute();
   const filter = route.params?.filter || '';
-
-  const [sortType, setSortType] = useState(filter?.sortType);
-  const [distance, setDistance] = useState(filter?.distance);
-  const [facility, setFacility] = useState(filter?.facility);
-  const [insurance, setInsurance] = useState(filter?.insurance);
-  const [address, setAddress] = useState(filter?.address);
-  const [region, setRegion] = useState(filter?.region);
 
   const sortData = [
     { id: uuidv4(), value: 'RECOMMEND' },
@@ -43,17 +83,42 @@ const HealthServicesFilter = ({ navigation }) => {
     { id: uuidv4(), label: '20', value: '20' },
   ];
 
-  const facilityData = [
-    { id: uuidv4(), value: 'Pharmacy' },
-    { id: uuidv4(), value: 'Hospital' },
-    { id: uuidv4(), value: 'Clinic' },
-  ];
+  const [sortType, setSortType] = useState(filter?.sortType);
+  const [distance, setDistance] = useState(filter?.distance);
+  const [facility, setFacility] = useState(filter?.facility ? filter?.facility : defaultFacility);
+  const [finalFacility, setFinalFacility] = useState(filter?.finalFacility);
+  const [insurance, setInsurance] = useState(
+    filter?.insurance ? filter?.insurance : defaultInsurance
+  );
+  const [finalInsurance, setFinalInsurance] = useState(filter?.finalInsurance);
+  const [address, setAddress] = useState(filter?.address);
+  const [region, setRegion] = useState(filter?.region);
 
-  const insuranceData = [
-    { id: uuidv4(), value: 'No Insurance' },
-    { id: uuidv4(), value: 'Blue Cross' },
-    { id: uuidv4(), value: 'Humana' },
-  ];
+  const insuranceFilterSelect = (value) => {
+    setInsurance(
+      insurance.map((insure) => {
+        return insure.insurance === value ? { ...insure, selected: !insure.selected } : insure;
+      })
+    );
+  };
+
+  useEffect(() => {
+    setFinalInsurance(
+      insurance.filter((insure) => insure.selected).map((insure) => insure.insurance)
+    );
+  }, [insurance]);
+
+  const facilityFilterSelect = (value) => {
+    setFacility(
+      facility.map((fac) => {
+        return fac.facility === value ? { ...fac, selected: !fac.selected } : fac;
+      })
+    );
+  };
+
+  useEffect(() => {
+    setFinalFacility(facility.filter((fac) => fac.selected).map((fac) => fac.facility));
+  }, [facility]);
 
   /**
    * Function to reset the selected options of the filter.
@@ -61,8 +126,10 @@ const HealthServicesFilter = ({ navigation }) => {
   const handleReset = () => {
     setSortType(null);
     setDistance(null);
-    setFacility(null);
-    setInsurance(null);
+    setFacility(defaultFacility);
+    setFinalFacility(null);
+    setInsurance(defaultInsurance);
+    setFinalInsurance(null);
     setAddress(null);
     setRegion(null);
     Alert.alert('All your selection have been removed.');
@@ -73,7 +140,15 @@ const HealthServicesFilter = ({ navigation }) => {
    * @returns a boolean. True if all fields are filled. False otherwise.
    */
   const fieldsFilled = () => {
-    return sortType && distance && facility && insurance && (address || region);
+    return (
+      sortType &&
+      distance &&
+      finalFacility &&
+      finalFacility.length > 0 &&
+      finalInsurance &&
+      finalInsurance.length &&
+      (address || region)
+    );
   };
 
   /**
@@ -85,7 +160,9 @@ const HealthServicesFilter = ({ navigation }) => {
         sortType: sortType,
         distance: distance,
         facility: facility,
+        finalFacility: finalFacility,
         insurance: insurance,
+        finalInsurance: finalInsurance,
         address: address,
         region: region,
       },
@@ -145,20 +222,20 @@ const HealthServicesFilter = ({ navigation }) => {
         <Text style={styles.label}>WHAT</Text>
 
         {/* Facility Field */}
-        <ButtonField
-          data={facilityData}
-          onSelect={(value) => setFacility(value)}
-          selectedValue={facility}
+        <MultiSelectionField
+          data={facility}
+          onSelect={(value) => facilityFilterSelect(value)}
+          objectKey="facility"
           styles={facilityStyles}
         />
 
         <Text style={styles.label}>INSURANCE</Text>
 
         {/* Insurance Field */}
-        <ButtonField
-          data={insuranceData}
-          onSelect={(value) => setInsurance(value)}
-          selectedValue={insurance}
+        <MultiSelectionField
+          data={insurance}
+          onSelect={(value) => insuranceFilterSelect(value)}
+          objectKey="insurance"
           styles={insuranceStyles}
         />
       </ScrollView>

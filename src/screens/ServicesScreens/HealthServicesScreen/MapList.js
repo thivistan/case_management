@@ -91,9 +91,14 @@ const Map = ({ location }) => {
  * @param {Object} props.searchResults Contains the places' data in JSON
  */
 const MapList = ({ searchResults }) => {
-  // If there are no places to load, return generic error text.
-  if (searchResults.length == 0) {
-    return <Text>No results found. Please try another search.</Text>;
+  if (searchResults == null) {
+    return <Text style={styles.message}>Please search for a location.</Text>;
+  } else if (searchResults.length == 0) {
+    return <Text style={styles.message}>No results found. Please try another search.</Text>;
+  } else if (searchResults == 'error') {
+    return <Text style={styles.message}>An error occured. Please try again later.</Text>;
+  } else if (searchResults == 'empty') {
+    return <Text style={styles.message}>Please enter a valid search phrase.</Text>;
   }
 
   return (
@@ -151,6 +156,9 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'space-between',
     padding: 10,
+  },
+  message: {
+    margin: 20,
   },
   openMapButton: {
     display: 'flex',

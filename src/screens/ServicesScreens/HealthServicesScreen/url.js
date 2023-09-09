@@ -60,12 +60,12 @@ const buildPlaceURL = (
   }
 
   if (code != codes.generalHealthService) {
-    let tempCode = codes.hospital;
-    if (code == 'Pharmacy') tempCode = codes.pharmacy;
-    else if (code == 'Clinic') tempCode = codes.clinic;
+    finalUrl += encodeURI('&categorySet=');
 
-    const encodeCode = encodeURI(tempCode);
-    finalUrl += `&categorySet=${encodeCode}`;
+    let tempCode = codes.hospital;
+    if (code.includes('Clinic') || code.includes('Hospital'))
+      finalUrl += encodeURI(`${codes.hospital},`);
+    if (code.includes('Pharmacy')) finalUrl += encodeURI(`${codes.hospital}`);
   } else finalUrl += `&categorySet=${code}`;
 
   return finalUrl;
