@@ -566,6 +566,7 @@ const regionStyles = StyleSheet.create({
     shadowRadius: 4,
     shadowOffset: { height: 4, width: 0 },
     shadowOpacity: 0.5,
+    maxHeight: baseSize * 20,
   },
 
   overlay: {
