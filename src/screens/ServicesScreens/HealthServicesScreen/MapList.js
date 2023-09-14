@@ -90,17 +90,7 @@ const Map = ({ location }) => {
  * @param {Object} props Component props
  * @param {Object} props.searchResults Contains the places' data in JSON
  */
-const MapList = ({ searchResults }) => {
-  if (searchResults == null) {
-    return <Text style={styles.message}>Please search for a location.</Text>;
-  } else if (searchResults.length == 0) {
-    return <Text style={styles.message}>No results found. Please try another search.</Text>;
-  } else if (searchResults == 'error') {
-    return <Text style={styles.message}>An error occured. Please try again later.</Text>;
-  } else if (searchResults == 'empty') {
-    return <Text style={styles.message}>Please enter a valid search phrase.</Text>;
-  }
-
+const MapList = () => {
   return (
     <View>
       <View style={styles.searchHeaderContainer}>

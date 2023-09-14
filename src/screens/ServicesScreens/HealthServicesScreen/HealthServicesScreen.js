@@ -13,16 +13,10 @@ import {
   TouchableHighlight,
 } from 'react-native';
 import React from 'react';
-import { useRoute } from '@react-navigation/native';
-import { useState, useEffect } from 'react';
 
 import Icon from 'react-native-vector-icons/Ionicons';
 
 import MapList from './MapList';
-
-import { getPlaces } from './url';
-
-import * as Location from 'expo-location';
 
 const colorPrimary = '#00BFFF';
 
@@ -32,95 +26,35 @@ const colorPrimary = '#00BFFF';
  * @param {Object} props.navigation Helps with navigating to the filter screen.
  */
 const HealthServicesScreen = ({ navigation }) => {
-  const [searchStr, setSearchStr] = useState('');
-  const [searchResults, setSearchResults] = useState(null);
-  const [location, setLocation] = useState(null);
-
-  const route = useRoute();
-  const filter = route.params?.filter || '';
-
-  /*
-   * A hook to get the user's location.
-   */
-  useEffect(() => {
-    (async () => {
-      let { status } = await Location.requestForegroundPermissionsAsync();
-      if (status !== 'granted') {
-        setErrorMsg('Permission to access location was denied');
-        return;
-      }
-
-      let location = await Location.getCurrentPositionAsync({});
-      setLocation(location);
-    })();
-  }, []);
-
-  /**
-   * Function to call the API and set its search results to the appropriate state.
-   * @param {String} phrase A phrase to search for.
-   */
-  const addSearchResult = async (phrase) => {
-    let results = [];
-
-    try {
-      if (!phrase) results = 'empty';
-      else if (location) {
-        results = await getPlaces(
-          phrase,
-          location.coords.longitude,
-          location.coords.latitude,
-          filter.distance,
-          filter.finalFacility,
-          filter.address,
-          filter.region,
-          filter.sortType
-        );
-      } else results = await getPlaces(phrase);
-    } catch {
-      results = 'error';
-    }
-
-    setSearchResults(results);
-  };
-
-  /**
-   * Function to navigate to the filter.
-   */
-  const navToFilter = () => {
-    navigation.navigate('Filter', { filter: filter });
-  };
-
   return (
     <View>
-      <View>
-        <TouchableOpacity style={styles.filterBtn} onPress={navToFilter}>
-          <Text style={styles.filterBtnText}>FILTER</Text>
-        </TouchableOpacity>
-        {/*Object.keys(filter).map((property, index) => (
-          <Text key={index}>
-            {property}:{' '}
-            {typeof filter[property] === 'object'
-              ? JSON.stringify(filter[property])
-              : filter[property]}
-          </Text>
-        ))*/}
-      </View>
-      <View style={styles.container}>
-        <Text style={styles.text}>Search by location</Text>
+      <Text>Medical Care</Text>
+      <Text>Park Tree - (909)-630-7196 Hours: 8 am-5 pm </Text>
 
-        <View style={styles.search}>
-          <TextInput
-            style={styles.input}
-            onChangeText={(text) => setSearchStr(text)}
-            defaultValue={searchStr}
-          />
-          <TouchableHighlight style={styles.searchPic} onPress={() => addSearchResult(searchStr)}>
-            <Icon name="ios-search" size={14} />
-          </TouchableHighlight>
-        </View>
+      <Text>Dental Care</Text>
+      <Text>Sierra Dental - (909) 592-8338 Hours: 9 am-5 pm</Text>
+      <Text>Children's Choice Pediatric Dental Care- (626) 914-7645 Hours: 9 am-5 pm </Text>
 
-        <MapList searchResults={searchResults} />
-      </View>
+      <Text>Womens Health Care</Text>
+      <Text>Woodglen Medical Group- (626) 963-4124 Hours: 8 am-5 pm</Text>
+
+      <Text>Mental Health/Substance Use Disorder</Text>
+      <Text>Thaddeus Resource Center - (909) 599-2111 Hours: 9 am-8 pm</Text>
+      <Text>Tri City Mental Health Center- (909) 623-6131 Hours: 8 am-5 pm </Text>
+      <Text>Pacific Clinics- (909) 625-7207 Hours: 9 am- 5 pm </Text>
+      <Text>Ettie Lee Youth & Family Services- (909) 620-2521 Hours: 8 am-5 pm </Text>
+      <Text>Stigma Free - (626) 335-6425</Text>
+
+      <Text>Mental Helath Facilities</Text>
+      <Text>Behavioral Health Services - (909) 865-2336 Hours: 8 am-5 pm </Text>
+      <Text>Inland Valley Care and Rehab Center - (909) 623-7100 Hours: 8 am- 8 pm </Text>
+      <Text>
+        Prototypes - Outpatient Behavioral Health Treatment and Community Services Center- (213)
+        542-3838
+      </Text>
+
+      <Text>Screenings/Tests</Text>
+      <Text>Park Avenue Optometry- (909) 622-3531 Hours: 9 am- 5 pm </Text>
     </View>
   );
 };

@@ -18,32 +18,27 @@ import { NavigationContainer } from '@react-navigation/native';
 import ResourcesScreen from '../screens/MainScreens/ResourcesScreen/ResourcesScreen.js';
 import MainStack from './MainStack.js';
 
-
-import HealthServicesFilter from '../screens/ServicesScreens/HealthServicesScreen/HealthServicesFilter.js';
-
 const Stack = createNativeStackNavigator();
 
 export default function ResourcesStack() {
-    return (
-        <Stack.Navigator id="ResourcesStack" initialRouteName="Resources">
-            <Stack.Screen name="Resources" component={ResourcesScreen} />
-            <Stack.Screen name="Housing Services" component={AppointmentsScreen}></Stack.Screen>
-            <Stack.Screen name="Appointment Services" component={HousingServicesScreen}></Stack.Screen>
-            <Stack.Screen name="Education Services" component={EducationServicesScreen}></Stack.Screen>
-            <Stack.Screen name="Forms" component={FormsServicesScreen}></Stack.Screen>
-            <Stack.Screen name="Parenting Services" component={ParentingServicesScreen}></Stack.Screen>
-            <Stack.Screen name="Church Services" component={ChurchServicesScreen}></Stack.Screen>
-            <Stack.Screen name="Employment Services" component={EmploymeentServicesScreen}></Stack.Screen>
-            <Stack.Screen name="Government Services" component={GovernmentServicesScreen}></Stack.Screen>
-            <Stack.Screen name="Legal Services" component={LegalServicesScreen}></Stack.Screen>
-            <Stack.Screen name="Utilities Services" component={UtilitiesServicesScreen}></Stack.Screen>
-            <Stack.Screen name="Donation Center" component={DonationScreen}></Stack.Screen>
-            <Stack.Screen name="Food Services" component={FoodServicesScreen}></Stack.Screen>
-            <Stack.Screen name="Health Services" component={HealthServicesScreen}></Stack.Screen>
-            <Stack.Screen name="LGBTQ+ Services" component={LGBTQServicesScreen}></Stack.Screen>
-            <Stack.Screen name="Home" component={MainStack}></Stack.Screen>
-
-            <Stack.Screen name="Filter" component={HealthServicesFilter}></Stack.Screen>
-        </Stack.Navigator>
-    );
+  return (
+    <Stack.Navigator id="ResourcesStack" initialRouteName="Resources">
+      <Stack.Screen name="Resources" component={ResourcesScreen} />
+      <Stack.Screen name="Housing Services" component={AppointmentsScreen}></Stack.Screen>
+      <Stack.Screen name="Appointment Services" component={HousingServicesScreen}></Stack.Screen>
+      <Stack.Screen name="Education Services" component={EducationServicesScreen}></Stack.Screen>
+      <Stack.Screen name="Forms" component={FormsServicesScreen}></Stack.Screen>
+      <Stack.Screen name="Parenting Services" component={ParentingServicesScreen}></Stack.Screen>
+      <Stack.Screen name="Church Services" component={ChurchServicesScreen}></Stack.Screen>
+      <Stack.Screen name="Employment Services" component={EmploymeentServicesScreen}></Stack.Screen>
+      <Stack.Screen name="Government Services" component={GovernmentServicesScreen}></Stack.Screen>
+      <Stack.Screen name="Legal Services" component={LegalServicesScreen}></Stack.Screen>
+      <Stack.Screen name="Utilities Services" component={UtilitiesServicesScreen}></Stack.Screen>
+      <Stack.Screen name="Donation Center" component={DonationScreen}></Stack.Screen>
+      <Stack.Screen name="Food Services" component={FoodServicesScreen}></Stack.Screen>
+      <Stack.Screen name="Health Services" component={HealthServicesScreen}></Stack.Screen>
+      <Stack.Screen name="LGBTQ+ Services" component={LGBTQServicesScreen}></Stack.Screen>
+      <Stack.Screen name="Home" component={MainStack}></Stack.Screen>
+    </Stack.Navigator>
+  );
 }
