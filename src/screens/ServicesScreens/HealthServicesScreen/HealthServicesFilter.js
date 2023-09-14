@@ -94,6 +94,11 @@ const HealthServicesFilter = ({ navigation }) => {
   const [address, setAddress] = useState(filter?.address);
   const [region, setRegion] = useState(filter?.region);
 
+  /**
+   * Function to set the insurance filter.
+   *
+   * @param {String} value The selected insurance value.
+   */
   const insuranceFilterSelect = (value) => {
     setInsurance(
       insurance.map((insure) => {
@@ -108,6 +113,11 @@ const HealthServicesFilter = ({ navigation }) => {
     );
   }, [insurance]);
 
+  /**
+   * Function to set the facility filter.
+   *
+   * @param {String} value The selected facility value.
+   */
   const facilityFilterSelect = (value) => {
     setFacility(
       facility.map((fac) => {
