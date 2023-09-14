@@ -11,6 +11,7 @@ import React, { useState, useEffect } from 'react';
 import ButtonField from '../../../components/ButtonField';
 import MultiSelectionField from '../../../components/MultiSelectionField';
 import RadioButtonField from '../../../components/RadioButtonField';
+import Dropdown from '../../../components/Dropdown';
 import { v4 as uuidv4 } from 'uuid';
 import { TextInput } from 'react-native-gesture-handler';
 import { useRoute } from '@react-navigation/native';
@@ -82,6 +83,17 @@ const HealthServicesFilter = ({ navigation }) => {
     { id: uuidv4(), label: '15', value: '15' },
     { id: uuidv4(), label: '20', value: '20' },
   ];
+
+  const regionData = [
+    { label: 'North America', value: 'north america' },
+    { label: 'South America', value: 'south america' },
+    { label: 'Europe', value: 'europe' },
+    { label: 'Africa', value: 'africa' },
+    { label: 'Middle East', value: 'middle east' },
+    { label: 'Asia', value: 'asia' },
+    { label: 'Oceania', value: 'oceania' },
+  ]
+
 
   const [sortType, setSortType] = useState(filter?.sortType);
   const [distance, setDistance] = useState(filter?.distance);
@@ -220,13 +232,12 @@ const HealthServicesFilter = ({ navigation }) => {
           <Text style={styles.centeredLabel}>OR</Text>
         </View>
 
-        {/* Region Input Box */}
-        <TextInput
-          value={region}
-          onChangeText={setRegion}
-          placeholder="REGION"
-          placeholderTextColor={'rgba(0, 191, 255, 0.5)'}
-          style={styles.textInput}
+        {/* Region Dropdown */}
+        <Dropdown
+          label={region ? region.label : "Region"}
+          data={regionData}
+          onSelect={setRegion}
+          styles={regionStyles}
         />
 
         <Text style={styles.label}>WHAT</Text>
@@ -526,6 +537,65 @@ const insuranceStyles = StyleSheet.create({
     fontSize: baseSize,
     textAlign: 'center',
   },
+});
+
+const regionStyles = StyleSheet.create({
+  btn: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    width: '50%',
+    borderWidth: 2,
+    borderColor: '#00BFFF',
+    marginVertical: 0,
+    marginHorizontal: baseSize * 1.4,
+    paddingHorizontal: baseSize * 0.7,
+    paddingVertical: baseSize * 0.65,
+    height: baseSize * 3,
+  },
+
+  btnText: {
+    flex: 1,
+    textAlign: 'left',
+    color: '#00BFFF',
+    fontWeight: 'bold',
+    fontSize: baseSize,
+  },
+
+  icon: {
+    marginRight: 10,
+    fontSize: baseSize * 1.3,
+    color: '#00BFFF',
+  },
+
+  dropdown: {
+    position: 'absolute',
+    backgroundColor: '#fff',
+    // width: '100%',
+    // marginHorizontal: baseSize * 1.4,
+    shadowColor: 'gray',
+    shadowRadius: 4,
+    shadowOffset: { height: 4, width: 0 },
+    shadowOpacity: 0.5,
+    maxHeight: baseSize * 20,
+  },
+
+  overlay: {
+    width: '100%',
+    height: '100%',
+  },
+
+  item: {
+    paddingHorizontal: 10,
+    paddingVertical: 10,
+    borderBottomWidth: 1.5,
+    borderColor: '#00BFFF',
+  },
+
+  itemText: {
+    fontSize: baseSize,
+    color: '#00BFFF',
+    fontWeight: 'bold',
+  }
 });
 
 export default HealthServicesFilter;
