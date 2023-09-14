@@ -23,7 +23,7 @@ const codes = {
  * @param {Number} distanceMiles the user's preference for the places' distance
  * @param {String} code the specific type of establishment to search for
  * @param {String} address the address to search for
- * @param {String} region the region to search for
+ * @param {Object} region the region to search for in the format {label: String, value: String}
  * @returns a string URL that will make a GET request to the API.
  */
 const buildPlaceURL = (
@@ -39,7 +39,7 @@ const buildPlaceURL = (
 
   if (address) term += ` ${address}`;
 
-  if (region) term += ` ${region}`;
+  if (region) term += ` ${region.value}`;
 
   const encodePhrase = encodeURI(term);
 
@@ -79,7 +79,7 @@ const buildPlaceURL = (
  * @param {Number} distanceMiles the user's preference for the places' distance
  * @param {String} code the specific type of establishment to search for
  * @param {String} address the address to search for
- * @param {String} region the region to search for
+ * @param {Object} region the region to search for in the format {label: String, value: String}
  * @param {String} sortBy the type of sorting done to the result
  * @returns a JSON object that contains the search results.
  */

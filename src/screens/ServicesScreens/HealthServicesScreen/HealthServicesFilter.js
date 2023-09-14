@@ -92,8 +92,7 @@ const HealthServicesFilter = ({ navigation }) => {
     { label: 'Middle East', value: 'middle east' },
     { label: 'Asia', value: 'asia' },
     { label: 'Oceania', value: 'oceania' },
-  ]
-
+  ];
 
   const [sortType, setSortType] = useState(filter?.sortType);
   const [distance, setDistance] = useState(filter?.distance);
@@ -234,7 +233,7 @@ const HealthServicesFilter = ({ navigation }) => {
 
         {/* Region Dropdown */}
         <Dropdown
-          label={region ? region.label : "Region"}
+          label={region ? region.label : 'Region'}
           data={regionData}
           onSelect={setRegion}
           styles={regionStyles}
@@ -595,7 +594,7 @@ const regionStyles = StyleSheet.create({
     fontSize: baseSize,
     color: '#00BFFF',
     fontWeight: 'bold',
-  }
+  },
 });
 
 export default HealthServicesFilter;
