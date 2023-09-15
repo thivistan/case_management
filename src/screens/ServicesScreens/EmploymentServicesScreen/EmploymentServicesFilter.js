@@ -1,11 +1,11 @@
 import { StyleSheet, View, Text, TouchableOpacity, ScrollView } from 'react-native'
-import React, { useReducer, useState } from 'react'
+import React, { useReducer } from 'react'
 import { useRoute } from '@react-navigation/native';
 import RadioButtonField from '../../../components/RadioButtonField';
 import { v4 as uuidv4 } from 'uuid';
+import { SelectList } from 'react-native-dropdown-select-list';
 
-
-
+// constants
 const colorPrimary = "#00BFFF"
 
 export default function EmploymentServicesFilter({ navigation }) {
@@ -25,8 +25,28 @@ export default function EmploymentServicesFilter({ navigation }) {
       fullTime: filter?.fullTime || false,
       relocate: filter?.relocate || false,
       radius: filter?.radius || false,
+      salary: filter?.salary || 0,
     }
   );
+
+  // dropdown items
+  const salaries = [
+    { key: '1', value: '$0-$24,999' },
+    { key: '2', value: '$25,000-$49,999' },
+    { key: '3', value: '$50,000-$74,999' },
+    { key: '4', value: '$75,000-$99,999' },
+    { key: '5', value: '$100,000-$124,999' },
+    { key: '6', value: '$125,000-$149,999' },
+    { key: '7', value: '$150,000-$174,999' },
+    { key: '8', value: '$175,000-$199,999' },
+    { key: '9', value: '$200,000 or more' },
+  ];
+
+  const applyFilter = () => {
+    navigation.navigate('Employment Services', {
+      filter: state,
+    });
+  };
 
 
   return (
@@ -74,9 +94,16 @@ export default function EmploymentServicesFilter({ navigation }) {
         </View>
 
         <Text>Salary:</Text>
+        <View style={{ paddingHorizontal: 20 }}>
+          <SelectList
+            data={salaries}
+            setSelected={(value) => dispatch({ salary: value })}
+            placeholder="Select Salary"
+          />
+        </View>
 
 
-        <TouchableOpacity style={styles(state).filterButton} onPress={() => console.log(state)}>
+        <TouchableOpacity style={styles(state).filterButton} onPress={applyFilter}>
           <Text style={{ color: 'black' }}>Submit Filter</Text>
         </TouchableOpacity>
 
