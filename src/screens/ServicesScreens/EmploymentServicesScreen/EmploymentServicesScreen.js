@@ -32,6 +32,8 @@ export default function EmploymentServicesScreen({ navigation }) {
     let URL = `https://data.usajobs.gov/api/Search?keyword=${searchStr}`;
     // apply filters
     URL = applyFilters(searchLocation, URL, filter);
+    // API documentation: https://developer.usajobs.gov/API-Reference/GET-api-Search
+    // alternative APi: https://www.glassdoor.com/developer/jobsApiActions.htm
 
     fetch(URL, {
       headers: {
