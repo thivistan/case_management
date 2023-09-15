@@ -22,3 +22,13 @@ export function applyFilters(searchLocation, URL, filter) {
 
   return URL
 }
+
+export const constants = {
+  searchImageDimensions: 25,
+  uri: "https://www.transparentpng.com/download/search-button/RwuGa6-button-search-png.png",
+  colorPrimary: "#00BFFF",
+  colorSecondary: "rgba(0, 191, 255, 0.5)",
+  numberWithCommas: (x) => {
+    return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+  }
+}

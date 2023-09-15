@@ -1,23 +1,15 @@
 import { StyleSheet, Text, View, ScrollView, TouchableOpacity, TextInput, Pressable, Image, Linking } from 'react-native'
 import React, { useEffect, useState } from 'react'
 import { useRoute } from '@react-navigation/native'
-import { applyFilters } from './utils'
-
-// constants
-const searchImageDimensions = 25
-const uri = "https://www.transparentpng.com/download/search-button/RwuGa6-button-search-png.png"
-const colorPrimary = "#00BFFF"
-const colorSecondary = "rgba(0, 191, 255, 0.5)"
-function numberWithCommas(x) {
-  return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
-}
+// utils and constants
+import { applyFilters, constants } from './utils'
+const { searchImageDimensions, uri, colorPrimary, colorSecondary, numberWithCommas } = constants;
 
 export default function EmploymentServicesScreen({ navigation }) {
   // state variables
   const [searchStr, setSearchStr] = useState('')
   const [searchLocation, setSearchLocation] = useState('')
   const [data, setData] = useState([])
-
   const [error, setError] = useState("Search Any Jobs!")
 
   // for filter
@@ -116,7 +108,7 @@ export default function EmploymentServicesScreen({ navigation }) {
           <View style={{ width: '100%', margin: 10 }}>
             {data.length !== 0 ? data.map((item) => (
               <View key={item.id} style={{ width: '90%', marginBottom: 40 }}>
-                <Text style={{ color: colorPrimary, fontWeight: 'bold', fontSize: 23 }} onPress={() => Linking.openURL(item.link)}>{item.title}</Text>
+                <Text style={styles.jobLink} onPress={() => Linking.openURL(item.link)}>{item.title}</Text>
                 <Text>{item.organizationName}</Text>
                 <Text>Location: {item.location}</Text>
                 <Text>Salary: ${numberWithCommas(item.salaryMin)}0-${numberWithCommas(item.salaryMax)}0 {item.perYearOrHourly == "Per Year" ? "Per Year" : "Hourly"}</Text>
@@ -158,40 +150,9 @@ const styles = StyleSheet.create({
     backgroundColor: colorSecondary,
     paddingVertical: 5
   },
-  resultsContainer: {
-    padding: 15,
-    paddingTop: 0,
-    paddingBottom: 120,
-    overflow: 'hidden'
-  },
-  map: {
-    height: 155.6666666666666,
-    width: "100%",
-    // SET HEIGHT AND WIDTH OF MAP TO FILL UP REST OF SCREEN
-    // width: Dimensions.get('window').width,
-    // height: Dimensions.get('window').height
-  },
-  mapTextContainer: {
-    display: 'flex',
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-    padding: 10
-  },
-  resultButton: {
-    display: 'flex',
-    justifyContent: 'center',
-    backgroundColor: colorPrimary,
-    padding: 10,
-    borderRadius: 15
-  },
-  mapContainer: {
-    overflow: 'hidden',
-    borderRadius: 25,
-    borderWidth: 2,
-    borderColor: colorPrimary,
-    shadowColor: '#171717',
-    shadowOffset: { width: 5, height: 4 },
-    shadowOpacity: 0.2,
-    shadowRadius: 3,
-  },
+  jobLink: {
+    color: colorPrimary,
+    fontWeight: 'bold',
+    fontSize: 23
+  }
 })
