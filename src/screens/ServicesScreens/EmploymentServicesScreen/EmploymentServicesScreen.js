@@ -1,29 +1,47 @@
 import { StyleSheet, Text, View, ScrollView, TouchableOpacity, TextInput, Pressable, Image, Linking } from 'react-native'
 import React, { useEffect, useState } from 'react'
 import { useRoute } from '@react-navigation/native'
+import { applyFilters } from './utils'
 
 // constants
 const searchImageDimensions = 25
 const uri = "https://www.transparentpng.com/download/search-button/RwuGa6-button-search-png.png"
 const colorPrimary = "#00BFFF"
+const colorSecondary = "rgba(0, 191, 255, 0.5)"
 function numberWithCommas(x) {
   return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
 }
 
 export default function EmploymentServicesScreen({ navigation }) {
+  // state variables
+  const [searchStr, setSearchStr] = useState('')
+  const [searchLocation, setSearchLocation] = useState('')
+  const [data, setData] = useState([])
+
+  const [error, setError] = useState("Search Any Jobs!")
+
   // for filter
   const route = useRoute();
   const filter = route.params?.filter || '';
   useEffect(() => {
-    console.log(filter);
+    if (data.length > 0) {
+      console.log(filter);
+    }
   }, [filter])
 
-  // state variables
-  const [searchStr, setSearchStr] = useState('')
-  const [data, setData] = useState([])
 
   const handleSearch = async () => {
-    fetch(`https://data.usajobs.gov/api/Search?keyword=software%20engineer&locationName=california,%20fremont`, {
+    setData([])
+    // searchStr error handling
+    if (!searchStr) return setError("Please Enter A Valid Search Item.")
+
+    // searchStr default = software%20engineer
+    // base API url concat:
+    let URL = `https://data.usajobs.gov/api/Search?keyword=${searchStr}`;
+    // apply filters
+    URL = applyFilters(searchLocation, URL, filter);
+
+    fetch(URL, {
       headers: {
         "Content-Type": "application/json",
         "User-Agent": "info@thaddeus.org",
@@ -87,17 +105,16 @@ export default function EmploymentServicesScreen({ navigation }) {
               />
             </Pressable>
           </View>
+          <View style={[styles.searchBtn, styles.searchLocation,]}>
+            <TextInput style={{ color: 'white' }}
+              onChangeText={(text) => setSearchLocation(text)}
+              defaultValue={searchLocation}
+              placeholder='San Diego, CA'
+              placeholderTextColor='#e8e8e8'
+            />
+          </View>
           <View style={{ width: '100%', margin: 10 }}>
             {data.length !== 0 ? data.map((item) => (
-              // DONEid: data.MatchedObjectDescriptor.PositionID,
-              // DONEtitle: data.MatchedObjectDescriptor.PositionTitle,
-              // DONElink: data.MatchedObjectDescriptor.PositionURI,
-              // DONElocation: data.MatchedObjectDescriptor.PositionLocationDisplay,
-              // DONEorganizationName: data.MatchedObjectDescriptor.OrganizationName,
-              // qualificationSummary: data.MatchedObjectDescriptor.QualificationSummary,
-              // DONEsalaryMin: data.MatchedObjectDescriptor.PositionRemuneration.MinimumRange,
-              // DONEsalaryMax: data.MatchedObjectDescriptor.PositionRemuneration.MaximumRange,
-              // DONEperYearOrHourly: data.MatchedObjectDescriptor.PositionRemuneration.Description,
               <View key={item.id} style={{ width: '90%', marginBottom: 40 }}>
                 <Text style={{ color: colorPrimary, fontWeight: 'bold', fontSize: 23 }} onPress={() => Linking.openURL(item.link)}>{item.title}</Text>
                 <Text>{item.organizationName}</Text>
@@ -105,7 +122,9 @@ export default function EmploymentServicesScreen({ navigation }) {
                 <Text>Salary: ${numberWithCommas(item.salaryMin)}0-${numberWithCommas(item.salaryMax)}0 {item.perYearOrHourly == "Per Year" ? "Per Year" : "Hourly"}</Text>
               </View>
             )) : (
-              <Text>Search Any Jobs!</Text>
+              <View style={{ display: 'flex', alignItems: 'center' }}>
+                <Text>{error}</Text>
+              </View>
             )}
           </View>
         </View>
@@ -134,6 +153,10 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'space-between'
+  },
+  searchLocation: {
+    backgroundColor: colorSecondary,
+    paddingVertical: 5
   },
   resultsContainer: {
     padding: 15,
