@@ -49,8 +49,8 @@ const Map = ({ location }) => {
         <MapView
           style={styles.map}
           region={{
-            latitude: location.position.lat,
-            longitude: location.position.lon,
+            latitude: location.lat,
+            longitude: location.lon,
             latitudeDelta: 0.0092,
             longitudeDelta: 0.00921,
           }}
@@ -58,10 +58,10 @@ const Map = ({ location }) => {
           {/* marker on map */}
           <Marker
             coordinate={{
-              latitude: location.position.lat,
-              longitude: location.position.lon,
+              latitude: location.lat,
+              longitude: location.lon,
             }}
-            title={location.poi.name}
+            title={location.name}
           />
         </MapView>
       </View>
@@ -69,13 +69,15 @@ const Map = ({ location }) => {
       {/* map text container */}
       <View style={styles.mapTextContainer}>
         <View style={{ width: '80%' }}>
-          <Text style={styles.locationName}>{location.poi.name}</Text>
-          <Text>{location.address.freeformAddress}</Text>
+          <Text style={styles.locationName}>{location.name}</Text>
+          <Text>{location.address}</Text>
+          <Text><Icon name="call"/> {location.phone}</Text>
+          <Text><Icon name="time"/> {location.hours}</Text>
         </View>
         <View style={styles.openMapButton}>
           <TouchableOpacity
             style={styles.resultButton}
-            onPress={() => openMap(location.position.lat, location.position.lon, location.poi.name)}
+            onPress={() => openMap(location.lat, location.lon, location.name)}
           >
             <Icon name="navigate" size={14} />
           </TouchableOpacity>
@@ -88,20 +90,23 @@ const Map = ({ location }) => {
 /**
  * Component to display a scrollable list of all places found in the search.
  * @param {Object} props Component props
- * @param {Object} props.searchResults Contains the places' data in JSON
+ * @param {Object} props.locations Contains location objects
  */
-const MapList = () => {
+const MapList = ({ locations }) => {
+  if (!locations) {
+    return <Text style={styles.message}>Please choose a category.</Text>;
+  }
   return (
     <View>
       <View style={styles.searchHeaderContainer}>
-        <Text style={styles.headText}>Results</Text>
+        {/* <Text style={styles.headText}>Results</Text> */}
       </View>
       <View>
         <ScrollView style={styles.scrollViewContainer}>
           {/* scrollable list section */}
           <View style={styles.resultsContainer}>
-            {searchResults.length !== 0 &&
-              searchResults.map((location) => <Map key={location.id} location={location} />)}
+            {locations.length !== 0 &&
+              locations.map((location) => <Map key={location.id} location={location} />)}
           </View>
         </ScrollView>
       </View>
@@ -170,7 +175,7 @@ const styles = StyleSheet.create({
     shadowRadius: 2.5,
   },
   scrollViewContainer: {
-    height: '83%',
+    height: '73%',
   },
   searchHeaderContainer: {
     marginBottom: 10,
