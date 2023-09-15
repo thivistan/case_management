@@ -1,22 +1,56 @@
-import { StyleSheet, Text, View, ScrollView, TouchableOpacity, TextInput, Pressable, Image } from 'react-native'
-import React, { useState } from 'react'
+import { StyleSheet, Text, View, ScrollView, TouchableOpacity, TextInput, Pressable, Image, Linking } from 'react-native'
+import React, { useEffect, useState } from 'react'
 import { useRoute } from '@react-navigation/native'
 
 // constants
 const searchImageDimensions = 25
 const uri = "https://www.transparentpng.com/download/search-button/RwuGa6-button-search-png.png"
 const colorPrimary = "#00BFFF"
+function numberWithCommas(x) {
+  return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+}
 
 export default function EmploymentServicesScreen({ navigation }) {
   // for filter
   const route = useRoute();
   const filter = route.params?.filter || '';
+  useEffect(() => {
+    console.log(filter);
+  }, [filter])
 
   // state variables
   const [searchStr, setSearchStr] = useState('')
+  const [data, setData] = useState([])
 
   const handleSearch = async () => {
-    console.log("test")
+    fetch(`https://data.usajobs.gov/api/Search?keyword=software%20engineer&locationName=california,%20fremont`, {
+      headers: {
+        "Content-Type": "application/json",
+        "User-Agent": "info@thaddeus.org",
+        "Authorization-Key": "NTD9y/WKS7/8glH6vrEsMqvgcQC8SwGrJz9rIjRFLuM=",
+        "Host": "data.usajobs.gov"
+      }
+    })
+      .then(res => res.json())
+      .then(data => {
+        data = data?.SearchResult?.SearchResultItems;
+
+        let filteredData = data.map(data => {
+          // console.log(data.MatchedObjectDescriptor.PositionRemuneration[0].Description)
+          return ({
+            id: data.MatchedObjectDescriptor.PositionID,
+            title: data.MatchedObjectDescriptor.PositionTitle,
+            link: data.MatchedObjectDescriptor.PositionURI,
+            location: data.MatchedObjectDescriptor.PositionLocationDisplay,
+            organizationName: data.MatchedObjectDescriptor.OrganizationName,
+            qualificationSummary: data.MatchedObjectDescriptor.QualificationSummary,
+            salaryMin: data.MatchedObjectDescriptor.PositionRemuneration[0].MinimumRange,
+            salaryMax: data.MatchedObjectDescriptor.PositionRemuneration[0].MaximumRange,
+            perYearOrHourly: data.MatchedObjectDescriptor.PositionRemuneration[0].Description,
+          })
+        })
+        setData(filteredData)
+      })
   }
 
   return (
@@ -52,7 +86,27 @@ export default function EmploymentServicesScreen({ navigation }) {
                 source={{ uri }}
               />
             </Pressable>
-
+          </View>
+          <View style={{ width: '100%', margin: 10 }}>
+            {data.length !== 0 ? data.map((item) => (
+              // DONEid: data.MatchedObjectDescriptor.PositionID,
+              // DONEtitle: data.MatchedObjectDescriptor.PositionTitle,
+              // DONElink: data.MatchedObjectDescriptor.PositionURI,
+              // DONElocation: data.MatchedObjectDescriptor.PositionLocationDisplay,
+              // DONEorganizationName: data.MatchedObjectDescriptor.OrganizationName,
+              // qualificationSummary: data.MatchedObjectDescriptor.QualificationSummary,
+              // DONEsalaryMin: data.MatchedObjectDescriptor.PositionRemuneration.MinimumRange,
+              // DONEsalaryMax: data.MatchedObjectDescriptor.PositionRemuneration.MaximumRange,
+              // DONEperYearOrHourly: data.MatchedObjectDescriptor.PositionRemuneration.Description,
+              <View key={item.id} style={{ width: '90%', marginBottom: 40 }}>
+                <Text style={{ color: colorPrimary, fontWeight: 'bold', fontSize: 23 }} onPress={() => Linking.openURL(item.link)}>{item.title}</Text>
+                <Text>{item.organizationName}</Text>
+                <Text>Location: {item.location}</Text>
+                <Text>Salary: ${numberWithCommas(item.salaryMin)}0-${numberWithCommas(item.salaryMax)}0 {item.perYearOrHourly == "Per Year" ? "Per Year" : "Hourly"}</Text>
+              </View>
+            )) : (
+              <Text>Search Any Jobs!</Text>
+            )}
           </View>
         </View>
       </ScrollView>
