@@ -19,6 +19,7 @@ import ResourcesScreen from '../screens/MainScreens/ResourcesScreen/ResourcesScr
 import MainStack from './MainStack.js';
 
 import HealthServicesFilter from '../screens/ServicesScreens/HealthServicesScreen/HealthServicesFilter.js';
+import EmploymentServicesFilter from '../screens/ServicesScreens/EmploymentServicesScreen/EmploymentServicesFilter.js';
 
 const Stack = createNativeStackNavigator();
 
@@ -43,6 +44,7 @@ export default function ResourcesStack() {
             <Stack.Screen name="Home" component={MainStack}></Stack.Screen>
 
             <Stack.Screen name="Filter" component={HealthServicesFilter}></Stack.Screen>
+            <Stack.Screen name="Employment Services Filter" component={EmploymentServicesFilter}></Stack.Screen>
         </Stack.Navigator>
     );
 }
