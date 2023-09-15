@@ -88,9 +88,9 @@ const Map = ({ location }) => {
 };
 
 /**
- * Component to display a scrollable list of all places found in the search.
+ * Component to display a scrollable map list of all places given.
  * @param {Object} props Component props
- * @param {Object} props.locations Contains location objects
+ * @param {Object} props.locations Contains location objects.
  */
 const MapList = ({ locations }) => {
   if (!locations) {

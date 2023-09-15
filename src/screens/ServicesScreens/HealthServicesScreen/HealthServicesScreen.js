@@ -1,5 +1,5 @@
 // TODO:
-// Footer
+// Maplist should take up more space
 
 import {
   StyleSheet,
@@ -16,11 +16,10 @@ import Dropdown from '../../../components/Dropdown';
 const colorPrimary = '#00BFFF';
 
 /**
- * Component to display the health service screen, including the search bar and map.
+ * Health Services Screen component. Displays resources in each category.
  * @param {Object} props Component props
- * @param {Object} props.navigation Helps with navigating to the filter screen.
  */
-export default function HealthServicesScreen({ navigation }) {
+export default function HealthServicesScreen() {
 
   const [category, setCategory] = useState(null);
 
@@ -167,6 +166,10 @@ export default function HealthServicesScreen({ navigation }) {
     },
   ];
 
+  /**
+   * Method to redirect to browser with given url.
+   * @param {String} url An https url.
+   */
   const openLink = async (url) => {
     try {
       const supported = await Linking.canOpenURL(url);
