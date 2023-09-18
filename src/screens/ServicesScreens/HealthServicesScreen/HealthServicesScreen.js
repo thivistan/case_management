@@ -176,7 +176,7 @@ export default function HealthServicesScreen() {
       <MapList locations={category.locations} />
 
       <View style={styles.footer}>
-        <TouchableOpacity onPress={() => openLink(category.url, 'browser')} style={styles.linkBtn}>
+        <TouchableOpacity onPress={() => openApp(category.url, 'browser')} style={styles.linkBtn}>
           <Text style={styles.linkText}>
             {`Find More ${category.label} Resources `}
             <Icon name="open" size={13} />

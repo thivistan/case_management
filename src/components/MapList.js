@@ -18,16 +18,9 @@ const openApp = async (content, type, lat, lon) => {
   if (type === 'map') {
     const scheme = Platform.select({ ios: 'maps://0,0?q=', android: 'geo:0,0?q=' });
     const latLng = `${lat},${lon}`;
-    const label = content;
     url = Platform.select({
-      ios: `${scheme}${label}@${latLng}`,
-      android: `${scheme}${latLng}(${label})`,
-    });
-  } else if (type == 'phone') {
-    const scheme = Platform.select({ ios: 'tel:', android: 'telprompt:' });
-    url = Platform.select({
-      ios: `${scheme}${content}`,
-      android: `${scheme}${content}`,
+      ios: `${scheme}${content}@${latLng}`,
+      android: `${scheme}${latLng}(${content})`,
     });
   } else if (type == 'email') {
     const scheme = Platform.select({ ios: 'message:', android: 'mailto:' });
@@ -35,18 +28,15 @@ const openApp = async (content, type, lat, lon) => {
       ios: `${scheme}${content}`,
       android: `${scheme}${content}`,
     });
+  } else if (type == 'phone') {
+    url = `tel:${content}`
   }
-
+  
   try {
-    const supported = await Linking.canOpenURL(url);
-
-    if (supported) {
-      await Linking.openURL(url);
-    } else {
-      console.log(`Opening the ${type} is not supported on this device.`);
-    }
+    await Linking.openURL(url);
+    console.log(`Opened URL: ${url}`);
   } catch (error) {
-    console.error(`An error occurred while opening the ${type} app:`, error);
+    console.error(`Error opening URL: ${url}`, error);
   }
 };
 
@@ -89,7 +79,7 @@ const Map = ({ location }) => {
           <Text style={styles.locationName}>{location.name}</Text>
           {location.address ? <Text>{location.address}</Text> : null}
           <Text onPress={() => openApp(location.phone, 'phone')}>
-            <Icon name="call" /> {location.phone}
+            <Icon name="call" /> <Text style={styles.underline}>{location.phone}</Text>
           </Text>
           {location.hours ? (
             <Text>
@@ -98,12 +88,12 @@ const Map = ({ location }) => {
           ) : null}
           {location.email ? (
             <Text onPress={() => openApp(location.email, 'email')}>
-              <Icon name="mail" /> {location.email}
+              <Icon name="mail" /> <Text style={styles.underline}>{location.email}</Text>
             </Text>
           ) : null}
           {location.website ? (
             <Text onPress={() => openApp(location.website, 'browser')}>
-              <Icon name="globe" /> {location.website}
+              <Icon name="globe" /> <Text style={styles.underline}>{location.website}</Text>
             </Text>
           ) : null}
         </View>
@@ -194,6 +184,12 @@ const styles = StyleSheet.create({
   },
   scrollViewContainer: {
     marginBottom: 20,
+  },
+
+  underline: {
+    color: colorPrimary,
+    textDecorationLine: 'underline',
+    fontWeight: 'bold',
   },
 });
 
