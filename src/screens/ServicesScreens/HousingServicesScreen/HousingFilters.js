@@ -4,44 +4,51 @@ import React, { useState } from 'react';
 import Icon from 'react-native-vector-icons/FontAwesome';
 
 const HousingFilters = ({ visible }) => {
+  const [sortBy,setSortBy] = useState(null);
   const [selectedOption, setSelectedOption] = useState(null);
   const [dropdownVisible, setDropdownVisible] = useState(false);
-  const [homelessChecked, setHomelessChecked] = useState(false);
-  const [seniorsChecked, setSeniorsChecked] = useState(false);
-  const [familyChildrenChecked, setFamilyChildrenChecked] = useState(false);
+  const [checkboxes, setCheckboxes] = useState({
+    homeless: false,
+    seniors: false,
+    familyChildren: false,
+  });
   const [bubbleCheck, SetBubbleCheck] = useState(25);
   const options = ['Option 1', 'Option 2', 'Option 3'];
-  const [Gender, SetGender] = useState(false);
+  const [Gender, SetGender] = useState("FEMALE");
 
   const toggleDropdown = () => {
     setDropdownVisible(!dropdownVisible);
   };
-  function CustomCheckBox() {
-    const [isChecked, setIsChecked] = useState(false);
-
-    const toggleCheckBox = () => {
-      setIsChecked(!isChecked);
-    };
-
+  const toggleCheckbox = (name) => {
+    setCheckboxes({
+      ...checkboxes,
+      [name]: !checkboxes[name],
+    });
+  };
+  function CustomCheckBox({ name, value, onValueChange }) {
+    
     return (
       <View>
         <TouchableOpacity
-          onPress={toggleCheckBox}
+          onPress={() => onValueChange(name)}
           style={{ flexDirection: 'row', alignItems: 'center' }}
         >
           <Icon
-            name={isChecked ? 'check-square-o' : 'square-o'}
+            name={value ? 'check-square-o' : 'square-o'}
             size={24}
-            color={isChecked ? 'green' : '#47d7f2'}
+            color={value ? 'green' : '#47d7f2'}
           />
         </TouchableOpacity>
       </View>
     );
+  
+  
   }
   const selectOption = (option) => {
     setSelectedOption(option);
     toggleDropdown();
   };
+ 
 
   if (!visible) {
     return null;
@@ -51,14 +58,14 @@ const HousingFilters = ({ visible }) => {
     <View style={styles.base}>
       <Text style={styles.textStyle}>SORT BY </Text>
       <View style={{ flexDirection: 'row', justifyContent: 'space-between' }}>
-        <TouchableOpacity style={styles.buttonStyle}>
-          <Text style={styles.buttonText}>RECOMENDED</Text>
+        <TouchableOpacity style={sortBy== "RECOMENDED" ?  styles.buttonStyleSelect:styles.buttonStyle}  onPress={() => setSortBy("RECOMENDED")}>
+          <Text style={sortBy== "RECOMENDED" ?  styles.buttonTextSelect:styles.buttonText}>RECOMENDED</Text>
         </TouchableOpacity>
-        <TouchableOpacity style={styles.buttonStyle}>
-          <Text style={styles.buttonText}>WHO</Text>
+        <TouchableOpacity style={sortBy== "WHO" ?  styles.buttonStyleSelect:styles.buttonStyle} onPress={() => setSortBy("WHO")}>
+          <Text style={sortBy== "WHO" ?  styles.buttonTextSelect:styles.buttonText}>WHO</Text>
         </TouchableOpacity>
-        <TouchableOpacity style={styles.buttonStyle}>
-          <Text style={styles.buttonText}>DISTANCE</Text>
+        <TouchableOpacity style={sortBy== "DISTANCE" ?  styles.buttonStyleSelect:styles.buttonStyle} onPress={() => setSortBy("DISTANCE")}>
+          <Text style={sortBy== "DISTANCE" ?  styles.buttonTextSelect:styles.buttonText}>DISTANCE</Text>
         </TouchableOpacity>
       </View>
       <Text style={styles.textStyle}>DISTANCE</Text>
@@ -144,22 +151,25 @@ const HousingFilters = ({ visible }) => {
       <View style={{ flexDirection: 'row', justifyContent: 'space-between' }}>
         <View style={styles.checkboxContainer}>
           <CustomCheckBox
-            value={homelessChecked}
-            onValueChange={() => setHomelessChecked(!homelessChecked)}
+            name="homeless"
+            value={checkboxes.homeless}
+            onValueChange={(name) => toggleCheckbox(name)}
           />
           <Text style={styles.checkboxLabel}>Homeless </Text>
         </View>
         <View style={styles.checkboxContainer}>
           <CustomCheckBox
-            value={seniorsChecked}
-            onValueChange={() => setSeniorsChecked(!seniorsChecked)}
+            name="seniors"
+            value={checkboxes.seniors}
+            onValueChange={(name) => toggleCheckbox(name)}
           />
           <Text style={styles.checkboxLabel}>Seniors </Text>
         </View>
         <View style={styles.checkboxContainer}>
           <CustomCheckBox
-            value={familyChildrenChecked}
-            onValueChange={() => setFamilyChildrenChecked(!familyChildrenChecked)}
+            name="familyChildren"
+            value={checkboxes.familyChildren}
+            onValueChange={(name) => toggleCheckbox(name)}
           />
           <Text style={styles.checkboxLabel}>Family and Children </Text>
         </View>
@@ -225,8 +235,23 @@ const styles = StyleSheet.create({
     borderColor: '#47d7f2',
     borderWidth: 2,
   },
+  buttonStyleSelect: {
+    width: 105,
+    height: 40,
+    backgroundColor: '#47d7f2',
+    borderColor: 'grey',
+    borderWidth: 2,
+  },
   buttonText: {
     color: '#47d7f2',
+    textAlign: 'left',
+    fontSize: 15,
+    textAlign: 'center',
+    paddingTop: 8,
+    fontWeight: 'bold',
+  },
+  buttonTextSelect: {
+    color: 'white',
     textAlign: 'left',
     fontSize: 15,
     textAlign: 'center',
