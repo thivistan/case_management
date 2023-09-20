@@ -6,7 +6,7 @@ import FormsServicesScreen from '../screens/ServicesScreens/FormsServicesScreen/
 import HousingServicesScreen from '../screens/ServicesScreens/HousingServicesScreen/HousingServicesScreen';
 import ParentingServicesScreen from '../screens/ServicesScreens/ParentingServicesScreen/ParentingServicesScreen';
 import ChurchServicesScreen from '../screens/ServicesScreens/ChurchServicesScreen/ChurchServicesScreen.js';
-import EmploymeentServicesScreen from '../screens/ServicesScreens/EmploymentServicesScreen/EmploymentServicesScreen';
+import EmploymentServicesScreen from '../screens/ServicesScreens/EmploymentServicesScreen/EmploymentServicesScreen';
 import GovernmentServicesScreen from '../screens/ServicesScreens/GovernmentServicesScreen/GovernmentServicesScreen';
 import LegalServicesScreen from '../screens/ServicesScreens/LegalServicesScreen/LegalServicesScreen';
 import UtilitiesServicesScreen from '../screens/ServicesScreens/UtilitiesServicesScreen/UtilitiesServicesScreen';
@@ -19,7 +19,7 @@ import ResourcesScreen from '../screens/MainScreens/ResourcesScreen/ResourcesScr
 import MainStack from './MainStack.js';
 
 import HealthServicesFilter from '../screens/ServicesScreens/HealthServicesScreen/HealthServicesFilter.js';
-import EmploymentServicesFilter from '../screens/ServicesScreens/EmploymentServicesScreen/EmploymentServicesFilter.js';
+import EducationAndTrainingScreen from "../screens/ServicesScreens/EmploymentServicesScreen/EducationAndTrainingScreen.js"
 
 const Stack = createNativeStackNavigator();
 
@@ -33,7 +33,7 @@ export default function ResourcesStack() {
             <Stack.Screen name="Forms" component={FormsServicesScreen}></Stack.Screen>
             <Stack.Screen name="Parenting Services" component={ParentingServicesScreen}></Stack.Screen>
             <Stack.Screen name="Church Services" component={ChurchServicesScreen}></Stack.Screen>
-            <Stack.Screen name="Employment Services" component={EmploymeentServicesScreen}></Stack.Screen>
+            <Stack.Screen name="Income & Employment Services" component={EmploymentServicesScreen}></Stack.Screen>
             <Stack.Screen name="Government Services" component={GovernmentServicesScreen}></Stack.Screen>
             <Stack.Screen name="Legal Services" component={LegalServicesScreen}></Stack.Screen>
             <Stack.Screen name="Utilities Services" component={UtilitiesServicesScreen}></Stack.Screen>
@@ -44,7 +44,7 @@ export default function ResourcesStack() {
             <Stack.Screen name="Home" component={MainStack}></Stack.Screen>
 
             <Stack.Screen name="Filter" component={HealthServicesFilter}></Stack.Screen>
-            <Stack.Screen name="Employment Services Filter" component={EmploymentServicesFilter}></Stack.Screen>
+            <Stack.Screen name="Education And Training Screen" component={EducationAndTrainingScreen}></Stack.Screen>
         </Stack.Navigator>
     );
 }

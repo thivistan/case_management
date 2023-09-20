@@ -1,160 +1,103 @@
-import { StyleSheet, Text, View, ScrollView, TouchableOpacity, TextInput, Pressable, Image, Linking } from 'react-native'
-import React, { useEffect, useState } from 'react'
-import { useRoute } from '@react-navigation/native'
-// utils and constants
-import { applyFilters, constants } from './utils'
-const { searchImageDimensions, uri, colorPrimary, colorSecondary, numberWithCommas } = constants;
+import { View, Text, Image, StyleSheet, ScrollView, TouchableOpacity, Linking } from 'react-native'
+import React from 'react'
 
 export default function EmploymentServicesScreen({ navigation }) {
-  // state variables
-  const [searchStr, setSearchStr] = useState('')
-  const [searchLocation, setSearchLocation] = useState('')
-  const [data, setData] = useState([])
-  const [error, setError] = useState("Search Any Jobs!")
-
-  // for filter
-  const route = useRoute();
-  const filter = route.params?.filter || '';
-  useEffect(() => {
-    if (data.length > 0) {
-      console.log(filter);
-    }
-  }, [filter])
-
-
-  const handleSearch = async () => {
-    setData([])
-    // searchStr error handling
-    if (!searchStr) return setError("Please Enter A Valid Search Item.")
-
-    // searchStr default = software%20engineer
-    // base API url concat:
-    let URL = `https://data.usajobs.gov/api/Search?keyword=${searchStr}`;
-    // apply filters
-    URL = applyFilters(searchLocation, URL, filter);
-    // API documentation: https://developer.usajobs.gov/API-Reference/GET-api-Search
-    // alternative APi: https://www.glassdoor.com/developer/jobsApiActions.htm
-
-    fetch(URL, {
-      headers: {
-        "Content-Type": "application/json",
-        "User-Agent": "info@thaddeus.org",
-        "Authorization-Key": "NTD9y/WKS7/8glH6vrEsMqvgcQC8SwGrJz9rIjRFLuM=",
-        "Host": "data.usajobs.gov"
-      }
-    })
-      .then(res => res.json())
-      .then(data => {
-        data = data?.SearchResult?.SearchResultItems;
-
-        let filteredData = data.map(data => {
-          // console.log(data.MatchedObjectDescriptor.PositionRemuneration[0].Description)
-          return ({
-            id: data.MatchedObjectDescriptor.PositionID,
-            title: data.MatchedObjectDescriptor.PositionTitle,
-            link: data.MatchedObjectDescriptor.PositionURI,
-            location: data.MatchedObjectDescriptor.PositionLocationDisplay,
-            organizationName: data.MatchedObjectDescriptor.OrganizationName,
-            qualificationSummary: data.MatchedObjectDescriptor.QualificationSummary,
-            salaryMin: data.MatchedObjectDescriptor.PositionRemuneration[0].MinimumRange,
-            salaryMax: data.MatchedObjectDescriptor.PositionRemuneration[0].MaximumRange,
-            perYearOrHourly: data.MatchedObjectDescriptor.PositionRemuneration[0].Description,
-          })
-        })
-        setData(filteredData)
-      })
-  }
+  const links = [
+    {
+      title: "Job/Employment Search",
+      image: "https://211la.org/sites/default/files/styles/subcategory_resource_600_x_351/public/2020-03/three%20job%20seekers%20standing%20on%20a%20balcony.jpg?itok=Brau2Lha",
+      link: "https://211la.org/resources/search?keyword=Income%20%26%20Employment%20%3E%20Job/Employment%20Search%20%2849%29&landing=1&keyword_hidden=Income%20%26%20Employment%20%3E%20Job/Employment%20Search%20%2849%29&website_categorization=1"
+    },
+    {
+      title: "Employment Supports",
+      image: "https://211la.org/sites/default/files/styles/subcategory_resource_600_x_351/public/2020-02/LA%20Skyline%20Sunset%2057927400_m.jpg?itok=xHz_6_gE",
+      link: "https://211la.org/resources/search?keyword=Income%20%26%20Employment%20%3E%20Employment%20Supports%20%2849%29&landing=1&keyword_hidden=Income%20%26%20Employment%20%3E%20Employment%20Supports%20%2849%29&website_categorization=1"
+    },
+    {
+      title: "Benefits & Public Assistance",
+      image: "https://211la.org/sites/default/files/styles/subcategory_resource_600_x_351/public/2020-02/Food%20benefit%20programs_0.jpg?itok=8aeVvzSJ",
+      link: "https://211la.org/resources/search?keyword=Income%20%26%20Employment%20%3E%20Benefits%20%26%20Public%20Assistance%20%2867%29&landing=1&keyword_hidden=Income%20%26%20Employment%20%3E%20Benefits%20%26%20Public%20Assistance%20%2867%29&website_categorization=1"
+    },
+    {
+      title: "Income Assistance/Discount Programs",
+      image: "https://211la.org/sites/default/files/styles/subcategory_resource_600_x_351/public/2020-03/electrical%20guage%20kilowatt.jpg?itok=FQYLET8L",
+      link: "https://211la.org/resources/search?keyword=Income%20%26%20Employment%20%3E%20Income%20Assistance/Discount%20Programs%20%2856%29&landing=1&keyword_hidden=Income%20%26%20Employment%20%3E%20Income%20Assistance/Discount%20Programs%20%2856%29&website_categorization=1"
+    },
+    {
+      title: "Financial Health",
+      image: "https://211la.org/sites/default/files/styles/subcategory_resource_600_x_351/public/2020-02/Health%20care%20insurance%20options%2081895941_s.jpg?itok=mCuuRLKF",
+      link: "https://211la.org/resources/search?keyword=Income%20%26%20Employment%20%3E%20Financial%20Health%20%2856%29&landing=1&keyword_hidden=Income%20%26%20Employment%20%3E%20Financial%20Health%20%2856%29&website_categorization=1"
+    },
+    {
+      title: "Education & Training",
+      image: "https://211la.org/sites/default/files/styles/subcategory_resource_600_x_351/public/2020-02/Education%20-%20Alternative%20education%20-%20technology%20computer%20adult%20woman%2050076647_s.jpg?itok=o6RH3kO5",
+    },
+  ]
 
   return (
-    <View>
-      <ScrollView>
-        <View>
-          {/* search section */}
-          <View style={styles.searchHeaderContainer}>
-            <Text style={styles.headText}>Search Any Employment Services</Text>
-            <TouchableOpacity style={styles.filterBtn} onPress={() => navigation.navigate('Employment Services Filter', { filter: filter })}>
-              <Text style={{ color: colorPrimary, fontWeight: '700' }}>FILTER</Text>
-            </TouchableOpacity>
-          </View>
+    <ScrollView>
 
-          <View style={styles.searchBtn}>
-            <TextInput style={{ color: 'white' }}
-              onChangeText={(text) => setSearchStr(text)}
-              defaultValue={searchStr}
-              placeholder='Cooking Positions'
-              placeholderTextColor='#e8e8e8'
-            />
-            <Pressable
-              onPress={handleSearch}
-              style={({ pressed }) => {
-                return { opacity: pressed ? 0 : 1 }
-              }}
-            >
-              <Image
-                style={{
-                  width: searchImageDimensions,
-                  height: searchImageDimensions,
-                }}
-                source={{ uri }}
-              />
-            </Pressable>
-          </View>
-          <View style={[styles.searchBtn, styles.searchLocation,]}>
-            <TextInput style={{ color: 'white' }}
-              onChangeText={(text) => setSearchLocation(text)}
-              defaultValue={searchLocation}
-              placeholder='San Diego, CA'
-              placeholderTextColor='#e8e8e8'
-            />
-          </View>
-          <View style={{ width: '100%', margin: 10 }}>
-            {data.length !== 0 ? data.map((item) => (
-              <View key={item.id} style={{ width: '90%', marginBottom: 40 }}>
-                <Text style={styles.jobLink} onPress={() => Linking.openURL(item.link)}>{item.title}</Text>
-                <Text>{item.organizationName}</Text>
-                <Text>Location: {item.location}</Text>
-                <Text>Salary: ${numberWithCommas(item.salaryMin)}0-${numberWithCommas(item.salaryMax)}0 {item.perYearOrHourly == "Per Year" ? "Per Year" : "Hourly"}</Text>
+      <View style={styles.mainContainer}>
+        {links.map(item => (
+          <TouchableOpacity onPress={() => {
+            if (item.link) {
+              return Linking.openURL(item.link)
+            } else {
+              navigation.navigate("Education And Training Screen")
+            }
+          }}>
+            <View style={styles.itemContainer}>
+              <View style={styles.imageMask}>
+                <Image
+                  style={styles.image}
+                  source={{ uri: item.image }}
+                />
               </View>
-            )) : (
-              <View style={{ display: 'flex', alignItems: 'center' }}>
-                <Text>{error}</Text>
+              <View style={styles.textContainer}>
+                <Text style={styles.text}>{item.title}</Text>
               </View>
-            )}
-          </View>
-        </View>
-      </ScrollView>
-    </View>
+            </View>
+          </TouchableOpacity>
+        ))}
+      </View>
+    </ScrollView>
   )
 }
 
 const styles = StyleSheet.create({
-  searchHeaderContainer: {
-    padding: 10,
+  mainContainer: {
     display: "flex",
-    flexDirection: "row",
-    justifyContent: "space-between"
+    justifyContent: "center",
   },
-  headText: {
-    color: colorPrimary,
-    fontWeight: '700',
+  itemContainer: {
+    display: "flex",
+    alignItems: "center",
+    paddingTop: 20
   },
-  searchBtn: {
-    backgroundColor: colorPrimary,
-    margin: 12,
-    padding: 15,
-    borderRadius: 25,
-    display: 'flex',
-    flexDirection: 'row',
-    alignItems: 'center',
-    justifyContent: 'space-between'
+  textContainer: {
+    textAlign: "center",
   },
-  searchLocation: {
-    backgroundColor: colorSecondary,
-    paddingVertical: 5
+  image: {
+    width: 325,
+    height: 190,
+    borderRadius: 10,
+    opacity: 1
   },
-  jobLink: {
-    color: colorPrimary,
-    fontWeight: 'bold',
-    fontSize: 23
+  imageMask: {
+    width: 325,
+    height: 190,
+    borderRadius: 10,
+    opacity: 0.67,
+    backgroundColor: "black",
+  },
+  textContainer: {
+    bottom: 50
+  },
+  text: {
+    fontSize: 23,
+    fontWeight: "bold",
+    color: "white",
+    textAlign: "center",
+    bottom: 15
   }
-})
+});

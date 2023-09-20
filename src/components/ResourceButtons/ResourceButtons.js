@@ -138,10 +138,10 @@ const EmploymentServicesButton = () => {
             <TouchableOpacity
                 style={styles.categoryButton}
                 onPress={() => {
-                    navigation.navigate("Employment Services")
+                    navigation.navigate("Income & Employment Services")
                 }}
             >
-                <Text>Employment Services</Text>
+                <Text>Income & Employment</Text>
             </TouchableOpacity>
         </View>
     )

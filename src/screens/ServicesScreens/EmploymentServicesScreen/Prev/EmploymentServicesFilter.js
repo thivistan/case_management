@@ -1,7 +1,7 @@
 import { StyleSheet, View, Text, TouchableOpacity, ScrollView } from 'react-native'
 import React, { useReducer } from 'react'
 import { useRoute } from '@react-navigation/native';
-import RadioButtonField from '../../../components/RadioButtonField';
+import RadioButtonField from '../../../../components/RadioButtonField';
 import { v4 as uuidv4 } from 'uuid';
 import { SelectList } from 'react-native-dropdown-select-list';
 
