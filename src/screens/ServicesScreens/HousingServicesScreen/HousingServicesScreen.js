@@ -51,9 +51,12 @@ const HousingServicesScreen = () => {
           <Text style={styles.title}>Search by location</Text>
           <RoundSearchBar placeholder="Search" onChangeText={handleSearch} />
           <Text style={styles.title}>Results</Text>
-          <HousingServicesLocations address="2621 Damien Ave., La Verne, CA  91750 " />
-          <HousingServicesLocations address="Los Angeles" />
-          <HousingServicesLocations address="Irvine" />
+          <HousingServicesLocations address="7843 Lankershim Blvd. North Hollywood , CA 91605" />
+          <HousingServicesLocations address="12900 Crossroads Pkwy. South City of Industry , CA 91746 " />
+          <HousingServicesLocations address="2040 N. Garey Ave. Pomona , CA 91767" />
+          <HousingServicesLocations address="1501 W. Ninth Street, Suite D Upland, CA 91786" />
+          <HousingServicesLocations address="1753 N. Park Ave. Pomona , CA 91768" />
+          <HousingServicesLocations address="1531 James M. Wood Blvd. Los Angeles , CA 90015" />
         </View>
       </ScrollView>
       <FloatingButton onPress={toggleFiltersVisibility}></FloatingButton>
