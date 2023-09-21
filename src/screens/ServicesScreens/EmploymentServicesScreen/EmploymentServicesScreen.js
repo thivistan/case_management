@@ -36,7 +36,6 @@ export default function EmploymentServicesScreen({ navigation }) {
 
   return (
     <ScrollView>
-
       <View style={styles.mainContainer}>
         {links.map(item => (
           <TouchableOpacity onPress={() => {
