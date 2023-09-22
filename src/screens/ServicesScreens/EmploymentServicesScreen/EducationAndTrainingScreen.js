@@ -1,6 +1,6 @@
 import { View, Text, TouchableOpacity, Linking, StyleSheet, Image } from 'react-native'
 import React from 'react'
-import ExternalLink from "../../../assets/images/externalLink.png";
+import ExternalLinkButton from '../../../components/ExternalLinkButton';
 
 // constants
 const colorPrimary = "rgb(106, 207, 238)"
@@ -48,28 +48,16 @@ export default function EducationAndTrainingScreen() {
       <View>
 
         {/* "Find more education resources" button */}
-        <TouchableOpacity onPress={() => {
-          return Linking.openURL("https://211la.org/resources/search?keyword=Income%20%26%20Employment%20%3E%20Education%20%26%20Training%20%28464%29&landing=1&keyword_hidden=Income%20%26%20Employment%20%3E%20Education%20%26%20Training%20%28464%29&website_categorization=1")
-        }} style={styles.button}>
-          <Text style={styles.buttonText}>Find More Education/Training Resources {" "}
-            <Image
-              style={styles.image}
-              source={ExternalLink}
-            />
-          </Text>
-        </TouchableOpacity>
+        <ExternalLinkButton
+          text="Find More Education/Training Resources"
+          link="https://211la.org/resources/search?keyword=Income%20%26%20Employment%20%3E%20Education%20%26%20Training%20%28464%29&landing=1&keyword_hidden=Income%20%26%20Employment%20%3E%20Education%20%26%20Training%20%28464%29&website_categorization=1"
+        />
 
         {/* "See all income/employment" button */}
-        <TouchableOpacity onPress={() => {
-          return Linking.openURL("https://211la.org/resources/search?keyword=Income%20%26%20Employment%20%3E%20Education%20%26%20Training%20%28464%29&landing=1&keyword_hidden=Income%20%26%20Employment%20%3E%20Education%20%26%20Training%20%28464%29&website_categorization=1")
-        }} style={styles.button}>
-          <Text style={styles.buttonText}>See All Income/Employment Resources {" "}
-            <Image
-              style={styles.image}
-              source={ExternalLink}
-            />
-          </Text>
-        </TouchableOpacity>
+        <ExternalLinkButton
+          text="See All Income/Employment Resources"
+          link="https://211la.org/resources/search?keyword=Income%20%26%20Employment%20%3E%20Education%20%26%20Training%20%28464%29&landing=1&keyword_hidden=Income%20%26%20Employment%20%3E%20Education%20%26%20Training%20%28464%29&website_categorization=1"
+        />
       </View>
     </View>
   )
@@ -92,7 +80,7 @@ const styles = StyleSheet.create({
     fontSize: 20,
   },
   button: {
-    backgroundColor: colorPrimary,
+    backgroundColor: "rgb(81, 168, 194)",
     borderRadius: 10,
     display: "flex",
     justifyContent: "center",

@@ -34,19 +34,22 @@ export default function EmploymentServicesScreen({ navigation }) {
     },
   ]
 
+  const handleButtonPress = (item) => {
+    if (item.link) {
+      return Linking.openURL(item.link)
+    } else {
+      navigation.navigate("Education And Training Screen")
+    }
+  }
+
   return (
     <ScrollView style={styles.outsideContainer}>
       <View style={styles.mainContainer}>
-        {links.map(item => (
+        {links.map((item, idx) => (
           <TouchableOpacity
             style={{ width: '50%' }}
-            onPress={() => {
-              if (item.link) {
-                return Linking.openURL(item.link)
-              } else {
-                navigation.navigate("Education And Training Screen")
-              }
-            }}>
+            key={idx}
+            onPress={() => handleButtonPress(item)}>
             <View style={styles.itemContainer}>
               <View style={styles.imageMask}>
                 <Image
