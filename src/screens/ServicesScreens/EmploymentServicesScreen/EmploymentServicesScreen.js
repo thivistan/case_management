@@ -35,7 +35,7 @@ export default function EmploymentServicesScreen({ navigation }) {
   ]
 
   return (
-    <ScrollView>
+    <ScrollView style={styles.outsideContainer}>
       <View style={styles.mainContainer}>
         {links.map(item => (
           <TouchableOpacity
@@ -66,6 +66,9 @@ export default function EmploymentServicesScreen({ navigation }) {
 }
 
 const styles = StyleSheet.create({
+  outsideContainer: {
+    backgroundColor: "rgba(106, 207, 238, 0.4)"
+  },
   mainContainer: {
     display: "flex",
     flexDirection: "row",

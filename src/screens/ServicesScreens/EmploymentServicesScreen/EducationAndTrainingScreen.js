@@ -8,17 +8,20 @@ const colorPrimary = "rgb(106, 207, 238)"
 export default function EducationAndTrainingScreen() {
   return (
     <View style={styles.mainContainer}>
-      <View>
-
+      <View style={{ paddingTop: 20 }}>
         {/* job training */}
         <TouchableOpacity onPress={() => {
           return Linking.openURL("https://www.google.com/")
         }}>
-          <Text style={styles.text}>Job And Workforce Training</Text>
+          <View style={styles.secondaryButton}>
+            <Text style={styles.secondaryButtonText}>Job And Workforce Training</Text>
+          </View>
         </TouchableOpacity>
 
         {/* workshops */}
-        <Text style={styles.text}>Workshops for Resumes & Interviews</Text>
+        <View style={styles.secondaryButton}>
+          <Text style={styles.secondaryButtonText}>Workshops for Resumes & Interviews</Text>
+        </View>
 
         {/* youtube page */}
         <TouchableOpacity onPress={() => {
@@ -31,11 +34,15 @@ export default function EducationAndTrainingScreen() {
             }
           });
         }}>
-          <Text style={styles.text}>Thaddeus Youtube Page</Text>
+          <View style={styles.secondaryButton}>
+            <Text style={styles.secondaryButtonText}>Thaddeus Youtube Page</Text>
+          </View>
         </TouchableOpacity>
 
         {/* Forms */}
-        <Text style={styles.text}>Forms, Handouts, PDFs</Text>
+        <View style={styles.secondaryButton}>
+          <Text style={styles.secondaryButtonText}>Forms, Handouts, PDFs</Text>
+        </View>
       </View>
 
       <View>
@@ -76,6 +83,7 @@ const styles = StyleSheet.create({
     paddingHorizontal: 30,
     justifyContent: "space-between",
     height: "100%",
+    backgroundColor: "rgba(106, 207, 238, 0.4)"
   },
   text: {
     padding: 10,
@@ -99,6 +107,23 @@ const styles = StyleSheet.create({
     display: "flex",
     textAlign: "center",
     paddingBottom: 15
+  },
+  secondaryButton: {
+    backgroundColor: "white",
+    borderRadius: 30,
+    display: "flex",
+    justifyContent: "center",
+    alignItems: "center",
+    marginBottom: 30
+  },
+  secondaryButtonText: {
+    color: colorPrimary,
+    padding: 10,
+    fontWeight: "bold",
+    fontSize: 13,
+    display: "flex",
+    textAlign: "center",
+    paddingBottom: 11
   },
   image: {
     height: 20,
