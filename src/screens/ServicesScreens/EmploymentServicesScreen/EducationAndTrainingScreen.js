@@ -1,5 +1,9 @@
-import { View, Text, TouchableOpacity, Linking, StyleSheet } from 'react-native'
+import { View, Text, TouchableOpacity, Linking, StyleSheet, Image } from 'react-native'
 import React from 'react'
+import ExternalLink from "../../../assets/images/externalLink.png";
+
+// constants
+const colorPrimary = "rgb(106, 207, 238)"
 
 export default function EducationAndTrainingScreen() {
   return (
@@ -34,12 +38,32 @@ export default function EducationAndTrainingScreen() {
         <Text style={styles.text}>Forms, Handouts, PDFs</Text>
       </View>
 
-      {/* "more" button */}
-      <TouchableOpacity onPress={() => {
-        return Linking.openURL("https://211la.org/resources/search?keyword=Income%20%26%20Employment%20%3E%20Education%20%26%20Training%20%28464%29&landing=1&keyword_hidden=Income%20%26%20Employment%20%3E%20Education%20%26%20Training%20%28464%29&website_categorization=1")
-      }}>
-        <Text style={styles.text}>More</Text>
-      </TouchableOpacity>
+      <View>
+
+        {/* "Find more education resources" button */}
+        <TouchableOpacity onPress={() => {
+          return Linking.openURL("https://211la.org/resources/search?keyword=Income%20%26%20Employment%20%3E%20Education%20%26%20Training%20%28464%29&landing=1&keyword_hidden=Income%20%26%20Employment%20%3E%20Education%20%26%20Training%20%28464%29&website_categorization=1")
+        }} style={styles.button}>
+          <Text style={styles.buttonText}>Find More Education/Training Resources {" "}
+            <Image
+              style={styles.image}
+              source={ExternalLink}
+            />
+          </Text>
+        </TouchableOpacity>
+
+        {/* "See all income/employment" button */}
+        <TouchableOpacity onPress={() => {
+          return Linking.openURL("https://211la.org/resources/search?keyword=Income%20%26%20Employment%20%3E%20Education%20%26%20Training%20%28464%29&landing=1&keyword_hidden=Income%20%26%20Employment%20%3E%20Education%20%26%20Training%20%28464%29&website_categorization=1")
+        }} style={styles.button}>
+          <Text style={styles.buttonText}>See All Income/Employment Resources {" "}
+            <Image
+              style={styles.image}
+              source={ExternalLink}
+            />
+          </Text>
+        </TouchableOpacity>
+      </View>
     </View>
   )
 }
@@ -49,17 +73,35 @@ const styles = StyleSheet.create({
   mainContainer: {
     display: "flex",
     padding: 10,
-    paddingTop: 100,
-    paddingBottom: 150,
-    alignItems: "center",
+    paddingHorizontal: 30,
     justifyContent: "space-between",
     height: "100%",
   },
   text: {
-    textAlign: "center",
     padding: 10,
     fontWeight: "bold",
-    color: "blue",
+    color: "black",
     fontSize: 20,
+  },
+  button: {
+    backgroundColor: colorPrimary,
+    borderRadius: 10,
+    display: "flex",
+    justifyContent: "center",
+    alignItems: "center",
+    marginBottom: 30
+  },
+  buttonText: {
+    color: "white",
+    padding: 10,
+    fontWeight: "bold",
+    fontSize: 13,
+    display: "flex",
+    textAlign: "center",
+    paddingBottom: 15
+  },
+  image: {
+    height: 20,
+    width: 20,
   }
 })

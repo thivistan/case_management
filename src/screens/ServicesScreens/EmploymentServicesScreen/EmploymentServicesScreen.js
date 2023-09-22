@@ -38,13 +38,15 @@ export default function EmploymentServicesScreen({ navigation }) {
     <ScrollView>
       <View style={styles.mainContainer}>
         {links.map(item => (
-          <TouchableOpacity onPress={() => {
-            if (item.link) {
-              return Linking.openURL(item.link)
-            } else {
-              navigation.navigate("Education And Training Screen")
-            }
-          }}>
+          <TouchableOpacity
+            style={{ width: '50%' }}
+            onPress={() => {
+              if (item.link) {
+                return Linking.openURL(item.link)
+              } else {
+                navigation.navigate("Education And Training Screen")
+              }
+            }}>
             <View style={styles.itemContainer}>
               <View style={styles.imageMask}>
                 <Image
@@ -66,7 +68,8 @@ export default function EmploymentServicesScreen({ navigation }) {
 const styles = StyleSheet.create({
   mainContainer: {
     display: "flex",
-    justifyContent: "center",
+    flexDirection: "row",
+    flexWrap: "wrap",
   },
   itemContainer: {
     display: "flex",
@@ -77,14 +80,14 @@ const styles = StyleSheet.create({
     textAlign: "center",
   },
   image: {
-    width: 325,
-    height: 190,
+    width: 150,
+    height: 140,
     borderRadius: 10,
     opacity: 1
   },
   imageMask: {
-    width: 325,
-    height: 190,
+    width: 150,
+    height: 140,
     borderRadius: 10,
     opacity: 0.67,
     backgroundColor: "black",
@@ -93,10 +96,11 @@ const styles = StyleSheet.create({
     bottom: 50
   },
   text: {
-    fontSize: 23,
+    fontSize: 15,
     fontWeight: "bold",
     color: "white",
     textAlign: "center",
-    bottom: 15
+    bottom: 15,
+    width: 140
   }
 });
