@@ -78,5 +78,4 @@ npm run testWatch
 ```
 Jest will execute your test suite(s) and display the results in the terminal. Make sure to keep your tests up to date as the app evolves to ensure code quality and reliability.
 
-For more information, please read the documentation below:
-[Expo doc on unit tests](https://docs.expo.dev/develop/unit-testing/?redirected#unit-test)
+For more information, please read the [documentation](https://docs.expo.dev/develop/unit-testing/?redirected#unit-test) on unit tests by Expo.
