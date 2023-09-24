@@ -76,4 +76,7 @@ To run tests in watch mode (tests automatically rerun when files change):
 ```
 npm run testWatch
 ```
-Jest will execute your test suite(s) and display the results in the terminal. Make sure to keep your tests up to date as your project evolves to ensure code quality and reliability.
+Jest will execute your test suite(s) and display the results in the terminal. Make sure to keep your tests up to date as the app evolves to ensure code quality and reliability.
+
+For more information, please read the documentation below:
+[Expo doc on unit tests](https://docs.expo.dev/develop/unit-testing/?redirected#unit-test)
