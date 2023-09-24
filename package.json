@@ -8,8 +8,17 @@
     "ios": "expo start --ios",
     "web": "expo start --web",
     "prettier": "prettier 'src/**/*.js'",
-    "precommit": "lint-staged"
+    "precommit": "lint-staged",
+    "test": "jest",
+    "testWatch": "jest --watch"
   },
+  "jest": {
+    "preset": "jest-expo",
+    "transformIgnorePatterns": [
+      "node_modules/(?!((jest-)?react-native|@react-native(-community)?)|expo(nent)?|@expo(nent)?/.*|@expo-google-fonts/.*|react-navigation|@react-navigation/.*|@unimodules/.*|unimodules|sentry-expo|native-base|react-native-svg)"
+    ] 
+  },
+  "setupFilesAfterEnv": ["./jest.setup.js"],
   "lint-staged": {
     "*.js": [
       "prettier --write",
@@ -47,8 +56,11 @@
     "eslint": "^8.26.0",
     "eslint-config-prettier": "^8.5.0",
     "husky": "^8.0.1",
+    "jest": "^29.7.0",
+    "jest-expo": "^49.0.0",
     "lint-staged": "^13.0.3",
-    "prettier": "2.7.1"
+    "prettier": "2.7.1",
+    "react-test-renderer": "^18.0.0"
   },
   "private": true,
   "description": "- [Writing good commit messages](Resources/CommitMessages.md)\r - [Writing good branch names](Resources/BranchNames.md)\r - Setting up your [iOS](https://www.youtube.com/watch?v=wNINabDpsvQ) or [Android](https://developer.android.com/studio/run/emulator) emulator\r - [Configuring your React-Native environment](https://www.youtube.com/watch?v=ql4J6SpLXZA) this tutorial will help you get on the right track.",

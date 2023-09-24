@@ -1,4 +1,4 @@
-import { StyleSheet, Text, View, TouchableOpacity, Linking } from 'react-native';
+import { StyleSheet, Text, View, TouchableOpacity, Platform } from 'react-native';
 import React, { useState } from 'react';
 import Icon from 'react-native-vector-icons/Ionicons';
 import MapList, { openApp } from '../../../components/MapList';
