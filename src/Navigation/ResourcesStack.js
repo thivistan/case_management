@@ -18,7 +18,6 @@ import { NavigationContainer } from '@react-navigation/native';
 import ResourcesScreen from '../screens/MainScreens/ResourcesScreen/ResourcesScreen.js';
 import MainStack from './MainStack.js';
 
-import HealthServicesFilter from '../screens/ServicesScreens/HealthServicesScreen/HealthServicesFilter.js';
 import EducationAndTrainingScreen from "../screens/ServicesScreens/EmploymentServicesScreen/EducationAndTrainingScreen.js"
 
 const Stack = createNativeStackNavigator();
@@ -43,7 +42,6 @@ export default function ResourcesStack() {
             <Stack.Screen name="LGBTQ+ Services" component={LGBTQServicesScreen}></Stack.Screen>
             <Stack.Screen name="Home" component={MainStack}></Stack.Screen>
 
-            <Stack.Screen name="Filter" component={HealthServicesFilter}></Stack.Screen>
             <Stack.Screen name="Education And Training Screen" component={EducationAndTrainingScreen}></Stack.Screen>
         </Stack.Navigator>
     );
