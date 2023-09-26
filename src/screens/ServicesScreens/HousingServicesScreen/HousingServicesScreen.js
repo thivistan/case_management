@@ -51,12 +51,40 @@ const HousingServicesScreen = () => {
           <Text style={styles.title}>Search by location</Text>
           <RoundSearchBar placeholder="Search" onChangeText={handleSearch} />
           <Text style={styles.title}>Results</Text>
-          <HousingServicesLocations address="7843 Lankershim Blvd. North Hollywood , CA 91605" />
-          <HousingServicesLocations address="12900 Crossroads Pkwy. South City of Industry , CA 91746 " />
-          <HousingServicesLocations address="2040 N. Garey Ave. Pomona , CA 91767" />
-          <HousingServicesLocations address="1501 W. Ninth Street, Suite D Upland, CA 91786" />
-          <HousingServicesLocations address="1753 N. Park Ave. Pomona , CA 91768" />
-          <HousingServicesLocations address="1531 James M. Wood Blvd. Los Angeles , CA 90015" />
+          <HousingServicesLocations
+            locationName="DPSS (Report Homeless)"
+            address="7843 Lankershim Blvd. North Hollywood , CA 91605"
+            phoneNo="(866) 613-3777"
+          />
+          <HousingServicesLocations
+            locationName="Family Solutions -211 Hours"
+            address="12900 Crossroads Pkwy. South City of Industry , CA 91746 "
+            timings="9 am-5 pm"
+          />
+          <HousingServicesLocations
+            locationName="Volunteers of America Pomona's Homeless Outreach"
+            address="2040 N. Garey Ave. Pomona , CA 91767"
+            phoneNo="(909) 593-4796"
+            timings="9 am-5 pm"
+          />
+          <HousingServicesLocations
+            locationName="Foothill Family Shelter"
+            address="1501 W. Ninth Street, Suite D Upland, CA 91786"
+            phoneNo="(909) 920-0453"
+            timings="9 am-5 pm"
+          />
+          <HousingServicesLocations
+            locationName="Inland Valley Hope Partners"
+            address="1753 N. Park Ave. Pomona , CA 91768"
+            phoneNo="(909) 622-3806"
+            timings="8 am - 9 pm "
+          />
+          <HousingServicesLocations
+            locationName="Catholic Charities"
+            address="1531 James M. Wood Blvd. Los Angeles , CA 90015"
+            phoneNo="(909) 629-1331"
+            timings="9 am-12 pm"
+          />
         </View>
       </ScrollView>
       <FloatingButton onPress={toggleFiltersVisibility}></FloatingButton>

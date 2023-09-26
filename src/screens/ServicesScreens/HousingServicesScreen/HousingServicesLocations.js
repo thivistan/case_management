@@ -2,7 +2,7 @@ import { StyleSheet, Text, View, TextInput, TouchableOpacity, Linking, Image } f
 import React, { useState } from 'react';
 import Icon from 'react-native-vector-icons/FontAwesome';
 
-const HousingServicesLocations = ({ address }) => {
+const HousingServicesLocations = ({ locationName, address, phoneNo, timings }) => {
   const openInBrowser = () => {
     const encodedAddress = encodeURIComponent(address);
     // Open the address in the device's browser
@@ -30,6 +30,9 @@ const HousingServicesLocations = ({ address }) => {
       </View>
 
       {/* Address text */}
+      <Text style={{ flex: 1, color: '#47d7f2', fontSize: 16, marginTop: 0, marginStart: 10 }}>
+        {locationName}
+      </Text>
       <View style={{ flexDirection: 'row' }}>
         <Text style={{ flex: 1, color: '#47d7f2', fontSize: 16, marginTop: 0, marginStart: 10 }}>
           {address}
@@ -57,6 +60,12 @@ const HousingServicesLocations = ({ address }) => {
           <Icon name="send" size={20} color="white" />
         </TouchableOpacity>
       </View>
+      <Text style={{ flex: 1, color: '#47d7f2', fontSize: 16, marginTop: 0, marginStart: 10 }}>
+        {phoneNo}
+      </Text>
+      <Text style={{ flex: 1, color: '#47d7f2', fontSize: 16, marginTop: 0, marginStart: 10 }}>
+        {timings}
+      </Text>
     </View>
   );
 };
@@ -69,7 +78,7 @@ const styles = StyleSheet.create({
 
   box: {
     backgroundColor: 'white',
-    height: 220,
+    height: 270,
     marginBottom: 10,
     borderRadius: 20,
   },
