@@ -1,5 +1,6 @@
 import { View, Text, Image, StyleSheet, ScrollView, TouchableOpacity, Linking } from 'react-native'
 import React from 'react'
+import { backgroundColors } from '../../../global'
 
 export default function EmploymentServicesScreen({ navigation }) {
   const links = [
@@ -70,7 +71,7 @@ export default function EmploymentServicesScreen({ navigation }) {
 
 const styles = StyleSheet.create({
   outsideContainer: {
-    backgroundColor: "rgba(106, 207, 238, 0.4)"
+    backgroundColor: backgroundColors.primary
   },
   mainContainer: {
     display: "flex",

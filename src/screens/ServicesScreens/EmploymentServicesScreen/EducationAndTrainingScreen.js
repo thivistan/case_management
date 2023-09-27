@@ -1,6 +1,7 @@
-import { View, Text, TouchableOpacity, Linking, StyleSheet, Image } from 'react-native'
+import { View, Text, TouchableOpacity, Linking, StyleSheet } from 'react-native'
 import React from 'react'
 import ExternalLinkButton from '../../../components/ExternalLinkButton';
+import { backgroundColors } from '../../../global';
 
 // constants
 const colorPrimary = "rgb(106, 207, 238)"
@@ -71,7 +72,7 @@ const styles = StyleSheet.create({
     paddingHorizontal: 30,
     justifyContent: "space-between",
     height: "100%",
-    backgroundColor: "rgba(106, 207, 238, 0.4)"
+    backgroundColor: backgroundColors.primary
   },
   text: {
     padding: 10,
