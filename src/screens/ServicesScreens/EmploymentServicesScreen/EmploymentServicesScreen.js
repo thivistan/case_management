@@ -1,14 +1,95 @@
-import { StyleSheet, Text, View } from 'react-native'
+import { View, Text, Image, StyleSheet, ScrollView, TouchableOpacity, Linking, ImageBackground } from 'react-native'
 import React from 'react'
+import { backgroundColors } from '../../../global'
 
-const EmploymentServicesScreen = () => {
+export default function EmploymentServicesScreen({ navigation }) {
+  const links = [
+    {
+      title: "Job/Employment Search",
+      image: "https://211la.org/sites/default/files/styles/subcategory_resource_600_x_351/public/2020-03/three%20job%20seekers%20standing%20on%20a%20balcony.jpg?itok=Brau2Lha",
+      link: "https://211la.org/resources/search?keyword=Income%20%26%20Employment%20%3E%20Job/Employment%20Search%20%2849%29&landing=1&keyword_hidden=Income%20%26%20Employment%20%3E%20Job/Employment%20Search%20%2849%29&website_categorization=1"
+    },
+    {
+      title: "Employment Supports",
+      image: "https://211la.org/sites/default/files/styles/subcategory_resource_600_x_351/public/2020-02/LA%20Skyline%20Sunset%2057927400_m.jpg?itok=xHz_6_gE",
+      link: "https://211la.org/resources/search?keyword=Income%20%26%20Employment%20%3E%20Employment%20Supports%20%2849%29&landing=1&keyword_hidden=Income%20%26%20Employment%20%3E%20Employment%20Supports%20%2849%29&website_categorization=1"
+    },
+    {
+      title: "Benefits & Public Assistance",
+      image: "https://211la.org/sites/default/files/styles/subcategory_resource_600_x_351/public/2020-02/Food%20benefit%20programs_0.jpg?itok=8aeVvzSJ",
+      link: "https://211la.org/resources/search?keyword=Income%20%26%20Employment%20%3E%20Benefits%20%26%20Public%20Assistance%20%2867%29&landing=1&keyword_hidden=Income%20%26%20Employment%20%3E%20Benefits%20%26%20Public%20Assistance%20%2867%29&website_categorization=1"
+    },
+    {
+      title: "Income Assistance/Discount Programs",
+      image: "https://211la.org/sites/default/files/styles/subcategory_resource_600_x_351/public/2020-03/electrical%20guage%20kilowatt.jpg?itok=FQYLET8L",
+      link: "https://211la.org/resources/search?keyword=Income%20%26%20Employment%20%3E%20Income%20Assistance/Discount%20Programs%20%2856%29&landing=1&keyword_hidden=Income%20%26%20Employment%20%3E%20Income%20Assistance/Discount%20Programs%20%2856%29&website_categorization=1"
+    },
+    {
+      title: "Financial Health",
+      image: "https://211la.org/sites/default/files/styles/subcategory_resource_600_x_351/public/2020-02/Health%20care%20insurance%20options%2081895941_s.jpg?itok=mCuuRLKF",
+      link: "https://211la.org/resources/search?keyword=Income%20%26%20Employment%20%3E%20Financial%20Health%20%2856%29&landing=1&keyword_hidden=Income%20%26%20Employment%20%3E%20Financial%20Health%20%2856%29&website_categorization=1"
+    },
+    {
+      title: "Education & Training",
+      image: "https://211la.org/sites/default/files/styles/subcategory_resource_600_x_351/public/2020-02/Education%20-%20Alternative%20education%20-%20technology%20computer%20adult%20woman%2050076647_s.jpg?itok=o6RH3kO5",
+    },
+  ]
+
+  const handleButtonPress = (item) => {
+    if (item.link) {
+      return Linking.openURL(item.link)
+    } else {
+      navigation.navigate("Education And Training Screen")
+    }
+  }
+
   return (
-    <View>
-      <Text>EmploymentServicesScreen</Text>
-    </View>
+    <ScrollView style={styles.mainContainer} contentContainerStyle={{ justifyContent: "space-evenly", flexWrap: "wrap", flexDirection: "row", height: '100%'}}>
+      {links.map((item, idx) => (
+        <TouchableOpacity
+          style={styles.categoryBtn}
+          key={idx}
+          onPress={() => handleButtonPress(item)}>
+              <ImageBackground style={styles.image} source={{ uri: item.image }}>
+                <View style={styles.textContainer}>
+                  <Text style={styles.text}>{item.title}</Text>
+                </View>
+              </ImageBackground>
+        </TouchableOpacity>
+      ))}
+    </ScrollView>
   )
 }
 
-export default EmploymentServicesScreen
-
-const styles = StyleSheet.create({})
+const styles = StyleSheet.create({
+  outsideContainer: {
+    backgroundColor: backgroundColors.primary
+  },
+  mainContainer: {
+    backgroundColor: backgroundColors.primary,
+    height: '100%',
+  },
+  categoryBtn: {
+    width: '40%', 
+    height: '20%',
+    borderRadius: 10, 
+    marginTop: '15%', 
+    marginHorizontal: 5,
+  },
+  textContainer: {
+    justifyContent: "center",
+    backgroundColor: 'rgba(0, 0, 0, 0.3)',
+    height: '100%',
+  },
+  image: {
+    borderRadius: 10,
+    overflow: 'hidden',
+  },
+  text: {
+    fontSize: 15,
+    fontWeight: "bold",
+    color: "white",
+    textAlign: "center",
+    bottom: -30,
+  }
+});

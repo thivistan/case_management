@@ -10,9 +10,9 @@ const Goal = (navigation) => {
 
   const addGoal = (type) => {
     if (type === 'shortTerm') {
-      setShortTermGoals([...shortTermGoals, {name: '', progress: 0}]);
+      setShortTermGoals([...shortTermGoals, { name: '', progress: 0 }]);
     } else {
-      setLongTermGoals([...longTermGoals, {name: '', progress: 0}]);
+      setLongTermGoals([...longTermGoals, { name: '', progress: 0 }]);
     }
   }
 
@@ -42,13 +42,13 @@ const Goal = (navigation) => {
 
   return (
     <View style={{ flex: 1 }}>
-    <Header
-        navigation={navigation} 
-        style={styles.header} 
+      <Header
+        navigation={navigation}
+        style={styles.header}
         resourceName='Title'
         leftComponent={<Ionicons name="menu-outline" size={24} color="white" onPress={() => navigation.openDrawer()} />}
         centerComponent={{ text: 'Resource Page', style: { color: '#fff' } }}
-    />
+      />
       <View style={{ flex: 1 }}>
         <Text style={{ fontSize: 20, fontWeight: 'bold', marginVertical: 10 }}>Short-term Goals:</Text>
         <ScrollView>
@@ -82,8 +82,10 @@ const Goal = (navigation) => {
           {longTermGoals.map((goal, index) => (
             <View style={{ flexDirection: 'row', alignItems: 'center', marginVertical: 5 }} key={index}>
               <TextInput
-                style={{ flex: 1, marginHorizontal: 10, borderBottomWidth: 1,
-                borderColor: '#ccc', paddingVertical: 5 }}
+                style={{
+                  flex: 1, marginHorizontal: 10, borderBottomWidth: 1,
+                  borderColor: '#ccc', paddingVertical: 5
+                }}
                 placeholder="Enter goal name"
                 value={goal.name}
                 onChangeText={(text) => updateGoalName(index, 'longTerm', text)}
@@ -105,8 +107,8 @@ const Goal = (navigation) => {
         </TouchableOpacity>
       </View>
       <View style={styles.logo}>
-      <Image source={require('../assets/images/thaddeus_logo.jpg')} style={styles.logoImage} />
-    </View>
+        <Image source={require('../assets/images/thaddeus_logo.jpg')} style={styles.logoImage} />
+      </View>
     </View>
   );
 }
@@ -128,4 +130,3 @@ const styles = StyleSheet.create({
 });
 
 export default Goal;
-  

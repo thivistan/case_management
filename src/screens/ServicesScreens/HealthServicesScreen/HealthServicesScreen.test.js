@@ -14,19 +14,19 @@ const spyOpenURL = jest.spyOn(Linking, 'openURL').mockImplementation(() => {
 
 
 
-describe('<HealthServicesScreen />', () => 
+describe('<HealthServicesScreen />', () =>
     it('has 3 children', () => {
         const tree = renderer.create(<HealthServicesScreen />).toJSON();
         console.log(tree);
         expect(tree.children.length).toBe(3);
     }),
 
-  // Note: Running toMatchSnapshot() on this screen causes an error. The error trace mentions an issue with Icon.
+    // Note: Running toMatchSnapshot() on this screen causes an error. The error trace mentions an issue with Icon.
 
-//   it('renders correctly', () => {
-//     const tree = renderer.create(<HealthServicesScreen />).toJSON();
-//     expect(tree).toMatchSnapshot();
-//   }),
+    //   it('renders correctly', () => {
+    //     const tree = renderer.create(<HealthServicesScreen />).toJSON();
+    //     expect(tree).toMatchSnapshot();
+    //   }),
 
     it('renders "See All Healthcare Resources" button', () => {
         const tree = renderer.create(<HealthServicesScreen />).toJSON();
@@ -43,10 +43,10 @@ describe('<HealthServicesScreen />', () =>
         const seeAllBtn = tree.children[2].children[1];
         seeAllBtn.props.onClick();
         const spy = jest.spyOn(Linking, 'openURL');
-        
+
         expect(spy).toBeCalledWith('https://211la.org/resources/subcategory/healthcare');
         spy.mockReset();
         spy.mockRestore();
-      }),
+    }),
 
 );
