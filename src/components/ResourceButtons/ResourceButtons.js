@@ -1,4 +1,4 @@
-import { StyleSheet, Text, View } from 'react-native'
+import { Text, View } from 'react-native'
 import { TouchableOpacity } from "react-native-gesture-handler";
 import React, { useState } from 'react'
 import { styles } from "./style";
@@ -23,7 +23,7 @@ const AppointmentsServicesButton = () => {
             <TouchableOpacity
                 style={styles.categoryButton}
                 onPress={() => {
-                    navigation.navigate("AppointmentsScreen")
+                    navigation.navigate("Appointment Services")
                 }}>
                 <Text>Appointment Services</Text>
             </TouchableOpacity>
@@ -51,7 +51,7 @@ const ChurchServicesButton = () => {
             <TouchableOpacity
                 style={styles.categoryButton}
                 onPress={() => {
-                    navigation.navigate("ChurchScreen")
+                    navigation.navigate("Church Services")
                 }}
             >
                 <Text>Church Services</Text>
@@ -80,7 +80,7 @@ const DonationCenterButton = () => {
             <TouchableOpacity
                 style={styles.categoryButton}
                 onPress={() => {
-                    navigation.navigate("DonationScreen")
+                    navigation.navigate("Donation Center")
                 }}
             >
                 <Text>Donation Center</Text>
@@ -109,7 +109,7 @@ const EducationServicesButton = () => {
             <TouchableOpacity
                 style={styles.categoryButton}
                 onPress={() => {
-                    navigation.navigate("EducationServicesScreen")
+                    navigation.navigate("Education Services")
                 }}
             >
                 <Text>Education Services</Text>
@@ -196,7 +196,7 @@ const FormsServicesButton = () => {
             <TouchableOpacity
                 style={styles.categoryButton}
                 onPress={() => {
-                    navigation.navigate("FormsServicesScreen")
+                    navigation.navigate("Forms")
                 }}
             >
                 <Text>Forms</Text>
@@ -225,7 +225,7 @@ const GovernmentServicesButton = () => {
             <TouchableOpacity
                 style={styles.categoryButton}
                 onPress={() => {
-                    navigation.navigate("GovernmentServicesScreen")
+                    navigation.navigate("Government Services")
                 }}
             >
                 <Text>Government Services</Text>
@@ -283,7 +283,7 @@ const HousingServicesButton = () => {
             <TouchableOpacity
                 style={styles.categoryButton}
                 onPress={() => {
-                    navigation.navigate("HousingServicesScreen")
+                    navigation.navigate("Housing Services")
                 }}
             >
                 <Text>Housing Services</Text>
@@ -312,7 +312,7 @@ const LegalServicesButton = () => {
             <TouchableOpacity
                 style={styles.categoryButton}
                 onPress={() => {
-                    navigation.navigate("LegalServicesScreen")
+                    navigation.navigate("Legal Services")
                 }}
             >
                 <Text>Legal Services</Text>
@@ -341,7 +341,7 @@ const LGBTQServicesButton = () => {
             <TouchableOpacity
                 style={styles.categoryButton}
                 onPress={() => {
-                    navigation.navigate("LGBTQServicesScreen")
+                    navigation.navigate("LGBTQ+ Services")
                 }}
             >
                 <Text>LGBTQ+</Text>
@@ -370,7 +370,7 @@ const ParentingServicesButton = () => {
             <TouchableOpacity
                 style={styles.categoryButton}
                 onPress={() => {
-                    navigation.navigate("ParentingServicesScreen")
+                    navigation.navigate("Parenting Services")
                 }}
             >
                 <Text>Parenting</Text>
@@ -399,7 +399,7 @@ const UtilitiesServicesButton = () => {
             <TouchableOpacity
                 style={styles.categoryButton}
                 onPress={() => {
-                    navigation.navigate("UtilitiesServicesScreen")
+                    navigation.navigate("Utilities Services")
                 }}
             >
                 <Text>Utilities</Text>
