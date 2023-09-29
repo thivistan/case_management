@@ -7,7 +7,7 @@
 - [Writing good commit messages](Resources/CommitMessages.md)
 - [Writing good branch names](Resources/BranchNames.md)
 
-## Guidelines
+## Setup
 ### Before working on the application, please follow these steps below:
 #### 1. When working on the project, clone the GitHub repository in your favorite IDE or Text Editor by using this command in the terminal: <br />
 ```
@@ -38,6 +38,26 @@ To fix this solution, run these two commands asynchronously:
 npm install -g yarn
 yarn add expo
 ```
+
+## Guidelines
+
+### Styling
+
+Global colors and fonts can be found in `src/global.js`.
+
+Example usage:
+
+```javascript
+import { colors, fonts } from './src/global'
+
+// Set font
+<View style={{ fontFamily: fonts.alegreya }}/>
+
+// Or set color
+<View style={{ backgroundColor: colors.primary }}/>
+```
+
+More information on style guidelines can be found in the [Thaddeus Style Guide](https://thethaddeusfoundation.sharepoint.com/sites/ThaddeusStaff/Shared%20Documents/Forms/AllItems.aspx?id=%2Fsites%2FThaddeusStaff%2FShared%20Documents%2FGeneral%2FMedia%2FThaddeus%20Media%2FThaddeus%20Style%20Guide%202020%2FThaddeus%20Style%20Guide%2Epdf&parent=%2Fsites%2FThaddeusStaff%2FShared%20Documents%2FGeneral%2FMedia%2FThaddeus%20Media%2FThaddeus%20Style%20Guide%202020&p=true&ct=1695504599220&or=Teams%2DHL&ga=1&LOF=1).
 
 ## Running Tests
 
