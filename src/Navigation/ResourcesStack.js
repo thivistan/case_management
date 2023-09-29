@@ -80,10 +80,7 @@ export default function ResourcesStack() {
 
       <Stack.Screen name="Home" component={MainStack}></Stack.Screen>
 
-      <Stack.Screen
-        name="Education And Training Screen"
-        component={EducationAndTrainingScreen}
-      ></Stack.Screen>
+      <Stack.Screen name="Education & Training" component={EducationAndTrainingScreen}></Stack.Screen>
     </Stack.Navigator>
   );
 }

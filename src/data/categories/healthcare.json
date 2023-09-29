@@ -1,8 +1,9 @@
 [
     {
       "label": "Medical Care",
+      "image": null,
       "url": "https://211la.org/resources/search?keyword=Healthcare%20%3E%20Medical%20Care%20%281018%29&landing=1&keyword_hidden=Healthcare%20%3E%20Medical%20Care%20%281018%29&website_categorization=1",
-      "locations": [
+      "resources": [
         {
           "name": "Parktree Community Health Center",
           "address": "750 S Park Ave, Pomona, CA 91766",
@@ -23,8 +24,9 @@
     },
     {
       "label": "Dental Care",
+      "image": null,
       "url": "https://211la.org/resources/search?keyword=Healthcare%20%3E%20Dental%20Care%20%28171%29&landing=1&keyword_hidden=Healthcare%20%3E%20Dental%20Care%20%28171%29&website_categorization=1",
-      "locations": [
+      "resources": [
         {
           "name": "Sierra Dental",
           "address": "1301 W Arrow Hwy # 120, San Dimas, CA 91773",
@@ -45,8 +47,9 @@
     },
     {
       "label": "Women's Healthcare",
+      "image": null,
       "url": "https://211la.org/resources/search?keyword=Healthcare%20%3E%20Womens%20Health%20Care%20%281497%29&landing=1&keyword_hidden=Healthcare%20%3E%20Womens%20Health%20Care%20%281497%29&website_categorization=1",
-      "locations": [
+      "resources": [
         {
           "name": "Woodglen Medical Group",
           "address": "315 E Rte 66, Glendora, CA 91740",
@@ -59,8 +62,9 @@
     },
     {
       "label": "Mental Health/Substance Use Disorder",
+      "image": null,
       "url": "https://211la.org/resources/search?keyword=Healthcare%20%3E%20Mental%20Health/%20Substance%20Use%20Disorder%20%283240%29&landing=1&keyword_hidden=Healthcare%20%3E%20Mental%20Health/%20Substance%20Use%20Disorder%20%283240%29&website_categorization=1",
-      "locations": [
+      "resources": [
         {
           "name": "Thaddeus Resource Center",
           "address": "2621 Damien Ave La Verne, CA 91750",
@@ -105,8 +109,9 @@
     },
     {
       "label": "Mental Health Facilities",
+      "image": null,
       "url": "https://211la.org/resources/search?keyword=Healthcare%20%3E%20Mental%20Health/%20Substance%20Use%20Disorder%20%283240%29&landing=1&keyword_hidden=Healthcare%20%3E%20Mental%20Health/%20Substance%20Use%20Disorder%20%283240%29&website_categorization=1",
-      "locations": [
+      "resources": [
         {
           "name": "Behavioral Health Services",
           "address": "2180 Valley Blvd, Pomona, CA 91768",
@@ -135,8 +140,9 @@
     },
     {
       "label": "Screenings/Tests",
+      "image": null,
       "url": "https://211la.org/resources/search?keyword=Healthcare%20%3E%20Screenings/Tests%20%28904%29&landing=1&keyword_hidden=Healthcare%20%3E%20Screenings/Tests%20%28904%29&website_categorization=1",
-      "locations": [
+      "resources": [
         {
           "name": "Park Avenue Optometry",
           "address": "300 S Park Ave, Pomona, CA 91766",
