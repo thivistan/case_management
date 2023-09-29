@@ -1,4 +1,4 @@
-import { View, Text, Image, StyleSheet, ScrollView, TouchableOpacity, Linking } from 'react-native'
+import { View, Text, Image, StyleSheet, ScrollView, TouchableOpacity, Linking, ImageBackground } from 'react-native'
 import React from 'react'
 import { backgroundColors } from '../../../global'
 
@@ -44,27 +44,19 @@ export default function EmploymentServicesScreen({ navigation }) {
   }
 
   return (
-    <ScrollView style={styles.outsideContainer}>
-      <View style={styles.mainContainer}>
-        {links.map((item, idx) => (
-          <TouchableOpacity
-            style={{ width: '50%' }}
-            key={idx}
-            onPress={() => handleButtonPress(item)}>
-            <View style={styles.itemContainer}>
-              <View style={styles.imageMask}>
-                <Image
-                  style={styles.image}
-                  source={{ uri: item.image }}
-                />
-              </View>
-              <View style={styles.textContainer}>
-                <Text style={styles.text}>{item.title}</Text>
-              </View>
-            </View>
-          </TouchableOpacity>
-        ))}
-      </View>
+    <ScrollView style={styles.mainContainer} contentContainerStyle={{ justifyContent: "space-evenly", flexWrap: "wrap", flexDirection: "row", height: '100%'}}>
+      {links.map((item, idx) => (
+        <TouchableOpacity
+          style={styles.categoryBtn}
+          key={idx}
+          onPress={() => handleButtonPress(item)}>
+              <ImageBackground style={styles.image} source={{ uri: item.image }}>
+                <View style={styles.textContainer}>
+                  <Text style={styles.text}>{item.title}</Text>
+                </View>
+              </ImageBackground>
+        </TouchableOpacity>
+      ))}
     </ScrollView>
   )
 }
@@ -74,40 +66,30 @@ const styles = StyleSheet.create({
     backgroundColor: backgroundColors.primary
   },
   mainContainer: {
-    display: "flex",
-    flexDirection: "row",
-    flexWrap: "wrap",
+    backgroundColor: backgroundColors.primary,
+    height: '100%',
   },
-  itemContainer: {
-    display: "flex",
-    alignItems: "center",
-    paddingTop: 20
+  categoryBtn: {
+    width: '40%', 
+    height: '20%',
+    borderRadius: 10, 
+    marginTop: '15%', 
+    marginHorizontal: 5,
   },
   textContainer: {
-    textAlign: "center",
+    justifyContent: "center",
+    backgroundColor: 'rgba(0, 0, 0, 0.3)',
+    height: '100%',
   },
   image: {
-    width: 150,
-    height: 140,
     borderRadius: 10,
-    opacity: 1
-  },
-  imageMask: {
-    width: 150,
-    height: 140,
-    borderRadius: 10,
-    opacity: 0.67,
-    backgroundColor: "black",
-  },
-  textContainer: {
-    bottom: 50
+    overflow: 'hidden',
   },
   text: {
     fontSize: 15,
     fontWeight: "bold",
     color: "white",
     textAlign: "center",
-    bottom: 15,
-    width: 140
+    bottom: -30,
   }
 });

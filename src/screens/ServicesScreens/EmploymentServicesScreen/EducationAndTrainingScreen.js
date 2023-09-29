@@ -1,22 +1,20 @@
 import { View, Text, TouchableOpacity, Linking, StyleSheet } from 'react-native'
 import React from 'react'
 import ExternalLinkButton from '../../../components/ExternalLinkButton';
-import { backgroundColors } from '../../../global';
+import { colors, backgroundColors } from '../../../global';
 
 // constants
-const colorPrimary = "rgb(106, 207, 238)"
 
 export default function EducationAndTrainingScreen() {
   return (
     <View style={styles.mainContainer}>
       <View style={{ paddingTop: 20 }}>
         {/* job training */}
-        <TouchableOpacity onPress={() => {
-          return Linking.openURL("https://www.google.com/")
-        }}>
-          <View style={styles.secondaryButton}>
-            <Text style={styles.secondaryButtonText}>Job And Workforce Training</Text>
-          </View>
+        <TouchableOpacity 
+          onPress={() => {return Linking.openURL("https://www.google.com/")}}
+          style={styles.secondaryButton}
+        >
+          <Text style={styles.secondaryButtonText}>Job And Workforce Training</Text>
         </TouchableOpacity>
 
         {/* workshops */}
@@ -25,20 +23,20 @@ export default function EducationAndTrainingScreen() {
         </View>
 
         {/* youtube page */}
-        <TouchableOpacity onPress={() => {
-          const channelId = "UCe1REgTuVYQgaXkRzA6BSCg"
-          Linking.canOpenURL('vnd.youtube://channel/' + channelId).then(supported => {
-            if (supported) {
-              return Linking.openURL('vnd.youtube://channel/' + channelId);
-            } else {
-              return Linking.openURL('https://www.youtube.com/channel/' + channelId);
-            }
-          });
+        <TouchableOpacity 
+          style={styles.secondaryButton}
+          onPress={() => {
+            const channelId = "UCe1REgTuVYQgaXkRzA6BSCg"
+            Linking.canOpenURL('vnd.youtube://channel/' + channelId).then(supported => {
+              if (supported) {
+                return Linking.openURL('vnd.youtube://channel/' + channelId);
+              } else {
+                return Linking.openURL('https://www.youtube.com/channel/' + channelId);
+              }
+            });
         }}>
-          <View style={styles.secondaryButton}>
-            <Text style={styles.secondaryButtonText}>Thaddeus Youtube Page</Text>
-          </View>
-        </TouchableOpacity>
+          <Text style={styles.secondaryButtonText}>Thaddeus Youtube Page</Text>
+        </TouchableOpacity >
 
         {/* Forms */}
         <View style={styles.secondaryButton}>
@@ -106,7 +104,7 @@ const styles = StyleSheet.create({
     marginBottom: 30
   },
   secondaryButtonText: {
-    color: colorPrimary,
+    color: colors.primary,
     padding: 10,
     fontWeight: "bold",
     fontSize: 13,
