@@ -5,6 +5,7 @@ import MapView, { Marker } from 'react-native-maps';
 
 // utils
 import { searchFoodServicesByLocation, userLocation, openMap } from "./utils"
+import { backgroundColors } from '../../../global';
 
 // assets & constants
 const searchImageDimensions = 25
@@ -18,11 +19,6 @@ export default function FoodServicesScreen({ navigation }) {
   const [permissionError, setPermissionError] = useState('')
   const [inputError, setInputError] = useState('')
   const [loading, setLoading] = useState(false)
-
-  // useRoute() == route to route to other page
-  // filter data to pass through filter page
-  const filter = useRoute().params?.filter || '';
-
 
   useEffect(() => {
     // call the function to get/log user location
@@ -51,15 +47,11 @@ export default function FoodServicesScreen({ navigation }) {
   }
 
   return (
-    <View>
-
+    <View style={{ height: '100%', backgroundColor: backgroundColors.primary }}>
       <ScrollView>
         {/* search section */}
         <View style={styles.searchHeaderContainer}>
           <Text style={styles.headText}>Search by location</Text>
-          <TouchableOpacity style={styles.filterBtn} onPress={() => navigation.navigate('Filter', { filter: filter })}>
-            <Text style={{ color: colorPrimary, fontWeight: '700' }}>FILTER</Text>
-          </TouchableOpacity>
         </View>
 
         <View style={styles.searchBtn}>
@@ -151,21 +143,7 @@ export default function FoodServicesScreen({ navigation }) {
             </View>
           ))}
         </View>
-
-
       </ScrollView>
-
-
-      {/* fixed filter button */}
-      <View style={{ flex: 1 }}>
-        <View style={{ position: 'absolute', bottom: 50, alignSelf: 'center', }}>
-          <TouchableOpacity disabled style={{ display: 'flex', justifyContent: 'center', backgroundColor: "#9ee7ff", padding: 10, paddingHorizontal: 100, borderRadius: 25 }}>
-            <Text style={{ color: 'white', fontWeight: '700', fontSize: 20 }}>Filter</Text>
-          </TouchableOpacity>
-        </View>
-      </View>
-
-
     </View>
 
   )

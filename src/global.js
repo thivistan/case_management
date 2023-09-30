@@ -13,6 +13,10 @@ export const backgroundColors = {
     primary: "#6acfee66"
 }
 
+export const textColors = {
+    primary: "white"
+}
+
 export const fonts = {
     default: "Roboto-Regular",
     defaultBold: "Roboto-Bold",
