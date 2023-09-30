@@ -53,6 +53,7 @@ const styles = StyleSheet.create({
         flexDirection: 'row',
         flexWrap: 'nowrap',
         justifyContent: 'space-evenly',
+        paddingBottom: 35
     },
     resourceFavoriteButton: {
         flexDirection: 'row',

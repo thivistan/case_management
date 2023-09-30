@@ -84,8 +84,8 @@ export default function ResourcesScreen() {
           <View style={styles.favoriteCategoriesContainer}>
             <FlatList
               horizontal={true}
-              //data={ }
-              //renderItem={( {item, index}) => {}}
+            //data={ }
+            //renderItem={( {item, index}) => {}}
             ></FlatList>
           </View>
         </View>
@@ -113,6 +113,10 @@ export default function ResourcesScreen() {
                 <CovidServicesButton />
                 <CrisisServicesButton />
                 <DisabilityServicesButton />
+                <LegalServicesButton />
+                <ParentingServicesButton />
+                <TransporationServicesButton />
+                <YouthServicesButton />
               </View>
               {/* col 2 */}
               <View style={styles.categoryButtonCol}>
@@ -121,6 +125,9 @@ export default function ResourcesScreen() {
                 <EmploymentServicesButton />
                 <FamilyServicesButton />
                 <FoodServicesButton />
+                <LGBTQServicesButton />
+                <ReEntryServicesButton />
+                <UtilitiesServicesButton />
               </View>
               {/* col 3 */}
               <View style={styles.categoryButtonCol}>
@@ -129,22 +136,9 @@ export default function ResourcesScreen() {
                 <HealthServicesButton />
                 <HousingServicesButton />
                 <ImmigrationServicesButton />
-              </View>
-              {/* col 4 */}
-              <View style={styles.categoryButtonCol}>
-                <LegalServicesButton />
-                <LGBTQServicesButton />
                 <MentalHealthServicesButton />
-                <ParentingServicesButton />
-                <ReEntryServicesButton />
-              </View>
-              {/* col 5 */}
-              <View style={styles.categoryButtonCol}>
                 <SeniorServicesButton />
-                <TransporationServicesButton />
-                <UtilitiesServicesButton />
                 <VeteranServicesButton />
-                <YouthServicesButton />
               </View>
             </View>
           </ScrollView>
