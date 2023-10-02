@@ -8,20 +8,11 @@ import ForgotPasswordSVG from '../../../assets/images/forgot_password_screen_car
 
 import { TextInput } from "react-native-gesture-handler";
 import { auth } from "../../../firebase/firebase";
-import { useFonts } from 'expo-font';
 import { Ionicons } from "@expo/vector-icons";
 
 export default function ForgotPasswordScreen() {
     const navigation = useNavigation();
     const [email, setEmail] = useState('');
-    const [fontsLoaded] = useFonts({
-        'Montserrat-Black': require('../../../assets/fonts/Montserrat-Black.ttf'),
-    });
-
-    if (!fontsLoaded) {
-        return null
-    };
-
     const handleBackButton = () => {
         navigation.navigate("Login");
     }
@@ -63,10 +54,10 @@ export default function ForgotPasswordScreen() {
                     </Text>
                 </TouchableOpacity>
             </View>
-            
+
             <View style={{ flex: 1, flexDirection: 'row', alignItems: 'flex-start' }}>
                 <ForgotPasswordSVG />
-            </View> 
+            </View>
 
             <View style={{ paddingHorizontal: 25 }}>
                 <Text

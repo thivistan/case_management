@@ -9,7 +9,6 @@ import LoginPageSVG from '../../../assets/images/login_page_cartoon.svg';
 import { TextInput } from "react-native-gesture-handler";
 import { AuthContext } from "../../../Navigation/AuthProvider";
 
-import { useFonts } from 'expo-font';
 import { Ionicons } from "@expo/vector-icons";
 
 export default function LoginScreen() {
@@ -17,13 +16,6 @@ export default function LoginScreen() {
     const [password, setPassword] = useState('');
     const { login } = useContext(AuthContext);
     const navigation = useNavigation();
-    const [fontsLoaded] = useFonts({
-        'Montserrat-Black': require('../../../assets/fonts/Montserrat-Black.ttf'),
-    });
-
-    if (!fontsLoaded) {
-        return null
-    };
 
     const handleForgotPasswordScreen = () => {
         navigation.navigate("ForgotPassword");
@@ -34,9 +26,9 @@ export default function LoginScreen() {
     }
 
     return (
-        <SafeAreaView style={{ flex: 1, justifyContent: 'center', backgroundColor: 'white'}}>
+        <SafeAreaView style={{ flex: 1, justifyContent: 'center', backgroundColor: 'white' }}>
             <View style={{ flex: 1, flexDirection: 'row', alignItems: 'flex-start' }}>
-                <LoginPageSVG/>
+                <LoginPageSVG />
             </View>
 
             <View style={{ paddingHorizontal: 25 }}>
@@ -98,7 +90,7 @@ export default function LoginScreen() {
                     <TouchableOpacity
                         onPress={handleForgotPasswordScreen}
                     >
-                        <Text style={{ fontFamily: 'Montserrat-Black',color: '#00BFFF', fontWeight: '700' }}>Forgot?</Text>
+                        <Text style={{ fontFamily: 'Montserrat-Black', color: '#00BFFF', fontWeight: '700' }}>Forgot?</Text>
                     </TouchableOpacity>
                 </View>
 

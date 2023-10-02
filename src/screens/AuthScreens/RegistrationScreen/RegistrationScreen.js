@@ -8,7 +8,6 @@ import RegistrationPageSVG from '../../../assets/images/registration_screen_cart
 
 import { TextInput } from "react-native-gesture-handler";
 import { auth } from "../../../firebase/firebase";
-import { useFonts } from 'expo-font';
 import { Ionicons } from "@expo/vector-icons";
 
 export default function RegistrationScreen() {
@@ -16,9 +15,6 @@ export default function RegistrationScreen() {
     const [password, setPassword] = useState('');
     const [name, setName] = useState('');
     const navigation = useNavigation();
-    const [fontsLoaded] = useFonts({
-        'Montserrat-Black': require('../../../assets/fonts/Montserrat-Black.ttf'),
-    });
 
     useEffect(() => {
         const unsubscribe = auth.onAuthStateChanged(user => {
@@ -26,10 +22,6 @@ export default function RegistrationScreen() {
         })
         return unsubscribe;
     }, [])
-
-    if (!fontsLoaded) {
-        return null
-    };
 
     const handleSignUp = () => {
         auth.createUserWithEmailAndPassword(email, password).then(userCredentials => {
@@ -45,8 +37,8 @@ export default function RegistrationScreen() {
     return (
         <SafeAreaView style={{ flex: 1, justifyContent: 'center', backgroundColor: 'white' }}>
             <View style={{ flex: 1, flexDirection: 'row', alignItems: 'flex-start' }}>
-                <RegistrationPageSVG/>
-            </View>            
+                <RegistrationPageSVG />
+            </View>
             <View style={{ paddingHorizontal: 25 }}>
                 <Text
                     style={{
@@ -64,7 +56,7 @@ export default function RegistrationScreen() {
                     borderBottomColor: '#ccc',
                     borderBottomWidth: 1,
                     paddingBottom: 8,
-                    marginTop: 25                
+                    marginTop: 25
                 }}>
                     <Ionicons
                         name='person-outline'
@@ -86,7 +78,7 @@ export default function RegistrationScreen() {
                     borderBottomColor: '#ccc',
                     borderBottomWidth: 1,
                     paddingBottom: 8,
-                    marginTop: 25                
+                    marginTop: 25
                 }}>
                     <Ionicons
                         name='mail-outline'
