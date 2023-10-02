@@ -8,6 +8,7 @@ export default function App() {
     'Roboto-Bold': require('./src/assets/fonts/Roboto-Bold.ttf'),
     'Alegreya-Regular': require('./src/assets/fonts/Alegreya-Regular.ttf'),
     'Alegreya-Bold': require('./src/assets/fonts/Alegreya-Bold.ttf'),
+    'Montserrat-Black': require('./src/assets/fonts/Montserrat-Black.ttf'),
   });
 
   if (error) {

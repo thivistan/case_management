@@ -17,7 +17,7 @@ export default function ResourcesStack() {
         }
       }}
     >
-      {Object.entries(resources).map(([name, component], index) => (
+      {Object.entries(resources).map(([name, { component }], index) => (
         // Don't render the header for the main resources screen. There's already a header from the main stack
         name === 'Resources' ? 
           <Stack.Screen 

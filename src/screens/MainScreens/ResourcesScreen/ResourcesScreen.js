@@ -1,33 +1,27 @@
 import React, { useState } from 'react';
 import { styles } from './styles';
 import resources from '../../../data/resources';
-import { ScrollView, TextInput, TouchableOpacity } from 'react-native-gesture-handler';
-import { FlatList, Keyboard, KeyboardAvoidingView, Text, Touchable, View } from 'react-native';
-import { color } from 'react-native-reanimated';
-import { useFonts } from 'expo-font';
-import { fonts } from '../../../global';
+import { ScrollView, TextInput } from 'react-native-gesture-handler';
+import { KeyboardAvoidingView, Text, View } from 'react-native';
 import ResourceButton from '../../../components/ResourceButton';
 
 export default function ResourcesScreen() {
   const [searchQuery, setSearchQuery] = useState('');
-  const [fontsLoaded] = useFonts({
-    'Montserrat-Black': require('../../../assets/fonts/Montserrat-Black.ttf'),
-  });
+  const [favorites, setFavorites] = useState(
+    Object.entries(resources)
+      .filter(([name]) => name !== 'Resources')
+      .map(([name]) => ({[name]: false}))
+  );
 
-  if (!fontsLoaded) {
-    return null;
+  function handleFavorite(name, isFavorited)  {
+    const updatedFavorites = favorites.map(fav => {
+      if (Object.keys(fav)[0] === name) {
+        return { [name]: !isFavorited };
+      }
+      return fav;
+    });
+    setFavorites(updatedFavorites);
   }
-
-  // const resourceButtonRenderItem = ({ item }) => {
-  //     if (item.favorited) {
-  //         <TouchableOpacity style={styles.categoryButton}>
-  //             <Text>{item.buttonName}</Text>
-  //         </TouchableOpacity>
-  //     }
-  //     else {
-  //         <></>
-  //     }
-  // }
 
   const searchForUserQuery = () => {
     /** TO-DO
@@ -57,13 +51,35 @@ export default function ResourcesScreen() {
           >
             Favorites
           </Text>
-          <View style={styles.favoriteCategoriesContainer}>
-            <FlatList
-              horizontal={true}
-              //data={ }
-              //renderItem={( {item, index}) => {}}
-            ></FlatList>
-          </View>
+            <ScrollView 
+              style={styles.categoriesScrollView} 
+              contentContainerStyle={{ 
+                justifyContent: "space-evenly", 
+                flexWrap: "wrap", 
+                flexDirection: "row", 
+                justifyContent: "flex-start"
+              }}
+            >
+              {favorites
+                .filter(favorite => {
+                  const name = Object.keys(favorite).find(key => key !== 'key');
+                  return favorite[name];
+                })
+                .map((favorite, index) => {
+                  const name = Object.keys(favorite).find(key => key !== 'key');
+                  const isFavorited = favorite[name];
+                  
+                  return (
+                    <ResourceButton 
+                      name={name} 
+                      key={name} 
+                      isFavorited={isFavorited} 
+                      iconName={resources[name].iconName}
+                      handleFavorite={() => handleFavorite(name, isFavorited)}
+                    />
+                  );
+                })}
+            </ScrollView>
         </View>
 
         {/* categories section */}
@@ -89,8 +105,21 @@ export default function ResourcesScreen() {
               justifyContent: "flex-start"
             }}
           >
-            {/* Create buttons with every resource except the resources component */}
-            {Object.entries(resources).map(([name, component], index) => (name !== 'Resources' && <ResourceButton name={name}/>))}
+            {favorites.map((favorite) => {
+              const name = Object.keys(favorite).find(key => key !== 'key');
+              const isFavorited = favorite[name];
+
+              return (
+                name !== 'Resources' && 
+                <ResourceButton 
+                  name={name} 
+                  key={name} 
+                  isFavorited={isFavorited} 
+                  iconName={resources[name].iconName}
+                  handleFavorite={() => handleFavorite(name, isFavorited)}
+                />
+              );
+            })}
           </ScrollView>
         </View>
       </View>

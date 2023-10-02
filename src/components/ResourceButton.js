@@ -8,8 +8,7 @@ import Icon from '@expo/vector-icons/Ionicons';
 import { colors } from '../global';
 
 // Not on 211LA.org
-export default function ResourceButton({ name }) {
-    const [isFavorited, setIsFavorited] = useState(false);
+export default function ResourceButton({ name, isFavorited, handleFavorite, iconName }) {
     const navigation = useNavigation();
 
     return (
@@ -17,7 +16,7 @@ export default function ResourceButton({ name }) {
             <TouchableOpacity
                 style={styles.favoriteBtn}
                 onPress={() => {
-                    setIsFavorited(!isFavorited);
+                    handleFavorite();
                 }}
             >
                 <Icon style={{ fontSize: 20, color: colors.primaryBold }} name={isFavorited ? "star" : "star-outline"}/>
@@ -28,6 +27,7 @@ export default function ResourceButton({ name }) {
                     navigation.navigate(name);
                 }}
             >
+                <Icon style={{ fontSize: 20, color: colors.primaryBold }} name={iconName} />
                 <Text style={styles.btnText}>{name}</Text>
             </TouchableOpacity>
         </View>
