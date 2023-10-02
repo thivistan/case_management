@@ -6,6 +6,8 @@
 
 export const colors = {
     primary: "#6acfee",
+    primaryBold: '#00BFFF', // Most commonly used color prior to the creation of this file.
+    primaryTransparent: "#6acfee66",
     secondary: "#df1683",
 }
 
