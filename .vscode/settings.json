@@ -1,6 +1,0 @@
-{
-  "git.ignoreLimitWarning": true,
-  "cSpell.words": ["applicat", "checkmark", "firebaseapp", "precommit"],
-  "editor.defaultFormatter": "esbenp.prettier-vscode",
-  "editor.formatOnSave": true
-}
