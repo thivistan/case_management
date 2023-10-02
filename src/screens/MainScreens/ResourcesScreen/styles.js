@@ -1,11 +1,12 @@
 import { StyleSheet } from "react-native";
+import { colors, fonts } from '../../../global';
 
 const styles = StyleSheet.create({
     mainContainer: {
         height: '100%',
         width: '100%',
         paddingTop: 20,
-        backgroundColor: 'white',
+        backgroundColor: colors.primaryTransparent,
         paddingBottom: 50,
         alignItems: 'center',   //align items on the cross axis (left to right)
         justifyContent: 'flex-start',
@@ -24,10 +25,19 @@ const styles = StyleSheet.create({
         paddingBottom: 20,
     },
     searchBar: {
-        borderWidth: 1.5,
+        // borderWidth: 1.5,
+        borderColor: colors.primaryBold,
         backgroundColor: 'white',
         borderRadius: 10,
         flex: 1,
+        shadowColor: "#000",
+        shadowOffset: { width: 0, height: 2, },
+        shadowOpacity: 0.25,
+        shadowRadius: 3.84,
+        elevation: 5,
+        paddingHorizontal: 15,
+        fontFamily: fonts.defaultBold,
+        color: colors.primary,
     },
     favoritesContainer: {
         flex: 2,
@@ -43,15 +53,17 @@ const styles = StyleSheet.create({
         flex: 5,
     },
     categoriesScrollView: {
-        borderWidth: 1.5,
+        borderColor: colors.primaryBold,
+        backgroundColor: 'white',
+        borderRadius: 10,
         paddingTop: 20,
         paddingLeft: '3%',
         borderRadius: 10,
-    },
-    categoriesColContainer: {
-        flexDirection: 'row',
-        flexWrap: 'nowrap',
-        justifyContent: 'space-evenly',
+        shadowColor: "#000",
+        shadowOffset: { width: 0, height: 2, },
+        shadowOpacity: 0.25,
+        shadowRadius: 3.84,
+        elevation: 5,
     },
     resourceFavoriteButton: {
         flexDirection: 'row',
@@ -66,7 +78,15 @@ const styles = StyleSheet.create({
         height: 15,
         width: 15,
         borderRadius: 7,
-    }
+    },
+    shadow: {
+        shadowColor: "#000",
+        shadowOffset: { width: 0, height: 2, },
+        shadowOpacity: 0.25,
+        shadowRadius: 3.84,
+        elevation: 5,
+        flex: 5,
+    },
 });
 
 export { styles };

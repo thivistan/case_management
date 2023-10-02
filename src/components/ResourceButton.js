@@ -19,7 +19,7 @@ export default function ResourceButton({ name, isFavorited, handleFavorite, icon
                     handleFavorite();
                 }}
             >
-                <Icon style={{ fontSize: 20, color: colors.primaryBold }} name={isFavorited ? "star" : "star-outline"} />
+                <Icon style={{ fontSize: 20, color: colors.primary }} name={isFavorited ? "star" : "star-outline"} />
             </TouchableOpacity>
             <TouchableOpacity
                 style={styles.categoryBtn}
@@ -27,7 +27,7 @@ export default function ResourceButton({ name, isFavorited, handleFavorite, icon
                     navigation.navigate(name);
                 }}
             >
-                <Icon style={{ fontSize: 20, color: colors.primaryBold }} name={iconName} />
+                {iconName && <Icon style={{ fontSize: 20, color: 'white' }} name={iconName} />}
                 <Text style={styles.btnText}>{name}</Text>
             </TouchableOpacity>
         </View>
@@ -41,8 +41,9 @@ const styles = StyleSheet.create({
         top: '40%',
     },
     categoryBtn: {
-        borderColor: 'black',
-        borderWidth: 1,
+        // borderColor: colors.primaryBold,
+        backgroundColor: colors.primary,
+        // borderWidth: 1.5,
         marginBottom: 10,
         justifyContent: 'center',
         alignItems: 'center',
@@ -50,9 +51,15 @@ const styles = StyleSheet.create({
         height: 80,
         borderRadius: 10,
         margin: 10,
+        shadowColor: "#000",
+        shadowOffset: { width: 0, height: 2, },
+        shadowOpacity: 0.25,
+        shadowRadius: 3.84,
+        elevation: 5,
     },
     btnText: {
-        fontFamily: fonts.default,
+        fontFamily: fonts.defaultBold,
+        color: 'white',
         textAlign: 'center',
     }
 });
