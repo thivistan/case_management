@@ -19,7 +19,7 @@ export default function ResourceButton({ name, isFavorited, handleFavorite, icon
                     handleFavorite();
                 }}
             >
-                <Icon style={{ fontSize: 20, color: colors.primaryBold }} name={isFavorited ? "star" : "star-outline"}/>
+                <Icon style={{ fontSize: 20, color: colors.primaryBold }} name={isFavorited ? "star" : "star-outline"} />
             </TouchableOpacity>
             <TouchableOpacity
                 style={styles.categoryBtn}
@@ -34,7 +34,7 @@ export default function ResourceButton({ name, isFavorited, handleFavorite, icon
     );
 };
 
-const styles = StyleSheet.create( {
+const styles = StyleSheet.create({
     favoriteBtn: {
         position: 'relative',
         left: '75%',
@@ -55,4 +55,4 @@ const styles = StyleSheet.create( {
         fontFamily: fonts.default,
         textAlign: 'center',
     }
-} );
+});

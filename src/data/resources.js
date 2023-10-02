@@ -23,14 +23,9 @@ import TransportationServicesScreen from '../screens/ServicesScreens/Transportat
 import UtilitiesServicesScreen from '../screens/ServicesScreens/UtilitiesServicesScreen/UtilitiesServicesScreen';
 import VeteranServicesScreen from '../screens/ServicesScreens/VeteranServicesScreen/VeteranServicesScreen.js';
 import YouthServicesScreen from '../screens/ServicesScreens/YouthServicesScreen/YouthServicesScreen.js';
-import ResourcesScreen from '../screens/MainScreens/ResourcesScreen/ResourcesScreen.js';
 import EducationAndTrainingScreen from '../screens/ServicesScreens/EmploymentServicesScreen/EducationAndTrainingScreen.js';
 
 const resources = {
-    "Resources": {
-        component: ResourcesScreen,
-        iconName: "information-circle-outline"
-    },
     "Appointment Services": {
         component: AppointmentsScreen,
         iconName: "calendar-outline"
