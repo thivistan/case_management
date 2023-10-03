@@ -7,7 +7,16 @@ import { fonts } from '../global';
 import Icon from '@expo/vector-icons/Ionicons';
 import { colors } from '../global';
 
-// Not on 211LA.org
+/**
+ * Button component to display a resource. Includes a favorite button.
+ * 
+ * @param {Object} props Component props.
+ * @param {String} props.name The name of the resource.
+ * @param {Boolean} props.isFavorited Whether or not the resource is favorited.
+ * @param {Function} props.handleFavorite A function to handle favorite.
+ * @param {String} props.iconName The name of the icon to display.
+ * @returns Resource button component.
+ */
 export default function ResourceButton({ name, isFavorited, handleFavorite, iconName }) {
     const navigation = useNavigation();
 
@@ -41,9 +50,7 @@ const styles = StyleSheet.create({
         top: '40%',
     },
     categoryBtn: {
-        // borderColor: colors.primaryBold,
         backgroundColor: colors.primary,
-        // borderWidth: 1.5,
         marginBottom: 10,
         justifyContent: 'center',
         alignItems: 'center',
