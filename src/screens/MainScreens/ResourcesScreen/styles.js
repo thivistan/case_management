@@ -1,6 +1,4 @@
 import { StyleSheet } from "react-native";
-import { ceil } from "react-native-reanimated";
-import { withSafeAreaInsets } from "react-native-safe-area-context";
 
 const styles = StyleSheet.create({
     mainContainer: {
@@ -47,6 +45,7 @@ const styles = StyleSheet.create({
     categoriesScrollView: {
         borderWidth: 1.5,
         paddingTop: 20,
+        paddingLeft: '3%',
         borderRadius: 10,
     },
     categoriesColContainer: {

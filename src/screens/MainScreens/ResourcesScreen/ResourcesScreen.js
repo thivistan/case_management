@@ -1,36 +1,12 @@
 import React, { useState } from 'react';
 import { styles } from './styles';
-import {
-  AppointmentsServicesButton,
-  ChurchServicesButton,
-  CovidServicesButton,
-  CrisisServicesButton,
-  DisabilityServicesButton,
-  DonationCenterButton,
-  EducationServicesButton,
-  EmploymentServicesButton,
-  FamilyServicesButton,
-  FoodServicesButton,
-  FormsServicesButton,
-  GovernmentServicesButton,
-  HealthServicesButton,
-  HousingServicesButton,
-  ImmigrationServicesButton,
-  LegalServicesButton,
-  LGBTQServicesButton,
-  MentalHealthServicesButton,
-  ParentingServicesButton,
-  ReEntryServicesButton,
-  SeniorServicesButton,
-  TransporationServicesButton,
-  UtilitiesServicesButton,
-  VeteranServicesButton,
-  YouthServicesButton,
-} from '../../../components/ResourceButtons/ResourceButtons';
+import resources from '../../../data/resources';
 import { ScrollView, TextInput, TouchableOpacity } from 'react-native-gesture-handler';
 import { FlatList, Keyboard, KeyboardAvoidingView, Text, Touchable, View } from 'react-native';
 import { color } from 'react-native-reanimated';
 import { useFonts } from 'expo-font';
+import { fonts } from '../../../global';
+import ResourceButton from '../../../components/ResourceButton';
 
 export default function ResourcesScreen() {
   const [searchQuery, setSearchQuery] = useState('');
@@ -104,43 +80,17 @@ export default function ResourcesScreen() {
             All Categories
           </Text>
 
-          <ScrollView style={styles.categoriesScrollView}>
-            <View style={styles.categoriesColContainer}>
-              {/* col 1 */}
-              <View style={styles.categoryButtonCol}>
-                <AppointmentsServicesButton />
-                <ChurchServicesButton />
-                <CovidServicesButton />
-                <CrisisServicesButton />
-                <DisabilityServicesButton />
-                <LegalServicesButton />
-                <ParentingServicesButton />
-                <TransporationServicesButton />
-                <YouthServicesButton />
-              </View>
-              {/* col 2 */}
-              <View style={styles.categoryButtonCol}>
-                <DonationCenterButton />
-                <EducationServicesButton />
-                <EmploymentServicesButton />
-                <FamilyServicesButton />
-                <FoodServicesButton />
-                <LGBTQServicesButton />
-                <ReEntryServicesButton />
-                <UtilitiesServicesButton />
-              </View>
-              {/* col 3 */}
-              <View style={styles.categoryButtonCol}>
-                <FormsServicesButton />
-                <GovernmentServicesButton />
-                <HealthServicesButton />
-                <HousingServicesButton />
-                <ImmigrationServicesButton />
-                <MentalHealthServicesButton />
-                <SeniorServicesButton />
-                <VeteranServicesButton />
-              </View>
-            </View>
+          <ScrollView
+            style={styles.categoriesScrollView}
+            contentContainerStyle={{
+              justifyContent: "space-evenly",
+              flexWrap: "wrap",
+              flexDirection: "row",
+              justifyContent: "flex-start"
+            }}
+          >
+            {/* Create buttons with every resource except the resources component */}
+            {Object.entries(resources).map(([name, component], index) => (name !== 'Resources' && <ResourceButton name={name} />))}
           </ScrollView>
         </View>
       </View>
