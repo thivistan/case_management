@@ -68,13 +68,6 @@ export default function HomeScreen() {
     { date: '10/06/2022', time: '10:30 AM', location: 'Thaddeus Resource Center', key: '8' },
     { date: '10/06/2022', time: '10:30 AM', location: 'Thaddeus Resource Center', key: '9' },
   ]);
-  const [fontsLoaded] = useFonts({
-    'Montserrat-Black': require('../../../assets/fonts/Montserrat-Black.ttf'),
-  });
-
-  if (!fontsLoaded) {
-    return null;
-  }
 
   const Spacer = ({ size }) => <View style={{ width: size, height: size }} />;
 

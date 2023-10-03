@@ -1,10 +1,35 @@
-import React, { createContext, useState } from 'react';
+import React, { createContext, useState, useEffect } from 'react';
 import { auth } from '../firebase/firebase';
+import LoadingScreen from '../components/LoadingScreen';
 
 export const AuthContext = createContext({});
 
+/**
+ * AuthProvider component manages and provides authentication state and methods to its children.
+ * 
+ * @param {Object} props
+ * @param {React.ReactNode} props.children Child components that will have access to the auth context.
+ * 
+ * @returns {React.Component} Returns the context provider that wraps around the children, making the auth state and methods accessible to them. 
+ * If the authentication state is being determined, it will display a loading screen.
+ */
 export const AuthProvider = ({ children }) => {
     const [user, setUser] = useState(null);
+    const [loading, setLoading] = useState(true);
+
+    useEffect(() => {
+        // Set up a listener for Firebase's authentication state changes
+        const unsubscribe = auth.onAuthStateChanged(authUser => {
+            setUser(authUser);
+            setLoading(false);
+        });
+
+        // Clean up the subscription on component unmount
+        return () => unsubscribe();
+    }, []);
+
+    if (loading) return <LoadingScreen />;
+
     return (
         <AuthContext.Provider
             value={{
@@ -13,15 +38,19 @@ export const AuthProvider = ({ children }) => {
                 login: async (email, password) => {
                     try {
                         await auth.signInWithEmailAndPassword(email, password);
+                        console.log("Signed in with", email);
                     } catch (error) {
                         console.log(error);
+                        alert(error.message);
                     }
                 },
                 register: async (email, password) => {
                     try {
                         await auth.createUserWithEmailAndPassword(email, password);
+                        console.log("Registered with", email);
                     } catch (error) {
                         console.log(error);
+                        alert(error.message);
                     }
                 },
                 logout: async () => {
@@ -30,7 +59,7 @@ export const AuthProvider = ({ children }) => {
                     } catch (error) {
                         console.log(error);
                     }
-                }
+                },
             }}
         >
             {children}

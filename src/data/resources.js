@@ -23,37 +23,114 @@ import TransportationServicesScreen from '../screens/ServicesScreens/Transportat
 import UtilitiesServicesScreen from '../screens/ServicesScreens/UtilitiesServicesScreen/UtilitiesServicesScreen';
 import VeteranServicesScreen from '../screens/ServicesScreens/VeteranServicesScreen/VeteranServicesScreen.js';
 import YouthServicesScreen from '../screens/ServicesScreens/YouthServicesScreen/YouthServicesScreen.js';
-import ResourcesScreen from '../screens/MainScreens/ResourcesScreen/ResourcesScreen.js';
 import EducationAndTrainingScreen from '../screens/ServicesScreens/EmploymentServicesScreen/EducationAndTrainingScreen.js';
 
 const resources = {
-    "Resources": ResourcesScreen,
-    "Appointment Services": AppointmentsScreen,
-    "Church Services": ChurchServicesScreen,
-    "Covid-19 Info & Supports": CovidServicesScreen,
-    "Crisis Services": CrisisServicesScreen,
-    "Disability Services": DisabilityServicesScreen,
-    "Donation Center": DonationScreen,
-    "Education Services": EducationServicesScreen,
-    "Family Services": FamilyServicesScreen,
-    "Food Services": FoodServicesScreen,
-    "Forms": FormsServicesScreen,
-    "Government Services": GovernmentServicesScreen,
-    "Health Services": HealthServicesScreen,
-    "Housing Services": HousingServicesScreen,
-    "Immigration Services": ImmigrationServicesScreen,
-    "Income & Employment Services": EmploymentServicesScreen,
-    "Legal Services": LegalServicesScreen,
-    "LGBTQ+ Services": LGBTQServicesScreen,
-    "Mental Health Services": MentalHealthServicesScreen,
-    "Parenting Services": ParentingServicesScreen,
-    "Re-entry Services": ReEntryServicesScreen,
-    "Senior Services": SeniorServicesScreen,
-    "Transportation Services": TransportationServicesScreen,
-    "Utilities Services": UtilitiesServicesScreen,
-    "Veteran Services": VeteranServicesScreen,
-    "Youth Services": YouthServicesScreen,
-    "Education & Training": EducationAndTrainingScreen
+    "Appointment Services": {
+        component: AppointmentsScreen,
+        iconName: "calendar-outline"
+    },
+    "Church Services": {
+        component: ChurchServicesScreen,
+        iconName: "book-outline"
+    },
+    "Covid-19 Info & Supports": {
+        component: CovidServicesScreen,
+        iconName: "medkit-outline"
+    },
+    "Crisis Services": {
+        component: CrisisServicesScreen,
+        iconName: "warning-outline"
+    },
+    "Disability Services": {
+        component: DisabilityServicesScreen,
+        iconName: ""
+    },
+    "Donation Center": {
+        component: DonationScreen,
+        iconName: "heart-outline"
+    },
+    "Education Services": {
+        component: EducationServicesScreen,
+        iconName: "school-outline"
+    },
+    "Family Services": {
+        component: FamilyServicesScreen,
+        iconName: "home-outline"
+    },
+    "Food Services": {
+        component: FoodServicesScreen,
+        iconName: "restaurant-outline"
+    },
+    "Forms": {
+        component: FormsServicesScreen,
+        iconName: "clipboard-outline"
+    },
+    "Government Services": {
+        component: GovernmentServicesScreen,
+        iconName: "globe-outline"
+    },
+    "Health Services": {
+        component: HealthServicesScreen,
+        iconName: "pulse-outline"
+    },
+    "Housing Services": {
+        component: HousingServicesScreen,
+        iconName: "home-outline"
+    },
+    "Immigration Services": {
+        component: ImmigrationServicesScreen,
+        iconName: "airplane-outline"
+    },
+    "Income & Employment Services": {
+        component: EmploymentServicesScreen,
+        iconName: "cash-outline"
+    },
+    "Legal Services": {
+        component: LegalServicesScreen,
+        iconName: "briefcase-outline"
+    },
+    "LGBTQ+ Services": {
+        component: LGBTQServicesScreen,
+        iconName: ""
+    },
+    "Mental Health Services": {
+        component: MentalHealthServicesScreen,
+        iconName: "people-outline"
+    },
+    "Parenting Services": {
+        component: ParentingServicesScreen,
+        iconName: "person-add-outline"
+    },
+    "Re-entry Services": {
+        component: ReEntryServicesScreen,
+        iconName: "enter-outline"
+    },
+    "Senior Services": {
+        component: SeniorServicesScreen,
+        iconName: "person-outline"
+    },
+    "Transportation Services": {
+        component: TransportationServicesScreen,
+        iconName: "car-outline"
+    },
+    "Utilities Services": {
+        component: UtilitiesServicesScreen,
+        iconName: "flash-outline"
+    },
+    "Veteran Services": {
+        component: VeteranServicesScreen,
+        iconName: "ribbon-outline"
+    },
+    "Youth Services": {
+        component: YouthServicesScreen,
+        iconName: "happy-outline"
+    },
+    "Education & Training": {
+        component: EducationAndTrainingScreen,
+        iconName: "school-outline"
+    }
 };
+
 
 export default resources;

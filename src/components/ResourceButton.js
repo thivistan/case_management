@@ -7,9 +7,17 @@ import { fonts } from '../global';
 import Icon from '@expo/vector-icons/Ionicons';
 import { colors } from '../global';
 
-// Not on 211LA.org
-export default function ResourceButton({ name }) {
-    const [isFavorited, setIsFavorited] = useState(false);
+/**
+ * Button component to display a resource. Includes a favorite button.
+ * 
+ * @param {Object} props Component props.
+ * @param {String} props.name The name of the resource.
+ * @param {Boolean} props.isFavorited Whether or not the resource is favorited.
+ * @param {Function} props.handleFavorite A function to handle favorite.
+ * @param {String} props.iconName The name of the icon to display.
+ * @returns Resource button component.
+ */
+export default function ResourceButton({ name, isFavorited, handleFavorite, iconName }) {
     const navigation = useNavigation();
 
     return (
@@ -17,10 +25,10 @@ export default function ResourceButton({ name }) {
             <TouchableOpacity
                 style={styles.favoriteBtn}
                 onPress={() => {
-                    setIsFavorited(!isFavorited);
+                    handleFavorite();
                 }}
             >
-                <Icon style={{ fontSize: 20, color: colors.primaryBold }} name={isFavorited ? "star" : "star-outline"}/>
+                <Icon style={{ fontSize: 20, color: colors.primary }} name={isFavorited ? "star" : "star-outline"} />
             </TouchableOpacity>
             <TouchableOpacity
                 style={styles.categoryBtn}
@@ -28,21 +36,21 @@ export default function ResourceButton({ name }) {
                     navigation.navigate(name);
                 }}
             >
+                {iconName && <Icon style={{ fontSize: 20, color: 'white' }} name={iconName} />}
                 <Text style={styles.btnText}>{name}</Text>
             </TouchableOpacity>
         </View>
     );
 };
 
-const styles = StyleSheet.create( {
+const styles = StyleSheet.create({
     favoriteBtn: {
         position: 'relative',
         left: '75%',
         top: '40%',
     },
     categoryBtn: {
-        borderColor: 'black',
-        borderWidth: 1,
+        backgroundColor: colors.primary,
         marginBottom: 10,
         justifyContent: 'center',
         alignItems: 'center',
@@ -50,9 +58,15 @@ const styles = StyleSheet.create( {
         height: 80,
         borderRadius: 10,
         margin: 10,
+        shadowColor: "#000",
+        shadowOffset: { width: 0, height: 2, },
+        shadowOpacity: 0.25,
+        shadowRadius: 3.84,
+        elevation: 5,
     },
     btnText: {
-        fontFamily: fonts.default,
+        fontFamily: fonts.defaultBold,
+        color: 'white',
         textAlign: 'center',
     }
-} );
+});
