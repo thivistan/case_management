@@ -10,8 +10,8 @@ export default function EducationAndTrainingScreen() {
     <View style={styles.mainContainer}>
       <View style={{ paddingTop: 20 }}>
         {/* job training */}
-        <TouchableOpacity 
-          onPress={() => {return Linking.openURL("https://www.google.com/")}}
+        <TouchableOpacity
+          onPress={() => { return Linking.openURL("https://www.google.com/") }}
           style={styles.secondaryButton}
         >
           <Text style={styles.secondaryButtonText}>Job And Workforce Training</Text>
@@ -23,7 +23,7 @@ export default function EducationAndTrainingScreen() {
         </View>
 
         {/* youtube page */}
-        <TouchableOpacity 
+        <TouchableOpacity
           style={styles.secondaryButton}
           onPress={() => {
             const channelId = "UCe1REgTuVYQgaXkRzA6BSCg"
@@ -34,7 +34,7 @@ export default function EducationAndTrainingScreen() {
                 return Linking.openURL('https://www.youtube.com/channel/' + channelId);
               }
             });
-        }}>
+          }}>
           <Text style={styles.secondaryButtonText}>Thaddeus Youtube Page</Text>
         </TouchableOpacity >
 
@@ -101,7 +101,8 @@ const styles = StyleSheet.create({
     display: "flex",
     justifyContent: "center",
     alignItems: "center",
-    marginBottom: 30
+    marginBottom: 30,
+    elevation: 5,
   },
   secondaryButtonText: {
     color: colors.primary,

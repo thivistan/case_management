@@ -11,7 +11,7 @@ export default function ExternalLinkButton({ text, link }) {
       style={styles.button}
     >
       <Text style={styles.buttonText}>
-        {text} 
+        {text}
       </Text>
       <Image style={styles.image} source={ExternalLink} />
     </TouchableOpacity>
@@ -27,6 +27,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     flexDirection: 'row',
     marginBottom: 30,
+    elevation: 5,
   },
   buttonText: {
     color: 'white',

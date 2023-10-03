@@ -52,6 +52,7 @@ const styles = StyleSheet.create({
     borderRadius: 10,
     marginTop: '15%',
     marginHorizontal: 5,
+    elevation: 5,
   },
   textContainer: {
     justifyContent: "center",
