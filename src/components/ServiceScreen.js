@@ -4,10 +4,13 @@ import { backgroundColors } from '../global';
 import thaddeusLogo from '../assets/images/thaddeus_globe.png';
 
 /**
- * Service Screen component. Displays resources in each category.
- * @param {*} navigation prop needed to navigate to a categoryScreen
- * @param {Object} categoryData JSON object containing category-specific data
- * @returns Service Screen Component
+ * A screen component that displays categorized resources to users. Each category can either navigate to another screen with details or open a link.
+ * 
+ * @param {Object} props - The properties passed to the component.
+ * @param {Function} props.navigation - Navigation object provided by React Navigation.
+ * @param {Array<Object>} props.categoryData - An array of category objects where each object can have details such as label, image, resources, or a URL.
+ * 
+ * @returns {React.Component} A scrollable view containing buttons for each category, which either navigates to another screen or opens a link based on the category's data.
  */
 export default function ServiceScreen({ navigation, categoryData }) {
   const handleButtonPress = (category) => {
@@ -19,19 +22,19 @@ export default function ServiceScreen({ navigation, categoryData }) {
   }
 
   return (
-    <ScrollView style={styles.container} contentContainerStyle={{ justifyContent: "space-evenly", flexWrap: "wrap", flexDirection: "row", height: '100%'}}>
+    <ScrollView style={styles.container} contentContainerStyle={{ justifyContent: "space-evenly", flexWrap: "wrap", flexDirection: "row", height: '100%' }}>
       {categoryData.map((category, idx) => (
         <TouchableOpacity
           style={styles.categoryBtn}
           key={idx}
           onPress={() => handleButtonPress(category)}
-          >
-            {/* Displays the Thaddeus Logo if category image not present */}
-            <ImageBackground style={styles.image} source={category.image ? { uri : category.image } : thaddeusLogo}> 
-              <View style={styles.textContainer}>
-                <Text style={styles.text}>{category.label}</Text>
-              </View>
-            </ImageBackground>
+        >
+          {/* Displays the Thaddeus Logo if category image not present */}
+          <ImageBackground style={styles.image} source={category.image ? { uri: category.image } : thaddeusLogo}>
+            <View style={styles.textContainer}>
+              <Text style={styles.text}>{category.label}</Text>
+            </View>
+          </ImageBackground>
         </TouchableOpacity>
       ))}
     </ScrollView>
@@ -44,10 +47,10 @@ const styles = StyleSheet.create({
     height: '100%',
   },
   categoryBtn: {
-    width: '40%', 
+    width: '40%',
     height: '20%',
-    borderRadius: 10, 
-    marginTop: '15%', 
+    borderRadius: 10,
+    marginTop: '15%',
     marginHorizontal: 5,
   },
   textContainer: {
