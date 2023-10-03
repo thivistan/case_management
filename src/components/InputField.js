@@ -45,6 +45,7 @@ export default function InputField({ type, value, onChangeText, buttonRight }) {
                 value={value}
                 onChangeText={value => onChangeText(value)}
                 autoCapitalize='none'
+                autoComplete={type}
                 autoCorrect={false}
             />
             {buttonRight}
