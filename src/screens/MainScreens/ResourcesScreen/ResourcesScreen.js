@@ -114,7 +114,7 @@ export default function ResourcesScreen() {
                 const isFavorited = favorite[name];
 
                 return (
-                  name !== 'Resources' &&
+                  name !== 'Resources' && name !== "Education & Training" &&
                   <ResourceButton
                     name={name}
                     key={name}
