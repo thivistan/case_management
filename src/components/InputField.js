@@ -1,8 +1,19 @@
 import React from 'react';
-import { View, TextInput, KeyboardAvoidingView } from 'react-native';
+import { View, TextInput } from 'react-native';
 import Icon from '@expo/vector-icons/Ionicons';
 import { colors } from '../global';
 
+/**
+ * 
+ * Customizable input field component.
+ * 
+ * @param {Object} props The properties passed to the component.
+ * @param {'email' | 'password' | 'name'} props.type The type of input field, which determines the left icon and certain behaviors (e.g., secure text entry for password).
+ * @param {string} props.value The current value of the input field.
+ * @param {function} props.onChangeText Callback function that is called when the text in the input field changes.
+ * @param {React.Component} [props.buttonRight] Optional component (typically a button) that can be displayed on the right side of the input field.
+ * @returns {React.Component} A styled input field with an icon on the left and optional button on the right.
+ */
 export default function InputField({ type, value, onChangeText, buttonRight }) {
     const icons = {
         email: 'mail-outline',

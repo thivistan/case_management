@@ -4,8 +4,13 @@ import resources from '../data/resources';
 import ResourcesScreen from '../screens/MainScreens/ResourcesScreen/ResourcesScreen.js';
 import { fonts } from '../global.js';
 
+/**
+ * Native stack navigator for the resources screen.
+ * @returns {React.Component} A native stack navigator containing all of the resource screens.
+ */
 export default function ResourcesStack() {
   const Stack = createNativeStackNavigator();
+
   return (
     <Stack.Navigator
       id="ResourcesStack"
@@ -18,11 +23,14 @@ export default function ResourcesStack() {
         }
       }}
     >
+      {/* Main resources screen */}
       <Stack.Screen
         name='Resources Home'
         component={ResourcesScreen}
         options={{ headerShown: false }}
       />
+
+      {/* Create a screen for each resource in the resources object. */}
       {Object.entries(resources).map(([name, { component }], index) => (
         <Stack.Screen
           key={index}

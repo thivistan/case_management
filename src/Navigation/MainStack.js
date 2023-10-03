@@ -13,17 +13,20 @@ import ResourcesStack from './ResourcesStack';
 import thaddeusLogo from '../assets/images/thaddeus_globe.png';
 import { fonts } from '../global';
 
-const Drawer = createDrawerNavigator();
-
+/**
+ * Native drawer navigator for the main screens.
+ * @returns {React.Component} A native drawer navigator containing all of the main screens.
+ */
 export default function MainStack() {
+    const Drawer = createDrawerNavigator();
 
     const HeaderRight = () => (
-        <Image 
-            source={thaddeusLogo} 
-            style={{ 
-                width: 50, 
+        <Image
+            source={thaddeusLogo}
+            style={{
+                width: 50,
                 height: (50 * 699) / 1260, // Maintain the original aspect ratio
-                marginRight: 10 
+                marginRight: 10
             }}
         />
     );
