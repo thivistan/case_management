@@ -14,8 +14,11 @@ import thaddeusLogo from '../assets/images/thaddeus_globe.png';
  */
 export default function ServiceScreen({ navigation, categoryData }) {
   const handleButtonPress = (category) => {
-    if (category.resources) { // If resources are present in categoryData
-      navigation.navigate(category.label)
+    if (category.resources || category.links) { // If Thaddeus-provided resources or links are present in categoryData
+      navigation.navigate("Resource List", {subcategory: category,
+        global_label: categoryData.global_label,
+        global_url: categoryData.global_url}
+      )
     } else if (category.url) { // If a link is present
       return Linking.openURL(category.url)
     }
@@ -23,7 +26,7 @@ export default function ServiceScreen({ navigation, categoryData }) {
 
   return (
     <ScrollView style={styles.container} contentContainerStyle={{ justifyContent: "space-evenly", flexWrap: "wrap", flexDirection: "row", height: '100%' }}>
-      {categoryData.map((category, idx) => (
+      {categoryData.subcategories.map((category, idx) => (
         <TouchableOpacity
           style={styles.categoryBtn}
           key={idx}

@@ -1,5 +1,5 @@
 {
-  "global_label": "Legal",
+  "global_label": "Donation",
   "global_url": "https://211la.org/resources/subcategory/legal-services",
   "subcategories": [
     {
@@ -10,7 +10,7 @@
           "name": "Social Advocacy Group",
           "phone": "(888) 407-4101",
           "email": "justice@advocacyproject.org",
-          "website": "https://advocacyproject.org/"
+          "website": "http://advocacyproject.org/"
         }
       ]
     },

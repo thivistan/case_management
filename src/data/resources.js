@@ -25,6 +25,8 @@ import VeteranServicesScreen from '../screens/ServicesScreens/VeteranServicesScr
 import YouthServicesScreen from '../screens/ServicesScreens/YouthServicesScreen/YouthServicesScreen.js';
 import EducationAndTrainingScreen from '../screens/ServicesScreens/EmploymentServicesScreen/EducationAndTrainingScreen.js';
 
+import ResourcesListScreen from '../components/ResourcesListScreen.js';
+
 const resources = {
     "Appointment Services": {
         component: AppointmentsScreen,
@@ -126,6 +128,14 @@ const resources = {
         component: YouthServicesScreen,
         iconName: "happy-outline"
     },
+
+    // Healthcare services
+    "Resource List": {
+        component: ResourcesListScreen,
+        iconName: "school-outline"
+    },
+
+    // Income & Employment services
     "Education & Training": {
         component: EducationAndTrainingScreen,
         iconName: "school-outline"

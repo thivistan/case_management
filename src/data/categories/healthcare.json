@@ -1,4 +1,7 @@
-[
+{
+  "global_label": "Healthcare",
+  "global_url": "https://211la.org/resources/subcategory/healthcare",
+  "subcategories": [
     {
       "label": "Medical Care",
       "image": null,
@@ -154,4 +157,4 @@
       ]
     }
   ]
-  
+} 
