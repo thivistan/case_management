@@ -1,14 +1,7 @@
-import { StyleSheet, Text, View } from 'react-native'
-import React from 'react'
+import React, { useState } from 'react';
+import ServiceScreen from '../../../components/ServiceScreen';
+import categoryData from '../../../data/categories/donation.json'
 
-const DonationScreen = () => {
-  return (
-    <View>
-      <Text>Hi! This is the donation screen</Text>
-    </View>
-  )
+export default function DonationScreen({ navigation }) {
+  return <ServiceScreen navigation={navigation} categoryData={categoryData}/>
 }
-
-export default DonationScreen
-
-const styles = StyleSheet.create({})

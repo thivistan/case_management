@@ -1,54 +1,21 @@
-import { StyleSheet, Text, View, Linking, ScrollView, TouchableOpacity } from 'react-native';
+import { StyleSheet, Text, View, ScrollView, TouchableOpacity } from 'react-native';
 import React from 'react';
 
 import Icon from 'react-native-vector-icons/Ionicons';
 import MapView, { Marker } from 'react-native-maps';
 
-const colorPrimary = '#00BFFF';
-
-/**
- * Function to handle opening various apps on the OS.
- * @param {String} content the content that will be sent to the app
- * @param {String} type the type of app to open
- * @param {String} lat the latitude if opening the map app
- * @param {String} lon the longitude if opening the map app
- */
-const openApp = async (content, type, lat, lon) => {
-  let url = content;
-  if (type === 'map') {
-    const scheme = Platform.select({ ios: 'maps://0,0?q=', android: 'geo:0,0?q=' });
-    const latLng = `${lat},${lon}`;
-    url = Platform.select({
-      ios: `${scheme}${content}@${latLng}`,
-      android: `${scheme}${latLng}(${content})`,
-    });
-  } else if (type == 'email') {
-    const scheme = Platform.select({ ios: 'message:', android: 'mailto:' });
-    url = Platform.select({
-      ios: `${scheme}${content}`,
-      android: `${scheme}${content}`,
-    });
-  } else if (type == 'phone') {
-    url = `tel:${content}`
-  }
-  
-  try {
-    await Linking.openURL(url);
-    console.log(`Opened URL: ${url}`);
-  } catch (error) {
-    console.error(`Error opening URL: ${url}`, error);
-  }
-};
+import { colors, globalStyles } from '../global';
+import { openApp } from '../functions/openApp'
 
 /**
  * Component to display a place's name, address, and its location on a map.
  * @param {Object} props Component props
  * @param {Object} props.location Contains the place's data in JSON
  */
-const Map = ({ location }) => {
+export const Map = ({ location }) => {
   return (
     // individual location result
-    <View style={styles.placeContainer}>
+    <View style={[styles.placeContainer, globalStyles.shadow]}>
       {/* actual map */}
       {location.lat && location.lon ? (
         <View style={styles.mapContainer}>
@@ -137,6 +104,7 @@ const styles = StyleSheet.create({
     textDecorationLine: 'underline',
   },
   locationName: {
+    color: colors.primary,
     fontWeight: '700',
     fontSize: 20,
   },
@@ -145,10 +113,10 @@ const styles = StyleSheet.create({
     width: '100%',
   },
   mapContainer: {
-    overflow: 'hidden',
     borderRadius: 25,
     borderWidth: 2,
-    borderColor: colorPrimary,
+    borderColor: colors.primaryBold,
+    overflow: 'hidden',
     shadowColor: '#171717',
     shadowOffset: { width: 5, height: 4 },
     shadowOpacity: 0.2,
@@ -168,13 +136,16 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
   placeContainer: {
+    backgroundColor: "white",
+    borderRadius: 30,
+    marginBottom: 30,
     marginTop: 10,
-    marginHorizontal: 30,
+    padding: 10,
   },
   resultButton: {
     display: 'flex',
     justifyContent: 'center',
-    backgroundColor: colorPrimary,
+    backgroundColor: colors.primaryBold,
     padding: 10,
     borderRadius: 15,
     shadowColor: '#171717',
@@ -185,14 +156,11 @@ const styles = StyleSheet.create({
   scrollViewContainer: {
     marginBottom: 20,
   },
-
   underline: {
-    color: colorPrimary,
+    color: colors.primaryBold,
     textDecorationLine: 'underline',
     fontWeight: 'bold',
   },
 });
 
 export default MapList;
-
-export { openApp };

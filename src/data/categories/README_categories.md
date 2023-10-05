@@ -15,26 +15,26 @@ within that subcategory can be found, and a list of links relevant to that subca
 
 ## subcategories Object Structure
 
-Each location object within the `subcategories` array includes the following properties:
+Each subcategory object within the `subcategories` array includes the following properties:
 
 - `label` (string, required): The label or name of the category.
 - `image` (string, required): The string pointing to the image of the category.
 - `url` (string, required): A URL that links to the 211la.org resource page of that category (e.g. the link to dental care on 211la).
 - `links` (array, optional): An array of link objects, each containing details about a specific link within the category.
-- `locations` (array, optional): An array of location objects, each containing details about a specific service location within the category.
+- `resources` (array, optional): An array of resources objects, each containing details about a specific service resource within the category.
 
-## Location Object Structure
+## Resource Object Structure
 
-Each location object within the `locations` array includes the following properties:
+Each resource object within the `resources` array includes the following properties:
 
-- `name` (string, required): The name of the service location.
-- `address` (string, optional): The address of the service location.
-- `lat` (number, optional): The latitude coordinate of the service location.
-- `lon` (number, optional): The longitude coordinate of the service location.
-- `phone` (string, optional): The contact phone number for the service location.
-- `hours` (string, optional): The operating hours of the service location.
-- `email` (string, optional): The email address for the service location.
-- `website` (string, optional): The website URL for the service location.
+- `name` (string, required): The name of the service resource.
+- `address` (string, optional): The address of the service resource.
+- `lat` (number, optional): The latitude coordinate of the service resource.
+- `lon` (number, optional): The longitude coordinate of the service resource.
+- `phone` (string, optional): The contact phone number for the service resource.
+- `hours` (string, optional): The operating hours of the service resource.
+- `email` (string, optional): The email address for the service resource.
+- `website` (string, optional): The website URL for the service resource.
 
 ## Link Object Structure
 
@@ -55,7 +55,7 @@ from healthcare.json:
     {
       "label": "Medical Care",
       "url": "https://211la.org/resources/search?keyword=Healthcare%20%3E%20Medical%20Care%20%281018%29&landing=1&keyword_hidden=Healthcare%20%3E%20Medical%20Care%20%281018%29&website_categorization=1",
-      "locations": [
+      "resources": [
         {
           "name": "Parktree Community Health Center",
           "address": "750 S Park Ave, Pomona, CA 91766",
@@ -64,12 +64,11 @@ from healthcare.json:
           "phone": "(909) 630-7196",
           "hours": "8am - 5pm"
         }
-        // Additional location entries for this category
+        // Additional resource entries for this category
       ],
       "links": [
         {
           "title": "Test Title",
-          "image": "image.link",
           "link": "url"
         }
         // Additional links can be inserted here
