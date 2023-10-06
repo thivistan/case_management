@@ -1,6 +1,7 @@
 import React from 'react';
-import Providers from './src/Navigation';
 import { useFonts } from 'expo-font';
+import { AuthProvider } from './src/Navigation/AuthProvider';
+import Routes from './src/Navigation/Routes';
 
 export default function App() {
   const [fontsLoaded, error] = useFonts({
@@ -16,6 +17,10 @@ export default function App() {
   }
 
   if (fontsLoaded) {
-    return <Providers />;
+    return (
+      <AuthProvider>
+        <Routes />
+      </AuthProvider>
+    );
   }
 }

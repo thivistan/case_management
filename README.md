@@ -39,6 +39,32 @@ npm install -g yarn
 yarn add expo
 ```
 
+## Organization
+
+Here is a map of the project directory structure.
+
+```
+├── src
+|   └── assets <= fonts and images
+|   |
+|   └── components <= React components
+|   |
+|   └── data <= static data (JSON objects)
+|   |
+|   └── functions
+|   |
+|   └── Navigation <= routes to screens
+|   |
+│   └── screens
+|   |   └── AuthScreens
+│   |   └── MainScreens <= if you are tasked with a main screen (e.g. Calendar, Chat, etc.)
+│   |
+|   |
+|   └── firebase.js <= Firebase config
+|   |
+|   └── global.js <= global styles (colors, fonts)
+```
+
 ## Guidelines
 
 ### Styling

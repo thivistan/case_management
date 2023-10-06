@@ -1,5 +1,6 @@
 import React, { createContext, useState, useEffect } from 'react';
-import { auth } from '../firebase/firebase';
+import { auth } from '../firebase';
+import { Alert } from 'react-native';
 import LoadingScreen from '../components/LoadingScreen';
 
 export const AuthContext = createContext({});
@@ -60,9 +61,28 @@ export const AuthProvider = ({ children }) => {
                         console.log(error);
                     }
                 },
+                handleForgotPassword: async (email, callback) => {
+                    try {
+                        await auth.sendPasswordResetEmail(email);
+                        console.log("Reset email sent to " + email);
+                        Alert.alert(
+                            "Password Reset",
+                            "Email sent to " + email,
+                            [
+                                {
+                                    text: 'Continue',
+                                    onPress: callback,
+                                }
+                            ]
+                        );
+                    } catch (error) {
+                        console.log(error);
+                        alert(error.message);
+                    }
+                },
             }}
         >
             {children}
-        </AuthContext.Provider>
+        </AuthContext.Provider >
     )
 }

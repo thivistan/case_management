@@ -3,7 +3,7 @@ import React, { useEffect } from 'react';
 
 import { colors, backgroundColors, fonts } from '../global';
 
-import LinkAndMap from './LinkAndMap';
+import ResourcesList from './ResourceList';
 import ExternalLinkButton from './ExternalLinkButton';
 
 /**
@@ -12,7 +12,7 @@ import ExternalLinkButton from './ExternalLinkButton';
  * @param {Object} route Contains an object to handle data passed to this component via navigation.
  * @param {Object} navigation Contains an object to manage app navigation.
  */
-const ResourcesListScreen = ({ route, navigation }) => {
+export default function Category({ route, navigation }) {
   const { category, name, url } = route.params;
 
   let displayHeader = (category.label.length > 20) ? (category.label.substring(0, 16) + "...") : category.label
@@ -36,7 +36,7 @@ const ResourcesListScreen = ({ route, navigation }) => {
 
   return (
     <View style={styles.mainContainer}>
-      <LinkAndMap resources={category.resources} links={category.links} />
+      <ResourcesList resources={category.resources} />
 
       {/* Find more <category> resources button */}
       <ExternalLinkButton
@@ -60,5 +60,3 @@ const styles = StyleSheet.create({
     backgroundColor: backgroundColors.primary,
   },
 });
-
-export default ResourcesListScreen;

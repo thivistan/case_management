@@ -119,6 +119,7 @@ export default function ResourcesScreen() {
                   <ResourceButton
                     name={name}
                     key={name}
+                    data={resources[name].data}
                     isFavorited={isFavorited}
                     iconName={resources[name].iconName}
                     handleFavorite={() => handleFavorite(name, isFavorited)}

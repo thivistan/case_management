@@ -1,6 +1,6 @@
 import { Text, View } from 'react-native';
 import { TouchableOpacity } from 'react-native-gesture-handler';
-import React, { useState } from 'react';
+import React from 'react';
 import { useNavigation } from '@react-navigation/native';
 import { StyleSheet } from "react-native";
 import { fonts } from '../global';
@@ -12,13 +12,14 @@ import { colors } from '../global';
  * 
  * @param {Object} props Component props.
  * @param {String} props.name The name of the resource.
+ * @param {Object} props.data The data object of the resource.
  * @param {String} props.url The URL of the resource.
  * @param {Boolean} props.isFavorited Whether or not the resource is favorited.
  * @param {Function} props.handleFavorite A function to handle favorite.
  * @param {String} props.iconName The name of the icon to display.
  * @returns Resource button component.
  */
-export default function ResourceButton({ name, url, isFavorited, handleFavorite, iconName }) {
+export default function ResourceButton({ name, data, url, isFavorited, handleFavorite, iconName }) {
     const navigation = useNavigation();
 
     return (
@@ -34,7 +35,7 @@ export default function ResourceButton({ name, url, isFavorited, handleFavorite,
             <TouchableOpacity
                 style={styles.categoryBtn}
                 onPress={() => {
-                    navigation.navigate(name, { name, url });
+                    navigation.navigate('Service Screen', { name, data, url })
                 }}
             >
                 {iconName && <Icon style={{ fontSize: 20, color: 'white' }} name={iconName} />}

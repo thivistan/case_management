@@ -7,16 +7,15 @@ import thaddeusLogo from '../assets/images/thaddeus_globe.png';
  * A screen component that displays categorized resources to users. Each category can either navigate to another screen with details or open a link.
  * 
  * @param {Object} props - The properties passed to the component.
+ * @param {Object} props.route Route parameters passed in through navigation.navigate()
  * @param {Function} props.navigation - Navigation object provided by React Navigation.
- * @param {Array<Object>} props.categories - An array of category objects where each object can have details such as label, image, resources, or a URL.
- * 
  * @returns {React.Component} A scrollable view containing buttons for each category, which either navigates to another screen or opens a link based on the category's data.
  */
-export default function ServiceScreen({ route, navigation, categories }) {
-  const { name, url } = route.params;
+export default function ServiceScreen({ route, navigation }) {
+  const { data } = route.params;
   const handleButtonPress = (category) => {
-    if (category.resources || category.links) { // If Thaddeus-provided resources or links are present in categories
-      navigation.navigate("Resource List", { category, url })
+    if (category.resources) { // If Thaddeus-provided resources are present
+      navigation.navigate("Category", { category });
     } else if (category.url) { // If a link is present
       return Linking.openURL(category.url)
     }
@@ -24,7 +23,7 @@ export default function ServiceScreen({ route, navigation, categories }) {
 
   return (
     <ScrollView style={styles.container} contentContainerStyle={{ justifyContent: "space-evenly", flexWrap: "wrap", flexDirection: "row", height: '100%' }}>
-      {categories.map((category, idx) => (
+      {data && data.map((category, idx) => (
         <TouchableOpacity
           style={styles.categoryBtn}
           key={idx}

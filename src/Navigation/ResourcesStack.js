@@ -1,7 +1,8 @@
 import React from 'react';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
-import resources from '../data/resources';
 import ResourcesScreen from '../screens/MainScreens/ResourcesScreen/ResourcesScreen.js';
+import ServiceScreen from '../components/ServiceScreen';
+import Category from '../components/Category';
 import { fonts } from '../global.js';
 
 /**
@@ -30,15 +31,18 @@ export default function ResourcesStack() {
         options={{ headerShown: false }}
       />
 
-      {/* Create a screen for each resource in the resources object. */}
-      {Object.entries(resources).map(([name, { component }], index) => (
-        <Stack.Screen
-          key={index}
-          name={name}
-          component={component}
-          options={{ headerShown: true }}
-        />
-      ))}
+      <Stack.Screen
+        name={"Service Screen"}
+        component={ServiceScreen}
+        options={{ headerShown: true }}
+      />
+
+      <Stack.Screen
+        name={"Category"}
+        component={Category}
+        options={{ headerShown: true }}
+      />
+
     </Stack.Navigator>
   );
 }

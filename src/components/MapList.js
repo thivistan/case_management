@@ -8,22 +8,22 @@ import { colors, globalStyles } from '../global';
 import { openApp } from '../functions/openApp'
 
 /**
- * Component to display a place's name, address, and its location on a map.
+ * Component to display a place's name, address, and its resource on a map.
  * @param {Object} props Component props
- * @param {Object} props.location Contains the place's data in JSON
+ * @param {Object} props.resource Contains the place's data in JSON
  */
-export const Map = ({ location }) => {
+export const Map = ({ resource }) => {
   return (
-    // individual location result
+    // individual resource result
     <View style={[styles.placeContainer, globalStyles.shadow]}>
       {/* actual map */}
-      {location.lat && location.lon ? (
+      {(resource.lat && resource.lon) && (
         <View style={styles.mapContainer}>
           <MapView
             style={styles.map}
             region={{
-              latitude: location.lat,
-              longitude: location.lon,
+              latitude: resource.lat,
+              longitude: resource.lon,
               latitudeDelta: 0.0092,
               longitudeDelta: 0.00921,
             }}
@@ -31,49 +31,51 @@ export const Map = ({ location }) => {
             {/* marker on map */}
             <Marker
               coordinate={{
-                latitude: location.lat,
-                longitude: location.lon,
+                latitude: resource.lat,
+                longitude: resource.lon,
               }}
-              title={location.name}
+              title={resource.name}
             />
           </MapView>
         </View>
-      ) : null}
+      )}
 
       {/* map text container */}
       <View style={styles.mapTextContainer}>
         <View style={{ width: '80%' }}>
-          <Text style={styles.locationName}>{location.name}</Text>
-          {location.address ? <Text>{location.address}</Text> : null}
-          <Text onPress={() => openApp(location.phone, 'phone')}>
-            <Icon name="call" /> <Text style={styles.underline}>{location.phone}</Text>
-          </Text>
-          {location.hours ? (
+          <Text style={styles.locationName}>{resource.name}</Text>
+          {resource.address && <Text>{resource.address}</Text>}
+          {resource.phone &&
+            <Text onPress={() => openApp(resource.phone, 'phone')}>
+              <Icon name="call" /> <Text style={styles.underline}>{resource.phone}</Text>
+            </Text>
+          }
+          {resource.hours && (
             <Text>
-              <Icon name="time" /> {location.hours}
+              <Icon name="time" /> {resource.hours}
             </Text>
-          ) : null}
-          {location.email ? (
-            <Text onPress={() => openApp(location.email, 'email')}>
-              <Icon name="mail" /> <Text style={styles.underline}>{location.email}</Text>
+          )}
+          {resource.email && (
+            <Text onPress={() => openApp(resource.email, 'email')}>
+              <Icon name="mail" /> <Text style={styles.underline}>{resource.email}</Text>
             </Text>
-          ) : null}
-          {location.website ? (
-            <Text onPress={() => openApp(location.website, 'browser')}>
-              <Icon name="globe" /> <Text style={styles.underline}>{location.website}</Text>
+          )}
+          {resource.website && (
+            <Text onPress={() => openApp(resource.website, 'browser')}>
+              <Icon name="globe" /> <Text style={styles.underline}>{resource.website}</Text>
             </Text>
-          ) : null}
+          )}
         </View>
-        {location.lat && location.lon ? (
+        {(resource.lat && resource.lon) && (
           <View style={styles.openMapButton}>
             <TouchableOpacity
               style={styles.resultButton}
-              onPress={() => openApp(location.name, 'map', location.lat, location.lon)}
+              onPress={() => openApp(resource.name, 'map', resource.lat, resource.lon)}
             >
               <Icon name="navigate" size={14} />
             </TouchableOpacity>
           </View>
-        ) : null}
+        )}
       </View>
     </View>
   );
@@ -82,16 +84,16 @@ export const Map = ({ location }) => {
 /**
  * Component to display a scrollable map list of all places given.
  * @param {Object} props Component props
- * @param {Object} props.locations Contains location objects.
+ * @param {Object} props.resources Contains resource objects.
  */
-const MapList = ({ locations }) => {
+const MapList = ({ resources }) => {
   return (
     <View style={styles.mapList}>
       <ScrollView style={styles.scrollViewContainer}>
         {/* scrollable list section */}
         <View style={styles.resultsContainer}>
-          {locations.map((location) => (
-            <Map key={location.name} location={location} />
+          {resources.map((resource) => (
+            <Map key={resource.name} resource={resource} />
           ))}
         </View>
       </ScrollView>

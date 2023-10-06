@@ -1,35 +1,22 @@
-import React, { useContext, useState, useEffect } from "react";
+import React, { useState, useContext } from "react";
 import { Text, TouchableOpacity, View, KeyboardAvoidingView } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { useNavigation } from "@react-navigation/native";
-
+import { AuthContext } from '../../../Navigation/AuthProvider';
 import ThaddeusHorizontalSVG from '../../../assets/images/thaddeus_logo_horizontal.svg';
 import ForgotPasswordSVG from '../../../assets/images/forgot_password_screen_cartoon.svg';
 
-import { auth } from "../../../firebase/firebase";
 import { Ionicons } from "@expo/vector-icons";
 import InputField from '../../../components/InputField';
 
 export default function ForgotPasswordScreen() {
     const navigation = useNavigation();
     const [email, setEmail] = useState('');
-    const handleBackButton = () => {
+    const { handleForgotPassword } = useContext(AuthContext);
+
+    function navBack() {
         navigation.navigate("Login");
     }
-
-    const handleForgotPassword = () => {
-        auth.sendPasswordResetEmail(email).then(() => {
-            console.log("Reset email sent to " + email);
-            Alert.alert("Password Reset", "Email sent to " + email,
-                [
-                    {
-                        text: 'Continue',
-                        onPress: () => navigation.replace("Login")
-                    }
-                ],);
-        }).catch(error => alert(error.message))
-    }
-
 
     return (
         <KeyboardAvoidingView style={{ flex: 1, backgroundColor: 'white' }} behavior="padding">
@@ -38,7 +25,7 @@ export default function ForgotPasswordScreen() {
                 <View style={{ flex: 1, flexDirection: 'row', alignItems: 'flex-start', paddingHorizontal: 25, }}>
                     <TouchableOpacity
                         style={{ flexDirection: 'row', justifyContent: 'center', }}
-                        onPress={handleBackButton}
+                        onPress={navBack}
                     >
                         <Ionicons
                             name='arrow-back-outline'
@@ -84,7 +71,7 @@ export default function ForgotPasswordScreen() {
                     <InputField type='email' value={email} onChangeText={value => setEmail(value)} />
                     <View style={{ marginTop: 30 }}>
                         <TouchableOpacity
-                            onPress={handleForgotPassword}
+                            onPress={() => handleForgotPassword(email, navBack)}
                             style={{
                                 backgroundColor: '#00BFFF',
                                 padding: 20,
@@ -114,4 +101,3 @@ export default function ForgotPasswordScreen() {
         </KeyboardAvoidingView>
     );
 }
-

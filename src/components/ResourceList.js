@@ -1,7 +1,7 @@
 import React from 'react';
 import { View, ScrollView, StyleSheet } from 'react-native';
 
-import { colors, backgroundColors } from '../global';
+import { backgroundColors } from '../global';
 
 import RedirectLink from './RedirectLink';
 import { Map } from './MapList';
@@ -9,21 +9,19 @@ import { Map } from './MapList';
 /**
  * Component to represent a list of resources and links.
  * @param {Object} props Component props
- * @param {Object} links Contains objects with link data.
  * @param {Object} resources Contains objects with resources data.
  */
-export default function LinkAndMap({ links, resources }) {
+export default function ResourcesList({ resources }) {
   return (
     <View style={styles.mapList}>
       <ScrollView style={styles.scrollViewContainer}>
         <View style={{ paddingTop: 20 }}>
-          {links &&
-            links.map((link) => (
-              <RedirectLink title={link.title} url={link.url} key={link.title} />
-            ))}
-
-          {resources &&
-            resources.map((resource) => <Map location={resource} key={resource.name} />)}
+          {/* Display a RedirectLink or a Map accordingly */}
+          {resources.map((resource) => {
+            return resource.link
+              ? <RedirectLink resource={resource} key={resource.name} />
+              : <Map resource={resource} key={resource.name} />
+          })}
         </View>
       </ScrollView>
     </View>

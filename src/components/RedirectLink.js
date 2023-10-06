@@ -7,16 +7,15 @@ import { openApp } from '../functions/openApp';
 /**
  * Component to represent a link that redirect (to a browser).
  * @param {Object} props Component props
- * @param {String} props.title Contains human-readable title of the link
- * @param {String} props.url Contains the url to redirect the user
+ * @param {Object} props.resource Contains object with resource data.
  */
-const RedirectLink = ({ title, url }) => {
+export default function RedirectLink({ resource }) {
   return (
     <TouchableOpacity
       style={[styles.button, globalStyles.shadow]}
-      onPress={() => openApp(url, 'browser')}
+      onPress={() => openApp(resource.link, 'browser')}
     >
-      <Text style={styles.text}>{title}</Text>
+      <Text style={styles.text}>{resource.name}</Text>
     </TouchableOpacity>
   );
 };
@@ -40,5 +39,3 @@ const styles = StyleSheet.create({
     paddingBottom: 11,
   },
 });
-
-export default RedirectLink;
