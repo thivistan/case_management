@@ -25,8 +25,9 @@ Each subcategory object within the `subcategories` array includes the following 
 
 ## Resource Object Structure
 
-Each resource object within the `resources` array includes the following properties:
+Each resource object within the `resources` array must follow one of the two following template:
 
+Template 1:
 - `name` (string, required): The name of the service resource.
 - `address` (string, optional): The address of the service resource.
 - `lat` (number, optional): The latitude coordinate of the service resource.
@@ -36,16 +37,11 @@ Each resource object within the `resources` array includes the following propert
 - `email` (string, optional): The email address for the service resource.
 - `website` (string, optional): The website URL for the service resource.
 
-## Link Object Structure
-
-Each link object within the `links` array includes the following properties:
-
-- `text` (string, required): The text that represents the hyperlink.
-- `link` (string, required): The link that will be opened when the user clicks on it.
+Template 2:
+- `name` (string, required): The name of the service resource.
+- `link` (string, optional): The website URL for the service resource.
 
 ### Example Entry
-
-from healthcare.json:
 
 ```json
 {
@@ -56,6 +52,8 @@ from healthcare.json:
       "label": "Medical Care",
       "url": "https://211la.org/resources/search?keyword=Healthcare%20%3E%20Medical%20Care%20%281018%29&landing=1&keyword_hidden=Healthcare%20%3E%20Medical%20Care%20%281018%29&website_categorization=1",
       "resources": [
+
+        // resource pertaining to a location
         {
           "name": "Parktree Community Health Center",
           "address": "750 S Park Ave, Pomona, CA 91766",
@@ -63,15 +61,15 @@ from healthcare.json:
           "lon": -117.753981,
           "phone": "(909) 630-7196",
           "hours": "8am - 5pm"
-        }
-        // Additional resource entries for this category
-      ],
-      "links": [
+        },
+
+        // resource pertaining to a link
         {
-          "title": "Test Title",
+          "name": "Test Title",
           "link": "url"
         }
-        // Additional links can be inserted here
+
+        // Additional resource entries for this category
       ]
     }
     // Additional subcategories can be inserted here

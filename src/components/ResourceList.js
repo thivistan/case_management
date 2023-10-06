@@ -12,6 +12,7 @@ import { Map } from './MapList';
  * @param {Object} resources Contains objects with resources data.
  */
 export default function ResourcesList({ resources }) {
+  console.log(resources)
   return (
     <View style={styles.mapList}>
       <ScrollView style={styles.scrollViewContainer}>
@@ -19,7 +20,7 @@ export default function ResourcesList({ resources }) {
           {/* Display a RedirectLink or a Map accordingly */}
           {resources.map((resource) => {
             return resource.link
-              ? <RedirectLink resource={resource} key={resource.name} />
+              ? <RedirectLink resource={resource} key={resource.title} />
               : <Map resource={resource} key={resource.name} />
           })}
         </View>
