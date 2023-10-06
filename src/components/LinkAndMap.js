@@ -12,7 +12,7 @@ import { Map } from './MapList';
  * @param {Object} links Contains objects with link data.
  * @param {Object} resources Contains objects with resources data.
  */
-const LinkAndMap = ({ links, resources }) => {
+export default function LinkAndMap({ links, resources }) {
   return (
     <View style={styles.mapList}>
       <ScrollView style={styles.scrollViewContainer}>
@@ -73,5 +73,3 @@ const styles = StyleSheet.create({
     marginBottom: 20,
   },
 });
-
-export default LinkAndMap;

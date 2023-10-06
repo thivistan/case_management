@@ -115,7 +115,7 @@ const styles = StyleSheet.create({
   mapContainer: {
     borderRadius: 25,
     borderWidth: 2,
-    borderColor: colors.primaryBold,
+    borderColor: 'grey',
     overflow: 'hidden',
     shadowColor: '#171717',
     shadowOffset: { width: 5, height: 4 },

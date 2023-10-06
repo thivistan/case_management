@@ -74,6 +74,7 @@ const resources = {
     },
     "Health Services": {
         component: HealthServicesScreen,
+        url: "https://211la.org/resources/subcategory/healthcare",
         iconName: "pulse-outline"
     },
     "Housing Services": {
@@ -90,6 +91,7 @@ const resources = {
     },
     "Legal Services": {
         component: LegalServicesScreen,
+        url: "https://211la.org/resources/subcategory/legal-services",
         iconName: "briefcase-outline"
     },
     "LGBTQ+ Services": {

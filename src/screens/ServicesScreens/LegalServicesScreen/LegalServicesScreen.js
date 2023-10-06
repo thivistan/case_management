@@ -1,7 +1,7 @@
-import React, { useState } from 'react';
+import React from 'react';
 import ServiceScreen from '../../../components/ServiceScreen';
-import categoryData from '../../../data/categories/legal.json'
+import categories from '../../../data/categories/legal.json'
 
-export default function LegalServicesScreen({ navigation }) {
-  return <ServiceScreen navigation={navigation} categoryData={categoryData}/>
+export default function LegalServicesScreen({ route, navigation }) {
+  return <ServiceScreen route={route} navigation={navigation} categories={categories} />
 }

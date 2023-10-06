@@ -1,7 +1,7 @@
-import React, { useState } from 'react';
+import React from 'react';
 import ServiceScreen from '../../../components/ServiceScreen';
-import categoryData from '../../../data/categories/healthcare.json'
+import categories from '../../../data/categories/healthcare.json'
 
-export default function HealthServicesScreen({ navigation }) {
-  return <ServiceScreen navigation={navigation} categoryData={categoryData}/>
+export default function HealthServicesScreen({ route, navigation }) {
+  return <ServiceScreen route={route} navigation={navigation} categories={categories} />
 }

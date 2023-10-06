@@ -1,5 +1,6 @@
 import { Text, TouchableOpacity, Image, Linking, StyleSheet } from 'react-native';
 import React from 'react';
+import { globalStyles } from '../global';
 import ExternalLink from '../assets/images/externalLink.png';
 
 export default function ExternalLinkButton({ text, link }) {
@@ -11,7 +12,7 @@ export default function ExternalLinkButton({ text, link }) {
       style={styles.button}
     >
       <Text style={styles.buttonText}>
-        {text} 
+        {text}
       </Text>
       <Image style={styles.image} source={ExternalLink} />
     </TouchableOpacity>

@@ -1,7 +1,7 @@
 import { View, StyleSheet } from 'react-native';
 import React, { useEffect } from 'react';
 
-import { backgroundColors } from '../global';
+import { colors, backgroundColors, fonts } from '../global';
 
 import LinkAndMap from './LinkAndMap';
 import ExternalLinkButton from './ExternalLinkButton';
@@ -13,26 +13,39 @@ import ExternalLinkButton from './ExternalLinkButton';
  * @param {Object} navigation Contains an object to manage app navigation.
  */
 const ResourcesListScreen = ({ route, navigation }) => {
-  const { subcategory, global_label, global_url } = route.params;
+  const { category, name, url } = route.params;
 
-  let displayHeader = (subcategory.label.length > 18) ? (subcategory.label.substring(0, 16) + "...") : subcategory.label
+  let displayHeader = (category.label.length > 20) ? (category.label.substring(0, 16) + "...") : category.label
 
   useEffect(() => {
-    navigation.setOptions({ headerTitle: displayHeader });
+    navigation.setOptions({
+      headerTitle: displayHeader,
+      headerStyle: {
+        backgroundColor: colors.primary,
+        elevation: 0, // Remove shadow for Android
+        shadowOpacity: 0, // Remove shadow for iOS
+      },
+      headerTitleStyle: {
+        fontFamily: fonts.defaultBold,
+        fontSize: 16,
+        color: 'white', // Color for the header title
+      },
+      headerTintColor: colors.secondary, // Change this to the color you want for the back button
+    });
   }, []);
 
   return (
     <View style={styles.mainContainer}>
-      <LinkAndMap resources={subcategory.resources} links={subcategory.links} />
+      <LinkAndMap resources={category.resources} links={category.links} />
 
-      {/* Find more <subcategory> resources button */}
+      {/* Find more <category> resources button */}
       <ExternalLinkButton
         text={`Find More ${displayHeader} Resources`}
-        link={subcategory.url}
+        link={category.url}
       />
 
-      {/* "See all <category> resources button */}
-      <ExternalLinkButton text={`See All ${global_label} Resources`} link={global_url} />
+      {/* "See all ResourceType resources button */}
+      <ExternalLinkButton text={`See All ${name} Resources`} link={url} />
     </View>
   );
 };

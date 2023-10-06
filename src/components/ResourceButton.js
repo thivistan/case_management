@@ -12,12 +12,13 @@ import { colors } from '../global';
  * 
  * @param {Object} props Component props.
  * @param {String} props.name The name of the resource.
+ * @param {String} props.url The URL of the resource.
  * @param {Boolean} props.isFavorited Whether or not the resource is favorited.
  * @param {Function} props.handleFavorite A function to handle favorite.
  * @param {String} props.iconName The name of the icon to display.
  * @returns Resource button component.
  */
-export default function ResourceButton({ name, isFavorited, handleFavorite, iconName }) {
+export default function ResourceButton({ name, url, isFavorited, handleFavorite, iconName }) {
     const navigation = useNavigation();
 
     return (
@@ -33,7 +34,7 @@ export default function ResourceButton({ name, isFavorited, handleFavorite, icon
             <TouchableOpacity
                 style={styles.categoryBtn}
                 onPress={() => {
-                    navigation.navigate(name);
+                    navigation.navigate(name, { name, url });
                 }}
             >
                 {iconName && <Icon style={{ fontSize: 20, color: 'white' }} name={iconName} />}
