@@ -1,4 +1,5 @@
 import React from 'react';
+import { Image } from 'react-native';
 import Ionicons from '@expo/vector-icons/Ionicons';
 import { createDrawerNavigator } from '@react-navigation/drawer';
 import CalendarScreen from '../screens/MainScreens/CalendarScreen/CalendarScreen'
@@ -7,20 +8,35 @@ import GoalsScreen from '../screens/MainScreens/GoalsScreen/GoalsScreen';
 import JournalScreen from '../screens/MainScreens/JournalScreen/JournalScreen';
 import HomeScreen from '../screens/MainScreens/HomeScreen/HomeScreen';
 import CustomDrawer from '../components/CustomDrawer';
-import ResourcesScreen from '../screens/MainScreens/ResourcesScreen/ResourcesScreen';
 import UserProfileScreen from '../screens/MainScreens/UserProfileScreen/UserProfileScreen';
 import ResourcesStack from './ResourcesStack';
+import thaddeusLogo from '../assets/images/thaddeus_globe.png';
+import { fonts } from '../global';
 
-
-
-const Drawer = createDrawerNavigator();
-
+/**
+ * Native drawer navigator for the main screens.
+ * @returns {React.Component} A native drawer navigator containing all of the main screens.
+ */
 export default function MainStack() {
+    const Drawer = createDrawerNavigator();
+
+    const HeaderRight = () => (
+        <Image
+            source={thaddeusLogo}
+            style={{
+                width: 50,
+                height: (50 * 699) / 1260, // Maintain the original aspect ratio
+                marginRight: 10
+            }}
+        />
+    );
+
     return (
         <Drawer.Navigator
             drawerContent={props => <CustomDrawer {...props} />}
             initialRouteName="Home"
             screenOptions={{
+                headerRight: () => <HeaderRight />,
                 drawerActiveBackgroundColor: '#00BFFF',
                 drawerActiveTintColor: '#fff',
                 drawerInactiveTintColor: '#333',
@@ -28,8 +44,12 @@ export default function MainStack() {
                 headerTintColor: '#00BFFF',
                 drawerLabelStyle: {
                     marginLeft: -25,
-                    fontSize: 15
+                    fontSize: 15,
+                    fontFamily: fonts.defaultBold
                 },
+                headerTitleStyle: {
+                    fontFamily: fonts.defaultBold
+                }
             }}>
             <Drawer.Screen name="Home" component={HomeScreen} options={{
                 drawerIcon: ({ color }) => (
@@ -69,5 +89,4 @@ export default function MainStack() {
         </Drawer.Navigator>
     );
 }
-
 

@@ -1,14 +1,7 @@
-import { StyleSheet, Text, View } from 'react-native'
-import React from 'react'
+import React, { useState } from 'react';
+import ServiceScreen from '../../../components/ServiceScreen';
+import categoryData from '../../../data/categories/healthcare.json'
 
-const HealthServicesScreen = () => {
-  return (
-    <View>
-      <Text>HealthServicesScreen</Text>
-    </View>
-  )
+export default function HealthServicesScreen({ navigation }) {
+  return <ServiceScreen navigation={navigation} categoryData={categoryData}/>
 }
-
-export default HealthServicesScreen
-
-const styles = StyleSheet.create({})

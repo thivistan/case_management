@@ -1,5 +1,6 @@
 import { StyleSheet } from "react-native";
 import { Dimensions } from "react-native";
+import { fonts } from '../../../global';
 
 let deviceWidth = Dimensions.get('screen').width;
 
@@ -13,7 +14,7 @@ const styles = StyleSheet.create({
         left: 0,
         height: '65%',
         width: '75%',
-        marginTop: '15%',
+        marginTop: '18%',
         borderRadius: 40,
         backgroundColor: '#89CFF0',
     },
@@ -22,7 +23,7 @@ const styles = StyleSheet.create({
         right: 0,
         height: '65%',
         width: '75%',
-        marginTop: '5%',
+        marginTop: '10%',
         borderRadius: 40,
         backgroundColor: '#00BFFF',
     },
@@ -93,18 +94,17 @@ const styles = StyleSheet.create({
         backgroundColor: '#FF1493',
     },
     thaddeusText: {
-        fontFamily: 'serif',
+        fontFamily: fonts.alegreyaBold,
         textTransform: 'uppercase',
         color: 'white',
         fontSize: 22,
         bottom: 25,
-        fontWeight: 'bold',
         letterSpacing: 2,
         marginLeft: '10%',
         marginRight: '10%',
     },
     resourceCenterText: {
-        fontFamily: 'sans-serif',
+        // fontFamily: 'sans-serif',
         textTransform: 'uppercase',
         color: 'white',
         fontSize: 10,
@@ -129,7 +129,7 @@ const styles = StyleSheet.create({
         borderColor: 'white',
     },
     year: {
-        fontFamily: 'sans-serif',
+        // fontFamily: 'sans-serif',
         textAlign: 'center',
         color: 'white',
         fontSize: 10,

@@ -1,14 +1,7 @@
-import { StyleSheet, Text, View } from 'react-native'
 import React from 'react'
+import ServiceScreen from '../../../components/ServiceScreen';
+import categoryData from '../../../data/categories/employment.json';
 
-const EmploymentServicesScreen = () => {
-  return (
-    <View>
-      <Text>EmploymentServicesScreen</Text>
-    </View>
-  )
+export default function EmploymentServicesScreen({ navigation }) {
+  return <ServiceScreen navigation={navigation} categoryData={categoryData} />
 }
-
-export default EmploymentServicesScreen
-
-const styles = StyleSheet.create({})

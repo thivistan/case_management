@@ -5,9 +5,13 @@ import OnBoardingScreen from "../screens/AuthScreens/OnBoardingScreen/OnBoarding
 import ForgotPasswordScreen from "../screens/AuthScreens/ForgotPasswordScreen/ForgotPasswordScreen";
 import RegistrationScreen from "../screens/AuthScreens/RegistrationScreen/RegistrationScreen";
 
-const Stack = createNativeStackNavigator();
-
+/**
+ * Native stack navigator for the authentication screens.
+ * @returns {React.Component} A native stack navigator containing all of the authentication screens.
+ */
 export default function AuthStack() {
+    const Stack = createNativeStackNavigator();
+
     return (
         <Stack.Navigator
             initialRouteName="OnBoarding"

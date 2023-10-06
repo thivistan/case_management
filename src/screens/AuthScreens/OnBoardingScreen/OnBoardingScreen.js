@@ -2,17 +2,9 @@ import { useNavigation } from "@react-navigation/native";
 import React from "react";
 import { KeyboardAvoidingView, Text, TouchableOpacity, View } from "react-native";
 import { styles } from "./styles";
-import { useFonts } from 'expo-font';
 
 const OnBoardingScreen = () => {
     const navigation = useNavigation();
-    const [fontsLoaded] = useFonts({
-        'Montserrat-Black': require('../../../assets/fonts/Montserrat-Black.ttf'),
-    });
-
-    if (!fontsLoaded) {
-        return null
-    };
 
     const handleLoginScreen = () => {
         navigation.navigate("Login");
