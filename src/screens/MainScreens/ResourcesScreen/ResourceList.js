@@ -1,10 +1,10 @@
 import React from 'react';
 import { View, ScrollView, StyleSheet } from 'react-native';
 
-import { backgroundColors } from '../global';
+import { backgroundColors } from '../../../global';
 
-import RedirectLink from './RedirectLink';
-import { Map } from './MapList';
+import RedirectLink from '../../../components/RedirectLink';
+import { Map } from '../../../components/MapList';
 
 /**
  * Component to represent a list of resources and links.

@@ -1,7 +1,7 @@
 import { View, Text, StyleSheet, ScrollView, TouchableOpacity, Linking, ImageBackground } from 'react-native';
 import React from 'react';
-import { backgroundColors } from '../global';
-import thaddeusLogo from '../assets/images/thaddeus_globe.png';
+import { backgroundColors } from '../../../global';
+import thaddeusLogo from '../../../assets/images/thaddeus_globe.png'
 
 /**
  * A screen component that displays categorized resources to users. Each category can either navigate to another screen with details or open a link.

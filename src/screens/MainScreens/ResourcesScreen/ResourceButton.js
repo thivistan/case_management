@@ -3,9 +3,9 @@ import { TouchableOpacity } from 'react-native-gesture-handler';
 import React from 'react';
 import { useNavigation } from '@react-navigation/native';
 import { StyleSheet } from "react-native";
-import { fonts } from '../global';
+import { fonts } from '../../../global';
 import Icon from '@expo/vector-icons/Ionicons';
-import { colors } from '../global';
+import { colors } from '../../../global';
 
 /**
  * Button component to display a resource. Includes a favorite button.

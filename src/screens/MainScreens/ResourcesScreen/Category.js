@@ -1,10 +1,10 @@
 import { View, StyleSheet } from 'react-native';
 import React, { useEffect } from 'react';
 
-import { colors, backgroundColors, fonts } from '../global';
+import { colors, backgroundColors, fonts } from '../../../global';
 
 import ResourcesList from './ResourceList';
-import ExternalLinkButton from './ExternalLinkButton';
+import ExternalLinkButton from '../../../components/ExternalLinkButton';
 
 /**
  * Component to represent a sub-category's list of resources and links.
