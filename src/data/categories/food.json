@@ -1,7 +1,7 @@
 [
   {
     "label": "Food",
-    "image": null,
+    "image": "https://s3.amazonaws.com/uww.assets/site/blog/StampOutHunger.jpg",
     "url": "https://www.google.com",
     "resources": [
       {
