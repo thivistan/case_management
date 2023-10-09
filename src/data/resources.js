@@ -2,6 +2,7 @@ import donationData from './categories/donation.json';
 import employmentData from './categories/employment.json';
 import healthData from './categories/healthcare.json';
 import legalData from './categories/legal.json';
+import foodData from './categories/food.json';
 
 const resources = {
     "Appointment Services": {
@@ -37,7 +38,8 @@ const resources = {
         iconName: "home-outline"
     },
     "Food Services": {
-
+        data: foodData,
+        url: "https://www.youtube.com",
         iconName: "restaurant-outline"
     },
     "Forms": {
