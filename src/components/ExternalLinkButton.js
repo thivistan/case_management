@@ -1,6 +1,5 @@
 import { Text, TouchableOpacity, Image, Linking, StyleSheet } from 'react-native';
 import React from 'react';
-import { globalStyles } from '../global';
 import ExternalLink from '../assets/images/externalLink.png';
 
 export default function ExternalLinkButton({ text, link }) {
@@ -28,6 +27,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     flexDirection: 'row',
     marginBottom: 30,
+    elevation: 5,
   },
   buttonText: {
     color: 'white',
