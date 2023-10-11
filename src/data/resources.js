@@ -2,6 +2,7 @@ import donationData from './categories/donation.json';
 import employmentData from './categories/employment.json';
 import healthData from './categories/healthcare.json';
 import legalData from './categories/legal.json';
+import housingData from './categories/housing.json'
 
 const resources = {
     "Appointment Services": {
@@ -54,7 +55,8 @@ const resources = {
         iconName: "pulse-outline"
     },
     "Housing Services": {
-
+        data: housingData, 
+        url:"https://211la.org/resources/subcategory/housing", 
         iconName: "home-outline"
     },
     "Immigration Services": {
