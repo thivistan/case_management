@@ -24,6 +24,8 @@ export default function ResourcesScreen() {
     setFavorites(updatedFavorites);
   }
 
+  console.log("RESOURCES SCREEN")
+
   const searchForUserQuery = () => {
     /** TO-DO
      * search for pages

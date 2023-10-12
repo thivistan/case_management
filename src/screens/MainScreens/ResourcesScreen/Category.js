@@ -14,6 +14,11 @@ import ExternalLinkButton from '../../../components/ExternalLinkButton';
  */
 export default function Category({ route, navigation }) {
   const { category, name, url } = route.params;
+  console.log("CATEGORY.JS")
+  console.log(category)
+  console.log("Category data comes from [SERVICE NAME].json. Create if non-existant.")
+  console.log(name)
+  console.log(url)
 
   let displayHeader = (category.label.length > 20) ? (category.label.substring(0, 16) + "...") : category.label
 

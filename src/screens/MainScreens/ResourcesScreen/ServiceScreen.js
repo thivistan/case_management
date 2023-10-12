@@ -13,6 +13,11 @@ import thaddeusLogo from '../../../assets/images/thaddeus_globe.png'
  */
 export default function ServiceScreen({ route, navigation }) {
   const { data } = route.params;
+
+  console.log("SERVICE SCREEN (previous screen: RESOURCES SCREEN)")
+  console.log(data)
+  console.log("Data comes from [SERVICE NAME].json. Create if non-existant.")
+
   const handleButtonPress = (category) => {
     if (category.resources) { // If Thaddeus-provided resources are present
       navigation.navigate("Category", { category });

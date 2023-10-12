@@ -39,7 +39,7 @@ const resources = {
     },
     "Food Services": {
         data: foodData,
-        url: "https://www.youtube.com",
+        url: "https://www.google.com",
         iconName: "restaurant-outline"
     },
     "Forms": {
