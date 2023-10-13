@@ -7,12 +7,12 @@ import React from 'react';
 import renderer from 'react-test-renderer';
 import { Linking, TouchableOpacity, Platform } from 'react-native';
 
-import ServiceScreen from '../../../components/ServiceScreen';
-import Category from '../../../components/Category';
+import ServiceScreen from '../../../screens/MainScreens/ResourcesScreen/ServiceScreen';
+import Category from '../../../screens/MainScreens/ResourcesScreen/Category';
 import ExternalLinkButton from '../../../components/ExternalLinkButton';
 import { Map } from '../../../components/MapList';
 import RedirectLink from '../../../components/RedirectLink';
-import ResourcesList from '../../../components/ResourceList';
+import ResourcesList from '../../../screens/MainScreens/ResourcesScreen/ResourceList';
 
 import resources from '../../../data/resources';
 

@@ -4,24 +4,18 @@ The "categories" directory contains JSON files representing various category dat
 
 # categories JSON Object
 
-A JSON object in this directory represents a category in 211LA.org, including the label of that category and link to that category. It also contains subcategories
-that is in a specific resource screen (e.g. Dental category in Healthcare screen). Each subcategory includes a label, a URL, a list of locations where services
-within that subcategory can be found, and a list of links relevant to that subcategory.
+A JSON object in this directory represents a resource in 211LA.org (e.g. Health). It also contains all the categories
+that is in a specific resource screen (e.g. Dental category in Healthcare screen). Each category includes a label, a URL, and a list of resources
+that can either be a location or a redirect link.
 
 ## categories Object Structure
 
-- `global_label` (string, required): The main label for the category.
-- `global_url` (string, required): The main url for the category.
-
-## subcategories Object Structure
-
-Each subcategory object within the `subcategories` array includes the following properties:
+Each subcategory object within the `categories` array includes the following properties:
 
 - `label` (string, required): The label or name of the category.
 - `image` (string, required): The string pointing to the image of the category.
 - `url` (string, required): A URL that links to the 211la.org resource page of that category (e.g. the link to dental care on 211la).
-- `links` (array, optional): An array of link objects, each containing details about a specific link within the category.
-- `resources` (array, optional): An array of resources objects, each containing details about a specific service resource within the category.
+- `resources` (array, optional): An array of resources objects, each containing details about a specific service resource within the category. Can be a redirect link or a resource location.
 
 ## Resource Object Structure
 
@@ -39,40 +33,33 @@ Template 1:
 
 Template 2:
 - `name` (string, required): The name of the service resource.
-- `link` (string, optional): The website URL for the service resource.
+- `link` (string, optional): The redirect link of the service resource.
 
 ### Example Entry
 
 ```json
-{
-  "global_label": "Healthcare",
-  "global_url": "https://211la.org/resources/subcategory/healthcare",
-  "subcategories": [
-    {
-      "label": "Medical Care",
-      "url": "https://211la.org/resources/search?keyword=Healthcare%20%3E%20Medical%20Care%20%281018%29&landing=1&keyword_hidden=Healthcare%20%3E%20Medical%20Care%20%281018%29&website_categorization=1",
-      "resources": [
-
-        // resource pertaining to a location
-        {
-          "name": "Parktree Community Health Center",
-          "address": "750 S Park Ave, Pomona, CA 91766",
-          "lat": 34.052825,
-          "lon": -117.753981,
-          "phone": "(909) 630-7196",
-          "hours": "8am - 5pm"
-        },
-
-        // resource pertaining to a link
-        {
-          "name": "Test Title",
-          "link": "url"
-        }
-
-        // Additional resource entries for this category
-      ]
-    }
-    // Additional subcategories can be inserted here
-  ]
-}
+[
+  {
+    "label": "Medical Care",
+    "url": "https://211la.org/resources/search?keyword=Healthcare%20%3E%20Medical%20Care%20%281018%29&landing=1&keyword_hidden=Healthcare%20%3E%20Medical%20Care%20%281018%29&website_categorization=1",
+    "resources": [
+      // A resource can be a location.
+      {
+        "name": "Parktree Community Health Center",
+        "address": "750 S Park Ave, Pomona, CA 91766",
+        "lat": 34.052825,
+        "lon": -117.753981,
+        "phone": "(909) 630-7196",
+        "hours": "8am - 5pm"
+      },
+      // A resource can also be a redirect link.
+      {
+        "name": "YouTube Link",
+        "link": "http://www.youtube.com",
+      }
+      // Additional resources can be inserted here
+    ]
+  }
+  // Additional categories can be inserted here
+]
 ```
