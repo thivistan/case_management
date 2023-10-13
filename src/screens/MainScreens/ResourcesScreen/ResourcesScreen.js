@@ -3,7 +3,7 @@ import { styles } from './styles';
 import resources from '../../../data/resources';
 import { ScrollView, TextInput } from 'react-native-gesture-handler';
 import { KeyboardAvoidingView, Text, View } from 'react-native';
-import ResourceButton from './ResourceButton';
+import ResourceButton from '../../../components/ResourceButton';
 import { colors, fonts } from '../../../global';
 
 export default function ResourcesScreen() {
