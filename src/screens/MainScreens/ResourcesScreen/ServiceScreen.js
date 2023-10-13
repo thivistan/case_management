@@ -1,5 +1,5 @@
 import { View, Text, StyleSheet, ScrollView, TouchableOpacity, Linking, ImageBackground } from 'react-native';
-import React from 'react';
+import React, { useEffect } from 'react';
 import { backgroundColors } from '../../../global';
 import thaddeusLogo from '../../../assets/images/thaddeus_globe.png'
 
@@ -12,14 +12,31 @@ import thaddeusLogo from '../../../assets/images/thaddeus_globe.png'
  * @returns {React.Component} A scrollable view containing buttons for each category, which either navigates to another screen or opens a link based on the category's data.
  */
 export default function ServiceScreen({ route, navigation }) {
-  const { data } = route.params;
+  const { name, data } = route.params;
   const handleButtonPress = (category) => {
     if (category.resources) { // If Thaddeus-provided resources are present
-      navigation.navigate("Category", { category });
+      navigation.navigate("Category", { name, category });
     } else if (category.url) { // If a link is present
       return Linking.openURL(category.url)
     }
   }
+
+  useEffect(() => {
+    navigation.setOptions({
+      headerTitle: name,
+      // headerStyle: {
+      //   backgroundColor: colors.primary,
+      //   elevation: 0, // Remove shadow for Android
+      //   shadowOpacity: 0, // Remove shadow for iOS
+      // },
+      // headerTitleStyle: {
+      //   fontFamily: fonts.defaultBold,
+      //   fontSize: 16,
+      //   color: 'white', // Color for the header title
+      // },
+      // headerTintColor: colors.secondary, // Change this to the color you want for the back button
+    });
+  }, []);
 
   return (
     <ScrollView style={styles.container} contentContainerStyle={{ justifyContent: "space-evenly", flexWrap: "wrap", flexDirection: "row", height: '100%' }}>
