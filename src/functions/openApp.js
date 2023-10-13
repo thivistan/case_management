@@ -1,4 +1,4 @@
-import { Linking } from 'react-native';
+import { Linking, Platform } from 'react-native';
 
 /**
  * Function to handle opening various apps on the OS.
@@ -9,7 +9,9 @@ import { Linking } from 'react-native';
  */
 export const openApp = async (content, type, lat, lon) => {
   let url = content;
+
   if (type === 'map') {
+
     const scheme = Platform.select({ ios: 'maps://0,0?q=', android: 'geo:0,0?q=' });
     const latLng = `${lat},${lon}`;
     url = Platform.select({
@@ -27,8 +29,8 @@ export const openApp = async (content, type, lat, lon) => {
   }
 
   try {
-    await Linking.openURL(url);
     console.log(`Opened URL: ${url}`);
+    await Linking.openURL(url);
   } catch (error) {
     console.error(`Error opening URL: ${url}`, error);
   }

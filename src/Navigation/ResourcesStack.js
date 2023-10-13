@@ -1,8 +1,8 @@
 import React from 'react';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import ResourcesScreen from '../screens/MainScreens/ResourcesScreen/ResourcesScreen.js';
-import ServiceScreen from '../screens/MainScreens/ResourcesScreen/ServiceScreen';
-import Category from '../screens/MainScreens/ResourcesScreen/Category';
+import ServiceScreen from '../screens/MainScreens/ResourcesScreen/ServiceScreen.js';
+import Category from '../screens/MainScreens/ResourcesScreen/Category.js';
 import { fonts } from '../global.js';
 
 /**

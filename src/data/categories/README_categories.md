@@ -19,10 +19,10 @@ Each subcategory object within the `categories` array includes the following pro
 
 ## Resource Object Structure
 
-Each resource object within the `resources` array includes the following properties:
+Each resource object within the `resources` array must follow one of the two following template:
 
+Template 1:
 - `name` (string, required): The name of the service resource.
-- `link` (string, optional): The redirect link of the service resource.
 - `address` (string, optional): The address of the service resource.
 - `lat` (number, optional): The latitude coordinate of the service resource.
 - `lon` (number, optional): The longitude coordinate of the service resource.
@@ -31,12 +31,13 @@ Each resource object within the `resources` array includes the following propert
 - `email` (string, optional): The email address for the service resource.
 - `website` (string, optional): The website URL for the service resource.
 
+Template 2:
+- `name` (string, required): The name of the service resource.
+- `link` (string, optional): The redirect link of the service resource.
+
 ### Example Entry
 
-from healthcare.json:
-
 ```json
-
 [
   {
     "label": "Medical Care",
@@ -56,9 +57,9 @@ from healthcare.json:
         "name": "YouTube Link",
         "link": "http://www.youtube.com",
       }
+      // Additional resources can be inserted here
     ]
   }
   // Additional categories can be inserted here
 ]
-
 ```
