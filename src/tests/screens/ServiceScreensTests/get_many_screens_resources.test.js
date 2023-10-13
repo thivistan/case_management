@@ -23,7 +23,7 @@ const testResources = {
 
 const spyOpenURL = jest.spyOn(Linking, 'openURL').mockImplementation(() => {
   return {
-    openURL: function () {},
+    openURL: function () { },
   };
 });
 
@@ -59,7 +59,7 @@ describe('Section categories screen', () => {
       let route = JSON.parse(JSON.stringify(serviceRouteTemplate));
       route.params.data = value.data;
 
-      const tree = renderer.create(<ServiceScreen route={route} />);
+      const tree = renderer.create(<ServiceScreen route={route} navigation={{ setOptions: function () { } }} />);
       const componentStr = JSON.stringify(tree);
       const componentObj = JSON.parse(componentStr);
 
@@ -74,7 +74,7 @@ describe('Section categories screen', () => {
       let route = JSON.parse(JSON.stringify(serviceRouteTemplate));
       route.params.data = value.data;
 
-      const tree = renderer.create(<ServiceScreen route={route} />);
+      const tree = renderer.create(<ServiceScreen route={route} navigation={{ setOptions: function () { } }} />);
       const componentStr = JSON.stringify(tree);
       const componentObj = JSON.parse(componentStr);
 
@@ -93,7 +93,7 @@ describe('Section categories screen', () => {
       let route = JSON.parse(JSON.stringify(serviceRouteTemplate));
       route.params.data = value.data;
 
-      const tree = renderer.create(<ServiceScreen route={route} />);
+      const tree = renderer.create(<ServiceScreen route={route} navigation={{ setOptions: function () { } }} />);
       const componentObj = tree.toJSON();
 
       let actualTotalCall = 0;
@@ -131,7 +131,7 @@ describe('Resource list screen', () => {
           route.params.name = value.data[i].label;
 
           const tree = renderer.create(
-            <Category route={route} navigation={{ setOptions: function () {} }} />
+            <Category route={route} navigation={{ setOptions: function () { } }} />
           );
           expect(tree.root.findAllByType(ExternalLinkButton).length).toBe(2);
         }
@@ -149,7 +149,7 @@ describe('Resource list screen', () => {
           route.params.name = value.data[i].label;
 
           const tree = renderer.create(
-            <Category route={route} navigation={{ setOptions: function () {} }} />
+            <Category route={route} navigation={{ setOptions: function () { } }} />
           );
 
           const resourcesRendered =
@@ -171,7 +171,7 @@ describe('Resource list screen', () => {
           route.params.name = value.data[i].label;
 
           const tree = renderer.create(
-            <Category route={route} navigation={{ setOptions: function () {} }} />
+            <Category route={route} navigation={{ setOptions: function () { } }} />
           );
 
           const externalLinks = tree.root.findAllByType(ExternalLinkButton);
@@ -197,7 +197,7 @@ describe('Resource list screen', () => {
           route.params.name = value.data[i].label;
 
           const tree = renderer.create(
-            <Category route={route} navigation={{ setOptions: function () {} }} />
+            <Category route={route} navigation={{ setOptions: function () { } }} />
           );
 
           const resourceList = tree.root.findByType(ResourcesList);
@@ -220,7 +220,7 @@ describe('Resource list screen', () => {
           route.params.name = value.data[i].label;
 
           const tree = renderer.create(
-            <Category route={route} navigation={{ setOptions: function () {} }} />
+            <Category route={route} navigation={{ setOptions: function () { } }} />
           );
 
           const resourceList = tree.root.findByType(ResourcesList);
