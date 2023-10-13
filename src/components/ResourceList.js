@@ -12,7 +12,6 @@ import { Map } from './MapList';
  * @param {Object} resources Contains objects with resources data.
  */
 export default function ResourcesList({ resources }) {
-  console.log(resources)
   return (
     <View style={styles.mapList}>
       <ScrollView style={styles.scrollViewContainer}>
