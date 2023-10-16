@@ -8,7 +8,7 @@ import renderer from 'react-test-renderer';
 import { Linking, TouchableOpacity, Platform } from 'react-native';
 
 import ServiceScreen from '../../../screens/MainScreens/ResourcesScreen/ServiceScreen';
-import Category from '../../../screens/MainScreens/ResourcesScreen/Category';
+import CategoryScreen from '../../../screens/MainScreens/ResourcesScreen/CategoryScreen';
 import ExternalLinkButton from '../../../components/ExternalLinkButton';
 import { Map } from '../../../components/MapList';
 import RedirectLink from '../../../components/RedirectLink';
@@ -131,7 +131,7 @@ describe('Resource list screen', () => {
           route.params.name = value.data[i].label;
 
           const tree = renderer.create(
-            <Category route={route} navigation={{ setOptions: function () { } }} />
+            <CategoryScreen route={route} navigation={{ setOptions: function () { } }} />
           );
           expect(tree.root.findAllByType(ExternalLinkButton).length).toBe(2);
         }
@@ -149,7 +149,7 @@ describe('Resource list screen', () => {
           route.params.name = value.data[i].label;
 
           const tree = renderer.create(
-            <Category route={route} navigation={{ setOptions: function () { } }} />
+            <CategoryScreen route={route} navigation={{ setOptions: function () { } }} />
           );
 
           const resourcesRendered =
@@ -171,7 +171,7 @@ describe('Resource list screen', () => {
           route.params.name = value.data[i].label;
 
           const tree = renderer.create(
-            <Category route={route} navigation={{ setOptions: function () { } }} />
+            <CategoryScreen route={route} navigation={{ setOptions: function () { } }} />
           );
 
           const externalLinks = tree.root.findAllByType(ExternalLinkButton);
@@ -197,7 +197,7 @@ describe('Resource list screen', () => {
           route.params.name = value.data[i].label;
 
           const tree = renderer.create(
-            <Category route={route} navigation={{ setOptions: function () { } }} />
+            <CategoryScreen route={route} navigation={{ setOptions: function () { } }} />
           );
 
           const resourceList = tree.root.findByType(ResourcesList);
@@ -220,7 +220,7 @@ describe('Resource list screen', () => {
           route.params.name = value.data[i].label;
 
           const tree = renderer.create(
-            <Category route={route} navigation={{ setOptions: function () { } }} />
+            <CategoryScreen route={route} navigation={{ setOptions: function () { } }} />
           );
 
           const resourceList = tree.root.findByType(ResourcesList);

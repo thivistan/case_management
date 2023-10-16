@@ -15,12 +15,13 @@ export default function ServiceScreen({ route, navigation }) {
   const { name, data } = route.params;
   const handleButtonPress = (category) => {
     if (category.resources) { // If Thaddeus-provided resources are present
-      navigation.navigate("Category", { name, category });
+      navigation.navigate("Category Screen", { name, category });
     } else if (category.url) { // If a link is present
       return Linking.openURL(category.url)
     }
   }
 
+  // Set header options
   useEffect(() => {
     navigation.setOptions({
       headerTitle: name,

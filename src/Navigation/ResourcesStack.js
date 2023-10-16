@@ -2,7 +2,7 @@ import React from 'react';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import ResourcesScreen from '../screens/MainScreens/ResourcesScreen/ResourcesScreen.js';
 import ServiceScreen from '../screens/MainScreens/ResourcesScreen/ServiceScreen.js';
-import Category from '../screens/MainScreens/ResourcesScreen/Category.js';
+import CategoryScreen from '../screens/MainScreens/ResourcesScreen/CategoryScreen.js';
 import { fonts } from '../global.js';
 
 /**
@@ -38,8 +38,8 @@ export default function ResourcesStack() {
       />
 
       <Stack.Screen
-        name={"Category"}
-        component={Category}
+        name={"Category Screen"}
+        component={CategoryScreen}
         options={{ headerShown: true }}
       />
 
