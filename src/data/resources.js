@@ -4,7 +4,12 @@ import healthData from './categories/healthcare.json';
 import legalData from './categories/legal.json';
 import housingData from './categories/housing.json'
 
-const resources = {
+/**
+ *  An object containing metadata for the resources.
+ *  
+ *  `"resourceName": { data, url, iconName }`
+ */
+export default {
     "Appointment Services": {
 
         iconName: "calendar-outline"
@@ -121,6 +126,3 @@ const resources = {
         iconName: "school-outline"
     }
 };
-
-
-export default resources;
