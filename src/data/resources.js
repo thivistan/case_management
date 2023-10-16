@@ -3,6 +3,7 @@ import employmentData from './categories/employment.json';
 import healthData from './categories/healthcare.json';
 import legalData from './categories/legal.json';
 import housingData from './categories/housing.json'
+import foodData from './categories/food.json';
 
 /**
  *  An object containing metadata for the resources.
@@ -43,7 +44,8 @@ export default {
         iconName: "home-outline"
     },
     "Food Services": {
-
+        data: foodData,
+        url: "https://www.google.com",
         iconName: "restaurant-outline"
     },
     "Forms": {
@@ -60,8 +62,8 @@ export default {
         iconName: "pulse-outline"
     },
     "Housing Services": {
-        data: housingData, 
-        url:"https://211la.org/resources/subcategory/housing", 
+        data: housingData,
+        url: "https://211la.org/resources/subcategory/housing",
         iconName: "home-outline"
     },
     "Immigration Services": {
