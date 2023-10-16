@@ -13,6 +13,7 @@ const ChatScreen = () => {
 
       
   return (
+    
     <SafeAreaView style={{ flex: 1, alignItems: 'center', justifyContent: 'flex-start' }}>
       <View style={styles.container}>
         <Text style={styles.text}>Therapist</Text>
@@ -27,12 +28,13 @@ const ChatScreen = () => {
 
 
 
-      <FloatingActionAdd />
+      <FloatingActionAdd
+      onPress={show}/>
 
       <View>
 
         
-        <ContactSelectPopup />
+        <ContactSelectPopup hide/>
       </View>
     </SafeAreaView>
   );

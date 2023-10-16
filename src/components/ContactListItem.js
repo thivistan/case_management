@@ -25,7 +25,7 @@ export default function ContactPersonListItem() {
         <Text style={styles.headingText}>Contact Name</Text>
 
         <View>
-          <Text style={styles.secondaryText}>Extra line of text</Text>
+          <Text numberOfLines={3} style={styles.secondaryText}>Extra line of text</Text>
         </View>
       </View>
 
@@ -48,9 +48,5 @@ const styles = StyleSheet.create({
     borderRadius: 50,
   },
   icons: { fontSize: 30, color: 'black', paddingLeft: 20, color: '#00BFFF' },
-  row: {
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-    backgroundColor: 'red',
-  },
+
 });
