@@ -1,0 +1,17 @@
+[
+  {
+    "label": "Food",
+    "image": "https://s3.amazonaws.com/uww.assets/site/blog/StampOutHunger.jpg",
+    "url": "https://www.youtube.com",
+    "resources": [
+      {
+        "name": "God's Pantry Food Bank",
+        "address": "250 E Center St, Pomona, CA 91767",
+        "lat": 34.061279,
+        "lon": -117.746788,
+        "phone": "(909) 766-8038",
+        "hours": "8am - 4pm"
+      }
+    ]
+  }
+]
