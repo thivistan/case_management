@@ -10,12 +10,7 @@ const firebaseConfig = {
   measurementId: "G-9W3ZJD0DVP"
 };
 
-let app;
-if (firebase.apps.length === 0) {
-  app = firebase.initializeApp(firebaseConfig);
-} else {
-  app = firebase.app();
-}
+let app = (firebase.apps.length === 0) ? firebase.initializeApp(firebaseConfig) : firebase.app();
 
 const auth = firebase.auth();
 
