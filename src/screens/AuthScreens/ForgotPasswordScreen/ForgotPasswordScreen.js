@@ -9,6 +9,11 @@ import ForgotPasswordSVG from '../../../assets/images/forgot_password_screen_car
 import { Ionicons } from "@expo/vector-icons";
 import InputField from '../../../components/InputField';
 
+/**
+ * The Forgot Password screen.
+ * 
+ * @returns {React.Component} The ForgotPasswordScreen component.
+ */
 export default function ForgotPasswordScreen() {
     const navigation = useNavigation();
     const [email, setEmail] = useState('');

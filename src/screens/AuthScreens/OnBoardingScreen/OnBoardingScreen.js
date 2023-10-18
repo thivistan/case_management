@@ -3,7 +3,12 @@ import React from "react";
 import { KeyboardAvoidingView, Text, TouchableOpacity, View } from "react-native";
 import { styles } from "./styles";
 
-const OnBoardingScreen = () => {
+/**
+ * The Onboarding screen.
+ * 
+ * @returns {React.Component} The OnBoardingScreen component.
+ */
+export default function OnBoardingScreen() {
     const navigation = useNavigation();
 
     const handleLoginScreen = () => {
@@ -45,5 +50,3 @@ const OnBoardingScreen = () => {
         </KeyboardAvoidingView>
     )
 }
-
-export default OnBoardingScreen;

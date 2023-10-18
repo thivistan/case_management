@@ -9,6 +9,11 @@ import LoginPageSVG from '../../../assets/images/login_page_cartoon.svg';
 import { AuthContext } from "../../../Navigation/AuthProvider";
 import InputField from '../../../components/InputField';
 
+/**
+ * The Login screen.
+ * 
+ * @returns {React.Component} The LoginScreen component.
+ */
 export default function LoginScreen() {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
