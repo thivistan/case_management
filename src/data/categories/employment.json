@@ -1,46 +1,47 @@
 [
-    {
-      "label": "Job/Employment Search",
-      "image": "https://211la.org/sites/default/files/styles/subcategory_resource_600_x_351/public/2020-03/three%20job%20seekers%20standing%20on%20a%20balcony.jpg?itok=Brau2Lha",
-      "url": "https://211la.org/resources/search?keyword=Income%20%26%20Employment%20%3E%20Job/Employment%20Search%20%2849%29&landing=1&keyword_hidden=Income%20%26%20Employment%20%3E%20Job/Employment%20Search%20%2849%29&website_categorization=1"
-    },
-    {
-      "label": "Employment Supports",
-      "image": "https://211la.org/sites/default/files/styles/subcategory_resource_600_x_351/public/2020-02/LA%20Skyline%20Sunset%2057927400_m.jpg?itok=xHz_6_gE",
-      "url": "https://211la.org/resources/search?keyword=Income%20%26%20Employment%20%3E%20Employment%20Supports%20%2849%29&landing=1&keyword_hidden=Income%20%26%20Employment%20%3E%20Employment%20Supports%20%2849%29&website_categorization=1"
-    },
-    {
-      "label": "Benefits & Public Assistance",
-      "image": "https://211la.org/sites/default/files/styles/subcategory_resource_600_x_351/public/2020-02/Food%20benefit%20programs_0.jpg?itok=8aeVvzSJ",
-      "url": "https://211la.org/resources/search?keyword=Income%20%26%20Employment%20%3E%20Benefits%20%26%20Public%20Assistance%20%2867%29&landing=1&keyword_hidden=Income%20%26%20Employment%20%3E%20Benefits%20%26%20Public%20Assistance%20%2867%29&website_categorization=1"
-    },
-    {
-      "label": "Income Assistance/Discount Programs",
-      "image": "https://211la.org/sites/default/files/styles/subcategory_resource_600_x_351/public/2020-03/electrical%20guage%20kilowatt.jpg?itok=FQYLET8L",
-      "url": "https://211la.org/resources/search?keyword=Income%20%26%20Employment%20%3E%20Income%20Assistance/Discount%20Programs%20%2856%29&landing=1&keyword_hidden=Income%20%26%20Employment%20%3E%20Income%20Assistance/Discount%20Programs%20%2856%29&website_categorization=1"
-    },
-    {
-      "label": "Financial Health",
-      "image": "https://211la.org/sites/default/files/styles/subcategory_resource_600_x_351/public/2020-02/Health%20care%20insurance%20options%2081895941_s.jpg?itok=mCuuRLKF",
-      "url": "https://211la.org/resources/search?keyword=Income%20%26%20Employment%20%3E%20Financial%20Health%20%2856%29&landing=1&keyword_hidden=Income%20%26%20Employment%20%3E%20Financial%20Health%20%2856%29&website_categorization=1"
-    },
-    {
-      "label": "Education & Training",
-      "image": "https://211la.org/sites/default/files/styles/subcategory_resource_600_x_351/public/2020-02/Education%20-%20Alternative%20education%20-%20technology%20computer%20adult%20woman%2050076647_s.jpg?itok=o6RH3kO5",
-      "resources": [
-        {
-            "name": "Job and Workforce Training"
-        },
-        {
-            "name": "Workshops for Resumes & Interviews"
-        },
-        {
-            "name": "Thaddeus Youtube Page",
-            "link": "https://www.youtube.com/channel/UCe1REgTuVYQgaXkRzA6BSCg"
-        },
-        {
-            "name": "Forms, Handouts, PDFs"
-        }
-      ]
-    }
+  {
+    "label": "Job/Employment Search",
+    "image": "https://211la.org/sites/default/files/styles/subcategory_resource_600_x_351/public/2020-03/three%20job%20seekers%20standing%20on%20a%20balcony.jpg?itok=Brau2Lha",
+    "url": "https://211la.org/resources/search?keyword=Income%20%26%20Employment%20%3E%20Job/Employment%20Search%20%2849%29&landing=1&keyword_hidden=Income%20%26%20Employment%20%3E%20Job/Employment%20Search%20%2849%29&website_categorization=1"
+  },
+  {
+    "label": "Employment Supports",
+    "image": "https://211la.org/sites/default/files/styles/subcategory_resource_600_x_351/public/2020-02/LA%20Skyline%20Sunset%2057927400_m.jpg?itok=xHz_6_gE",
+    "url": "https://211la.org/resources/search?keyword=Income%20%26%20Employment%20%3E%20Employment%20Supports%20%2849%29&landing=1&keyword_hidden=Income%20%26%20Employment%20%3E%20Employment%20Supports%20%2849%29&website_categorization=1"
+  },
+  {
+    "label": "Benefits & Public Assistance",
+    "image": "https://211la.org/sites/default/files/styles/subcategory_resource_600_x_351/public/2020-02/Food%20benefit%20programs_0.jpg?itok=8aeVvzSJ",
+    "url": "https://211la.org/resources/search?keyword=Income%20%26%20Employment%20%3E%20Benefits%20%26%20Public%20Assistance%20%2867%29&landing=1&keyword_hidden=Income%20%26%20Employment%20%3E%20Benefits%20%26%20Public%20Assistance%20%2867%29&website_categorization=1"
+  },
+  {
+    "label": "Income Assistance/Discount Programs",
+    "image": "https://211la.org/sites/default/files/styles/subcategory_resource_600_x_351/public/2020-03/electrical%20guage%20kilowatt.jpg?itok=FQYLET8L",
+    "url": "https://211la.org/resources/search?keyword=Income%20%26%20Employment%20%3E%20Income%20Assistance/Discount%20Programs%20%2856%29&landing=1&keyword_hidden=Income%20%26%20Employment%20%3E%20Income%20Assistance/Discount%20Programs%20%2856%29&website_categorization=1"
+  },
+  {
+    "label": "Financial Health",
+    "image": "https://211la.org/sites/default/files/styles/subcategory_resource_600_x_351/public/2020-02/Health%20care%20insurance%20options%2081895941_s.jpg?itok=mCuuRLKF",
+    "url": "https://211la.org/resources/search?keyword=Income%20%26%20Employment%20%3E%20Financial%20Health%20%2856%29&landing=1&keyword_hidden=Income%20%26%20Employment%20%3E%20Financial%20Health%20%2856%29&website_categorization=1"
+  },
+  {
+    "label": "Education & Training",
+    "image": "https://211la.org/sites/default/files/styles/subcategory_resource_600_x_351/public/2020-02/Education%20-%20Alternative%20education%20-%20technology%20computer%20adult%20woman%2050076647_s.jpg?itok=o6RH3kO5",
+    "url": "https://211la.org/resources/search?keyword=Income%20%26%20Employment%20%3E%20Education%20%26%20Training%20%28464%29&landing=1&keyword_hidden=Income%20%26%20Employment%20%3E%20Education%20%26%20Training%20%28464%29&website_categorization=1",
+    "resources": [
+      {
+        "name": "Job and Workforce Training"
+      },
+      {
+        "name": "Workshops for Resumes & Interviews"
+      },
+      {
+        "name": "Thaddeus Youtube Page",
+        "link": "https://www.youtube.com/channel/UCe1REgTuVYQgaXkRzA6BSCg"
+      },
+      {
+        "name": "Forms, Handouts, PDFs"
+      }
+    ]
+  }
 ]

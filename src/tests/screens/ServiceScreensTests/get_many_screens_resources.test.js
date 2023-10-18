@@ -19,6 +19,7 @@ import resources from '../../../data/resources';
 const testResources = {
   'Health Services': resources['Health Services'],
   'Legal Services': resources['Legal Services'],
+  'Food Services': resources['Food Services'],
 };
 
 const spyOpenURL = jest.spyOn(Linking, 'openURL').mockImplementation(() => {
