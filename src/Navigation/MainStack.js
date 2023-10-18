@@ -12,6 +12,7 @@ import UserProfileScreen from '../screens/MainScreens/UserProfileScreen/UserProf
 import ResourcesStack from './ResourcesStack';
 import thaddeusLogo from '../assets/images/thaddeus_globe.png';
 import { fonts } from '../global';
+import RenderEventScreen from '../screens/MainScreens/CalendarScreen/CalendarRepo';
 
 /**
  * Native drawer navigator for the main screens.
@@ -60,6 +61,15 @@ export default function MainStack() {
                 drawerIcon: ({ color }) => (
                     <Ionicons name="calendar-outline" size={22} color={color} />
                 )
+            }} />
+            <Drawer.Screen name='Event' component={RenderEventScreen} options={{
+                drawerItemStyle: {
+                    display: "none",
+
+                    drawerIcon: ({ color }) => (
+                        <Ionicons name="event-outline" size={22} color={color} />
+                    )
+                }
             }} />
             <Drawer.Screen name='Chat' component={ChatScreen} options={{
                 drawerIcon: ({ color }) => (

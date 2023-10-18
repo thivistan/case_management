@@ -5,7 +5,7 @@ import styles from './styles';
 import CalendarRepo from './CalendarRepo';
 import { useNavigation } from '@react-navigation/native';
 import { NavigationContainer } from '@react-navigation/native';
-import renderEventScreen from './CalendarRepo';
+import RenderEventScreen from './CalendarRepo';
 
 
 const MonthlyCalendar = () => {
@@ -70,7 +70,7 @@ const styles2 = StyleSheet.create({
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
-
+    borderRadius: '100px',
   },
 
   calendarContainer: {
@@ -80,7 +80,9 @@ const styles2 = StyleSheet.create({
 
   calendar: {
     aspectRatio: 0.9,
-    resizeMode: 'contain'
+    resizeMode: 'contain',
+    padding: 10,
+    borderRadius: 10,
   },
 
   eventContainer: {

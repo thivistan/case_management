@@ -3,7 +3,7 @@ import styles from './styles';
 import React, { useState } from 'react';
 import { View, Text, TextInput, Switch, TouchableOpacity } from 'react-native';
 
-const renderEventScreen = () => {
+const RenderEventScreen = () => {
 
   const [currentMonth, setCurrentMonth] = useState('July');
   const [showEventScreen, setShowEventScreen] = useState(false);
@@ -16,6 +16,7 @@ const renderEventScreen = () => {
   const handleSaveEvent = () => {
     // Logic for saving the event
     setShowEventScreen(false);
+    console.log("handleSaveEvent function activated from 'Calendar Repo'")
   };
 
   const renderEventKey = (label, color) => (
@@ -101,4 +102,4 @@ const renderEventScreen = () => {
 
 };
 
-export default renderEventScreen;
+export default RenderEventScreen;
