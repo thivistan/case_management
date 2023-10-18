@@ -45,7 +45,7 @@ export default {
     },
     "Food Services": {
         data: foodData,
-        url: "https://www.google.com",
+        url: "https://211la.org/resources/subcategory/food",
         iconName: "restaurant-outline"
     },
     "Forms": {

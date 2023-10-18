@@ -20,6 +20,7 @@ const testResources = {
   'Health Services': resources['Health Services'],
   'Legal Services': resources['Legal Services'],
   'Food Services': resources['Food Services'],
+  'Income & Employment Services': resources['Income & Employment Services'],
 };
 
 const spyOpenURL = jest.spyOn(Linking, 'openURL').mockImplementation(() => {
@@ -203,7 +204,7 @@ describe('Resource list screen', () => {
 
           const resourceList = tree.root.findByType(ResourcesList);
           const redirectLinks = resourceList.findAllByType(RedirectLink);
-          for (let j = 0; j < redirectLinks.length; j++) redirectLinks[j].props.onPress();
+          for (let j = 0; j < redirectLinks.length; j++) redirectLinks[j].children[0].props.onPress();
           expect(spyOpenURL).toHaveBeenCalledTimes(redirectLinks.length);
           spyOpenURL.mockRestore();
         }
