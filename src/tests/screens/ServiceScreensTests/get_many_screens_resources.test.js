@@ -23,10 +23,9 @@ const testResources = {
 
 const spyOpenURL = jest.spyOn(Linking, 'openURL').mockImplementation(() => {
   return {
-    openURL: function () { },
+    openURL: function () {},
   };
 });
-
 
 const serviceRouteTemplate = { params: { data: null } };
 
@@ -59,7 +58,9 @@ describe('Section categories screen', () => {
       let route = JSON.parse(JSON.stringify(serviceRouteTemplate));
       route.params.data = value.data;
 
-      const tree = renderer.create(<ServiceScreen route={route} navigation={{ setOptions: function () { } }} />);
+      const tree = renderer.create(
+        <ServiceScreen route={route} navigation={{ setOptions: function () {} }} />
+      );
       const componentStr = JSON.stringify(tree);
       const componentObj = JSON.parse(componentStr);
 
@@ -67,14 +68,16 @@ describe('Section categories screen', () => {
       expect(componentObj.children).toBeDefined();
       expect(componentObj.children[0].children.length).toBe(value.data.length);
     });
-  };
+  }
 
   for (const [key, value] of Object.entries(testResources)) {
     it(`Checks ${key} categories' names`, () => {
       let route = JSON.parse(JSON.stringify(serviceRouteTemplate));
       route.params.data = value.data;
 
-      const tree = renderer.create(<ServiceScreen route={route} navigation={{ setOptions: function () { } }} />);
+      const tree = renderer.create(
+        <ServiceScreen route={route} navigation={{ setOptions: function () {} }} />
+      );
       const componentStr = JSON.stringify(tree);
       const componentObj = JSON.parse(componentStr);
 
@@ -86,14 +89,16 @@ describe('Section categories screen', () => {
         expect(categoryStr).toContain(value.data[i].label);
       }
     });
-  };
+  }
 
   for (const [key, value] of Object.entries(testResources)) {
     it(`Pressing category buttons with resources in ${key} section; expecting handler to be called w/ resources passed in`, async () => {
       let route = JSON.parse(JSON.stringify(serviceRouteTemplate));
       route.params.data = value.data;
 
-      const tree = renderer.create(<ServiceScreen route={route} navigation={{ setOptions: function () { } }} />);
+      const tree = renderer.create(
+        <ServiceScreen route={route} navigation={{ setOptions: function () {} }} />
+      );
       const componentObj = tree.toJSON();
 
       let actualTotalCall = 0;
@@ -117,7 +122,7 @@ describe('Section categories screen', () => {
 
       expect(actualTotalCall).toBe(expectedTotalCall);
     });
-  };
+  }
 });
 
 describe('Resource list screen', () => {
@@ -131,13 +136,13 @@ describe('Resource list screen', () => {
           route.params.name = value.data[i].label;
 
           const tree = renderer.create(
-            <CategoryScreen route={route} navigation={{ setOptions: function () { } }} />
+            <CategoryScreen route={route} navigation={{ setOptions: function () {} }} />
           );
           expect(tree.root.findAllByType(ExternalLinkButton).length).toBe(2);
         }
       }
     });
-  };
+  }
 
   for (const [key, value] of Object.entries(testResources)) {
     it(`Amount of resources in ${key} rendered match the amount of resources in the .json file`, () => {
@@ -149,7 +154,7 @@ describe('Resource list screen', () => {
           route.params.name = value.data[i].label;
 
           const tree = renderer.create(
-            <CategoryScreen route={route} navigation={{ setOptions: function () { } }} />
+            <CategoryScreen route={route} navigation={{ setOptions: function () {} }} />
           );
 
           const resourcesRendered =
@@ -159,7 +164,7 @@ describe('Resource list screen', () => {
         }
       }
     });
-  };
+  }
 
   for (const [key, value] of Object.entries(testResources)) {
     it(`Clicks on the 2 bottom buttons of all ${key} resource lists`, () => {
@@ -171,7 +176,7 @@ describe('Resource list screen', () => {
           route.params.name = value.data[i].label;
 
           const tree = renderer.create(
-            <CategoryScreen route={route} navigation={{ setOptions: function () { } }} />
+            <CategoryScreen route={route} navigation={{ setOptions: function () {} }} />
           );
 
           const externalLinks = tree.root.findAllByType(ExternalLinkButton);
@@ -185,7 +190,7 @@ describe('Resource list screen', () => {
         }
       }
     });
-  };
+  }
 
   for (const [key, value] of Object.entries(testResources)) {
     it(`Clicks on all ${key} link resources`, () => {
@@ -197,18 +202,21 @@ describe('Resource list screen', () => {
           route.params.name = value.data[i].label;
 
           const tree = renderer.create(
-            <CategoryScreen route={route} navigation={{ setOptions: function () { } }} />
+            <CategoryScreen route={route} navigation={{ setOptions: function () {} }} />
           );
 
           const resourceList = tree.root.findByType(ResourcesList);
           const redirectLinks = resourceList.findAllByType(RedirectLink);
-          for (let j = 0; j < redirectLinks.length; j++) redirectLinks[j].props.onPress();
+          for (let j = 0; j < redirectLinks.length; j++) {
+            const touchableOpacity = redirectLinks[j].findByType(TouchableOpacity);
+            touchableOpacity.props.onPress();
+          }
           expect(spyOpenURL).toHaveBeenCalledTimes(redirectLinks.length);
           spyOpenURL.mockRestore();
         }
       }
     });
-  };
+  }
 
   for (const [key, value] of Object.entries(testResources)) {
     it(`Opens the map for all ${key} map resources with latitude and longtitude`, () => {
@@ -220,7 +228,7 @@ describe('Resource list screen', () => {
           route.params.name = value.data[i].label;
 
           const tree = renderer.create(
-            <CategoryScreen route={route} navigation={{ setOptions: function () { } }} />
+            <CategoryScreen route={route} navigation={{ setOptions: function () {} }} />
           );
 
           const resourceList = tree.root.findByType(ResourcesList);
@@ -238,5 +246,5 @@ describe('Resource list screen', () => {
         }
       }
     });
-  };
+  }
 });
