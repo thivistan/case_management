@@ -33,4 +33,11 @@ export const globalStyles = StyleSheet.create({
         elevation: 5,
         flex: 5,
     },
+    shadowNormal: {
+        shadowColor: "#000",
+        shadowOffset: { width: 0, height: 2, },
+        shadowOpacity: 0.25,
+        shadowRadius: 3.84,
+        elevation: 5,
+    },
 });
