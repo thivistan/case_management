@@ -23,6 +23,7 @@ const testResources = {
   'Income & Employment Services': resources['Income & Employment Services'],
 };
 
+// spyOpenURL = create a spy that mimics action to open link
 const spyOpenURL = jest.spyOn(Linking, 'openURL').mockImplementation(() => {
   return {
     openURL: function () { },
@@ -50,21 +51,27 @@ jest.mock('react-native/Libraries/Utilities/Platform', () => {
   return Platform;
 });
 
+// resets OpenURL function before each test is run
 beforeEach(() => {
   spyOpenURL.mockRestore();
   Platform.OS = 'android';
 });
 
+// test suite
 describe('Section categories screen', () => {
+  // go through each screen
   for (const [key, value] of Object.entries(testResources)) {
+    // cross checking rendered objects with corresponding json file
     it(`Checks if ${key} have ${value.data.length} categories`, () => {
       let route = JSON.parse(JSON.stringify(serviceRouteTemplate));
       route.params.data = value.data;
 
+      // .create() == creates a test instance of this component
       const tree = renderer.create(<ServiceScreen route={route} navigation={{ setOptions: function () { } }} />);
       const componentStr = JSON.stringify(tree);
       const componentObj = JSON.parse(componentStr);
 
+      // count child components & cross checking the json file
       expect(componentObj).toBeDefined();
       expect(componentObj.children).toBeDefined();
       expect(componentObj.children[0].children.length).toBe(value.data.length);
@@ -76,13 +83,16 @@ describe('Section categories screen', () => {
       let route = JSON.parse(JSON.stringify(serviceRouteTemplate));
       route.params.data = value.data;
 
+      // .create() == creates a test instance of this component
       const tree = renderer.create(<ServiceScreen route={route} navigation={{ setOptions: function () { } }} />);
       const componentStr = JSON.stringify(tree);
       const componentObj = JSON.parse(componentStr);
 
+      // count child components & cross checking the json file
       expect(componentObj).toBeDefined();
       expect(componentObj.children).toBeDefined();
 
+      // compare strings for sub-categories, title to json
       for (let i = 0; i < value.data.length; i++) {
         const categoryStr = JSON.stringify(componentObj.children[0].children[i]);
         expect(categoryStr).toContain(value.data[i].label);
@@ -101,15 +111,18 @@ describe('Section categories screen', () => {
       let actualTotalCall = 0;
       let expectedTotalCall = 0;
 
+      // count how many button presses we need to record
       for (let i = 0; i < value.data.length; i++) {
         if (value.data[i].resources) expectedTotalCall++;
       }
 
+      // simulate clicking button for every button
       for (let i = 0; i < value.data.length; i++) {
         if (value.data[i].resources) {
           const category = componentObj.children[0].children[i];
           expect(category.props.onClick).toBeDefined();
 
+          // simulate the onClick event with spy
           const spy = jest.spyOn(category.props, 'onClick').mockImplementation();
           category.props.onClick();
           expect(spy).toHaveBeenCalledTimes(1);
@@ -117,24 +130,33 @@ describe('Section categories screen', () => {
         }
       }
 
+      // check count of button clicks
       expect(actualTotalCall).toBe(expectedTotalCall);
     });
   };
 });
 
 describe('Resource list screen', () => {
+  // check if buttons for every resource screen exist
   for (const [key, value] of Object.entries(testResources)) {
     it(`Checks if bottom 2 buttons of all ${key} resource lists are rendered`, () => {
+
+      // go through every screen (i.e. food, health, legal)
       for (let i = 0; i < value.data.length; i++) {
         if (value.data[i].resources) {
           let route = JSON.parse(JSON.stringify(resourceRouteTemplate));
+
+          // fetch data from json file
           route.params.category = value.data[i];
           route.params.url = value.url;
           route.params.name = value.data[i].label;
 
+          // simulate category screen with each category data
           const tree = renderer.create(
+            // initialize empty setOptions() function
             <CategoryScreen route={route} navigation={{ setOptions: function () { } }} />
           );
+          // check for 2 extrenal link buttons
           expect(tree.root.findAllByType(ExternalLinkButton).length).toBe(2);
         }
       }
