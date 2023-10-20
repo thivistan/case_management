@@ -17,6 +17,7 @@ export default function Routes() {
             {/* Render the main stack if the user is authenticated */}
             <StatusBar style="auto" />
             {user ? <MainStack /> : <AuthStack />}
+            
         </NavigationContainer>
     );
 }

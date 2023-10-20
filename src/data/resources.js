@@ -2,8 +2,15 @@ import donationData from './categories/donation.json';
 import employmentData from './categories/employment.json';
 import healthData from './categories/healthcare.json';
 import legalData from './categories/legal.json';
+import housingData from './categories/housing.json'
+import foodData from './categories/food.json';
 
-const resources = {
+/**
+ *  An object containing metadata for the resources.
+ *  
+ *  `"resourceName": { data, url, iconName }`
+ */
+export default {
     "Appointment Services": {
 
         iconName: "calendar-outline"
@@ -37,7 +44,8 @@ const resources = {
         iconName: "home-outline"
     },
     "Food Services": {
-
+        data: foodData,
+        url: "https://www.google.com",
         iconName: "restaurant-outline"
     },
     "Forms": {
@@ -54,7 +62,8 @@ const resources = {
         iconName: "pulse-outline"
     },
     "Housing Services": {
-
+        data: housingData,
+        url: "https://211la.org/resources/subcategory/housing",
         iconName: "home-outline"
     },
     "Immigration Services": {
@@ -119,6 +128,3 @@ const resources = {
         iconName: "school-outline"
     }
 };
-
-
-export default resources;

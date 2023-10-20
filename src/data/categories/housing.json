@@ -1,0 +1,55 @@
+
+[
+    
+    {
+      "label": "Housing",
+      "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTEStXVE3TR304VxAtXmjm1W03jWXUebjDDk27RD-qj4g&s",
+      "url": "https://211la.org/resources/subcategory/housing",
+      "resources": [
+        {
+            "name": "DPSS (Report Homeless)",
+            "address": "2415 W 6th St, Los Angeles, CA 90057",
+            "lat": 34.061460, 
+            "lon": -118.278300,
+            "phone": "(866) 613-3777",
+            "hours": "7:30 am - 6:30pm"
+        },{
+            "name": "Family Solutions -211",
+          "address": "7817 Lankershim Blvd,North Hollywood, CA 91605",
+          "lat": 34.083810,
+          "lon": -118.388360,
+          "phone": "818-255-2766",
+          "hours": "8am-6pm"
+        },{
+            "name": "Volunteers of America Pomona’s Homeless Outreach",
+          "address": "2040 N Garey Ave, Pomona, CA 91767",
+          "lat": 34.083810,
+          "lon": -117.752080,
+          "phone": "(909) 593-4796",
+          "hours": "9am - 5pm"
+        },{
+            "name": "Foothill Family Shelter",
+          "address": "1501 W 9th St D, Upland, CA 91786",
+          "lat": 34.096380,
+          "lon": -117.679780,
+          "phone": "(909) 920-0453",
+          "hours": "9am - 5pm"
+        },
+        {"name": "Inland Valley Hope Partners",
+        "address": "1753 N Park AvePomona, CA 91768",
+        "lat": 34.077070,
+        "lon": -117.753020,
+        "phone": "(909) 622-3806",
+        "hours": "8am - 9pm"
+        },
+        {
+        "name": "Catholic Charities",
+          "address": "1460 E Holt Ave Pomona CA 91767",
+          "lat": 34.061410,
+          "lon": -117.720720,
+          "phone": "((909) 629-1331",
+          "hours": "9am - 5pm"
+        }
+      ]
+    } 
+  ]

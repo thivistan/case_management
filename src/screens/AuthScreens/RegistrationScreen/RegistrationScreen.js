@@ -1,4 +1,4 @@
-import React, { useContext, useState, useEffect } from "react";
+import React, { useContext, useState } from "react";
 import { Text, TouchableOpacity, View, KeyboardAvoidingView } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { useNavigation } from "@react-navigation/native";
@@ -9,6 +9,11 @@ import RegistrationPageSVG from '../../../assets/images/registration_screen_cart
 import { AuthContext } from '../../../Navigation/AuthProvider';
 import InputField from '../../../components/InputField';
 
+/**
+ * The Registration Screen.
+ * 
+ * @returns {React.Component} The RegistrationScreen component.
+ */
 export default function RegistrationScreen() {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
@@ -77,6 +82,5 @@ export default function RegistrationScreen() {
                 </View>
             </SafeAreaView>
         </KeyboardAvoidingView>
-
     );
 }

@@ -12,11 +12,12 @@ import ExternalLinkButton from '../../../components/ExternalLinkButton';
  * @param {Object} route Contains an object to handle data passed to this component via navigation.
  * @param {Object} navigation Contains an object to manage app navigation.
  */
-export default function Category({ route, navigation }) {
+export default function CategoryScreen({ route, navigation }) {
   const { category, name, url } = route.params;
 
-  let displayHeader = (category.label.length > 20) ? (category.label.substring(0, 16) + "...") : category.label
+  const displayHeader = (category.label.length > 20) ? (category.label.substring(0, 16) + "...") : category.label
 
+  // Set header options
   useEffect(() => {
     navigation.setOptions({
       headerTitle: displayHeader,
@@ -30,7 +31,8 @@ export default function Category({ route, navigation }) {
         fontSize: 16,
         color: 'white', // Color for the header title
       },
-      headerTintColor: colors.secondary, // Change this to the color you want for the back button
+      headerTintColor: colors.secondary,
+      headerBackTitle: 'Back',
     });
   }, []);
 
