@@ -29,7 +29,6 @@ export const openApp = async (content, type, lat, lon) => {
   }
 
   try {
-    console.log(`Opened URL: ${url}`);
     await Linking.openURL(url);
   } catch (error) {
     console.error(`Error opening URL: ${url}`, error);

@@ -17,10 +17,10 @@ export default function ResourcesList({ resources }) {
       <ScrollView style={styles.scrollViewContainer}>
         <View style={{ paddingTop: 20 }}>
           {/* Display a RedirectLink or a Map accordingly */}
-          {resources.map((resource) => {
+          {resources.map((resource, index) => {
             return resource.link
-              ? <RedirectLink resource={resource} key={resource.title} />
-              : <Map resource={resource} key={resource.name} />
+              ? <RedirectLink resource={resource} key={index} />
+              : <Map resource={resource} key={index} />
           })}
         </View>
       </ScrollView>
