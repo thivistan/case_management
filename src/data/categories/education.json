@@ -1,0 +1,33 @@
+
+
+[
+   
+    {
+      "label": "Adults",
+      "image":null,
+      "url":"https://211la.org/resources/search?keyword=Education%20%3E%20Adult%20Education%20%28612%29&landing=1&keyword_hidden=Education%20%3E%20Adult%20Education%20%28612%29&website_categorization=1",
+      "resources": [
+        {
+            "name": "Adult and Career Education",
+            "address": "800 S. GAREY AVE, POMONA, CA 91766",
+            "lat": 34.052219,
+            "lon": -117.749893,
+            "phone": "(909) 397-4800",
+            "hours": "8 am- 4:30 pm"
+ 
+        }
+      ]
+    } ,{"label": "Ages 22 and under",
+    "image": null,
+    "url":"https://211la.org/resources/subcategory/education",
+    "resources": [
+        {
+            "name": "School of Extended Educational Options",
+          "address": "2211 N. Orange Grove Ave. Pomona, CA 91767",
+          "lat": 34.083680,
+          "lon": -117.746430,
+          "phone": "(909) 397-4900 x35600",
+          "hours": "7:30 am-4 pm"
+        }
+    ]}
+  ]

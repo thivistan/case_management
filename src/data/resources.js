@@ -4,6 +4,7 @@ import healthData from './categories/healthcare.json';
 import legalData from './categories/legal.json';
 import housingData from './categories/housing.json'
 import foodData from './categories/food.json';
+import educationData from './categories/education.json'
 
 /**
  *  An object containing metadata for the resources.
@@ -36,7 +37,8 @@ export default {
         iconName: "heart-outline"
     },
     "Education Services": {
-
+        data:educationData,
+        url:"https://211la.org/resources/subcategory/education",
         iconName: "school-outline"
     },
     "Family Services": {
